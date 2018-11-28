@@ -1,0 +1,258 @@
+db.productos.insertMany([
+  {
+    codigo: "44252C",
+    nombre: "Solenoide Vvt",
+    descripcion: "Solenoide vvt honda accord 2.4 13-16, cr-v 2.4 15-16, acura ilx 2.4 2016, acura tlx 2.4 15-17",
+    tipo: "Fuel",
+    marca: "Injetech",
+    precio: 0,
+    imagenes:
+    [
+      "",
+      ""
+    ],
+    autos:
+    [
+      {
+        modelo: "Tlx",
+        anio: "2017",
+        marca_auto: "Acura",
+        motor: "2.4L 4"
+      }
+    ]
+  },
+  {
+    codigo: "40764",
+    nombre: "Bobina Encendido",
+    descripcion: "Bobina honda accord 2.4l 08-12; civic 2.4l 12-14; crosstour 2.4l 12-14; crosstour 3.5l 13-13; cr-v 2.4l 10-14; acura ilx 2.4l 13-14",
+    tipo: "Fuel",
+    marca: "Injetech",
+    precio: 0,
+    imagenes:
+    [
+      "",
+      ""
+    ],
+    autos:
+    [
+      {
+        modelo: "Ilx",
+        anio: "2017",
+        marca_auto: "Acura",
+        motor: "2.4L 4"
+      }
+    ]
+  },
+  {
+    codigo: "163854C",
+    nombre: "Filtro Aceite",
+    descripcion: "Filtro de aceite bosch f00e163854",
+    tipo: "Mecánico",
+    marca: "Bosch",
+    precio: 0,
+    imagenes:
+    [
+      "",
+      ""
+    ],
+    autos:
+    [
+      {
+        modelo: "Ilx",
+        anio: "2017",
+        marca_auto: "Acura",
+        motor: "2.4L 4"
+      },
+      {
+        modelo: "Mdx",
+        anio: "2017",
+        marca_auto: "Acura",
+        motor: "3.5L 6"
+      },
+      {
+        modelo: "Rdx",
+        anio: "2017",
+        marca_auto: "Acura",
+        motor: "3.5L 6"
+      },
+      {
+        modelo: "Rlx",
+        anio: "2017",
+        marca_auto: "Acura",
+        motor: "3.5L 6"
+      },
+      {
+        modelo: "Tlx",
+        anio: "2017",
+        marca_auto: "Acura",
+        motor: "2.4L 4"
+      },
+      {
+        modelo: "Tlx",
+        anio: "2017",
+        marca_auto: "Acura",
+        motor: "3.5L 6"
+      }
+    ]
+  },
+  {
+    codigo: "13776",
+    nombre: "Sensor Temperatura Refrigerante",
+    descripcion: "Sensor de temperatura de refrigerante (cts) honda accord 88-02, civic 88-00, crv 97-01, odyssey 95-05, pilot 03-04",
+    tipo: "Fuel",
+    marca: "Injetech",
+    precio: 0,
+    imagenes:
+    [
+      "",
+      ""
+    ],
+    autos:
+    [
+      {
+        modelo: "Mdx",
+        anio: "2017",
+        marca_auto: "Acura",
+        motor: "3.5L 6"
+      }
+    ]
+  },
+  {
+    codigo: "42920",
+    nombre: "Sensor Temperatura Refrigerante",
+    descripcion: "Sensor ect honda accord 3.5 08-15 ;accord crosstour 3.5 10-11 ;civic 1.8 09-15 ;civic 2.0 09-11 ;civic 2.4 12-15 ;civic hybrid 1.5 12-15 ;fit 1.5 07-08 ;crosstour 3.5 12-15 ;hr-v 1.8 2016 ;element 2.4 07-11 ;odyssey 3.5 07-16 ;pilot 3.5 09-16 ;ridgeline 3.5 09-14",
+    tipo: "Fuel",
+    marca: "Injetech",
+    precio: 0,
+    imagenes:
+    [
+      "",
+      ""
+    ],
+    autos:
+    [
+      {
+        modelo: "Mdx",
+        anio: "2017",
+        marca_auto: "Acura",
+        motor: "3.5L 6"
+      },
+      {
+        modelo: "Mdx",
+        anio: "2017",
+        marca_auto: "Acura",
+        motor: "3.7L 6"
+      },
+      {
+        modelo: "Rdx",
+        anio: "2017",
+        marca_auto: "Acura",
+        motor: "3.5L 6"
+      }
+    ]
+  },
+  {
+    codigo: "010242C",
+    nombre: "Tapón Radiador",
+    descripcion: "Tapon de radiador 16 lbs 74100031 acura honda isuzu lexus mazda subaru suzuki toyota",
+    tipo: "Mecánico",
+    marca: "Stant",
+    precio: 0,
+    imagenes:
+    [
+      "",
+      ""
+    ],
+    autos:
+    [
+      {
+        modelo: "Mdx",
+        anio: "2017",
+        marca_auto: "Acura",
+        motor: "3.5L 6"
+      },
+      {
+        modelo: "Mdx",
+        anio: "2017",
+        marca_auto: "Acura",
+        motor: "3.7L 6"
+      },
+      {
+        modelo: "Rdx",
+        anio: "2017",
+        marca_auto: "Acura",
+        motor: "3.5L 6"
+      },
+      {
+        modelo: "Rlx",
+        anio: "2017",
+        marca_auto: "Acura",
+        motor: "3.5L 6"
+      },
+      {
+        modelo: "Tlx",
+        anio: "2017",
+        marca_auto: "Acura",
+        motor: "2.4L 4"
+      },
+      {
+        modelo: "Tlx",
+        anio: "2017",
+        marca_auto: "Acura",
+        motor: "3.5L 6"
+      }
+    ]
+  },
+  {
+    codigo: "14216",
+    nombre: "Tapón Radiador",
+    descripcion: "Tapon radiador honda 16lb t37 motorad",
+    tipo: "Mecánico",
+    marca: "MotoRad",
+    precio: 0,
+    imagenes:
+    [
+      "",
+      ""
+    ],
+    autos:
+    [
+      {
+        modelo: "Mdx",
+        anio: "2017",
+        marca_auto: "Acura",
+        motor: "3.5L 6"
+      },
+      {
+        modelo: "Mdx",
+        anio: "2017",
+        marca_auto: "Acura",
+        motor: "3.7L 6"
+      },
+      {
+        modelo: "Rdx",
+        anio: "2017",
+        marca_auto: "Acura",
+        motor: "3.5L 6"
+      },
+      {
+        modelo: "Rlx",
+        anio: "2017",
+        marca_auto: "Acura",
+        motor: "3.5L 6"
+      },
+      {
+        modelo: "Tlx",
+        anio: "2017",
+        marca_auto: "Acura",
+        motor: "2.4L 4"
+      },
+      {
+        modelo: "Tlx",
+        anio: "2017",
+        marca_auto: "Acura",
+        motor: "3.5L 6"
+      }
+    ]
+  }
+])
