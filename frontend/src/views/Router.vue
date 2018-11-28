@@ -6,67 +6,92 @@ v-app
       router-view
     v-container(grid-list-md text-xs-center)
       v-layout(row wrap center)
-         v-flex(xs12)
-            h1.display-3 Reface
+         v-flex(xs11)
+            h1.display-3 Products {{id}}
          v-flex(xs12 lg12)
-          v-text-field( v-model="escrito"   label="Find Product" single-line solo prepend-icon="search" )
-      v-layout(row wrap center)
+          v-text-field(v-model="escrito" label="Find Product" single-line solo prepend-icon="search" )
+      v-layout(row wrap)
          v-flex(lg12 xs12)
-          v-data-table( :headers="headers" 
-          :pagination.sync="pagination"
-          :rows-per-page-items="rowsPerPageItems" 
-          item-key="key_ext" 
-          :items="items" 
-          expand="true"
-          :search="escrito"
-          class="elevation-1")
-            template(slot="headerCell" slot-scope="props")
-              v-tooltip(bottom)
-                span(slot="activator") {{ props.header.text }}
-                span {{ props.header.text }}
-
-            template( slot="items" slot-scope="props")
-
-              td {{props.item.key_ext}}
-              td
-                ModalCode(
-                :id="props.item.id"
-                :key_ext="props.item.key_ext"
-                :description="props.item.description"
-                :codex="props.item.barcode"
-                )
-              //-td
-                p 0
-              //-td
-                v-btn(fab small color="green" dark)
-                  router-link(class="white--text" :to="{ name: 'addcomp', params: { id: props.item.id } }") 
-                    v-icon devices_other
-              td
-                Modal(:id="props.item.id"
-                  :description="props.item.description"
-                  :stock="props.item.stock"
-                  :line="props.item.line"  
-                  :unites="props.item.unit_int"
-                  :packs="props.item.pack_unit"
-                  :fdateb="props.item.final_date_buy" 
-                  :weight="props.item.weight"
-                  :sale_price="props.item.sale_price" 
-                  :csaleyear="props.item.cant_sale_year" 
-                  :cbuyear="props.item.cant_buy_year" 
-                  :model="props.item.model"
-                  :satkey="props.item.key_sat"
-                  :BarCode="props.item.barcode")
-              td {{props.item.barcode}}                
+          v-data-iterator(:items="items" :search="escrito" item-key="key_ext" :rows-per-page-items="rowsPerPageItems"  row wrap :pagination.sync="pagination" content-tag="v-layout")
+            v-flex(slot="item" slot-scope="props" text-xs-left xs12 sm6 md4 lg4)
+              v-card
+                v-img(src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg" height="150px")
+                v-card-title(primary-title)
+                  div
+                    div 
+                      h1 {{props.item.id}}
+                    div
+                      h2 Description
+                    div {{props.item.description}}
+                v-card-actions
+                  v-spacer
+                  ModalCar(:Producto="props.item.id" :description="props.item.description" :volume="props.item.volume" :weight="props.item.weight" :stock="props.item.stock" :purchase_price="props.item.purchase_price" :sale_price="props.item.sale_price" :id_order="id")            
       
+    
+    
+    
+    
     foother
 </template>
 <script>
 import toolbar from '@/components/Toolbar.vue'
-//import foother from '@/components/Footer.vue'
-//import Video from '@/components/Video.vue'
+import Modalprod from '@/components/Modalprod.vue'
+
+import {api} from '@/api'
+import $ from 'jquery'
+//import axios from 'axios'
 export default {
-  components:{
-    toolbar//,foother,Video
-  }
+    components:{
+    toolbar, Modalprod
+  },
+  data () {
+    return {
+      escrito:null,
+      info:null,
+      id:null,
+      rowsPerPageItems: [6, 12, 24],
+    pagination: {
+      rowsPerPage: 6
+    },
+     items: [],
+      errors: [],
+      empty: []
+    }
+
+
+
+},
+
+ methods: {
+
+ },
+ enviar(){
+      api.post('/busqueda_product',[{name:"key_ext",value:this.escrito}])
+      //api.post('/busqueda_product',[{name:"id_product",value:cle}])
+      .then(response => {
+          this.items=response.data
+      
+    
+      }).catch(error => {
+        this.items=null
+
+      })
+    },
+created() {
+    this.id = this.$route.params.id;
+    api.get(`/producto`)
+    //api.get(`/producto`)
+    .then(response => {
+      // JSON responses are automatically parsed.
+      this.items = response.data
+    })
+    .catch(e => {
+      this.errors.push(e)
+    })
+    
 }
+
+
+}
+
 </script>
