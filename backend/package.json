@@ -1,0 +1,11 @@
+{
+  "name": "reface",
+  "version": "1.0.0",
+  "description": "reface version",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "nodelab",
+  "license": "ISC"
+}
