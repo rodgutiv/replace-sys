@@ -52,8 +52,8 @@ div
 </style>
 
 <script>
-import {api} from '@/api'
-import $ from 'jquery'
+//import {api} from '@/api'
+//import $ from 'jquery'
   export default {
     name:'ModalCar',
  props: {
