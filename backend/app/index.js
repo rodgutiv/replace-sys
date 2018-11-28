@@ -10,7 +10,7 @@ var port = 3000;
 // Le indicamos a Mongoose que haremos la conexión con Promesas
 mongoose.Promise = global.Promise;
 // Usamos el método connect para conectarnos a nuestra base de datos
-mongoose.connect('mongodb://localhost/reface',  { useMongoClient: true})
+mongoose.connect('mongodb://localhost/reface')
     .then(() => {
         // Cuando se realiza la conexión, lanzamos este mensaje por consola
         console.log("La conexión a la base de datos reface se ha realizado correctamente")
