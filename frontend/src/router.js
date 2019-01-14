@@ -12,8 +12,13 @@ export default new Router({
       path: '/',
       name: 'home',
       component:() => import(/*Router 1*/ './views/Router.vue'),
-      /*children:[
+      children:[
         {
+          path: '',
+          name: 'home',
+          component: () => import(/*Index Inicial */ './views/Home.vue')
+        }
+        /*{
           path: '',
           name: 'home',
           component: () => import( './views/Home.vue')
@@ -22,7 +27,7 @@ export default new Router({
           path: 'about',
           name: 'about',
           component: () => import( './views/About.vue')
-        }
-  ]*/
+        }*/
+      ]
     }]
 })
