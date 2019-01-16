@@ -16,18 +16,20 @@ export default new Router({
         {
           path: '',
           name: 'home',
-          component: () => import(/*Index Inicial */ './views/Home.vue')
-        }
-        /*{
-          path: '',
-          name: 'home',
           component: () => import( './views/Home.vue')
         },
         {
-          path: 'about',
-          name: 'about',
-          component: () => import( './views/About.vue')
-        }*/
+          path: '/aplication',
+          name: 'aplication',
+          component:() => import( './views/Apli/RouterApp.vue'),
+          children:[
+            {
+              path: 'general',
+              name: 'general',
+              component: () => import( './views/Apli/General.vue')
+            }
+          ]
+        }
       ]
     }]
 })
