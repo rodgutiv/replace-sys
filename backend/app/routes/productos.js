@@ -39,60 +39,60 @@ router.get('/search/:code', function(req, res, next) {
 
 /* GET brands for options */
 router.get('/specific/brand', function(req, res, next) {
-  producto.find().distinct(autos.marca_auto, function (err, producto){
+  producto.find().distinct('autos.marca_auto', function (err, producto){
       if(err)
         return res.status(500).send('Error en la peticion');
       if(!producto)
         return res.status(404).send({message: 'Ningun registro identificado'});
-    return res.json(producto.autos.marca_auto);
+    return res.json('producto.autos.marca_auto');
   });
 });
 
 /* GET model by brand */
 router.get('/specific/model/:brand', function(req, res, next) {
   var brand = req.params.brand;
-  producto.find({ autos.marca_auto: brand }).distinct(autos.modelo, function (err, producto){
+  producto.find({ 'autos.marca_auto': brand }).distinct('autos.modelo', function (err, producto){
       if(err)
         return res.status(500).send('Error en la peticion');
       if(!producto)
         return res.status(404).send({message: 'Ningun registro identificado'});
-    return res.send(producto.autos.modelo);
+    return res.send('producto.autos.modelo');
   });
 });
 
 /* GET year by model */
 router.get('/specific/year/:model', function(req, res, next) {
   var model = req.params.model;
-  producto.find({ autos.modelo: model }).distinct(autos.anio, function (err, producto){
+  producto.find({ 'autos.modelo': model }).distinct('autos.anio', function (err, producto){
       if(err)
         return res.status(500).send('Error en la peticion');
       if(!producto)
         return res.status(404).send({message: 'Ningun registro identificado'});
-    return res.send(producto.autos.anio);
+    return res.send('producto.autos.anio');
   });
 });
 
 /* GET engine by year */
 router.get('/specific/engine/:year', function(req, res, next) {
   var year = req.params.year;
-  producto.find({ autos.anio: year }).distinct(autos.motor, function (err, producto){
+  producto.find({ 'autos.anio': year }).distinct('autos.motor', function (err, producto){
       if(err)
         return res.status(500).send('Error en la peticion');
       if(!producto)
         return res.status(404).send({message: 'Ningun registro identificado'});
-    return res.send(producto.autos.motor);
+    return res.send('producto.autos.motor');
   });
 });
 
 /* GET sparepart by engine */
 router.get('/specific/sparepart/:engine', function(req, res, next) {
   var engine = req.params.engine;
-  producto.find({ autos.motor: engine }).distinct(nombre, function (err, producto){
+  producto.find({ 'autos.motor': engine }).distinct(nombre, function (err, producto){
       if(err)
         return res.status(500).send('Error en la peticion');
       if(!producto)
         return res.status(404).send({message: 'Ningun registro identificado'});
-    return res.send(producto.nombre);
+    return res.send('producto.nombre');
   });
 });
 
@@ -100,11 +100,11 @@ router.get('/specific/sparepart/:engine', function(req, res, next) {
 router.get('/specific', function(req, res, next) {
   var specific_data = req.params.specific_data;
   producto.find({
-    autos.marca_auto: specific_data.brand,
-    autos.modelo: specific_data.model,
-    autos.anio: specific_data.year,
-    autos.motor: specific_data.engine,
-    nombre: specific_data.name
+    'autos.marca_auto': 'specific_data.brand',
+    'autos.modelo': 'specific_data.model',
+    'autos.anio': 'specific_data.year',
+    'autos.motor': 'specific_data.engine',
+    nombre: 'specific_data.name'
   }, function (err, producto){
       if(err)
         return res.status(500).send('Error en la peticion');
