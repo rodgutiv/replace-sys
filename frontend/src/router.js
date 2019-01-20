@@ -19,14 +19,24 @@ export default new Router({
           component: () => import( './views/Home.vue')
         },
         {
-          path: '/aplication',
-          name: 'aplication',
+          path: '/aplicacion',
+          name: 'aplicacion',
           component:() => import( './views/Apli/RouterApp.vue'),
           children:[
+            {
+              path: 'productos',
+              name: 'productos',
+              component: () => import( './views/Apli/Productos.vue')
+            },
             {
               path: 'general',
               name: 'general',
               component: () => import( './views/Apli/General.vue')
+            },
+            {
+              path: 'especifica',
+              name: 'especifica',
+              component: () => import( './views/Apli/Especifica.vue')
             }
           ]
         }

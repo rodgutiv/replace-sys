@@ -12,19 +12,20 @@ v-app
           v-text-field(v-model="escrito" label="Find Product" single-line solo prepend-icon="search" )
       v-layout(row wrap)
          v-flex(lg12 xs12)
-            v-flex( text-xs-left xs12 sm6 md4 lg4)
+          v-data-iterator(:items="items" :search="escrito" item-key="key_ext" :rows-per-page-items="rowsPerPageItems"  row wrap :pagination.sync="pagination" content-tag="v-layout")
+            v-flex(slot="item" slot-scope="props" text-xs-left xs12 sm6 md4 lg4)
               v-card
                 v-img(src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg" height="150px")
                 v-card-title(primary-title)
                   div
                     div 
-                      h1 {{codigo}}
+                      h1 {{props.item.id}}
                     div
                       h2 Description
-                    div {{descripcion}}
+                    div {{props.item.descripcion}}
                 v-card-actions
                   v-spacer
-                 
+                  Modalprod(:Producto="props.item.id" :description="props.item.description" :volume="props.item.volume" :weight="props.item.weight" :stock="props.item.stock" :purchase_price="props.item.purchase_price" :sale_price="props.item.sale_price" :id_order="id")            
       
     
     
@@ -45,16 +46,14 @@ export default {
   },
   data () {
     return {
-      escrito:null,
+      escrito:'',
       info:null,
       id:null,
-      descripcion:null,
-      codigo:null,
       rowsPerPageItems: [6, 12, 24],
-    pagination: {
-      rowsPerPage: 6
-    },
-     items: [],
+      pagination: {
+        rowsPerPage: 6
+      },
+      items: [],
       errors: [],
       empty: []
     }
@@ -67,18 +66,21 @@ export default {
 
  },
 created() {
-    this.id = this.$route.params.id;
-    api.get('/products/search/44252C')
-    //api.post('/products/buscar')
+    if(sessionStorage.getItem("dato")!=null){
+      this.escrito=sessionStorage.getItem("dato")
+    }else{
+      this.escrito=''
+    }
+    api.get(`/products/all`)
     //api.get(`/producto`)
     .then(response => {
-      alert(response.data.codigo)
-      this.codigo = response.data.codigo,
-      this.descripcion = response.data.descripcion 
+      // JSON responses are automatically parsed.
+      this.items = response.data
     })
     .catch(e => {
       this.errors.push(e)
     })
+    
     
 }
 
