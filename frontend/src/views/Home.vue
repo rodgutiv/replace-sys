@@ -2,68 +2,70 @@
 v-app
   div
     toolbar
-    v-container(grid-list-md r)
-        v-carousel
-            v-carousel-item(v-for="(item,i) in items" :key="i" :src="item.src") 
-    v-container(grid-list-md r)
-        v-layout(row wrap center) 
-            v-flex(xs3)
-              v-btn(v-on:click="Submit(datos)")
-                v-img(src="http://localhost:3000/imagenes/lupita busqueda.png")
-            v-flex(xs3)  
-              v-text-field(ref="dat" v-model="datos" label="Busqueda General" solo name="buscar")
-            v-flex(xs3)
-                v-btn(v-on:click="Submit2")
+    v-container(grid-list-md r id="carrusel")
+        v-carousel(id ="carru1")
+            v-carousel-item(v-for="(item,i) in items" :key="i" :src="item.src")
+    v-container(grid-list-md r id="contenido-busca")
+        v-layout(row wrap center id="busquedas")
+          v-layout(row wrap left id="general")
+              v-flex(xs2 id="div-btn-general")
+                v-btn(v-on:click="Submit(datos)" id="lupa1")
                   v-img(src="http://localhost:3000/imagenes/lupita busqueda.png")
-                h2 BÚSQUEDA ESPECÍFICA
-            v-flex(xs3)
-                v-select(
-                v-model="selec1"
-                :items="brands"
-                item-value="marca" 
-                label="Marca" 
-                @change="model(selec1)"
-                required
-                outline)
-                v-text-field(ref="marcas" name="marca" style="display:none" readonly :value="selec1")
-                v-select(
-                v-model="selec2"
-                :items="models"
-                item-value="name" 
-                label="Modelo" 
-                @change="year(selec2)"
-                required
-                outline)
-                v-text-field(ref="modelos" name="modelo" style="display:none" readonly :value="selec2" )
-                v-select(
-                v-model="selec3"
-                :items="years"
-                item-value="año" 
-                label="Año" 
-                @change="engine(selec3)"
-                required
-                outline)
-                v-text-field(ref="años" name="año" style="display:none" readonly :value="selec3" )
-                v-select(
-                v-model="selec4"
-                :items="engines"
-                item-value="motor" 
-                label="Motor" 
-                @change="sparepart(selec4)"
-                required
-                outline)
-                v-text-field(ref="motores" name="motor" style="display:none" readonly :value="selec4" )
-                v-select(
-                v-model="selec5"
-                :items="spareparts"
-                item-value="refaccion" 
-                label="Refacción" 
-                @change="final(selec5)"
-                required
-                outline)
-                v-text-field(ref="spar" name="refaccion" style="display:none" readonly :value="selec5")
+              v-flex(xs6 )
+                v-text-field(ref="dat" v-model="datos" label="BUSQUEDA GENERAL" solo name="buscar")
+          v-layout(row wrap right id="especifica")
+              v-flex(xs2 id="div-btn-especifica")
+                  v-btn(v-on:click="Submit2" id="lupa2")
+                    v-img(src="http://localhost:3000/imagenes/lupita busqueda.png")
+                  h2 BÚSQUEDA ESPECÍFICA
+              v-flex(xs3)
+                  v-select(
+                  v-model="selec1"
+                  :items="brands"
+                  item-value="marca"
+                  label="Marca"
+                  @change="model(selec1)"
+                  required
+                  outline)
+                  v-text-field(ref="marcas" name="marca" style="display:none" readonly :value="selec1")
+                  v-select(
+                  v-model="selec2"
+                  :items="models"
+                  item-value="name"
+                  label="Modelo"
+                  @change="year(selec2)"
+                  required
+                  outline)
+                  v-text-field(ref="modelos" name="modelo" style="display:none" readonly :value="selec2" )
+                  v-select(
+                  v-model="selec3"
+                  :items="years"
+                  item-value="año"
+                  label="Año"
+                  @change="engine(selec3)"
+                  required
+                  outline)
+                  v-text-field(ref="años" name="año" style="display:none" readonly :value="selec3" )
+                  v-select(
+                  v-model="selec4"
+                  :items="engines"
+                  item-value="motor"
+                  label="Motor"
+                  @change="sparepart(selec4)"
+                  required
+                  outline)
+                  v-text-field(ref="motores" name="motor" style="display:none" readonly :value="selec4" )
+                  v-select(
+                  v-model="selec5"
+                  :items="spareparts"
+                  item-value="refaccion"
+                  label="Refacción"
+                  @change="final(selec5)"
+                  required
+                  outline)
+                  v-text-field(ref="spar" name="refaccion" style="display:none" readonly :value="selec5")
 
-    
+
 </template>
 <script>
 import toolbar from '@/components/Toolbar.vue'
@@ -91,7 +93,7 @@ export default {
         engines: [],
         spareparts: [],
         errors: [],
-        empty: [],    
+        empty: [],
         items: [
           {
             src: 'http://localhost:3000/imagenes/slider.png'
@@ -180,5 +182,33 @@ export default {
 
 </script>
 <style>
+  #carrusel{
+      max-width: 1485px;
+  }
+  #carru1{
+    height: 350px;
+  }
+  #contenido-busca{
+      max-width: 1485px;
+  }
+  #lupa1{
+    background-color: transparent;
+  }
+  #lupa2{
+    background-color: transparent;
+  }
+  #general{
+
+  }
+  #especifica{
+
+  }
+  #busquedas{
+    background: linear-gradient(to bottom, black,#2b467b);
+  }
+  #div-btn-general
+  {
+    margin-left: 25%;
+  }
   /*#2b467b*/
 </style>

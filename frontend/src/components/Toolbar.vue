@@ -87,10 +87,10 @@ export default {
         border-bottom-right-radius: 3px;
     }
     #ima{
-        width: 20%;
+        width: 35%;
         height: 20%;
         flex: 0 0 auto;
-        
+
     }
     #to{
         height: inherit;
@@ -106,7 +106,7 @@ export default {
         font-size: 18px;
     }
     #btn1{
-     
+
         font-size: 12px;
         padding: 0 0;
     }
