@@ -1,5 +1,5 @@
 <template lang="pug">
-    v-content  
+    v-content
       router-view
 </template>
 
@@ -12,4 +12,10 @@ export default {
   }
 }
 </script>
+<style>
+  .theme--light.application{
+        background: linear-gradient(to bottom, black,#2b467b);
+  }
+</style>
+
 
