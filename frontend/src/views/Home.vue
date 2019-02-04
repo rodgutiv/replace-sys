@@ -9,7 +9,7 @@ v-app
         v-layout(row wrap center id="busquedas")
           v-layout(row wrap left id="general")
               v-flex(xs2 id="div-btn-general")
-                v-btn(v-on:click="Submit(datos)" id="lupa1")
+                v-btn(v-on:click="Submit()" id="lupa1")
                   v-img(src="http://localhost:3000/imagenes/lupita busqueda.png")
               v-flex(xs6 )
                 v-text-field(ref="dat" v-model="datos" label="BUSQUEDA GENERAL" solo name="buscar")
@@ -63,7 +63,7 @@ v-app
                   @change="final(selec5)"
                   required
                   outline)
-                  v-text-field(ref="spar" name="refaccion" style="display:none" readonly :value="selec5")
+                  v-text-field(ref="spar" name="refaccion"  readonly :value="selec5")
 
 
 </template>
@@ -111,7 +111,7 @@ export default {
     }
   },
   methods: {
-    Submit(valor){
+    Submit(){
       this.info = this.$refs.dat.value;
       sessionStorage.setItem("dato",this.info)
       this.$router.push({ path: '/aplicacion/productos'})
@@ -156,6 +156,7 @@ export default {
       })
     },
     final(dato){
+      alert(dato)
       var marca = this.$refs.marcas.value;
       var modelo = this.$refs.modelos.value;
       var año = this.$refs.años.value;
