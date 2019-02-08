@@ -63,7 +63,7 @@ v-app
                   @change="final(selec5)"
                   required
                   outline)
-                  v-text-field(ref="spar" name="refaccion"  readonly :value="selec5")
+                  v-text-field(ref="spar" name="refaccion" style="display:none" readonly :value="selec5")
 
 
 </template>
@@ -156,12 +156,11 @@ export default {
       })
     },
     final(dato){
-      alert(dato)
       var marca = this.$refs.marcas.value;
       var modelo = this.$refs.modelos.value;
       var año = this.$refs.años.value;
       var motor = this.$refs.motores.value;
-      var refaccion = this.$refs.spar.value;
+      var refaccion = dato;
       sessionStorage.setItem("marca",marca);
       sessionStorage.setItem("modelo",modelo);
       sessionStorage.setItem("año",año);

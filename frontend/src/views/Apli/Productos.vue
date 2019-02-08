@@ -16,6 +16,8 @@ v-app
             v-flex(slot="item" slot-scope="props" text-xs-left xs12 sm6 md3 lg3)
               v-card(id="bloque")
                 v-img(src="http://localhost:3000/imagenes/disco.png")
+                v-divider(id="division")
+                //v-divider(inset)
                 v-card-title(primary-title style="al")
                   div
                     div(colo="#003b94") 
@@ -106,5 +108,9 @@ created() {
   }
   #act{
     display: block;
+  }
+  #division{
+    margin-left: 5%;
+    max-width: 90%;
   }
 </style>

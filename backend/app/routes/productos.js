@@ -106,7 +106,7 @@ router.post('/specific', function(req, res, next) {
     'autos.modelo': specific_data[1].model,
     'autos.anio': specific_data[2].year,
     'autos.motor': specific_data[3].engine,
-    //'nombre': specific_data[4].name
+    'nombre': specific_data[4].name
   }, function (err, producto){
       console.log('resiultado de especifico')
       console.log(producto)

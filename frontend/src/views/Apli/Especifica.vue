@@ -16,6 +16,7 @@ v-app
             v-flex(slot="item" slot-scope="props" text-xs-left xs12 sm6 md3 lg3)
               v-card(id="bloque")
                 v-img(src="http://localhost:3000/imagenes/disco.png")
+                v-divider 
                 v-card-title(primary-title)
                   div
                     div(colo="#003b94") 
