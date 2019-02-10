@@ -6,6 +6,7 @@ var Schema = mongoose.Schema;
 // Creamos el objeto del esquema y sus atributos
 var ProductosSchema = Schema({
   codigo: String,
+  clave_interna: String,
   nombre: String,
   descripcion: String,
   tipo: String,
@@ -19,7 +20,8 @@ var ProductosSchema = Schema({
       marca_auto: String,
       motor: String
     }
-  ]
+  ],
+  stock: Number
 });
 // Exportamos el modelo para usarlo en otros ficheros
 module.exports = mongoose.model('Productos', ProductosSchema);

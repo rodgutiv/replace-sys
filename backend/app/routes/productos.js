@@ -118,4 +118,25 @@ router.post('/specific', function(req, res, next) {
   });
 });
 
+/*Delete from stock */
+router.post('/stockup', function(req, res, next) {
+  var data = req.body;
+  producto.find({'codigo': data.code}, function (err, producto){
+    if(err)
+      return res.status(500).send('Error en la peticion');
+    if(!producto)
+      return res.status(404).send({message: 'Ningun registro identificado'});
+    var stock = producto.stock;
+    var new_stock = stock - data.items;
+    if(new_stock >= 0){
+      producto.update({'codigo': data.code}, {'stock': new_stock }, options, callback);
+    }
+    else {
+        return res.status(404).send({message: 'Valor incorrecto'});
+    }
+  });
+});
+
+
+
 module.exports = router;
