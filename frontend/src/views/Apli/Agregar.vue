@@ -5,7 +5,7 @@ v-app
     div
       router-view
     v-container(grid-list-md text-xs-center)
-      v-card( style="background: white;")
+      v-card( style="background: white;     padding: 10px;")
         v-layout(row wrap class="blue--text")
           v-flex(xs6)
             v-img(src="http://localhost:3000/imagenes/disco2.png")
@@ -44,7 +44,7 @@ v-app
               v-flex(xs12 center)
                 h2 Te puede gustar
     v-container(grid-list-md )
-      v-card(style="background: white;")
+      v-card(style="background: white; padding: 20px;")
         v-layout(row wrap class="blue--text")
           v-flex(xs6 class="text-lg-left") 
             h2 Descripción
