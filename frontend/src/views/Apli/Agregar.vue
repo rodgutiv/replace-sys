@@ -4,8 +4,8 @@ v-app
     toolbar
     div
       router-view
-    v-container(grid-list-md text-xs-center style="background: white;")
-      v-card
+    v-container(grid-list-md text-xs-center)
+      v-card( style="background: white;")
         v-layout(row wrap class="blue--text")
           v-flex(xs6)
             v-img(src="http://localhost:3000/imagenes/disco2.png")
@@ -22,33 +22,41 @@ v-app
               v-flex(xs4)
                 v-btn agregar
             v-layout(row wrap center)
-              v-img(style="weigth: 60%" src="http://localhost:3000/imagenes/tarjetas.png")
-        v-layout(row wrap center class="blue--text")
-          v-flex(xs5)
-            h2 Especificaciones
-            v-flex(xs6)
-              h3 Marca: 
-            v-flex(xs6)
-              h3 Tipo: 
-            v-flex(xs6)
-              h3 {{marca}}
-            v-flex(xs6)
-              h3 {{tipo}}
-          v-flex(xs7)
-            h2 Te puede gustar
-      v-container(grid-list-md text-xs-center style="background: white;")
+              v-flex(xs12)
+                v-img(src="http://localhost:3000/imagenes/tarjetas.png")
         v-layout(row wrap class="blue--text")
-          v-flex(xs6)
+          v-flex(xs5)
+            v-layout(row wrap)
+              v-flex(xs12 center)
+                h2 Especificaciones
+            v-layout(row wrap center)
+              v-flex(xs6)
+                h3 Marca: 
+              v-flex(xs6)
+                h3 {{marca}}
+            v-layout(row wrap center)
+              v-flex(xs6)
+                h3 Tipo: 
+              v-flex(xs6)
+                h3 {{tipo}}
+          v-flex(xs7)
+            v-layout(row wrap)
+              v-flex(xs12 center)
+                h2 Te puede gustar
+    v-container(grid-list-md )
+      v-card(style="background: white;")
+        v-layout(row wrap class="blue--text")
+          v-flex(xs6 class="text-lg-left") 
             h2 Descripción
             h3 {{descripcion}}
-          v-flex(xs6)
+          v-flex(xs6 text-xs-center)
             h2 ¿En que te podemos ayudar?
             v-input
               v-text-field( label="REALIZA UNA PREGUNTA" single-line solo )
-        v-layout(row wrap)
-          v-flex(xs6)
+        v-layout(row wrap class="blue--text" )
+          v-flex(xs6 class="text-lg-left")
             h2 Compativilidad
-          v-flex(xs6)
+          v-flex(xs6 text-xs-center)
             h2 Califica nuestro producto
             v-rating(id="stars" v-model="rating"  background-color="#003b94" color="#003b94")
 
