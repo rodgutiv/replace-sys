@@ -37,6 +37,11 @@ export default new Router({
               path: 'especifica',
               name: 'especifica',
               component: () => import( './views/Apli/Especifica.vue')
+            },
+            {
+              path: 'agregar/:code',
+              name: 'agregar',
+              component: () => import( './views/Apli/Agregar.vue')
             }
           ]
         }

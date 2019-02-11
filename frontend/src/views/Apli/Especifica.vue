@@ -16,17 +16,22 @@ v-app
             v-flex(slot="item" slot-scope="props" text-xs-left xs12 sm6 md3 lg3)
               v-card(id="bloque")
                 v-img(src="http://localhost:3000/imagenes/disco.png")
-                v-divider 
-                v-card-title(primary-title)
+                v-divider(id="division")
+                v-card-title(id="act" primary-title)
                   div
                     div(colo="#003b94") 
                       h3 {{props.item.nombre}}
                     div(color="#003b94") ${{props.item.precio}}
                     div 
                       v-rating(id="stars" v-model="rating"  background-color="#003b94" color="#003b94")
-                v-card-actions
-                  v-btn(id="boton_prod") Comprar
-                  v-btn(id="boton_prod") Ver detalles
+                v-card-actions(id="act")
+                  v-btn(id="boton_prod" v-on:click="comprar(props.item.codigo)") Comprar
+                    router-link(class="white--text"  :to="{ name: 'agregar', params: { code: props.item.code } }")
+                  v-btn(id="boton_prod" @click="show = !show") Ver detalles
+                v-card-text(v-show="show" id="datos") 
+                  h4 Marca: {{props.item.marca}}
+                  h4 Garantía de 2 años
+                  h4 Condiciones PRoducto Cerrado y nuevo
       
     
     
@@ -48,6 +53,7 @@ export default {
     return {
       escrito:null,
       info:null,
+      show: false,
       id:null,
       rowsPerPageItems: [6, 12, 24],
       pagination: {
@@ -68,7 +74,10 @@ export default {
 },
 
  methods: {
-
+   comprar(dato){
+     sessionStorage.setItem("code",dato);
+     this.$router.push({ path: '/aplicacion/agregar/'+dato});
+   }
  },
 created() {
     this.marca = sessionStorage.getItem("marca");
@@ -111,5 +120,16 @@ created() {
   }
   #act{
     display: block;
+  }
+  #division{
+    margin-left: 5%;
+    max-width: 90%;
+    border-width: 3px; 
+  }
+  .theme--light.v-divider{
+    border-color:#bac5df
+  }
+  #datos{
+    text-align: left;
   }
 </style>

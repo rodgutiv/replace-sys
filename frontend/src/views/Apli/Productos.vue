@@ -17,8 +17,7 @@ v-app
               v-card(id="bloque")
                 v-img(src="http://localhost:3000/imagenes/disco.png")
                 v-divider(id="division")
-                //v-divider(inset)
-                v-card-title(primary-title style="al")
+                v-card-title(id="act" primary-title style="al" )
                   div
                     div(colo="#003b94") 
                       h3 {{props.item.nombre}}
@@ -26,8 +25,14 @@ v-app
                     div 
                       v-rating(id="stars" v-model="rating"  background-color="#003b94" color="#003b94")
                 v-card-actions(id="act")
-                  v-btn(id="boton_prod") Comprar
-                  v-btn(id="boton_prod") Ver detalles
+                  v-btn(id="boton_prod" v-on:click="comprar(props.item.codigo)") Comprar
+                    //router-link(class="white--text"  :to="{ name: 'agregar', params: { code: props.item.code } }")
+                  v-btn(id="boton_prod" @click="show = !show") Ver detalles
+                v-card-text(v-show="show" id="datos") 
+                  h4 Marca: {{props.item.marca}}
+                  h4 Garantía de 2 años
+                  h4 Condiciones PRoducto Cerrado y nuevo
+
       
     
     
@@ -51,6 +56,7 @@ export default {
       info:null,
       rating: 3,
       id:null,
+      show: false,
       rowsPerPageItems: [12, 24, 36],
       pagination: {
         rowsPerPage: 12
@@ -65,7 +71,10 @@ export default {
 },
 
  methods: {
-
+   comprar(dato){
+     sessionStorage.setItem("code",dato);
+     this.$router.push({ path: '/aplicacion/agregar/'+dato});
+   }
  },
 created() {
     if(sessionStorage.getItem("dato")!=null){
@@ -112,5 +121,12 @@ created() {
   #division{
     margin-left: 5%;
     max-width: 90%;
+    border-width: 1px; 
+  }
+  .theme--light.v-divider{
+    border-color:#bac5df
+  }
+  #datos{
+    text-align: left;
   }
 </style>

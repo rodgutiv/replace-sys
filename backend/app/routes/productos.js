@@ -108,8 +108,6 @@ router.post('/specific', function(req, res, next) {
     'autos.motor': specific_data[3].engine,
     'nombre': specific_data[4].name
   }, function (err, producto){
-      console.log('resiultado de especifico')
-      console.log(producto)
       if(err)
         return res.status(500).send('Error en la peticion');
       if(!producto)
