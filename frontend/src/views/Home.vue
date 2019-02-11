@@ -14,52 +14,52 @@ v-app
               v-flex(xs6 )
                 v-text-field(ref="dat" v-model="datos" label="BUSQUEDA GENERAL" solo name="buscar")
           v-layout(row wrap right id="especifica")
-              v-flex(xs2 id="div-btn-especifica")
+              v-flex(xs5 id="div-btn-especifica")
                   v-btn(v-on:click="Submit2" id="lupa2")
                     v-img(src="http://localhost:3000/imagenes/lupita busqueda.png")
                   h2 BÚSQUEDA ESPECÍFICA
-              v-flex(xs3)
+              v-flex(xs7 id="div-selects")
+                  h3 MARCA
                   v-select(
                   v-model="selec1"
                   :items="brands"
                   item-value="marca"
-                  label="Marca"
                   @change="model(selec1)"
                   required
                   outline)
                   v-text-field(ref="marcas" name="marca" style="display:none" readonly :value="selec1")
+                  h3 MODELO
                   v-select(
                   v-model="selec2"
                   :items="models"
                   item-value="name"
-                  label="Modelo"
                   @change="year(selec2)"
                   required
                   outline)
                   v-text-field(ref="modelos" name="modelo" style="display:none" readonly :value="selec2" )
+                  h3 AÑO
                   v-select(
                   v-model="selec3"
                   :items="years"
                   item-value="año"
-                  label="Año"
                   @change="engine(selec3)"
                   required
                   outline)
                   v-text-field(ref="años" name="año" style="display:none" readonly :value="selec3" )
+                  h3 MOTOR
                   v-select(
                   v-model="selec4"
                   :items="engines"
                   item-value="motor"
-                  label="Motor"
                   @change="sparepart(selec4)"
                   required
                   outline)
                   v-text-field(ref="motores" name="motor" style="display:none" readonly :value="selec4" )
+                  h3 REFACCION
                   v-select(
                   v-model="selec5"
                   :items="spareparts"
                   item-value="refaccion"
-                  label="Refacción"
                   @change="final(selec5)"
                   required
                   outline)
@@ -196,19 +196,65 @@ export default {
   }
   #lupa2{
     background-color: transparent;
+    float: left;
+    margin-left: 24%;
   }
   #general{
 
   }
   #especifica{
-
+    margin-top: 30px;
   }
   #busquedas{
     background: linear-gradient(to bottom, black,#2b467b);
+    padding-bottom: 30px;
   }
   #div-btn-general
   {
     margin-left: 25%;
+  }
+  #div-btn-especifica{
+    margin-top: 20px;
+    color: white;
+  }
+  #div-selects{
+    color: white;
+  }
+  #div-selects h3{
+    width: 65%;
+    position: relative;
+    text-align: right;
+  }
+  .v-text-field--outline .v-input__slot {
+    background: white!important;
+    border-radius: 4px;
+    width: 65%;
+    height: 25px;
+  }
+  .v-select__slot {
+    top: -16px;
+  }
+  .theme--light.v-text-field--outline .v-input__slot {
+    border: 0px solid rgba(244,0,0,.54);
+  }
+  .v-text-field__details{
+    display:none!important;
+  }
+  .v-text-field--outline .v-input__slot {
+    min-height: 10px;
+  }
+  .container {
+      padding: 12px;
+  }
+  .v-select.v-text-field--enclosed:not(.v-text-field--single-line) .v-select__selections {
+    padding-top: 32px;
+  }
+  .v-menu__content theme--light menuable__content__active {
+    top: 620px!important;
+  }
+  .primary--text {
+    color: #2b467b !important;
+    caret-color: #2b467b !important;
   }
   /*#2b467b*/
 </style>
