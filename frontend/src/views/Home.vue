@@ -250,7 +250,7 @@ export default {
     padding-top: 32px;
   }
   .v-menu__content theme--light menuable__content__active {
-    top: 620px!important;
+    /*top: 620px!important;*/
   }
   .primary--text {
     color: #2b467b !important;
