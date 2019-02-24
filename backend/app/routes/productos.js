@@ -101,13 +101,47 @@ router.get('/specific/sparepart/:engine', function(req, res, next) {
 /* GET full specific query */
 router.post('/specific', function(req, res, next) {
   var specific_data = req.body;
-  producto.find({
-    'autos.marca_auto': specific_data[0].brand,
-    'autos.modelo': specific_data[1].model,
-    'autos.anio': specific_data[2].year,
-    'autos.motor': specific_data[3].engine,
-    'nombre': specific_data[4].name
-  }, function (err, producto){
+  var data_size = specific_data.length;
+  var query;
+  switch(data_size)
+  {
+    case 1:
+      query = {
+        'autos.marca_auto': specific_data[0].brand
+      };
+    break;
+    case 2:
+      query = {
+        'autos.marca_auto': specific_data[0].brand,
+        'autos.modelo': specific_data[1].model
+      };
+    break;
+    case 3:
+      query = {
+        'autos.marca_auto': specific_data[0].brand,
+        'autos.modelo': specific_data[1].model,
+        'autos.anio': specific_data[2].year
+      };
+    break;
+    case 4:
+      query = {
+        'autos.marca_auto': specific_data[0].brand,
+        'autos.modelo': specific_data[1].model,
+        'autos.anio': specific_data[2].year,
+        'autos.motor': specific_data[3].engine
+      };
+    break;
+    case 5:
+      query = {
+        'autos.marca_auto': specific_data[0].brand,
+        'autos.modelo': specific_data[1].model,
+        'autos.anio': specific_data[2].year,
+        'autos.motor': specific_data[3].engine,
+        'nombre': specific_data[4].name
+      };
+    break;
+  }
+  producto.find(query, function (err, producto){
       if(err)
         return res.status(500).send('Error en la peticion');
       if(!producto)
