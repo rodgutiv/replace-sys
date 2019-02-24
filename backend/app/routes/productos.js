@@ -21,6 +21,7 @@ router.get('/all', function(req, res, next) {
         return res.status(500).send('Error en la peticion');
       if(!producto)
         return res.status(404).send({message: 'Ningun registro identificado'});
+    console.log(producto)
     return res.json(producto);
   });
 });
@@ -101,6 +102,8 @@ router.get('/specific/sparepart/:engine', function(req, res, next) {
 /* GET full specific query */
 router.post('/specific', function(req, res, next) {
   var specific_data = req.body;
+  console.log("datos de auto")
+  console.log(specific_data)
   producto.find({
     'autos.marca_auto': specific_data[0].brand,
     'autos.modelo': specific_data[1].model,
@@ -112,6 +115,7 @@ router.post('/specific', function(req, res, next) {
         return res.status(500).send('Error en la peticion');
       if(!producto)
         return res.status(404).send({message: 'Ningun registro identificado'});
+    console.log(producto)
     return res.json(producto);
   });
 });

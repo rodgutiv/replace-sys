@@ -19,11 +19,11 @@ v-app
                 v-divider(id="division")
                 v-card-title(id="act" primary-title)
                   div
-                    div(colo="#003b94") 
+                    div(color="#003b94") 
                       h3 {{props.item.nombre}}
                     div(color="#003b94") ${{props.item.precio}}
                     div 
-                      v-rating(id="stars" v-model="rating"  background-color="#003b94" color="#003b94")
+                      v-rating(id="stars" v-model="rating" readonly  background-color="#003b94" color="#003b94")
                 v-card-actions(id="act")
                   v-btn(id="boton_prod" v-on:click="comprar(props.item.codigo)") Comprar
                     router-link(class="white--text"  :to="{ name: 'agregar', params: { code: props.item.code } }")
@@ -66,7 +66,7 @@ export default {
       refaccion:null,
       items: [],
       errors: [],
-      empty: []
+      datos: []
     }
 
 
@@ -80,21 +80,31 @@ export default {
    }
  },
 created() {
+  if(sessionStorage.getItem("marca") != 0){
     this.marca = sessionStorage.getItem("marca");
+  }
+  if(sessionStorage.getItem("modelo") != 0){
     this.modelo = sessionStorage.getItem("modelo");
+  }
+  if(sessionStorage.getItem("año") != 0){
     this.año = sessionStorage.getItem("año");
+  }
+  if(sessionStorage.getItem("motor") != 0){
     this.motor = sessionStorage.getItem("motor");
+  }
+  if(sessionStorage.getItem("nombre") != 0){
     this.refaccion = sessionStorage.getItem("nombre");
-    api.post(`/products/specific`,[{brand:this.marca},{model:this.modelo},{year:this.año},{engine:this.motor},{name:this.refaccion}])
-    //api.get(`/producto`)
-    .then(response => {
-      // JSON responses are automatically parsed.
-      this.items = response.data
-      //alert(response.data)
-    })
-    .catch(e => {
-      this.errors.push(e)
-    })
+  }
+  api.post(`/products/specific`,[{brand:this.marca},{model:this.modelo},{year:this.año},{engine:this.motor},{name:this.refaccion}])
+  //api.get(`/producto`)
+  .then(response => {
+    // JSON responses are automatically parsed.
+    this.items = response.data
+    //alert(response.data)
+  })
+  .catch(e => {
+    this.errors.push(e)
+  })
     
 }
 
@@ -132,4 +142,20 @@ created() {
   #datos{
     text-align: left;
   }
+  /*.v-data-iterator__actions__select .v-select{
+    color: #000 !important;
+    caret-color:  #000 !important;
+  }*
+  .v-list__tile .v-list__tile--link .v-list__tile--active{
+    color: #000 !important;
+    caret-color:  #000 !important;
+  }
+  .v-list__tile__content{
+    color: #000 !important;
+    caret-color:  #000 !important;
+  }
+   .v-icon{
+    color: #000 !important;
+    caret-color:  #000 !important;
+  }*/
 </style>

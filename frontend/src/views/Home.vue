@@ -6,66 +6,86 @@ v-app
         v-carousel(id ="carru1")
             v-carousel-item(v-for="(item,i) in items" :key="i" :src="item.src")
     v-container(grid-list-md r id="contenido-busca")
-        v-layout(row wrap center id="busquedas")
-          v-layout(row wrap left id="general")
-              v-flex(xs2 id="div-btn-general")
-                v-btn(v-on:click="Submit()" id="lupa1")
-                  v-img(src="http://localhost:3000/imagenes/lupita busqueda.png")
-              v-flex(xs6 )
-                v-text-field(ref="dat" v-model="datos" label="BUSQUEDA GENERAL" solo name="buscar")
-          v-layout(row wrap right id="especifica")
-              v-flex(xs5 id="div-btn-especifica")
-                  v-btn(v-on:click="Submit2" id="lupa2")
-                    v-img(src="http://localhost:3000/imagenes/lupita busqueda.png")
-                  h2 BÚSQUEDA ESPECÍFICA
-              v-flex(xs7 id="div-selects")
-                  h3 MARCA
-                  v-select(
-                  v-model="selec1"
-                  :items="brands"
-                  item-value="marca"
-                  @change="model(selec1)"
-                  required
-                  outline)
+      v-layout(row center)
+        v-flex(xs6 sm6 id="bloques")
+          v-layout(row id="busquedas" style="height:100%;")
+            v-flex(xs6 style="padding-top: 130px;")
+              a(v-on:click="Submit()")
+                //v-btn(v-on:click="Submit()" id="lupa1")
+                v-img(src="http://localhost:3000/imagenes/lupita busqueda.png" width="50px")
+            v-flex(xs6 style="padding-top: 130px;") 
+              v-text-field(ref="dat" color="black" v-model="datos" label="BUSQUEDA GENERAL" solo name="buscar" v-on:keyup.enter="Submit()")
+        v-flex(xs6 sm6 id="bloques")
+          v-layout(row  id="busquedas")
+            v-flex(xs6 class="white--text" padding-top="160px")
+              v-layout(row  )
+                v-flex(xs6 style="padding-top: 30px;")
+                  a(v-on:click="Submit2")
+                    v-img(src="http://localhost:3000/imagenes/lupita busqueda.png" max-width="40px")
+                v-flex(xs6 style="padding-top: 30px;")
+                  h3 BÚSQUEDA ESPECÍFICA
+            v-flex(xs6)
+              v-layout(row)                
+                v-flex(xs12 sm12)
+                  h3(class="white--text" id="text") MARCA
+                  v-select(v-model="selec1"
+                    :items="brands"
+                    attach
+                    solo
+                    color="black"
+                    item-value="marca"
+                    @change="model(selec1)"
+                    v-on:keyup.enter="Submit2()"
+                    required
+                    )
                   v-text-field(ref="marcas" name="marca" style="display:none" readonly :value="selec1")
-                  h3 MODELO
+                  h3(class="white--text" id="text")  MODELO
                   v-select(
                   v-model="selec2"
+                  attach
+                  color="black"
                   :items="models"
                   item-value="name"
                   @change="year(selec2)"
+                  v-on:keyup.enter="Submit2()"
                   required
-                  outline)
+                  solo)
                   v-text-field(ref="modelos" name="modelo" style="display:none" readonly :value="selec2" )
-                  h3 AÑO
+                  h3(class="white--text" id="text") AÑO
                   v-select(
+                  attach
+                  color="black"
                   v-model="selec3"
                   :items="years"
                   item-value="año"
                   @change="engine(selec3)"
+                  v-on:keyup.enter="Submit2()"
                   required
-                  outline)
+                  solo)
                   v-text-field(ref="años" name="año" style="display:none" readonly :value="selec3" )
-                  h3 MOTOR
+                  h3(class="white--text" id="text") MOTOR
                   v-select(
+                  attach
+                  color="black"
                   v-model="selec4"
                   :items="engines"
                   item-value="motor"
                   @change="sparepart(selec4)"
+                  v-on:keyup.enter="Submit2()"
                   required
-                  outline)
+                  solo)
                   v-text-field(ref="motores" name="motor" style="display:none" readonly :value="selec4" )
-                  h3 REFACCION
+                  h3(class="white--text" id="text") REFACCION
                   v-select(
+                  attach
+                  color="black"
                   v-model="selec5"
                   :items="spareparts"
                   item-value="refaccion"
                   @change="final(selec5)"
+                  v-on:keyup.enter="Submit2()"
                   required
-                  outline)
-                  v-text-field(ref="spar" name="refaccion" style="display:none" readonly :value="selec5")
-
-
+                  solo)
 </template>
 <script>
 import toolbar from '@/components/Toolbar.vue'
@@ -119,7 +139,15 @@ export default {
     Submit2(){
       this.$router.push({ path: '/aplicacion/especifica'});
     },
+     Submit3(data){
+      this.info = data;
+      alert(this.info)
+      sessionStorage.setItem("dato",this.info)
+      this.$router.push({ path: '/aplicacion/productos'})
+    },
     model(dato){
+      var marca = dato;
+      sessionStorage.setItem("marca",marca);
       api.get('/products/specific/model/'+dato)
       .then(response => {
         this.models = response.data
@@ -129,6 +157,8 @@ export default {
       })
     },
     year(dato){
+      var modelo = dato;
+      sessionStorage.setItem("modelo",modelo);
       api.get('/products/specific/year/'+dato)
       .then(response => {
         this.years = response.data
@@ -138,6 +168,8 @@ export default {
       })
     },
     engine(dato){
+      var año = dato;
+      sessionStorage.setItem("año",año);
       api.get('/products/specific/engine/'+dato)
       .then(response => {
         this.engines = response.data
@@ -147,6 +179,8 @@ export default {
       })
     },
     sparepart(dato){
+      var motor = dato;
+      sessionStorage.setItem("motor",motor);
       api.get('/products/specific/sparepart/'+dato)
       .then(response => {
         this.spareparts = response.data
@@ -156,20 +190,17 @@ export default {
       })
     },
     final(dato){
-      var marca = this.$refs.marcas.value;
-      var modelo = this.$refs.modelos.value;
-      var año = this.$refs.años.value;
-      var motor = this.$refs.motores.value;
       var refaccion = dato;
-      sessionStorage.setItem("marca",marca);
-      sessionStorage.setItem("modelo",modelo);
-      sessionStorage.setItem("año",año);
-      sessionStorage.setItem("motor",motor);
       sessionStorage.setItem("nombre",refaccion);
     }
   },
   created(){
-    sessionStorage.setItem("dato",''),
+    /*sessionStorage.removeItem("marca");
+    sessionStorage.removeItem("modelo");
+    sessionStorage.removeItem("año");
+    sessionStorage.removeItem("motor");
+    sessionStorage.removeItem("nombre");
+    sessionStorage.removeItem("dato"),*/
     api.get('/products/specific/brand')
     .then(response => {
       this.brands = response.data
@@ -182,15 +213,58 @@ export default {
 
 </script>
 <style>
-  #carrusel{
-      max-width: 1485px;
-  }
-  #carru1{
-    height: 350px;
-  }
   #contenido-busca{
       max-width: 1485px;
   }
+  #busquedas{
+    background: linear-gradient(to bottom, black,#2b467b);
+    padding: 30px;
+  }
+  #bloques{
+    padding: 10px;
+    
+  }
+  #carrusel{
+      max-width: 1485px;
+  }
+  .v-text-field--solo .v-input__slot {
+    min-height: 10px;
+  }
+  /*.theme--light.v-text-field--solo .v-input__slot {
+    border: 0px solid rgba(244,0,0,.54);
+  }*/
+  .v-text-field--solo .v-input__slot {
+    border-radius: 4px;
+  }
+ /* .v-list__tile__action{
+    display: none;
+  }
+  /*.v-list__tile__content{
+    color: #000 !important;
+    caret-color:  #000 !important;
+  }
+  .v-list__tile .v-list__tile--link .v-list__tile--active{
+    color: #000 !important;
+    caret-color:  #000 !important;
+  }
+  /*.v-list__tile__title {
+    height: 15px;
+    line-height: 15px;
+  }
+  .v-list__tile {
+    height: 15px;
+  }*/
+  #text{
+    /*width: 65%;*/
+    position: relative;
+    text-align: right;
+  }
+  
+  /*:-moz-any()
+  #carru1{
+    height: 350px;
+  }
+ 
   #lupa1{
     background-color: transparent;
   }
@@ -205,10 +279,7 @@ export default {
   #especifica{
     margin-top: 30px;
   }
-  #busquedas{
-    background: linear-gradient(to bottom, black,#2b467b);
-    padding-bottom: 30px;
-  }
+  
   #div-btn-general
   {
     margin-left: 25%;
@@ -225,7 +296,7 @@ export default {
     position: relative;
     text-align: right;
   }
-  .v-text-field--outline .v-input__slot {
+  .v-text-field--solo .v-input__slot {
     background: white!important;
     border-radius: 4px;
     width: 65%;
@@ -234,13 +305,13 @@ export default {
   .v-select__slot {
     top: -16px;
   }
-  .theme--light.v-text-field--outline .v-input__slot {
+  .theme--light.v-text-field--solo .v-input__slot {
     border: 0px solid rgba(244,0,0,.54);
   }
   .v-text-field__details{
     display:none!important;
   }
-  .v-text-field--outline .v-input__slot {
+  .v-text-field--solo .v-input__slot {
     min-height: 10px;
   }
   .container {
@@ -250,7 +321,7 @@ export default {
     padding-top: 32px;
   }
   .v-menu__content theme--light menuable__content__active {
-    /*top: 620px!important;*/
+            top: 620px!important;
   }
   .primary--text {
     color: #2b467b !important;

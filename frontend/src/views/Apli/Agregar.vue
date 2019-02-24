@@ -114,7 +114,7 @@ export default {
  },
 created() {
     this.code = sessionStorage.getItem("code");
-    alert(this.code)
+    //alert(this.code)
     api.get(`/products/search/`+this.code)
     //api.get(`/producto`)
     .then(response => {

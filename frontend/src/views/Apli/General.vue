@@ -34,14 +34,13 @@ v-app
 </template>
 <script>
 import toolbar from '@/components/Toolbar.vue'
-import Modalprod from '@/components/Modalprod.vue'
 
 import {api} from '@/api'
 //import $ from 'jquery'
 //import axios from 'axios'
 export default {
     components:{
-    toolbar, Modalprod
+    toolbar
   },
   data () {
     return {

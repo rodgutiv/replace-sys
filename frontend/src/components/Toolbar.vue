@@ -19,7 +19,7 @@ div(id="barra")
       v-toolbar-side-icon(class="hidden-lg-and-up" @click.stop="drawer = !drawer")
       v-toolbar-title(slot="extension")
         v-btn(flat)
-            v-img(id="logo" src="http://localhost:3000/imagenes/Logo.png")
+            v-img(id="logo" to="" src="http://localhost:3000/imagenes/Logo.png")
       v-spacer
       v-toolbar-items(id="abajo" slot="extension" class="hidden-md-and-down")
         v-btn(flat)
