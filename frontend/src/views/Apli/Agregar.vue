@@ -1,7 +1,6 @@
 <template lang="pug">
 v-app
   div
-    toolbar
     div
       router-view
     v-container(grid-list-md text-xs-center)

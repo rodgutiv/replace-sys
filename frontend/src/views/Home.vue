@@ -9,24 +9,23 @@ v-app
       v-layout(row center)
         v-flex(xs6 sm6 id="bloques")
           v-layout(row id="busquedas" style="height:100%;")
-            v-flex(xs6 style="padding-top: 130px;")
+            v-flex(xs2 style="padding-top: 130px; margin-left: 25%;")
               a(v-on:click="Submit()")
-                //v-btn(v-on:click="Submit()" id="lupa1")
                 v-img(src="http://localhost:3000/imagenes/lupita busqueda.png" width="50px")
             v-flex(xs6 style="padding-top: 130px;") 
-              v-text-field(ref="dat" color="black" v-model="datos" label="BUSQUEDA GENERAL" solo name="buscar" v-on:keyup.enter="Submit()")
+              v-text-field(ref="dat" color="black" v-model="datos" label="BÚSQUEDA GENERAL" solo name="buscar" v-on:keyup.enter="Submit()")
         v-flex(xs6 sm6 id="bloques")
           v-layout(row  id="busquedas")
-            v-flex(xs6 class="white--text" padding-top="160px")
+            v-flex(xs5 class="white--text" padding-top="160px")
               v-layout(row  )
-                v-flex(xs6 style="padding-top: 30px;")
+                v-flex(xs4 style="padding-top: 30px;")
                   a(v-on:click="Submit2")
                     v-img(src="http://localhost:3000/imagenes/lupita busqueda.png" max-width="40px")
-                v-flex(xs6 style="padding-top: 30px;")
+                v-flex(xs8 style="padding-top: 30px;")
                   h3 BÚSQUEDA ESPECÍFICA
-            v-flex(xs6)
+            v-flex(fñex xs7)
               v-layout(row)                
-                v-flex(xs12 sm12)
+                v-flex(xs10 sm10)
                   h3(class="white--text" id="text") MARCA
                   v-select(v-model="selec1"
                     :items="brands"
@@ -86,9 +85,11 @@ v-app
                   v-on:keyup.enter="Submit2()"
                   required
                   solo)
+    //footer
 </template>
 <script>
 import toolbar from '@/components/Toolbar.vue'
+//import footer from '@/components/Footer.vue'
 
 import {api} from '@/api'
 //import $ from 'jquery'
@@ -138,12 +139,6 @@ export default {
     },
     Submit2(){
       this.$router.push({ path: '/aplicacion/especifica'});
-    },
-     Submit3(data){
-      this.info = data;
-      alert(this.info)
-      sessionStorage.setItem("dato",this.info)
-      this.$router.push({ path: '/aplicacion/productos'})
     },
     model(dato){
       var marca = dato;
@@ -195,12 +190,12 @@ export default {
     }
   },
   created(){
-    /*sessionStorage.removeItem("marca");
-    sessionStorage.removeItem("modelo");
-    sessionStorage.removeItem("año");
-    sessionStorage.removeItem("motor");
-    sessionStorage.removeItem("nombre");
-    sessionStorage.removeItem("dato"),*/
+    sessionStorage.removeItem('marca');
+    sessionStorage.removeItem('modelo');
+    sessionStorage.removeItem('año');
+    sessionStorage.removeItem('motor');
+    sessionStorage.removeItem('nombre');
+    sessionStorage.removeItem('dato');
     api.get('/products/specific/brand')
     .then(response => {
       this.brands = response.data
@@ -230,102 +225,11 @@ export default {
   .v-text-field--solo .v-input__slot {
     min-height: 10px;
   }
-  /*.theme--light.v-text-field--solo .v-input__slot {
-    border: 0px solid rgba(244,0,0,.54);
-  }*/
   .v-text-field--solo .v-input__slot {
     border-radius: 4px;
   }
- /* .v-list__tile__action{
-    display: none;
-  }
-  /*.v-list__tile__content{
-    color: #000 !important;
-    caret-color:  #000 !important;
-  }
-  .v-list__tile .v-list__tile--link .v-list__tile--active{
-    color: #000 !important;
-    caret-color:  #000 !important;
-  }
-  /*.v-list__tile__title {
-    height: 15px;
-    line-height: 15px;
-  }
-  .v-list__tile {
-    height: 15px;
-  }*/
-  #text{
-    /*width: 65%;*/
+  #text{    
     position: relative;
     text-align: right;
   }
-  
-  /*:-moz-any()
-  #carru1{
-    height: 350px;
-  }
- 
-  #lupa1{
-    background-color: transparent;
-  }
-  #lupa2{
-    background-color: transparent;
-    float: left;
-    margin-left: 24%;
-  }
-  #general{
-
-  }
-  #especifica{
-    margin-top: 30px;
-  }
-  
-  #div-btn-general
-  {
-    margin-left: 25%;
-  }
-  #div-btn-especifica{
-    margin-top: 20px;
-    color: white;
-  }
-  #div-selects{
-    color: white;
-  }
-  #div-selects h3{
-    width: 65%;
-    position: relative;
-    text-align: right;
-  }
-  .v-text-field--solo .v-input__slot {
-    background: white!important;
-    border-radius: 4px;
-    width: 65%;
-    height: 25px;
-  }
-  .v-select__slot {
-    top: -16px;
-  }
-  .theme--light.v-text-field--solo .v-input__slot {
-    border: 0px solid rgba(244,0,0,.54);
-  }
-  .v-text-field__details{
-    display:none!important;
-  }
-  .v-text-field--solo .v-input__slot {
-    min-height: 10px;
-  }
-  .container {
-      padding: 12px;
-  }
-  .v-select.v-text-field--enclosed:not(.v-text-field--single-line) .v-select__selections {
-    padding-top: 32px;
-  }
-  .v-menu__content theme--light menuable__content__active {
-            top: 620px!important;
-  }
-  .primary--text {
-    color: #2b467b !important;
-    caret-color: #2b467b !important;
-  }
-  /*#2b467b*/
 </style>

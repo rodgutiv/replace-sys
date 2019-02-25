@@ -29,11 +29,6 @@ export default new Router({
               component: () => import( './views/Apli/Productos.vue')
             },
             {
-              path: 'general',
-              name: 'general',
-              component: () => import( './views/Apli/General.vue')
-            },
-            {
               path: 'especifica',
               name: 'especifica',
               component: () => import( './views/Apli/Especifica.vue')

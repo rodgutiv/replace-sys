@@ -19,15 +19,16 @@ v-app
                 v-divider(id="division")
                 v-card-title(id="act" primary-title)
                   div
-                    div(color="#003b94") 
-                      h3 {{props.item.nombre}}
-                    div(color="#003b94") ${{props.item.precio}}
+                    div|
+                      h3(style="color:#003b94;")  {{props.item.nombre}}
+                    div
+                      h3(style="color:#003b94;") ${{props.item.precio}}
                     div 
-                      v-rating(id="stars" v-model="rating" readonly  background-color="#003b94" color="#003b94")
+                      v-rating(id="stars" v-model="rating" readonly  background-color="#003b94" style="color:#003b94;")
                 v-card-actions(id="act")
-                  v-btn(id="boton_prod" v-on:click="comprar(props.item.codigo)") Comprar
+                  v-btn(id="boton_prod" round v-on:click="comprar(props.item.codigo)") Comprar
                     router-link(class="white--text"  :to="{ name: 'agregar', params: { code: props.item.code } }")
-                  v-btn(id="boton_prod" @click="show = !show") Ver detalles
+                  v-btn(id="boton_prod" round @click="show = !show") Ver detalles
                 v-card-text(v-show="show" id="datos") 
                   h4 Marca: {{props.item.marca}}
                   h4 Garantía de 2 años
@@ -55,6 +56,7 @@ export default {
       info:null,
       show: false,
       id:null,
+      rating: 3,
       rowsPerPageItems: [6, 12, 24],
       pagination: {
         rowsPerPage: 6
@@ -80,22 +82,33 @@ export default {
    }
  },
 created() {
-  if(sessionStorage.getItem("marca") != 0){
+  if(sessionStorage.getItem("marca") != null){
     this.marca = sessionStorage.getItem("marca");
+    //alert(this.marca)
+    this.datos[0] = {brand:this.marca}
   }
-  if(sessionStorage.getItem("modelo") != 0){
+  if(sessionStorage.getItem("modelo") != null){
     this.modelo = sessionStorage.getItem("modelo");
+    //alert(this.modelo)
+    this.datos[1] = {model:this.modelo}
   }
-  if(sessionStorage.getItem("año") != 0){
+  if(sessionStorage.getItem("año") != null){
     this.año = sessionStorage.getItem("año");
+    //alert(this.año)
+    this.datos[2] = {year:this.año}
   }
-  if(sessionStorage.getItem("motor") != 0){
+  if(sessionStorage.getItem("motor") != null){
     this.motor = sessionStorage.getItem("motor");
+    //alert(this.motor)
+    this.datos[3] = {engine:this.motor}
   }
-  if(sessionStorage.getItem("nombre") != 0){
+  if(sessionStorage.getItem("nombre") != null){
     this.refaccion = sessionStorage.getItem("nombre");
+    //alert(this.refaccion)
+    this.datos[4] = {name:this.refaccion}
   }
-  api.post(`/products/specific`,[{brand:this.marca},{model:this.modelo},{year:this.año},{engine:this.motor},{name:this.refaccion}])
+  //alert(this.datos)
+  api.post(`/products/specific`,this.datos)
   //api.get(`/producto`)
   .then(response => {
     // JSON responses are automatically parsed.
@@ -116,17 +129,10 @@ created() {
   #bloque{
     text-align: center;
   }
-  #stars{
-    color:#003b94;
-  }
   #boton_prod{
     font-size: 12px;
     color: white;
     background-color: #003b94;
-    border-bottom-left-radius: 20px;
-    border-top-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-    border-top-right-radius: 20px;
   }
   #act{
     display: block;
@@ -142,20 +148,7 @@ created() {
   #datos{
     text-align: left;
   }
-  /*.v-data-iterator__actions__select .v-select{
-    color: #000 !important;
-    caret-color:  #000 !important;
-  }*
-  .v-list__tile .v-list__tile--link .v-list__tile--active{
-    color: #000 !important;
-    caret-color:  #000 !important;
-  }
-  .v-list__tile__content{
-    color: #000 !important;
-    caret-color:  #000 !important;
-  }
-   .v-icon{
-    color: #000 !important;
-    caret-color:  #000 !important;
-  }*/
+  .primary--text{
+    color: #003b94 !important;  
+  }  
 </style>
