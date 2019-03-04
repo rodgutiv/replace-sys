@@ -1,7 +1,6 @@
 <template lang="pug">
 v-app
   div
-    toolbar
     v-container(grid-list-md r id="carrusel")
         v-carousel(id ="carru1")
             v-carousel-item(v-for="(item,i) in items" :key="i" :src="item.src")
@@ -86,9 +85,54 @@ v-app
                   required
                   solo)
     //footer
+    v-container
+      v-layout(class="white--text" :style="content1" text-xs-center row  wrap style="width: 100%;")
+                v-flex(flex xs4)
+                    h3 SERVICIO AL CLIENTE
+                    v-layout(row  wrap)
+                        v-flex(xs4)
+                            v-img(src="http://localhost:3000/imagenes/atención_al_cliente.png" width="30%"  style="margin-left:80%;") 
+                        v-flex(xs8)
+                            v-layout(row  wrap)
+                                v-flex(xs12)
+                                    span Contactanos
+                                v-flex(xs12)
+                                    span (443) 254 34 56
+                    v-spacer
+                    v-layout(row  wrap)
+                        v-flex(xs4)
+                            v-img(src="http://localhost:3000/imagenes/ubicación.png" width="30%"    style="margin-left:80%;") 
+                        v-flex(xs8)
+                            v-layout(row  wrap)
+                                v-flex(xs12)
+                                    span Encuentranos en:
+                                v-flex(xs12)
+                                    span Av. Acueducto 1969
+                                v-flex(xs12)
+                                    span Matamoros 58240
+                                v-flex(xs12)
+                                    span Morelia, mich.
+                    
+                v-flex(flex xs4)
+                    h3 CUENTAS Y PEDIDOS
+                    v-layout(row  wrap)
+                        v-flex(xs12)
+                            span Contactanos
+                        v-flex(xs12)
+                            span Factura electrónica
+                        v-flex(xs12)
+                            span Preguntas frecuentes
+                v-flex(flex xs4)
+                    h3 INFORMACIÓN
+                    v-layout(row  wrap)
+                        v-flex(xs12)
+                            span Contactanos 
+                        v-flex(xs12)
+                            span Factura electrónica
+                        v-flex(xs12)
+                            span Preguntas frecuentes
 </template>
 <script>
-import toolbar from '@/components/Toolbar.vue'
 //import footer from '@/components/Footer.vue'
 
 import {api} from '@/api'
@@ -96,7 +140,6 @@ import {api} from '@/api'
 //import axios from 'axios'
 export default {
     components:{
-    toolbar
   },
   data () {
     return {
@@ -129,6 +172,7 @@ export default {
             src: 'https://cdn.vuetifyjs.com/images/carousel/planet.jpg'
           }
         ]
+        
     }
   },
   methods: {
@@ -190,6 +234,8 @@ export default {
     }
   },
   created(){
+    sessionStorage.setItem("content1",null)
+    sessionStorage.setItem("content2","display:none")
     sessionStorage.removeItem('marca');
     sessionStorage.removeItem('modelo');
     sessionStorage.removeItem('año');
@@ -231,5 +277,8 @@ export default {
   #text{    
     position: relative;
     text-align: right;
+  }
+  #pie{
+    background: linear-gradient(to bottom, black,#2b467b);
   }
 </style>

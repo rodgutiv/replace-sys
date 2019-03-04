@@ -38,7 +38,42 @@ v-app
     
     
     
-    foother
+    //foother
+    v-container
+      v-layout(class="white--text" :style="content2" text-xs-center row  wrap )
+        v-flex(flex xs4)
+            v-img(src="http://localhost:3000/imagenes/tarjeta cash.png" width="30%"  style="margin-left: 35%;") 
+            h3 Paga con tarjeta o en fectivo
+            v-flex(xs12)
+                span Con Mercado Pago,
+            v-flex(xs12)
+                span tienes meses sinintereses
+            v-flex(xs12)
+                span con tarjeta o efectivo en puntos
+            v-flex(xs12)
+                span de pago. ¡Y siempre es seguro!
+        v-flex(flex xs4)
+            v-img(src="http://localhost:3000/imagenes/envio.png" width="30%"  style="margin-left: 35%;") 
+            h3 Envío gratis desde $449
+            v-flex(xs12)
+                span Con Mercado Pago,
+            v-flex(xs12)
+                span tienes meses sinintereses
+            v-flex(xs12)
+                span con tarjeta o efectivo en puntos
+            v-flex(xs12)
+                span de pago. ¡Y siempre es seguro!
+        v-flex(flex xs4)
+            v-img(src="http://localhost:3000/imagenes/seguridad.png" width="30%"  style="margin-left: 35%;") 
+            h3 Seguridad
+            v-flex(xs12)
+                span Con Mercado Pago,
+            v-flex(xs12)
+                span tienes meses sinintereses
+            v-flex(xs12)
+                span con tarjeta o efectivo en puntos
+            v-flex(xs12)
+                span de pago. ¡Y siempre es seguro!
 </template>
 <script>
 import toolbar from '@/components/Toolbar.vue'

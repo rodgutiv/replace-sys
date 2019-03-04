@@ -30,26 +30,61 @@ v-app
                     //router-link(class="white--text"  :to="{ name: 'agregar', params: { code: props.item.code } }")
                   v-btn(id="boton_prod" round @click="show = !show") Ver detalles
                 v-card-text(v-show="show" id="datos") 
-                  h4 Marca: {{props.item.marca}}
+                  h4 Marca: {{marca}}
                   h4 Garantía de 2 años
                   h4 Condiciones PRoducto Cerrado y nuevo
-
+                  //Modaldetalles(:marca="props.item.marca")
       
     
     
     
     
-    foother
+    //foother
+    v-container
+      v-layout(class="white--text" :style="content2" text-xs-center row  wrap )
+        v-flex(flex xs4)
+            v-img(src="http://localhost:3000/imagenes/tarjeta cash.png" width="30%"  style="margin-left: 35%;") 
+            h3 Paga con tarjeta o en fectivo
+            v-flex(xs12)
+                span Con Mercado Pago,
+            v-flex(xs12)
+                span tienes meses sinintereses
+            v-flex(xs12)
+                span con tarjeta o efectivo en puntos
+            v-flex(xs12)
+                span de pago. ¡Y siempre es seguro!
+        v-flex(flex xs4)
+            v-img(src="http://localhost:3000/imagenes/envio.png" width="30%"  style="margin-left: 35%;") 
+            h3 Envío gratis desde $449
+            v-flex(xs12)
+                span Con Mercado Pago,
+            v-flex(xs12)
+                span tienes meses sinintereses
+            v-flex(xs12)
+                span con tarjeta o efectivo en puntos
+            v-flex(xs12)
+                span de pago. ¡Y siempre es seguro!
+        v-flex(flex xs4)
+            v-img(src="http://localhost:3000/imagenes/seguridad.png" width="30%"  style="margin-left: 35%;") 
+            h3 Seguridad
+            v-flex(xs12)
+                span Con Mercado Pago,
+            v-flex(xs12)
+                span tienes meses sinintereses
+            v-flex(xs12)
+                span con tarjeta o efectivo en puntos
+            v-flex(xs12)
+                span de pago. ¡Y siempre es seguro!
 </template>
 <script>
 import toolbar from '@/components/Toolbar.vue'
-
+//import Modaldetalles from '@/components/Detalles.Vue'
 import {api} from '@/api'
 //import $ from 'jquery'
 //import axios from 'axios'
 export default {
     components:{
-    toolbar
+    toolbar //, Modaldetalles
   },
   data () {
     return {
@@ -64,7 +99,9 @@ export default {
       },
       items: [],
       errors: [],
-      empty: []
+      empty: [],
+      content1:null,
+      content2:null,
     }
 
 
@@ -78,6 +115,9 @@ export default {
    }
  },
 created() {
+    sessionStorage.setItem("content1","display:none")
+    sessionStorage.setItem("content2",null)
+    //alert(this.content2)
     if(sessionStorage.getItem("dato")!=null){
       this.escrito=sessionStorage.getItem("dato")
     }else{
