@@ -11,7 +11,7 @@ v-app
             v-flex(xs2 style="padding-top: 130px; margin-left: 25%;")
               a(v-on:click="Submit()")
                 v-img(src="http://localhost:3000/imagenes/lupita busqueda.png" width="50px")
-            v-flex(xs6 style="padding-top: 130px;") 
+            v-flex(xs6 style="padding-top: 130px;")
               v-text-field(ref="dat" color="black" v-model="datos" label="BÚSQUEDA GENERAL" solo name="buscar" v-on:keyup.enter="Submit()")
         v-flex(xs6 sm6 id="bloques")
           v-layout(row  id="busquedas")
@@ -23,7 +23,7 @@ v-app
                 v-flex(xs8 style="padding-top: 30px;")
                   h3 BÚSQUEDA ESPECÍFICA
             v-flex(fñex xs7)
-              v-layout(row)                
+              v-layout(row)
                 v-flex(xs10 sm10)
                   h3(class="white--text" id="text") MARCA
                   v-select(v-model="selec1"
@@ -91,7 +91,7 @@ v-app
                     h3 SERVICIO AL CLIENTE
                     v-layout(row  wrap)
                         v-flex(xs4)
-                            v-img(src="http://localhost:3000/imagenes/atención_al_cliente.png" width="30%"  style="margin-left:80%;") 
+                            v-img(src="http://localhost:3000/imagenes/atención_al_cliente.png" width="30%"  style="margin-left:80%;")
                         v-flex(xs8)
                             v-layout(row  wrap)
                                 v-flex(xs12)
@@ -101,7 +101,7 @@ v-app
                     v-spacer
                     v-layout(row  wrap)
                         v-flex(xs4)
-                            v-img(src="http://localhost:3000/imagenes/ubicación.png" width="30%"    style="margin-left:80%;") 
+                            v-img(src="http://localhost:3000/imagenes/ubicación.png" width="30%"    style="margin-left:80%;")
                         v-flex(xs8)
                             v-layout(row  wrap)
                                 v-flex(xs12)
@@ -112,7 +112,7 @@ v-app
                                     span Matamoros 58240
                                 v-flex(xs12)
                                     span Morelia, mich.
-                    
+
                 v-flex(flex xs4)
                     h3 CUENTAS Y PEDIDOS
                     v-layout(row  wrap)
@@ -126,7 +126,7 @@ v-app
                     h3 INFORMACIÓN
                     v-layout(row  wrap)
                         v-flex(xs12)
-                            span Contactanos 
+                            span Contactanos
                         v-flex(xs12)
                             span Factura electrónica
                         v-flex(xs12)
@@ -172,7 +172,7 @@ export default {
             src: 'https://cdn.vuetifyjs.com/images/carousel/planet.jpg'
           }
         ]
-        
+
     }
   },
   methods: {
@@ -263,7 +263,7 @@ export default {
   }
   #bloques{
     padding: 10px;
-    
+
   }
   #carrusel{
       max-width: 1485px;
@@ -274,7 +274,7 @@ export default {
   .v-text-field--solo .v-input__slot {
     border-radius: 4px;
   }
-  #text{    
+  #text{
     position: relative;
     text-align: right;
   }

@@ -54,7 +54,7 @@ div(id="barra")
         v-btn(flat id="btn2")
             router-link(class="white--text" style="text-decoration: none" to="/") Ingresa /
         v-btn(flat id="btn3")
-            router-link(class="white--text" style="text-decoration: none" to="/") Ayuda
+            router-link(class="white--text" style="text-decoration: none" to="/aplicacion/ayuda") Ayuda
 </template>
 
 

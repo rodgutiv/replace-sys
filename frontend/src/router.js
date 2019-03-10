@@ -37,6 +37,11 @@ export default new Router({
               path: 'agregar/:code',
               name: 'agregar',
               component: () => import( './views/Apli/Agregar.vue')
+            },
+            {
+              path: 'ayuda',
+              name: 'ayuda',
+              component: () => import( './views/Apli/Ayuda.vue')
             }
           ]
         }
