@@ -10,18 +10,18 @@ v-app
             v-layout(row wrap)
               h1(id="titulo") Ayuda
             v-layout(row wrap)
-              v-flex(xs8 text-xs-center)
+              v-flex(xs8 text-xs-center style="margin-left: 17%;" )
                 h2 Nombre
                 v-input
-                  v-text-field( label="Nombre completo / Empresa" style="margin-left: 17%;" single-line solo required)
-              v-flex(xs8 text-xs-center)
+                  v-text-field( label="Nombre completo / Empresa" single-line solo required)
+              v-flex(xs8 text-xs-center style="margin-left: 17%;" )
                   h2 Email
                   v-input
-                    v-text-field( label="Direccion de correo de respuesta" style="margin-left: 17%;" single-line solo required)
-              v-flex(xs8 text-xs-center)
+                    v-text-field( label="Direccion de correo de respuesta" single-line solo required)
+              v-flex(xs8 text-xs-center style="margin-left: 17%;" )
                   h2 Mensaje
                   v-input
-                    v-text-field( label="Mensaje" style="margin-left: 17%;" single-line solo required)
+                    v-text-field( label="Mensaje" single-line solo required)
             v-layout(row wrap)
               v-flex(xs8 text-xs-center)
                 v-btn(v-on:click="Submit3()") Enviar
