@@ -4,60 +4,27 @@ v-app
     div
       router-view
     v-container(grid-list-md text-xs-center)
-      v-card( style="background: white;     padding: 10px;")
-        v-layout(row wrap class="blue--text")
-          v-flex(xs6)
-            v-img(src="http://localhost:3000/imagenes/disco2.png")
-          v-flex(xs6 center)
+      v-card( style="background: linear-gradient(180deg,#000,#2b467b);     padding: 10px;")
+        v-layout(row wrap class="white--text")
+          v-flex(xs12 center)
             v-layout(row wrap)
-              h1(id="titulo") {{nombre}}
+              h1(id="titulo") Ayuda
             v-layout(row wrap)
-              h3(id="precio") ${{precio}}
+              v-flex(xs8 text-xs-center)
+                h2 Nombre
+                v-input
+                  v-text-field( label="Nombre completo / Empresa" single-line solo )
+              v-flex(xs8 text-xs-center)
+                  h2 Email
+                  v-input
+                    v-text-field( label="Direccion de correo de respuesta" single-line solo )
+              v-flex(xs8 text-xs-center)
+                  h2 Mensaje
+                  v-input
+                    v-text-field( label="Mensaje" single-line solo )
             v-layout(row wrap)
-              v-flex(xs3)
-                h3 3
-              v-flex(xs4)
-                v-btn comprar
-              v-flex(xs4)
-                v-btn agregar
-            v-layout(row wrap center)
-              v-flex(xs12)
-                v-img(src="http://localhost:3000/imagenes/tarjetas.png")
-        v-layout(row wrap class="blue--text")
-          v-flex(xs5)
-            v-layout(row wrap)
-              v-flex(xs12 center)
-                h2 Especificaciones
-            v-layout(row wrap center)
-              v-flex(xs6)
-                h3 Marca:
-              v-flex(xs6)
-                h3 {{marca}}
-            v-layout(row wrap center)
-              v-flex(xs6)
-                h3 Tipo:
-              v-flex(xs6)
-                h3 {{tipo}}
-          v-flex(xs7)
-            v-layout(row wrap)
-              v-flex(xs12 center)
-                h2 Te puede gustar
-    v-container(grid-list-md )
-      v-card(style="background: white; padding: 20px;")
-        v-layout(row wrap class="blue--text")
-          v-flex(xs6 class="text-lg-left")
-            h2 Descripción
-            h3 {{descripcion}}
-          v-flex(xs6 text-xs-center)
-            h2 ¿En que te podemos ayudar?
-            v-input
-              v-text-field( label="REALIZA UNA PREGUNTA" single-line solo )
-        v-layout(row wrap class="blue--text" )
-          v-flex(xs6 class="text-lg-left")
-            h2 Compativilidad
-          v-flex(xs6 text-xs-center)
-            h2 Califica nuestro producto
-            v-rating(id="stars" v-model="rating"  background-color="#003b94" color="#003b94")
+              v-flex(xs8 text-xs-center)
+                v-btn Enviar
     v-container
       v-layout(class="white--text" :style="content2" text-xs-center row  wrap )
         v-flex(flex xs4)
