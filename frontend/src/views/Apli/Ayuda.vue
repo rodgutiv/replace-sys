@@ -13,18 +13,18 @@ v-app
               v-flex(xs8 text-xs-center)
                 h2 Nombre
                 v-input
-                  v-text-field( label="Nombre completo / Empresa" single-line solo )
+                  v-text-field( label="Nombre completo / Empresa" style="margin-left: 17%;" single-line solo required)
               v-flex(xs8 text-xs-center)
                   h2 Email
                   v-input
-                    v-text-field( label="Direccion de correo de respuesta" single-line solo )
+                    v-text-field( label="Direccion de correo de respuesta" style="margin-left: 17%;" single-line solo required)
               v-flex(xs8 text-xs-center)
                   h2 Mensaje
                   v-input
-                    v-text-field( label="Mensaje" single-line solo )
+                    v-text-field( label="Mensaje" style="margin-left: 17%;" single-line solo required)
             v-layout(row wrap)
               v-flex(xs8 text-xs-center)
-                v-btn Enviar
+                v-btn(v-on:click="Submit3()") Enviar
     v-container
       v-layout(class="white--text" :style="content2" text-xs-center row  wrap )
         v-flex(flex xs4)
@@ -73,15 +73,6 @@ export default {
   },
   data () {
     return {
-      nombre:null,
-      precio:null,
-      descripcion:null,
-      tipo:null,
-      marca:null,
-      modelo:null,
-      año:null,
-      marca_auto:null,
-      motor:null,
       rating: 3,
       code:null,
       show: false,
@@ -93,37 +84,15 @@ export default {
       errors: [],
       empty: []
     }
+  },
+  methods: {
+    Submit3(){
+      this.$router.push({ path: '/aplicacion/ayuda'});
+    }
+  },
+  created() {
 
-
-
-},
-
- methods: {
-   comprar(){
-
-   }
- },
-created() {
-    this.code = sessionStorage.getItem("code");
-    //alert(this.code)
-    api.get(`/products/search/`+this.code)
-    //api.get(`/producto`)
-    .then(response => {
-      // JSON responses are automatically parsed.
-      this.nombre = response.data.nombre
-      this.precio = response.data.precio
-      this.modelo = response.data.modelo
-      this.tipo = response.data.tipo
-      this.descripcion = response.data.descripcion
-    })
-    .catch(e => {
-      this.errors.push(e)
-    })
-
-
-}
-
-
+  }
 }
 
 </script>
