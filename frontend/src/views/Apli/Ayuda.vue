@@ -23,7 +23,7 @@ v-app
                   v-input
                     v-text-field( label="Mensaje" single-line solo required)
             v-layout(row wrap)
-              v-flex(xs8 text-xs-center)
+              v-flex(xs8 text-xs-center  style="margin-left: 17%;" )
                 v-btn(v-on:click="Submit3()") Enviar
     v-container
       v-layout(class="white--text" :style="content2" text-xs-center row  wrap )
