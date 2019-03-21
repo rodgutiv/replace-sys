@@ -87,7 +87,13 @@ export default {
   },
   methods: {
     Submit3(){
-      this.$router.push({ path: '/aplicacion/ayuda'});
+      api.get('/ayuda/')
+      .then(response => {
+        this.models = response.data
+      })
+      .catch(e => {
+        this.errors.push(e)
+      })
     }
   },
   created() {
