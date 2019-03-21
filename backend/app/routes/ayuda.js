@@ -27,3 +27,5 @@ router.get('/', function(req, res, next) {
       console.log('Message sent: ' + info.response);
   });
 });
+
+module.exports = router;
