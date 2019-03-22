@@ -34,6 +34,7 @@ router.get('/search/:code', function(req, res, next) {
         return res.status(500).send('Error en la peticion');
       if(!producto)
         return res.status(404).send({message: 'Ningun registro identificado'});
+    console.log(producto)
     return res.send(producto);
   });
 });
