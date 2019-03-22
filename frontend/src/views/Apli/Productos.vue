@@ -41,7 +41,7 @@ v-app
     
     //foother
     v-container
-      v-layout(class="white--text" :style="content2" text-xs-center row  wrap )
+      v-layout.white(style="color:#084a9f;" :style="content2" text-xs-center row  wrap )
         v-flex(flex xs4)
             v-img(src="http://localhost:3000/imagenes/tarjeta cash.png" width="30%"  style="margin-left: 35%;") 
             h3 Paga con tarjeta o en fectivo

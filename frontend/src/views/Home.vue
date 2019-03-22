@@ -1,7 +1,7 @@
 <template lang="pug">
 v-app
   div
-    v-container(grid-list-md r id="carrusel")
+    v-container(grid-list-md r id="carrusel1")
         v-carousel(id ="carru1")
             v-carousel-item(v-for="(item,i) in items" :key="i" :src="item.src")
     v-container(grid-list-md r id="contenido-busca")
@@ -84,6 +84,97 @@ v-app
                   v-on:keyup.enter="Submit2()"
                   required
                   solo)
+    v-container(grid-list-md r )
+      v-layout(id="destacados")
+        v-flex(xs12 sm6)
+          h2(class="white--text" style="padding-left:30%;") PRODUCTOS DESTACADOS
+      v-layout(id="carrusel" center)
+        v-flex(xs3 style="padding:0")
+          
+            div(id="destacados")
+              v-img(src="http://localhost:3000/imagenes/freno1.png")
+            h3(style="padding-left:30%;") FRENOS
+        v-flex(xs3 style="padding:0")
+          
+            div(id="destacados")
+              v-img(src="http://localhost:3000/imagenes/bujia.png")
+            h3(style="padding-left:30%;") BUJIAS
+        v-flex(xs3 style="padding:0")
+          
+            div(id="destacados")
+              v-img(src="http://localhost:3000/imagenes/escape.png")
+            h3(style="padding-left:30%;") ESCAPES
+        v-flex(xs3 style="padding:0")
+          
+            div(id="destacados")
+              v-img(src="http://localhost:3000/imagenes/filtro.png")
+            h3(style="padding-left:30%;") FILTROS
+        v-flex(xs3 style="padding:0")
+          
+            div(id="destacados")
+              v-img(src="http://localhost:3000/imagenes/freno2.png")
+            h3(style="padding-left:30%;") FRENOS
+
+    v-container(grid-list-md r id="mas_vendidos")
+      v-layout(id="destacados")
+        v-flex(xs12 sm6)
+          h2(class="white--text" style="padding-left:30%;") PRODUCTOS MÁS VENDIDOS
+      v-layout(id="carrusel" center)
+        v-flex(xs3 style="padding:0")
+          
+            div(id="destacados")
+              v-img(src="http://localhost:3000/imagenes/freno1.png")
+            h3(style="padding-left:30%;") FRENOS
+        v-flex(xs3 style="padding:0")
+          
+            div(id="destacados")
+              v-img(src="http://localhost:3000/imagenes/bujia.png")
+            h3(style="padding-left:30%;") BUJIAS
+        v-flex(xs3 style="padding:0")
+          
+            div(id="destacados")
+              v-img(src="http://localhost:3000/imagenes/escape.png")
+            h3(style="padding-left:30%;") ESCAPES
+        v-flex(xs3 style="padding:0")
+          
+            div(id="destacados")
+              v-img(src="http://localhost:3000/imagenes/filtro.png")
+            h3(style="padding-left:30%;") FILTROS
+        v-flex(xs3 style="padding:0")
+          
+            div(id="destacados")
+              v-img(src="http://localhost:3000/imagenes/freno2.png")
+            h3(style="padding-left:30%;") FRENOS
+    v-container(grid-list-md r id="nuevos")
+      v-layout(id="destacados")
+        v-flex(xs12 sm6)
+          h2(class="white--text" style="padding-left:30%;") PRODUCTOS NUEVOS
+      v-layout(id="carrusel" center)
+        v-flex(xs3 style="padding:0")
+          
+            div(id="destacados")
+              v-img(src="http://localhost:3000/imagenes/freno1.png")
+            h3(style="padding-left:30%;") FRENOS
+        v-flex(xs3 style="padding:0")
+          
+            div(id="destacados")
+              v-img(src="http://localhost:3000/imagenes/bujia.png")
+            h3(style="padding-left:30%;") BUJIAS
+        v-flex(xs3 style="padding:0")
+          
+            div(id="destacados")
+              v-img(src="http://localhost:3000/imagenes/escape.png")
+            h3(style="padding-left:30%;") ESCAPES
+        v-flex(xs3 style="padding:0")
+          
+            div(id="destacados")
+              v-img(src="http://localhost:3000/imagenes/filtro.png")
+            h3(style="padding-left:30%;") FILTROS
+        v-flex(xs3 style="padding:0")
+          
+            div(id="destacados")
+              v-img(src="http://localhost:3000/imagenes/freno2.png")
+            h3(style="padding-left:30%;") FRENOS
     //footer
     v-container
       v-layout(class="white--text" :style="content1" text-xs-center row  wrap style="width: 100%;")
@@ -265,7 +356,7 @@ export default {
     padding: 10px;
 
   }
-  #carrusel{
+  #carrusel1{
       max-width: 1485px;
   }
   .v-text-field--solo .v-input__slot {
@@ -280,5 +371,13 @@ export default {
   }
   #pie{
     background: linear-gradient(to bottom, black,#2b467b);
+  }
+  #destacados{
+    background: linear-gradient(to bottom, black,#2b467b);
+    /*padding: 30px;*/
+  }
+  #carrusel{
+    background: white
+    /*padding: 30px;*/
   }
 </style>

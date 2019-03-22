@@ -22,45 +22,56 @@ v-app
               v-flex(xs8 text-xs-center style="margin-left: 17%;" )
                   h2 Mensaje
                   v-input
-                    v-text-field( label="Mensaje" single-line solo required)
+                    v-textarea( label="Mensaje" single-line solo required)
             v-layout(row wrap)
               v-flex(xs8 text-xs-center  style="margin-left: 17%;" )
                 v-btn(v-on:click="Submit3()") Enviar
     v-container
-      v-layout(class="white--text" :style="content2" text-xs-center row  wrap )
-        v-flex(flex xs4)
-            v-img(src="http://localhost:3000/imagenes/tarjeta cash.png" width="30%"  style="margin-left: 35%;")
-            h3 Paga con tarjeta o en fectivo
-            v-flex(xs12)
-                span Con Mercado Pago,
-            v-flex(xs12)
-                span tienes meses sinintereses
-            v-flex(xs12)
-                span con tarjeta o efectivo en puntos
-            v-flex(xs12)
-                span de pago. ¡Y siempre es seguro!
-        v-flex(flex xs4)
-            v-img(src="http://localhost:3000/imagenes/envio.png" width="30%"  style="margin-left: 35%;")
-            h3 Envío gratis desde $449
-            v-flex(xs12)
-                span Con Mercado Pago,
-            v-flex(xs12)
-                span tienes meses sinintereses
-            v-flex(xs12)
-                span con tarjeta o efectivo en puntos
-            v-flex(xs12)
-                span de pago. ¡Y siempre es seguro!
-        v-flex(flex xs4)
-            v-img(src="http://localhost:3000/imagenes/seguridad.png" width="30%"  style="margin-left: 35%;")
-            h3 Seguridad
-            v-flex(xs12)
-                span Con Mercado Pago,
-            v-flex(xs12)
-                span tienes meses sinintereses
-            v-flex(xs12)
-                span con tarjeta o efectivo en puntos
-            v-flex(xs12)
-                span de pago. ¡Y siempre es seguro!
+      v-layout(class="white--text" :style="content1" text-xs-center row  wrap style="width: 100%;")
+                v-flex(flex xs4)
+                    h3 SERVICIO AL CLIENTE
+                    v-layout(row  wrap)
+                        v-flex(xs4)
+                            v-img(src="http://localhost:3000/imagenes/atención_al_cliente.png" width="30%"  style="margin-left:80%;")
+                        v-flex(xs8)
+                            v-layout(row  wrap)
+                                v-flex(xs12)
+                                    span Contactanos
+                                v-flex(xs12)
+                                    span (443) 254 34 56
+                    v-spacer
+                    v-layout(row  wrap)
+                        v-flex(xs4)
+                            v-img(src="http://localhost:3000/imagenes/ubicación.png" width="30%"    style="margin-left:80%;")
+                        v-flex(xs8)
+                            v-layout(row  wrap)
+                                v-flex(xs12)
+                                    span Encuentranos en:
+                                v-flex(xs12)
+                                    span Av. Acueducto 1969
+                                v-flex(xs12)
+                                    span Matamoros 58240
+                                v-flex(xs12)
+                                    span Morelia, mich.
+
+                v-flex(flex xs4)
+                    h3 CUENTAS Y PEDIDOS
+                    v-layout(row  wrap)
+                        v-flex(xs12)
+                            span Contactanos
+                        v-flex(xs12)
+                            span Factura electrónica
+                        v-flex(xs12)
+                            span Preguntas frecuentes
+                v-flex(flex xs4)
+                    h3 INFORMACIÓN
+                    v-layout(row  wrap)
+                        v-flex(xs12)
+                            span Contactanos
+                        v-flex(xs12)
+                            span Factura electrónica
+                        v-flex(xs12)
+                            span Preguntas frecuentes
 </template>
 <script>
 import toolbar from '@/components/Toolbar.vue'
