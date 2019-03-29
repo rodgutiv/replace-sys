@@ -6,26 +6,27 @@ v-app
       router-view
     v-container(grid-list-md text-xs-center)
       v-card( style="background: linear-gradient(180deg,#000,#2b467b);     padding: 10px;")
-        v-layout(row wrap class="white--text")
-          v-flex(xs12 center)
-            v-layout(row wrap)
-              h1(id="titulo") Ayuda
-            v-layout(row wrap)
-              v-flex(xs8 text-xs-center style="margin-left: 17%;" )
-                h2 Nombre
-                v-input
-                  v-text-field( label="Nombre completo / Empresa" single-line solo required)
-              v-flex(xs8 text-xs-center style="margin-left: 17%;" )
-                  h2 Email
+        v-form(ref="form" v-model="valid" v-on:submit.prevent="Submit3()" lazy-validation)
+          v-layout(row wrap class="white--text")
+            v-flex(xs12 center)
+              v-layout(row wrap)
+                h1(id="titulo") Ayuda
+              v-layout(row wrap)
+                v-flex(xs8 text-xs-center style="margin-left: 17%;" )
+                  h2 Nombre
                   v-input
-                    v-text-field( label="Direccion de correo de respuesta" single-line solo required)
-              v-flex(xs8 text-xs-center style="margin-left: 17%;" )
-                  h2 Mensaje
-                  v-input
-                    v-textarea( label="Mensaje" single-line solo required)
-            v-layout(row wrap)
-              v-flex(xs8 text-xs-center  style="margin-left: 17%;" )
-                v-btn(v-on:click="Submit3()") Enviar
+                    v-text-field( label="Nombre completo / Empresa" single-line solo required)
+                v-flex(xs8 text-xs-center style="margin-left: 17%;" )
+                    h2 Email
+                    v-input
+                      v-text-field( label="Direccion de correo de respuesta" single-line solo required)
+                v-flex(xs8 text-xs-center style="margin-left: 17%;" )
+                    h2 Mensaje
+                    v-input
+                      v-textarea( label="Mensaje" single-line solo required)
+              v-layout(row wrap)
+                v-flex(xs8 text-xs-center  style="margin-left: 17%;" )
+                  v-btn(type="submit") Enviar
     v-container
       v-layout(class="white--text" :style="content1" text-xs-center row  wrap style="width: 100%;")
                 v-flex(flex xs4)
@@ -77,7 +78,7 @@ v-app
 import toolbar from '@/components/Toolbar.vue'
 
 import {api} from '@/api'
-//import $ from 'jquery'
+import $ from 'jquery'
 //import axios from 'axios'
 export default {
     components:{
@@ -99,7 +100,7 @@ export default {
   },
   methods: {
     Submit3(){
-      api.get('/ayuda/')
+      api.get('/ayuda/',$(event.currentTarget).serializeArray())
       .then(response => {
         this.models = response.data
       })

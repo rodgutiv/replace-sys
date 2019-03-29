@@ -156,13 +156,18 @@ router.post('/specific', function(req, res, next) {
 /*Delete from stock */
 router.post('/stockup', function(req, res, next) {
   var data = req.body;
-  producto.find({'codigo': data.code}, function (err, producto){
+  console.log('carrito')
+  console.log(data[0].value)
+  console.log(data[1].value)
+  producto.find({'codigo': data[0].value}, function (err, producto){
     if(err)
       return res.status(500).send('Error en la peticion');
     if(!producto)
       return res.status(404).send({message: 'Ningun registro identificado'});
     var stock = producto.stock;
-    var new_stock = stock - data.items;
+    var new_stock = stock - data[1].value;
+    console.log('new_stock')
+    console.log(new_stock)
     if(new_stock >= 0){
       producto.update({'codigo': data.code}, {'stock': new_stock }, options, callback);
     }

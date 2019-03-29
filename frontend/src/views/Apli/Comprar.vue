@@ -6,37 +6,44 @@ v-app
       router-view
     v-container(grid-list-md style="    max-width: fit-content;")
       v-card(style="padding: 50px; with:80%")
-        v-form(ref="form" v-on:submit="guardar" lazy-validation)
+        v-form(ref="form" v-model="valid" v-on:submit.prevent="guardar()" lazy-validation)
           v-layout(row wrap class="blue--text" center style="padding: 20px;")
             v-flex(xs12 right)
               h1(style="color:#003b94; ") Entrega
           v-layout(row wrap style="padding: 20px;")
-            v-flex(xs12 lg6 color="#003b94" )
-              v-text-field(color="#003b94;"  :value="client" label="Client Name"  name= "clientname" readonly="readonly")
+            v-flex(xs6)
+              v-text-field(color="#003b94;" label="Nombre" :value="nombre_cliente" name= "nombre" )
+            v-flex(xs6)
+              v-text-field(color="#003b94;" ref="email" label="Email" :value="email" name= "email" )
+            v-flex(xs6)
+              v-text-field(color="#003b94;" label="Teléfono"  name= "tel" )
+            v-flex(xs6)
+              v-text-field(color="#003b94;" label="Código Postal"  name= "cpostal" )
           v-divider(id="divi" gradient="to rigth, #7B1FA2, #E1BEE7")
           v-layout(row wrap style="padding: 20px;")
             v-flex(xs6)
-              v-text-field(color="#003b94;" :value="client" label="Estado"  name= "clientname" readonly="readonly" )
+              v-text-field(color="#003b94;" label="Estado"  name= "estado"  )
             v-flex(xs6)
-              v-text-field(color="#003b94;" :value="client" label="Municipio"  name= "clientname" readonly="readonly")
+              v-text-field(color="#003b94;" label="Municipio"  name= "mun" )
           v-divider(id="divi")
           v-layout(row wrap style="padding: 20px;")
             v-flex(xs6)
-              v-text-field(color="#003b94;" :value="client" label="Calle"  name= "clientname" readonly="readonly" )
+              v-text-field(color="#003b94;" label="Calle"  name= "calle"  )
             v-flex(xs3)
-              v-text-field(color="#003b94;" :value="client" label="Núm Ext."  name= "clientname" readonly="readonly" )
+              v-text-field(color="#003b94;" label="Núm Ext."  name= "next"  )
             v-flex(xs3)
-              v-text-field(color="#003b94;" :value="client" label="Núm Int."  name= "clientname" readonly="readonly" )
+              v-text-field(color="#003b94;" label="Núm Int."  name= "nint"  )
           v-divider(id="divi")
           v-layout(row wrap style="padding: 20px;")
             v-flex(xs12 lg6)
-                v-text-field(color="#003b94;" :value="client" label="Referencias"  name= "clientname" readonly="readonly")
+                v-text-field(color="#003b94;" label="Referencias"  name= "referencia" )
           v-divider(id="divi")
           v-layout(row wrap style="padding: 20px;")
             v-flex(xs6)
-              v-text-field(color="#003b94;" :value="client" label="Colonia"  name= "clientname" readonly="readonly" )
+              v-text-field(color="#003b94;" label="Colonia"  name= "colonia"  )
             v-flex(xs6 style="padding-left:50px; padding-top:10px;")              
-              v-btn(color="#003b94;" @click="guardar") Siguiente              
+              v-btn(color="#003b94;" type="submit") Siguiente              
+              //v-btn(color="#003b94;" v-on:click="guardar") Siguiente              
           //v-speacer
           v-layout(row wrap class="blue--text" )
             v-flex(xs12 class="text-lg-left")
@@ -100,7 +107,7 @@ v-app
 import toolbar from '@/components/Toolbar.vue'
 
 import {api} from '@/api'
-//import $ from 'jquery'
+import $ from 'jquery'
 //import axios from 'axios'
 export default {
     components:{
@@ -108,6 +115,7 @@ export default {
   },
   data () {
     return {
+      codigo:null,
       nombre:null,
       precio:null,
       descripcion:null,
@@ -139,7 +147,9 @@ export default {
         { text: 'Motor', value: null }
       ],
       exist:7,
-      existencia:null
+      existencia:null,
+      nombre_cliente:null,
+      email:null
     }
 
 
@@ -147,21 +157,27 @@ export default {
 },
 
  methods: {
-   guardar(){
-     //this.$router.push({ path: '/aplicacion/pagar'});
-     //this.$router.push({ name: 'pagar'});
-     this.$router.push({ path: '/aplicacion/pagar'});
-      /*api.post('/products/stockup', $(event.currentTarget).serializeArray())
+    guardar(){
+      //this.$router.push({ path: '/aplicacion/pagar'});
+      //this.$router.push({ name: 'pagar'});
+      //this.$router.push({ path: '/aplicacion/pagar'});
+      //alert(this.$refs.email.value)
+      //this.$router.push({  path: '/aplicacion/pagar'});
+      api.post('/compra/buy', $(event.currentTarget).serializeArray())
+      //api.post('/compra/buy', {id:'1'},{nombre_completo:this.nombre_cliente})
       .then(response => {
         alert(response.data)
+        this.$router.push({  path: '/aplicacion/pagar'});
       })
       .catch(e => {
         this.errors.push(e)
-      })*/
+      })
 
    }
  },
 created() {
+    //this.codigo = this.$route.params.codigo
+    //alert(this.codigo)
     this.code = sessionStorage.getItem("code");
     //Carrito
     api.get(`/products/search/`+this.code)
