@@ -37,7 +37,7 @@ v-app
                 v-card-actions(id="act")
                   v-btn(id="boton_prod" round v-on:click="comprar(props.item.codigo)") Comprar
                   //Modaldetalles
-                    //router-link(class="white--text"  :to="{ name: 'agregar', params: { code: props.item.code } }")
+                    router-link(class="white--text"  :to="{ name: 'agregar', params: { code: props.item.code } }")
                   v-btn(id="boton_prod" round @click="show = !show") Ver detalles
                 v-card-text(v-show="show" id="datos") 
                   h4 Marca: {{marca}}

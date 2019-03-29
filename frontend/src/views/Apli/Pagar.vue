@@ -4,56 +4,40 @@ v-app
     toolbar
     div
       router-view
-    v-container(grid-list-md text-xs-center)
-      v-card(style="padding: 10px;")
-        v-form
-          v-layout(row wrap class="blue--text" center)
-            v-flex(xs12)
-              h1 Entrega
-          v-layout(row wrap)
+    v-container(grid-list-md style="    max-width: fit-content;")
+      v-card(style="padding: 50px; with:80%")
+        v-form(ref="form" v-on:submit="guardar" lazy-validation)
+          v-layout(row wrap class="blue--text" center style="padding: 20px;")
+            v-flex(xs12 right)
+              h1(style="color:#003b94; ") Entrega
+          v-layout(row wrap style="padding: 20px;")
+            v-flex(xs12 lg6 color="#003b94" )
+              v-text-field(color="#003b94;"  :value="client" label="Client Name"  name= "clientname" readonly="readonly")
+          v-divider(id="divi" gradient="to rigth, #7B1FA2, #E1BEE7")
+          v-layout(row wrap style="padding: 20px;")
             v-flex(xs6)
-              h3 CÓDIGO POSTAL
+              v-text-field(color="#003b94;" :value="client" label="Estado"  name= "clientname" readonly="readonly" )
             v-flex(xs6)
-              v-text-field
-          v-divider
-          v-layout(row wrap)
+              v-text-field(color="#003b94;" :value="client" label="Municipio"  name= "clientname" readonly="readonly")
+          v-divider(id="divi")
+          v-layout(row wrap style="padding: 20px;")
             v-flex(xs6)
-              v-flex(xs6)
-                h3 Estado
-              v-flex(xs6)
-                v-text-field
+              v-text-field(color="#003b94;" :value="client" label="Calle"  name= "clientname" readonly="readonly" )
+            v-flex(xs3)
+              v-text-field(color="#003b94;" :value="client" label="Núm Ext."  name= "clientname" readonly="readonly" )
+            v-flex(xs3)
+              v-text-field(color="#003b94;" :value="client" label="Núm Int."  name= "clientname" readonly="readonly" )
+          v-divider(id="divi")
+          v-layout(row wrap style="padding: 20px;")
+            v-flex(xs12 lg6)
+                v-text-field(color="#003b94;" :value="client" label="Referencias"  name= "clientname" readonly="readonly")
+          v-divider(id="divi")
+          v-layout(row wrap style="padding: 20px;")
             v-flex(xs6)
-              v-flex(xs6)
-                h3 Município
-              v-flex(xs6)
-                v-text-field
-          v-divider
-          v-layout(row wrap)
-            v-flex(xs2)
-              h3 Calle
-            v-flex(xs2)
-              v-text-field
-            v-flex(xs2)
-              h3 Núm Ext.
-            v-flex(xs2)
-              v-text-field
-            v-flex(xs2)
-              h3 Núm Int.
-            v-flex(xs2)
-              v-text-field
-          v-divider
-          v-layout(row wrap)
-            v-flex(xs6)
-              h3 Referencias 
-            v-flex(xs6)
-              v-text-field
-          v-divider
-          v-layout(row wrap)
-            v-flex(xs6)
-              h3 Colonia 
-            v-flex(xs6)
-              v-text-field
-          v-speacer
+              v-text-field(color="#003b94;" :value="client" label="Colonia"  name= "clientname" readonly="readonly" )
+            v-flex(xs6 style="padding-left:50px; padding-top:10px;")              
+              v-btn(color="#003b94;" @click="guardar") Siguiente              
+          //v-speacer
           v-layout(row wrap class="blue--text" )
             v-flex(xs12 class="text-lg-left")
               h2(style="color:#084a9f;") Productos
@@ -75,29 +59,9 @@ v-app
                   td {{props.item.modelo}}
                   td {{props.item.anio}}
                   td {{props.item.motor}}
-
-          //v-flex(xs6 style="padding: 6%;")
-            v-layout(row wrap)
-              h1(id="titulo" style="color:#003b94;") {{nombre}}
-            v-layout(row wrap)
-              v-flex(xs6 left)
-                h3(style="color:#003b94;") {{existencia}}
-              v-flex(xs6 left)            
-                h3(style="color:#003b94;") ${{precio}}
-            v-layout(row wrap)
-              v-flex(xs4 style="padding-left: 10%;")
-                v-text-field(style="width: 50px; color:#003b94;" type="number"  min="1" value=0 name="stock_products")
-              v-flex(xs4 style="padding-right:30%;")
-                v-btn.white--text(color="#003b94" @click="comprar") comprar
-              v-flex(xs4 style="padding-right:10%;")
-                v-btn.white--text(color="#003b94" @click="agregar") agregar
-            v-layout(row wrap)
-              v-flex(xs12  style="padding-left: 10%;")
-                v-img(src="http://localhost:3000/imagenes/tarjetas.png" style="width:80%;")
-        
     
     v-container()
-      v-layout.white(style="color:#084a9f;" :style="content2" text-xs-center row  wrap )
+      v-layout.white(style="color:#084a9f;" text-xs-center row  wrap )
         v-flex(flex xs4)
             v-img(src="http://localhost:3000/imagenes/tarjeta cash.png" width="30%"  style="margin-left: 35%;")
             h3 Paga con tarjeta o en fectivo
@@ -183,14 +147,18 @@ export default {
 },
 
  methods: {
-   gardar(){
-      api.post('/products/stockup',this.code)
+   guardar(){
+     //this.$router.push({ path: '/aplicacion/pagar'});
+     //this.$router.push({ name: 'pagar'});
+     this.$router.push({ path: '/aplicacion/pagar'});
+      /*api.post('/products/stockup', $(event.currentTarget).serializeArray())
       .then(response => {
         alert(response.data)
       })
       .catch(e => {
         this.errors.push(e)
-      })
+      })*/
+
    }
  },
 created() {
@@ -236,13 +204,10 @@ created() {
   #act{
     display: block;
   }
-  #division{
-    margin-left: 5%;
-    max-width: 90%;
-    border-width: 1px;
-  }
-  .theme--light.v-divider{
-    border-color:#bac5df
+  #divi{
+    margin-left: initial;
+    max-width: inherit;
+    border-width: 3px;
   }
   #datos{
     text-align: left;
@@ -255,4 +220,11 @@ created() {
     padding-left: 40px;
     padding-top: 40px;
   }
+  .primary--text{
+    color: #003b94 !important;
+    caret-color: #003b94 !important;
+  }
+  .theme--light.v-label {
+    color: #003b94 !important;
+}
 </style>
