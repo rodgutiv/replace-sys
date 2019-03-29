@@ -22,7 +22,7 @@ v-app
                     v-img(src="http://localhost:3000/imagenes/lupita busqueda.png" max-width="40px")
                 v-flex(xs8 style="padding-top: 30px;")
                   h3 BÚSQUEDA ESPECÍFICA
-            v-flex(fñex xs7)
+            v-flex(flex xs7)
               v-layout(row)
                 v-flex(xs10 sm10)
                   h3(class="white--text" id="text") MARCA
@@ -90,27 +90,27 @@ v-app
           h2(class="white--text" style="padding-left:30%;") PRODUCTOS DESTACADOS
       v-layout(id="carrusel" center)
         v-flex(xs3 style="padding:0")
-          
+
             div(id="destacados")
               v-img(src="http://localhost:3000/imagenes/freno1.png")
             h3(style="padding-left:30%;") FRENOS
         v-flex(xs3 style="padding:0")
-          
+
             div(id="destacados")
               v-img(src="http://localhost:3000/imagenes/bujia.png")
             h3(style="padding-left:30%;") BUJIAS
         v-flex(xs3 style="padding:0")
-          
+
             div(id="destacados")
               v-img(src="http://localhost:3000/imagenes/escape.png")
             h3(style="padding-left:30%;") ESCAPES
         v-flex(xs3 style="padding:0")
-          
+
             div(id="destacados")
               v-img(src="http://localhost:3000/imagenes/filtro.png")
             h3(style="padding-left:30%;") FILTROS
         v-flex(xs3 style="padding:0")
-          
+
             div(id="destacados")
               v-img(src="http://localhost:3000/imagenes/freno2.png")
             h3(style="padding-left:30%;") FRENOS
@@ -121,27 +121,27 @@ v-app
           h2(class="white--text" style="padding-left:30%;") PRODUCTOS MÁS VENDIDOS
       v-layout(id="carrusel" center)
         v-flex(xs3 style="padding:0")
-          
+
             div(id="destacados")
               v-img(src="http://localhost:3000/imagenes/freno1.png")
             h3(style="padding-left:30%;") FRENOS
         v-flex(xs3 style="padding:0")
-          
+
             div(id="destacados")
               v-img(src="http://localhost:3000/imagenes/bujia.png")
             h3(style="padding-left:30%;") BUJIAS
         v-flex(xs3 style="padding:0")
-          
+
             div(id="destacados")
               v-img(src="http://localhost:3000/imagenes/escape.png")
             h3(style="padding-left:30%;") ESCAPES
         v-flex(xs3 style="padding:0")
-          
+
             div(id="destacados")
               v-img(src="http://localhost:3000/imagenes/filtro.png")
             h3(style="padding-left:30%;") FILTROS
         v-flex(xs3 style="padding:0")
-          
+
             div(id="destacados")
               v-img(src="http://localhost:3000/imagenes/freno2.png")
             h3(style="padding-left:30%;") FRENOS
@@ -151,27 +151,27 @@ v-app
           h2(class="white--text" style="padding-left:30%;") PRODUCTOS NUEVOS
       v-layout(id="carrusel" center)
         v-flex(xs3 style="padding:0")
-          
+
             div(id="destacados")
               v-img(src="http://localhost:3000/imagenes/freno1.png")
             h3(style="padding-left:30%;") FRENOS
         v-flex(xs3 style="padding:0")
-          
+
             div(id="destacados")
               v-img(src="http://localhost:3000/imagenes/bujia.png")
             h3(style="padding-left:30%;") BUJIAS
         v-flex(xs3 style="padding:0")
-          
+
             div(id="destacados")
               v-img(src="http://localhost:3000/imagenes/escape.png")
             h3(style="padding-left:30%;") ESCAPES
         v-flex(xs3 style="padding:0")
-          
+
             div(id="destacados")
               v-img(src="http://localhost:3000/imagenes/filtro.png")
             h3(style="padding-left:30%;") FILTROS
         v-flex(xs3 style="padding:0")
-          
+
             div(id="destacados")
               v-img(src="http://localhost:3000/imagenes/freno2.png")
             h3(style="padding-left:30%;") FRENOS
