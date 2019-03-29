@@ -2,11 +2,13 @@ var express = require('express');
 var router = express.Router();
 
 /* GET all products */
-router.get('/', function(req, res, next) {
+router.post('/', function(req, res, next) {
+
   var data = req.body;
-  var name = data[0].name;
-  var from = data[1].from;
-  var message = data[3].message;
+  console.log(data)
+  var name = data[0].value;
+  var from = data[1].value;
+  var message = data[3].value;
 
   var nodemailer = require('nodemailer');
   // create reusable transporter object using the default SMTP transport
