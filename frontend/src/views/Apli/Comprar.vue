@@ -1,0 +1,246 @@
+<template lang="pug">
+v-app
+  div
+    toolbar
+    div
+      router-view
+    v-container(grid-list-md style="    max-width: fit-content;")
+      v-card(style="padding: 50px; with:80%")
+        v-form(ref="form" v-model="valid" v-on:submit.prevent="guardar()" lazy-validation)
+          v-layout(row wrap class="blue--text" center style="padding: 20px;")
+            v-flex(xs12 right)
+              h1(style="color:#003b94; ") Entrega
+          v-layout(row wrap style="padding: 20px;")
+            v-flex(xs6)
+              v-text-field(color="#003b94;" label="Nombre" :value="nombre_cliente" name= "nombre" )
+            v-flex(xs6)
+              v-text-field(color="#003b94;" ref="email" label="Email" :value="email" name= "email" )
+            v-flex(xs6)
+              v-text-field(color="#003b94;" label="Teléfono"  name= "tel" )
+            v-flex(xs6)
+              v-text-field(color="#003b94;" label="Código Postal"  name= "cpostal" )
+          v-divider(id="divi" gradient="to rigth, #7B1FA2, #E1BEE7")
+          v-layout(row wrap style="padding: 20px;")
+            v-flex(xs6)
+              v-text-field(color="#003b94;" label="Estado"  name= "estado"  )
+            v-flex(xs6)
+              v-text-field(color="#003b94;" label="Municipio"  name= "mun" )
+          v-divider(id="divi")
+          v-layout(row wrap style="padding: 20px;")
+            v-flex(xs6)
+              v-text-field(color="#003b94;" label="Calle"  name= "calle"  )
+            v-flex(xs3)
+              v-text-field(color="#003b94;" label="Núm Ext."  name= "next"  )
+            v-flex(xs3)
+              v-text-field(color="#003b94;" label="Núm Int."  name= "nint"  )
+          v-divider(id="divi")
+          v-layout(row wrap style="padding: 20px;")
+            v-flex(xs12 lg6)
+                v-text-field(color="#003b94;" label="Referencias"  name= "referencia" )
+          v-divider(id="divi")
+          v-layout(row wrap style="padding: 20px;")
+            v-flex(xs6)
+              v-text-field(color="#003b94;" label="Colonia"  name= "colonia"  )
+            v-flex(xs6 style="padding-left:50px; padding-top:10px;")              
+              v-btn(color="#003b94;" type="submit") Siguiente              
+              //v-btn(color="#003b94;" v-on:click="guardar") Siguiente              
+          //v-speacer
+          v-layout(row wrap class="blue--text" )
+            v-flex(xs12 class="text-lg-left")
+              h2(style="color:#084a9f;") Productos
+              v-data-table( 
+              :headers="headers" 
+              :pagination.sync="pagination"
+              :rows-per-page-items="rowsPerPageItems" 
+              item-key="name" 
+              :items="items" 
+                class="elevation-1"
+              )
+                template(slot="headerCell" slot-scope="props")
+                  v-tooltip(bottom)
+                    span(slot="activator") {{ props.header.text }}
+                    span {{ props.header.text }}
+
+                template( slot="items" slot-scope="props")
+                  td {{props.item.marca_auto}}
+                  td {{props.item.modelo}}
+                  td {{props.item.anio}}
+                  td {{props.item.motor}}
+    
+    v-container()
+      v-layout.white(style="color:#084a9f;" text-xs-center row  wrap )
+        v-flex(flex xs4)
+            v-img(src="http://localhost:3000/imagenes/tarjeta cash.png" width="30%"  style="margin-left: 35%;")
+            h3 Paga con tarjeta o en fectivo
+            v-flex(xs12)
+                span Con Mercado Pago,
+            v-flex(xs12)
+                span tienes meses sinintereses
+            v-flex(xs12)
+                span con tarjeta o efectivo en puntos
+            v-flex(xs12)
+                span de pago. ¡Y siempre es seguro!
+        v-flex(flex xs4)
+            v-img(src="http://localhost:3000/imagenes/envio.png" width="30%"  style="margin-left: 35%;")
+            h3 Envío gratis desde $449
+            v-flex(xs12)
+                span Con Mercado Pago,
+            v-flex(xs12)
+                span tienes meses sinintereses
+            v-flex(xs12)
+                span con tarjeta o efectivo en puntos
+            v-flex(xs12)
+                span de pago. ¡Y siempre es seguro!
+        v-flex(flex xs4)
+            v-img(src="http://localhost:3000/imagenes/seguridad.png" width="30%"  style="margin-left: 35%;")
+            h3 Seguridad
+            v-flex(xs12)
+                span Con Mercado Pago,
+            v-flex(xs12)
+                span tienes meses sinintereses
+            v-flex(xs12)
+                span con tarjeta o efectivo en puntos
+            v-flex(xs12)
+                span de pago. ¡Y siempre es seguro!
+</template>
+<script>
+import toolbar from '@/components/Toolbar.vue'
+
+import {api} from '@/api'
+import $ from 'jquery'
+//import axios from 'axios'
+export default {
+    components:{
+    toolbar
+  },
+  data () {
+    return {
+      codigo:null,
+      nombre:null,
+      precio:null,
+      descripcion:null,
+      tipo:null,
+      marca:null,
+      modelo:null,
+      año:null,
+      marca_auto:null,
+      motor:null,
+      rating: 3,
+      code:null,
+      show: false,
+      rowsPerPageItems: [12],
+      rowsPerPageItems2: [4],
+      pagination: {
+        rowsPerPage: 12
+      },
+      pagination2: {
+        rowsPerPage: 4
+      },
+      items: [],
+      items2: [],
+      errors: [],
+      empty: [],
+      headers:[
+        { text: 'Marca', value: null, sortable:false },  
+        { text: 'Modelo', value: null },
+        { text: 'Año', value: null },
+        { text: 'Motor', value: null }
+      ],
+      exist:7,
+      existencia:null,
+      nombre_cliente:null,
+      email:null
+    }
+
+
+
+},
+
+ methods: {
+    guardar(){
+      //this.$router.push({ path: '/aplicacion/pagar'});
+      //this.$router.push({ name: 'pagar'});
+      //this.$router.push({ path: '/aplicacion/pagar'});
+      //alert(this.$refs.email.value)
+      //this.$router.push({  path: '/aplicacion/pagar'});
+      api.post('/compra/buy', $(event.currentTarget).serializeArray())
+      //api.post('/compra/buy', {id:'1'},{nombre_completo:this.nombre_cliente})
+      .then(response => {
+        alert(response.data)
+        this.$router.push({  path: '/aplicacion/pagar'});
+      })
+      .catch(e => {
+        this.errors.push(e)
+      })
+
+   }
+ },
+created() {
+    //this.codigo = this.$route.params.codigo
+    //alert(this.codigo)
+    this.code = sessionStorage.getItem("code");
+    //Carrito
+    api.get(`/products/search/`+this.code)
+    //api.get(`/producto`)
+    .then(response => {
+      // JSON responses are automatically parsed.
+      this.nombre = response.data.nombre
+      this.precio = response.data.precio
+      this.modelo = response.data.modelo
+      this.tipo = response.data.tipo
+      this.marca = response.data.marca
+      this.descripcion = response.data.descripcion
+      this.items = response.data.autos
+    })
+    .catch(e => {
+      this.errors.push(e)
+    })
+}
+
+
+}
+
+</script>
+<style>
+  #bloque{
+    text-align: center;
+  }
+  #stars{
+    color:#003b94;
+  }
+  #boton_prod{
+    font-size: 12px;
+    color: white;
+    background-color: #003b94;
+    border-bottom-left-radius: 20px;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 20px;
+  }
+  #act{
+    display: block;
+  }
+  #divi{
+    margin-left: initial;
+    max-width: inherit;
+    border-width: 3px;
+  }
+  #datos{
+    text-align: left;
+  }
+  #titulo{
+    padding-left: 40px;
+    padding-top: 20px;
+  }
+  #precio{
+    padding-left: 40px;
+    padding-top: 40px;
+  }
+  .primary--text{
+    color: #003b94 !important;
+    caret-color: #003b94 !important;
+  }
+  .theme--light.v-label {
+    color: #003b94 !important;
+}
+</style>

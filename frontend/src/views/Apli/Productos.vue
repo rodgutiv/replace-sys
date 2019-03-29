@@ -5,6 +5,15 @@ v-app
     div
       router-view
     v-container(grid-list-md text-xs-center style="background: white;")
+      v-layout(row wrap center)  
+        v-flex(xs12 lg5 mb-3)
+          v-expansion-panel(popout)
+            v-expansion-panel-content()
+              template(v-slot="header")
+                div Item
+              v-card
+                v-card-text Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</v-card-text>
+
       v-layout(row wrap center)
          v-flex(xs11)
             //h1.display-3 Products {{id}}
@@ -27,12 +36,13 @@ v-app
                       v-rating(id="stars" v-model="rating" readonly background-color="#003b94" style="color:#003b94;")
                 v-card-actions(id="act")
                   v-btn(id="boton_prod" round v-on:click="comprar(props.item.codigo)") Comprar
-                    //router-link(class="white--text"  :to="{ name: 'agregar', params: { code: props.item.code } }")
+                  //Modaldetalles
+                    router-link(class="white--text"  :to="{ name: 'agregar', params: { code: props.item.code } }")
                   v-btn(id="boton_prod" round @click="show = !show") Ver detalles
                 v-card-text(v-show="show" id="datos") 
                   h4 Marca: {{marca}}
                   h4 Garantía de 2 años
-                  h4 Condiciones PRoducto Cerrado y nuevo
+                  h4 Condiciones Producto Cerrado y nuevo
                   //Modaldetalles(:marca="props.item.marca")
       
     

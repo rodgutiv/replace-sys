@@ -19,7 +19,7 @@ v-app
                 v-divider(id="division")
                 v-card-title(id="act" primary-title)
                   div
-                    div|
+                    div
                       h3(style="color:#003b94;")  {{props.item.nombre}}
                     div
                       h3(style="color:#003b94;") ${{props.item.precio}}
@@ -32,7 +32,15 @@ v-app
                 v-card-text(v-show="show" id="datos") 
                   h4 Marca: {{props.item.marca}}
                   h4 Garantía de 2 años
-                  h4 Condiciones PRoducto Cerrado y nuevo
+                  h4 Condiciones Producto Cerrado y nuevo
+          //v-flex(xs12 lg5 mb-3)
+            v-expansion-panel(popout)
+              v-expansion-panel-content(v-for="(item,i) in 5" :key="i")
+                template(v-slot="header")
+                  div Item
+                v-card
+                  v-card-text Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</v-card-text>
+      
       
     
     

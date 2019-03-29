@@ -42,6 +42,16 @@ export default new Router({
               path: 'ayuda',
               name: 'ayuda',
               component: () => import( './views/Apli/Ayuda.vue')
+            },
+            {
+              path: 'comprar',
+              name: 'comprar',
+              component: () => import( './views/Apli/Comprar.vue')
+            },
+            {
+              path: 'pagar',
+              name: 'pagar',
+              component: () => import( './views/Apli/Pagar.vue')
             }
           ]
         }

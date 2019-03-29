@@ -18,7 +18,8 @@ var compras_libre = require('../models/compras_libre');
 router.post('/buy', function(req, res, next) {
 
   var specific_data = req.body;
-
+  console.log('DATOS DE COMPRA')
+  console.log(specific_data)
   var query = {
     'id': specific_data[0].code,
     'datos_personales':

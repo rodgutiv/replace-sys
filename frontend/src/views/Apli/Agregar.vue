@@ -6,26 +6,31 @@ v-app
       router-view
     v-container(grid-list-md text-xs-center)
       v-card(style="padding: 10px;")
-        v-layout(row wrap class="blue--text" center)
-          v-flex(xs6)
+        v-layout(row wrap class="blue--text"  )
+          v-flex(xs5)
             v-img(src="http://localhost:3000/imagenes/disco2.png")
-          divider(vertical)
-          v-flex(xs6 style="padding: 6%;")
+          v-divider(vertical)
+          v-flex(xs6 style="    padding-left: 10%; padding-top: 8%;")
             v-layout(row wrap)
               h1(id="titulo" style="color:#003b94;") {{nombre}}
             v-layout(row wrap)
-              h3(id="precio" style="color:#003b94;") ${{precio}}
-            v-layout(row wrap)
-              v-flex(xs4 style="    padding-left: 10%;")
-                v-text-field(style="width: 50px; color:#003b94;" type="number"  min="1" value=0 name="stock_products")
-              v-flex(xs4 style="padding-right:30%;")
-                v-btn.white--text(color="#003b94") comprar
-              v-flex(xs4 style="padding-right:10%;")
-                v-btn.white--text(color="#003b94") agregar
+              v-flex(xs6 )
+                h3(style="color:#003b94;") {{existencia}}
+              v-flex(xs6)            
+                h3(style="color:#003b94;") ${{precio}}
+            v-form( v-on:submit.prevent="agregar()" lazy-validation )
+              v-layout(row wrap)
+                  v-flex(xs3)
+                    v-text-field(style="width: 50px; color:#003b94;display:none;" :value="codigo" name="code")
+                    v-text-field(ref="cant" style=" color:#003b94;" type="number"  min="1" :value=0 name="stock")
+                  v-flex(xs9)
+                    v-btn.white--text(type="submit" color="#003b94" ) agregar
+                    v-btn.white--text(color="#003b94" v-on:click="comprar") comprar
+                
             v-layout(row wrap)
               v-flex(xs12  style="padding-left: 10%;")
                 v-img(src="http://localhost:3000/imagenes/tarjetas.png" style="width:80%;")
-        divider
+        v-divider
         v-layout(row wrap class="blue--text")
           v-flex(xs5)
             v-layout(row wrap)
@@ -45,7 +50,7 @@ v-app
             v-layout(row wrap)
               v-flex(xs12 center)
                 h2(style="color:#084a9f;") Te puede gustar
-                v-data-iterator(:items="items2"  :search="escrito" item-key="key_ext" :rows-per-page-items="rowsPerPageItems2"  row wrap :pagination.sync="pagination2" content-tag="v-layout")
+                v-data-iterator(:items="items2" item-key="key_ext" :rows-per-page-items="rowsPerPageItems2"  row wrap :pagination.sync="pagination2" content-tag="v-layout")
                   v-flex(slot="item" slot-scope="props" text-xs-left xs12 sm6 md3 lg3)
                     v-card(id="bloque")
                       v-img(src="http://localhost:3000/imagenes/disco.png")
@@ -59,7 +64,7 @@ v-app
                           div 
                             v-rating(id="stars" size="10" v-model="rating" readonly background-color="#003b94" style="color:#003b94;")
                       v-card-actions(id="act")
-                        v-btn(id="boton_prod" small round v-on:click="comprar(props.item.codigo)") Comprar
+                        v-btn(id="boton_prod" small round v-on:click="ver(props.item.codigo)") Comprar
                           //router-link(class="white--text"  :to="{ name: 'agregar', params: { code: props.item.code } }")
                         v-btn(id="boton_prod" small round @click="show = !show") Ver detalles
                       v-card-text(v-show="show" id="datos") 
@@ -102,7 +107,7 @@ v-app
             h2(style="color:#084a9f;") Califica nuestro producto
             v-rating(id="stars" v-model="rating"  background-color="#003b94" color="#003b94")
     v-container()
-      v-layout.white(style="color:#084a9f;" :style="content2" text-xs-center row  wrap )
+      v-layout.white(style="color:#084a9f;" text-xs-center row  wrap )
         v-flex(flex xs4)
             v-img(src="http://localhost:3000/imagenes/tarjeta cash.png" width="30%"  style="margin-left: 35%;")
             h3 Paga con tarjeta o en fectivo
@@ -141,7 +146,7 @@ v-app
 import toolbar from '@/components/Toolbar.vue'
 
 import {api} from '@/api'
-//import $ from 'jquery'
+import $ from 'jquery'
 //import axios from 'axios'
 export default {
     components:{
@@ -178,7 +183,10 @@ export default {
         { text: 'Modelo', value: null },
         { text: 'Año', value: null },
         { text: 'Motor', value: null }
-      ]
+      ],
+      exist:7,
+      existencia:null,
+      codigo:null
     }
 
 
@@ -186,8 +194,24 @@ export default {
 },
 
  methods: {
+   ver(dato){
+     sessionStorage.setItem("code",dato);
+     this.$router.push({ path: '/aplicacion/agregar/'+dato});
+   },
+   agregar(){
+     //alert("entro")
+      api.post('/products/stockup',$(event.currentTarget).serializeArray())
+      .then(response => {
+        alert(response.data)
+      })
+      .catch(e => {
+        this.errors.push(e)
+      })
+   },
    comprar(){
-
+     //alert(this.code)
+     this.$router.push({ path: '/aplicacion/comprar'});
+     //this.$router.push({name: 'comprar', params: { codigo: this.code  } })  
    }
  },
 created() {
@@ -196,6 +220,8 @@ created() {
     api.get(`/products/search/`+this.code)
     //api.get(`/producto`)
     .then(response => {
+      alert(response.data.stock)
+      alert(response.data.precio)
       // JSON responses are automatically parsed.
       this.nombre = response.data.nombre
       this.precio = response.data.precio
@@ -204,6 +230,17 @@ created() {
       this.marca = response.data.marca
       this.descripcion = response.data.descripcion
       this.items = response.data.autos
+      this.codigo=response.data.codigo
+
+      if(this.exist==0){
+      this.existencia="No hay en existencia"
+      }else{
+        if((this.exist>0)&&(this.exist<20)){
+          this.existencia="Poca existencia"
+        }else if(this.exist>20){
+          this.existencia="En existencia"
+        }
+      }
     })
     .catch(e => {
       this.errors.push(e)
@@ -213,12 +250,13 @@ created() {
     .then(response => {
       // JSON responses are automatically parsed.
       this.items2 = response.data
-      alert(this.items2)
+      //alert(this.items2)
       //alert(response.data)
     })
     .catch(e => {
       this.errors.push(e)
     })
+    
 
 
 }
