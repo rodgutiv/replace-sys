@@ -21,7 +21,8 @@ var ProductosSchema = Schema({
       motor: String
     }
   ],
-  stock: Number
+  stock: Number,
+  categoria: String
 });
 // Exportamos el modelo para usarlo en otros ficheros
 module.exports = mongoose.model('Productos', ProductosSchema);
