@@ -220,8 +220,8 @@ created() {
     api.get(`/products/search/`+this.code)
     //api.get(`/producto`)
     .then(response => {
-      alert(response.data.stock)
-      alert(response.data.precio)
+      //alert(response.data.stock)
+      //alert(response.data.precio)
       // JSON responses are automatically parsed.
       this.nombre = response.data.nombre
       this.precio = response.data.precio

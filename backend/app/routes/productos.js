@@ -159,22 +159,29 @@ router.post('/stockup', function(req, res, next) {
   console.log('carrito')
   console.log(data[0].value)
   console.log(data[1].value)
+
   producto.find({'codigo': data[0].value}, function (err, producto){
     if(err)
       return res.status(500).send('Error en la peticion');
     if(!producto)
       return res.status(404).send({message: 'Ningun registro identificado'});
-    var stock = producto.stock;
+    console.log('producto')
+    console.log(producto)
+    var stock = producto[0].stock;
+    console.log('stock')
+    console.log( producto[0].stock)
     var new_stock = stock - data[1].value;
     console.log('new_stock')
     console.log(new_stock)
     if(new_stock >= 0){
-      producto.update({'codigo': data.code}, {'stock': new_stock }, options, callback);
+      producto.update({'codigo': data[0].value}, {'stock': new_stock },{ multi: true}, callback);
     }
     else {
         return res.status(404).send({message: 'Valor incorrecto'});
     }
   });
+
+  
 });
 
 /*Get categories*/
