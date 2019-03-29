@@ -15,15 +15,15 @@ v-app
                 v-flex(xs8 text-xs-center style="margin-left: 17%;" )
                   h2 Nombre
                   v-input
-                    v-text-field( label="Nombre completo / Empresa" single-line solo required)
+                    v-text-field( name="name" label="Nombre completo / Empresa" single-line solo required)
                 v-flex(xs8 text-xs-center style="margin-left: 17%;" )
                     h2 Email
                     v-input
-                      v-text-field( label="Direccion de correo de respuesta" single-line solo required)
+                      v-text-field( name="from" label="Direccion de correo de respuesta" single-line solo required)
                 v-flex(xs8 text-xs-center style="margin-left: 17%;" )
                     h2 Mensaje
                     v-input
-                      v-textarea( label="Mensaje" single-line solo required)
+                      v-textarea( name="message" label="Mensaje" single-line solo required)
               v-layout(row wrap)
                 v-flex(xs8 text-xs-center  style="margin-left: 17%;" )
                   v-btn(type="submit") Enviar
@@ -100,7 +100,8 @@ export default {
   },
   methods: {
     Submit3(){
-      api.get('/ayuda/',$(event.currentTarget).serializeArray())
+      alert('entro')
+      api.post('/ayuda/',$(event.currentTarget).serializeArray())
       .then(response => {
         this.models = response.data
       })
