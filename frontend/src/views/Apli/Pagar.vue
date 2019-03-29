@@ -6,11 +6,77 @@ v-app
       router-view
     v-container(grid-list-md text-xs-center)
       v-card(style="padding: 10px;")
-        v-layout(row wrap class="blue--text" center)
-          v-flex(xs6)
-            v-img(src="http://localhost:3000/imagenes/disco2.png")
-          divider(vertical)
-          v-flex(xs6 style="padding: 6%;")
+        v-form
+          v-layout(row wrap class="blue--text" center)
+            v-flex(xs12)
+              h1 Entrega
+          v-layout(row wrap)
+            v-flex(xs6)
+              h3 CÓDIGO POSTAL
+            v-flex(xs6)
+              v-text-field
+          v-divider
+          v-layout(row wrap)
+            v-flex(xs6)
+              v-flex(xs6)
+                h3 Estado
+              v-flex(xs6)
+                v-text-field
+            v-flex(xs6)
+              v-flex(xs6)
+                h3 Município
+              v-flex(xs6)
+                v-text-field
+          v-divider
+          v-layout(row wrap)
+            v-flex(xs2)
+              h3 Calle
+            v-flex(xs2)
+              v-text-field
+            v-flex(xs2)
+              h3 Núm Ext.
+            v-flex(xs2)
+              v-text-field
+            v-flex(xs2)
+              h3 Núm Int.
+            v-flex(xs2)
+              v-text-field
+          v-divider
+          v-layout(row wrap)
+            v-flex(xs6)
+              h3 Referencias 
+            v-flex(xs6)
+              v-text-field
+          v-divider
+          v-layout(row wrap)
+            v-flex(xs6)
+              h3 Colonia 
+            v-flex(xs6)
+              v-text-field
+          v-speacer
+          v-layout(row wrap class="blue--text" )
+            v-flex(xs12 class="text-lg-left")
+              h2(style="color:#084a9f;") Productos
+              v-data-table( 
+              :headers="headers" 
+              :pagination.sync="pagination"
+              :rows-per-page-items="rowsPerPageItems" 
+              item-key="name" 
+              :items="items" 
+                class="elevation-1"
+              )
+                template(slot="headerCell" slot-scope="props")
+                  v-tooltip(bottom)
+                    span(slot="activator") {{ props.header.text }}
+                    span {{ props.header.text }}
+
+                template( slot="items" slot-scope="props")
+                  td {{props.item.marca_auto}}
+                  td {{props.item.modelo}}
+                  td {{props.item.anio}}
+                  td {{props.item.motor}}
+
+          //v-flex(xs6 style="padding: 6%;")
             v-layout(row wrap)
               h1(id="titulo" style="color:#003b94;") {{nombre}}
             v-layout(row wrap)
@@ -28,82 +94,8 @@ v-app
             v-layout(row wrap)
               v-flex(xs12  style="padding-left: 10%;")
                 v-img(src="http://localhost:3000/imagenes/tarjetas.png" style="width:80%;")
-        divider
-        v-layout(row wrap class="blue--text")
-          v-flex(xs5)
-            v-layout(row wrap)
-              v-flex(xs12 center)
-                h2(style="color:#084a9f;") Especificaciones
-            v-layout(row wrap center)
-              v-flex(xs6)
-                h3(style="color:#084a9f;") Marca:
-              v-flex(xs6)
-                h3(style="color:#084a9f;") {{marca}}
-            v-layout(row wrap center)
-              v-flex(xs6)
-                h3(style="color:#084a9f;") Tipo:
-              v-flex(xs6)
-                h3(style="color:#084a9f;") {{tipo}}
-          v-flex(xs7)
-            v-layout(row wrap)
-              v-flex(xs12 center)
-                h2(style="color:#084a9f;") Te puede gustar
-                v-data-iterator(:items="items2"  :search="escrito" item-key="key_ext" :rows-per-page-items="rowsPerPageItems2"  row wrap :pagination.sync="pagination2" content-tag="v-layout")
-                  v-flex(slot="item" slot-scope="props" text-xs-left xs12 sm6 md3 lg3)
-                    v-card(id="bloque")
-                      v-img(src="http://localhost:3000/imagenes/disco.png")
-                      v-divider(id="division")
-                      v-card-title(id="act" primary-title style="al" )
-                        div
-                          div
-                            h5(style="color:#003b94;") {{props.item.nombre}}
-                          div
-                            h5(style="color:#003b94;") ${{props.item.precio}}
-                          div 
-                            v-rating(id="stars" size="10" v-model="rating" readonly background-color="#003b94" style="color:#003b94;")
-                      v-card-actions(id="act")
-                        v-btn(id="boton_prod" small round v-on:click="ver(props.item.codigo)") Comprar
-                          //router-link(class="white--text"  :to="{ name: 'agregar', params: { code: props.item.code } }")
-                        v-btn(id="boton_prod" small round @click="show = !show") Ver detalles
-                      v-card-text(v-show="show" id="datos") 
-                        h6 Marca: {{marca}}
-                        h6 Garantía de 2 años
-                        h6 Condiciones PRoducto Cerrado y nuevo
-                        //Modaldetalles(:marca="props.item.marca")
-    v-container(grid-list-md )
-      v-card(style="background: white; padding: 50px;")
-        v-layout(row wrap class="blue--text")
-          v-flex(xs6 class="text-lg-left")
-            h2(style="color:#084a9f;") Descripción
-            h3(style="color:#084a9f;") {{descripcion}}
-          v-flex(xs6 text-xs-center)
-            h2(style="color:#084a9f;") ¿En que te podemos ayudar?
-            v-input
-              v-text-field( label="REALIZA UNA PREGUNTA" single-line solo )
-        v-layout(row wrap class="blue--text" )
-          v-flex(xs6 class="text-lg-left")
-            h2(style="color:#084a9f;") Compativilidad
-            v-data-table( 
-            :headers="headers" 
-            :pagination.sync="pagination"
-            :rows-per-page-items="rowsPerPageItems" 
-            item-key="name" 
-            :items="items" 
-              class="elevation-1"
-            )
-              template(slot="headerCell" slot-scope="props")
-                v-tooltip(bottom)
-                  span(slot="activator") {{ props.header.text }}
-                  span {{ props.header.text }}
-
-              template( slot="items" slot-scope="props")
-                td {{props.item.marca_auto}}
-                td {{props.item.modelo}}
-                td {{props.item.anio}}
-                td {{props.item.motor}}
-          v-flex(xs6 text-xs-center)
-            h2(style="color:#084a9f;") Califica nuestro producto
-            v-rating(id="stars" v-model="rating"  background-color="#003b94" color="#003b94")
+        
+    
     v-container()
       v-layout.white(style="color:#084a9f;" :style="content2" text-xs-center row  wrap )
         v-flex(flex xs4)
@@ -191,11 +183,7 @@ export default {
 },
 
  methods: {
-   ver(dato){
-     sessionStorage.setItem("code",dato);
-     this.$router.push({ path: '/aplicacion/agregar/'+dato});
-   },
-   agregar(){
+   gardar(){
       api.post('/products/stockup',this.code)
       .then(response => {
         alert(response.data)
@@ -203,14 +191,11 @@ export default {
       .catch(e => {
         this.errors.push(e)
       })
-   },
-   comprar(){
-     this.$router.push({ path: '/aplicacion/comprar'});
    }
  },
 created() {
     this.code = sessionStorage.getItem("code");
-    //alert(this.code)
+    //Carrito
     api.get(`/products/search/`+this.code)
     //api.get(`/producto`)
     .then(response => {
@@ -225,29 +210,7 @@ created() {
     })
     .catch(e => {
       this.errors.push(e)
-    }),
-    api.post(`/products/specific`,this.marca)
-    //api.get(`/producto`)
-    .then(response => {
-      // JSON responses are automatically parsed.
-      this.items2 = response.data
-      //alert(this.items2)
-      //alert(response.data)
     })
-    .catch(e => {
-      this.errors.push(e)
-    })
-    if(this.exist==0){
-      this.existencia="No hay en existencia"
-    }else{
-      if((this.exist>0)&&(this.exist<20)){
-        this.existencia="Poca existencia"
-      }else if(this.exist>20){
-        this.existencia="En existencia"
-      }
-    }
-
-
 }
 
 
