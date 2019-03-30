@@ -13,10 +13,10 @@ module.exports = router;
 var express = require('express');
 var router = express.Router();
 var compras_libre = require('../models/compras_libre');
+var carrito_compras = require('../models/carrito-compras');
 
 /*Make buy */
 router.post('/buy', function(req, res, next) {
-
   var specific_data = req.body;
   console.log('DATOS DE COMPRA')
   console.log(specific_data)
@@ -38,15 +38,31 @@ router.post('/buy', function(req, res, next) {
       'num_exterior': specific_data[9].exteriornum,
       'colonia': specific_data[10].col,
       'referencias': specific_data[11].references
-    },
-    'clave_productos': specific_data[12].claves,
-    'cantidades': specific_data[13].canti
+    }
   }
-
   compras_libre.create(query,function (err, compras_libre){
     if(err)
       return res.status(500).send('Error en la peticion');
     if(!compras_libre)
+      return res.status(404).send({message: 'Ningun registro identificado'});
+    else
+      return res.status(404).send({message: 'Saved!'});
+  });
+});
+
+router.post('/addcar', function(req, res, next) {
+  var specific_data = req.body;
+  console.log('DATOS DE CARRITO')
+  console.log(specific_data)
+  var query = {
+    'id': specific_data[0].code,
+    'clave_productos': specific_data[1].claves,
+    'cantidades': specific_data[2].canti
+  }
+  carrito_compras.create(query,function (err, carrito_compras){
+    if(err)
+      return res.status(500).send('Error en la peticion');
+    if(!carrito_compras)
       return res.status(404).send({message: 'Ningun registro identificado'});
     else
       return res.status(404).send({message: 'Saved!'});
