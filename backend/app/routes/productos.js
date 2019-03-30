@@ -174,14 +174,18 @@ router.post('/stockup', function(req, res, next) {
     console.log('new_stock')
     console.log(new_stock)
     if(new_stock >= 0){
-      producto.update({'codigo': data[0].value}, {'stock': new_stock },{ multi: true}, callback);
+      producto.update({'stock': new_stock }, function (err, producto) {
+        if (err)
+          return res.status(500).send('Error en la peticion');
+        console.log('Actualizado con exito');
+      });
     }
     else {
         return res.status(404).send({message: 'Valor incorrecto'});
     }
   });
 
-  
+
 });
 
 /*Get categories*/
