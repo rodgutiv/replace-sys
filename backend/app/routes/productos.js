@@ -156,11 +156,46 @@ router.post('/specific', function(req, res, next) {
 /*Delete from stock */
 router.post('/stockup', function(req, res, next) {
   var data = req.body;
-  console.log('carrito')
-  console.log(data[0].value)
-  console.log(data[1].value)
-
+  var new_stock = 0;
+  console.log(data)
   producto.find({'codigo': data[0].value}, function (err, producto){
+    if(err)
+      return res.status(500).send('Error en la peticion');
+    if(!producto)
+      return res.status(404).send({message: 'Ningun registro identificado'});
+    var stock = producto[0].stock;
+    console.log(stock)
+    console.log(producto)
+    new_stock = stock - data[1].value;
+    console.log(new_stock)
+    if(new_stock >= 0){
+      producto.update({'codigo': data[0].value}, {'stock': new_stock })
+      .then((rawResponse) => {
+        console.log(rawResponse)
+      })
+      .catch((err) => {
+        return res.status(500).send('Error en la peticion');
+      });
+    }
+    else {
+        return res.status(404).send({message: 'Valor incorrecto'});
+    }
+  });
+
+  console.log('new_stock');
+  console.log(new_stock);
+  /*producto.update({'codigo': data[0].value}, {'stock': new_stock })
+  .then((rawResponse) => {
+    console.log(rawResponse)
+  })
+  .catch((err) => {
+    return res.status(500).send('Error en la peticion');
+  });*/
+});
+
+/*router.put('/stockup', function(req,res, next){
+  var data = req.body;
+  producto.update({'codigo': data[0].value},{'stock': new_stock }, function (err, producto){
     if(err)
       return res.status(500).send('Error en la peticion');
     if(!producto)
@@ -170,23 +205,12 @@ router.post('/stockup', function(req, res, next) {
     var stock = producto[0].stock;
     console.log('stock')
     console.log( producto[0].stock)
-    var new_stock = stock - data[1].value;
+    new_stock = stock - data[1].value;
     console.log('new_stock')
     console.log(new_stock)
-    if(new_stock >= 0){
-      producto.update({'stock': new_stock }, function (err, producto) {
-        if (err)
-          return res.status(500).send('Error en la peticion');
-        console.log('Actualizado con exito');
-      });
-    }
-    else {
-        return res.status(404).send({message: 'Valor incorrecto'});
-    }
+  
   });
-
-
-});
+});*/
 
 /*Get categories*/
 router.get('/category', function(req, res, next) {
