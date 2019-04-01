@@ -63,10 +63,10 @@ v-app
                     span {{ props.header.text }}
 
                 template( slot="items" slot-scope="props")
-                  td {{props.item.marca_auto}}
-                  td {{props.item.modelo}}
-                  td {{props.item.anio}}
-                  td {{props.item.motor}}
+                  td {{props.item.nombre}}
+                  td {{props.item.cantidades}}
+                  td {{props.item.precio}}
+                  td {{props.item.total}}
     
     v-container()
       v-layout.white(style="color:#084a9f;" text-xs-center row  wrap )
@@ -142,10 +142,10 @@ export default {
       errors: [],
       empty: [],
       headers:[
-        { text: 'Marca', value: null, sortable:false },  
-        { text: 'Modelo', value: null },
-        { text: 'Año', value: null },
-        { text: 'Motor', value: null }
+        { text: 'Nombre', value: 'nombre', sortable:false },  
+        { text: 'Cantidades', value: null },
+        { text: 'Precio', value: null },
+        { text: 'Total', value: null }
       ],
       exist:7,
       existencia:null,
@@ -167,12 +167,14 @@ export default {
       api.post('/compra/buy', $(event.currentTarget).serializeArray())
       //api.post('/compra/buy', {id:'1'},{nombre_completo:this.nombre_cliente})
       .then(response => {
-        alert(response.data)
-        this.$router.push({  path: '/aplicacion/pagar'});
+        //alert(response.data)
+        //this.$router.push({  path: '/aplicacion/pagar'});
+        this.$router.push({name: 'pagar', params: { id: this.codigo  } }) 
       })
       .catch(e => {
         this.errors.push(e)
-        this.$router.push({  path: '/aplicacion/pagar'});
+        //this.$router.push({  path: '/aplicacion/pagar'});
+        this.$router.push({name: 'pagar', params: { id: this.codigo  } })  
       })
 
    }
@@ -180,19 +182,13 @@ export default {
 created() {
     this.codigo = this.$route.params.id
     //alert(this.codigo)
-    this.code = sessionStorage.getItem("code");
+    //this.code = sessionStorage.getItem("code");
     //Carrito
-    api.get(`/products/search/`+this.code)
-    //api.get(`/producto`)
+    /*api.get(`/products/search/`+this.code)*/
+    api.post(`/compra/listcar`,[{'id_compras':this.codigo}])
     .then(response => {
       // JSON responses are automatically parsed.
-      this.nombre = response.data.nombre
-      this.precio = response.data.precio
-      this.modelo = response.data.modelo
-      this.tipo = response.data.tipo
-      this.marca = response.data.marca
-      this.descripcion = response.data.descripcion
-      this.items = response.data.autos
+      this.items=response.data
     })
     .catch(e => {
       this.errors.push(e)

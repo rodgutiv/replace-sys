@@ -121,7 +121,8 @@ export default {
  methods: {
    comprar(dato){
      sessionStorage.setItem("code",dato);
-     this.$router.push({ path: '/aplicacion/agregar/'+dato});
+     //this.$router.push({ path: '/aplicacion/agregar/'+dato});
+     this.$router.push({name: 'agregar', params: { id: dato  } })
    }
  },
 created() {

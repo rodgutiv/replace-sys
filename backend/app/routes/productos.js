@@ -21,7 +21,7 @@ router.get('/all', function(req, res, next) {
         return res.status(500).send('Error en la peticion');
       if(!producto)
         return res.status(404).send({message: 'Ningun registro identificado'});
-    console.log(producto)
+    //console.log(producto)
     return res.json(producto);
   });
 });
@@ -34,7 +34,7 @@ router.get('/search/:code', function(req, res, next) {
         return res.status(500).send('Error en la peticion');
       if(!producto)
         return res.status(404).send({message: 'Ningun registro identificado'});
-    console.log(producto)
+    //console.log(producto)
     return res.send(producto);
   });
 });
@@ -148,7 +148,7 @@ router.post('/specific', function(req, res, next) {
         return res.status(500).send('Error en la peticion');
       if(!producto)
         return res.status(404).send({message: 'Ningun registro identificado'});
-    console.log(producto)
+    //console.log(producto)
     return res.json(producto);
   });
 });
@@ -190,15 +190,7 @@ router.post('/stockup', function(req, res, next) {
   .catch((err) => {
     console.log(err)
     return res.status(500).send('Error en la peticion');
-<<<<<<< HEAD
   });
-  
-  
-=======
-  })
-
-
->>>>>>> master
 });
 
 

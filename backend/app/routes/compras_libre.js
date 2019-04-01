@@ -57,10 +57,15 @@ router.post('/addcar', function(req, res, next) {
   console.log('DATOS DE CARRITO')
   console.log(specific_data)
   var query = {
-    'id': specific_data[0].code,
+    'id_compras': specific_data[0].code,
     'clave_productos': specific_data[1].claves,
-    'cantidades': specific_data[2].canti
+    'nombre': specific_data[2].nombre,
+    'cantidades': specific_data[3].canti,
+    'precio':specific_data[4].precio,
+    'total':specific_data[5].total
   }
+  console.log('DATOS')
+  console.log(query)
   carrito_compras.create(query,function (err, carrito_compras){
     if(err)
       return res.status(500).send('Error en la peticion');
@@ -73,12 +78,40 @@ router.post('/addcar', function(req, res, next) {
 
 /*Get last index car*/
 router.get('/lastindex', function(req, res, next) {
-  compras_libre.findOne().sort({created_at: -1}).distinct('id', function (err, compras_libre){
-      if(err)
-        return res.status(500).send('Error en la peticion');
-      if(!compras_libre)
-        return res.status(404).send({message: 'Ningun identificador '});
-    return res.json(compras_libre);
+  console.log('entro al ultimo id')
+  compras_libre.find().sort({$natural: -1}).limit(1)
+  .then((rawResponse) =>{
+    if(!rawResponse){
+      return res.status(404).send({message: 'Ningun identificador '});
+    }else{
+      return res.json(rawResponse[0].id);
+    }
+  })
+  .catch((err) => {
+    console.log(err)
+    return res.status(500).send('Error en la peticion');
+  });
+});
+
+/*Post list car*/
+router.post('/listcar', function(req, res, next) {
+  console.log('entro')
+  var data = req.body;
+  console.log(data)
+  console.log(data[0].id_compras)
+  carrito_compras.find({'id_compras': data[0].id_compras})
+  .then((rawResponse) =>{
+    console.log(rawResponse)
+    if(!rawResponse){
+      return res.status(404).send({message: 'Ningun identificador '});
+    }else{
+      console.log(rawResponse)
+      return res.json(rawResponse);
+    }
+  })
+  .catch((err) => {
+    console.log(err)
+    return res.status(500).send('Error en la peticion');
   });
 });
 

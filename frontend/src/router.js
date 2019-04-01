@@ -34,7 +34,7 @@ export default new Router({
               component: () => import( './views/Apli/Especifica.vue')
             },
             {
-              path: 'agregar/:code',
+              path: 'agregar/:id',
               name: 'agregar',
               component: () => import( './views/Apli/Agregar.vue')
             },
@@ -49,7 +49,7 @@ export default new Router({
               component: () => import( './views/Apli/Comprar.vue')
             },
             {
-              path: 'pagar',
+              path: 'pagar/:id',
               name: 'pagar',
               component: () => import( './views/Apli/Pagar.vue')
             }

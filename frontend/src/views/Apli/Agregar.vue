@@ -84,7 +84,7 @@ v-app
               v-text-field( label="REALIZA UNA PREGUNTA" single-line solo )
         v-layout(row wrap class="blue--text" )
           v-flex(xs6 class="text-lg-left")
-            h2(style="color:#084a9f;") Compativilidad
+            h2(style="color:#084a9f;") Compatibilidad
             v-data-table( 
             :headers="headers" 
             :pagination.sync="pagination"
@@ -186,7 +186,9 @@ export default {
       ],
       exist:7,
       existencia:null,
-      codigo:null
+      codigo:null,
+      total:null,
+      id_compra:0
     }
 
 
@@ -206,11 +208,14 @@ export default {
           alert(response.data)
         }else{
           if(response.data[0].success==true){
-            api.post('/products/addcar',{'id':response.data[1].id},{'stock':response.data[2].stock})
+            this.total = this.precio * response.data[2].stock
+            //alert(this.total)
+            api.post('/compra/addcar',[{'code':this.id_compra},{'claves':response.data[1].id},{'nombre':this.nombre},{'canti':response.data[2].stock},{'precio':this.precio},{'total':this.total}])
             .then(response => {
-              
+              alert('Producto agregado al carrito')
             })
             .catch(e => {
+              //alert(e)
               this.errors.push(e)
             })
           }else{
@@ -225,12 +230,13 @@ export default {
    comprar(){
      //alert(this.code)
      //this.$router.push({ path: '/aplicacion/comprar'});
-     this.$router.push({name: 'comprar', params: { id: this.code  } })  
+     this.$router.push({name: 'comprar', params: { id: this.id_compra  } })  
    }
  },
 created() {
+    this.code = this.$route.params.id
     //this.code = sessionStorage.getItem("code");
-    this.code = 1
+    //sthis.code = 1
     //alert(this.code)
     api.get(`/products/search/`+this.code)
     //api.get(`/producto`)
@@ -270,6 +276,16 @@ created() {
       //alert(response.data)
     })
     .catch(e => {
+      this.errors.push(e)
+    }),
+    api.get(`/compra/lastindex`)
+    //api.get(`/producto`)
+    .then(response => {
+      this.id_compra = parseInt(response.data) + 1
+      //alert(this.id_compra)
+    })
+    .catch(e => {
+      //alert(e)
       this.errors.push(e)
     })
     

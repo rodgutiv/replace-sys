@@ -9,32 +9,22 @@ v-app
         v-form(ref="form" v-on:submit="guardar" lazy-validation)
           v-layout(row wrap class="blue--text" center style="padding: 20px;")
             v-flex(xs12 right)
-              h1(style="color:#003b94; ") Entrega
+              h1(style="color:#003b94; ") Forma de Pago
           v-layout(row wrap style="padding: 20px;")
             v-flex(xs12 lg6 color="#003b94" )
-              v-text-field(color="#003b94;"  :value="client" label="Client Name"  name= "clientname" )
+              v-checkbox(v-model="checkbox" :label="`Checkbox 1: ${checkbox.toString()}`")
+              v-text-field(color="#003b94;"  :value="client" label="Tarjeta de Crésdito"  name= "clientname" )
           v-divider(id="divi" gradient="to rigth, #7B1FA2, #E1BEE7")
           v-layout(row wrap style="padding: 20px;")
             v-flex(xs6)
-              v-text-field(color="#003b94;" :value="client" label="Estado"  name= "clientname" )
-            v-flex(xs6)
-              v-text-field(color="#003b94;" :value="client" label="Municipio"  name= "clientname" )
+              v-checkbox(v-model="checkbox" :label="`Checkbox 1: ${checkbox.toString()}`")
+              v-text-field(color="#003b94;" :value="client" label="Tarjeta de Débito"  name= "clientname" )
           v-divider(id="divi")
           v-layout(row wrap style="padding: 20px;")
             v-flex(xs6)
-              v-text-field(color="#003b94;" :value="client" label="Calle"  name= "clientname" )
-            v-flex(xs3)
-              v-text-field(color="#003b94;" :value="client" label="Núm Ext."  name= "clientname"  )
-            v-flex(xs3)
-              v-text-field(color="#003b94;" :value="client" label="Núm Int."  name= "clientname"  )
-          v-divider(id="divi")
+              v-checkbox(v-model="checkbox" :label="`Checkbox 1: ${checkbox.toString()}`")
+              v-text-field(color="#003b94;" :value="client" label="Transferencia Electrónica"  name= "clientname" )
           v-layout(row wrap style="padding: 20px;")
-            v-flex(xs12 lg6)
-                v-text-field(color="#003b94;" :value="client" label="Referencias"  name= "clientname" readonly="readonly")
-          v-divider(id="divi")
-          v-layout(row wrap style="padding: 20px;")
-            v-flex(xs6)
-              v-text-field(color="#003b94;" :value="client" label="Colonia"  name= "clientname" readonly="readonly" )
             v-flex(xs6 style="padding-left:50px; padding-top:10px;")              
               v-btn(color="#003b94;" @click="guardar") Siguiente              
           //v-speacer
@@ -55,10 +45,10 @@ v-app
                     span {{ props.header.text }}
 
                 template( slot="items" slot-scope="props")
-                  td {{props.item.marca_auto}}
-                  td {{props.item.modelo}}
-                  td {{props.item.anio}}
-                  td {{props.item.motor}}
+                  td {{props.item.nombre}}
+                  td {{props.item.cantidades}}
+                  td {{props.item.precio}}
+                  td {{props.item.total}}
     
     v-container()
       v-layout.white(style="color:#084a9f;" text-xs-center row  wrap )
@@ -133,10 +123,10 @@ export default {
       errors: [],
       empty: [],
       headers:[
-        { text: 'Marca', value: null, sortable:false },  
-        { text: 'Modelo', value: null },
-        { text: 'Año', value: null },
-        { text: 'Motor', value: null }
+        { text: 'Nombre', value: 'nombre', sortable:false },  
+        { text: 'Cantidades', value: null },
+        { text: 'Precio', value: null },
+        { text: 'Total', value: null }
       ],
       exist:7,
       existencia:null
@@ -162,19 +152,12 @@ export default {
    }
  },
 created() {
-    this.code = sessionStorage.getItem("code");
+    this.code = this.$route.params.id
     //Carrito
-    api.get(`/products/search/`+this.code)
-    //api.get(`/producto`)
+    api.post(`/compra/listcar`,[{'id_compras':this.code}])
     .then(response => {
       // JSON responses are automatically parsed.
-      this.nombre = response.data.nombre
-      this.precio = response.data.precio
-      this.modelo = response.data.modelo
-      this.tipo = response.data.tipo
-      this.marca = response.data.marca
-      this.descripcion = response.data.descripcion
-      this.items = response.data.autos
+      this.items=response.data
     })
     .catch(e => {
       this.errors.push(e)

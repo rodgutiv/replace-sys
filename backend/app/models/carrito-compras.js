@@ -6,8 +6,11 @@ var Schema = mongoose.Schema;
 // Creamos el objeto del esquema y sus atributos
 var CarritoComprasSchema = Schema({
   id_compras: String,
-  clave_productos: [String],
-  cantidades: [Number]
+  clave_productos: String,
+  nombre: String,
+  cantidades: Number,
+  precio: Number,
+  total: Number
 });
 // Exportamos el modelo para usarlo en otros ficheros
 module.exports = mongoose.model('CarritoCompras', CarritoComprasSchema);
