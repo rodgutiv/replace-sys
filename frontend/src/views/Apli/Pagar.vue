@@ -11,21 +11,31 @@ v-app
             v-flex(xs12 right)
               h1(style="color:#003b94; ") Forma de Pago
           v-layout(row wrap style="padding: 20px;")
-            v-flex(xs12 lg6 color="#003b94" )
-              v-checkbox(v-model="checkbox" :label="`Checkbox 1: ${checkbox.toString()}`")
-              v-text-field(color="#003b94;"  :value="client" label="Tarjeta de Crésdito"  name= "clientname" )
-          v-divider(id="divi" gradient="to rigth, #7B1FA2, #E1BEE7")
+              v-radio-group( column)
+                v-flex(xs12 color="#003b94" )
+                  v-radio( label="Tarjeta de Crésdito" value="Tarjeta de Crésdito" name="pago")
+                v-divider(id="divi" gradient="to rigth, #7B1FA2, #E1BEE7")
+                v-flex(xs12 color="#003b94" )
+                  v-radio(label="Tarjeta de Débito" value="Tarjeta de Débito" name="pago")
+                v-divider(id="divi" gradient="to rigth, #7B1FA2, #E1BEE7")
+                v-flex(xs12 color="#003b94" )
+                  v-radio(label="Transferencia Electrónica" value="Transferencia Electrónica" name="pago")
+          //  v-layout(row wrap style="padding: 20px;")
+              v-flex(xs12 lg6 color="#003b94" )
+                v-checkbox(v-model="checkbox" label="Tarjeta de Crésdito")
+                //v-text-field(color="#003b94;"  :value="client" label="Tarjeta de Crésdito"  name= "clientname" )
+            v-divider(id="divi" gradient="to rigth, #7B1FA2, #E1BEE7")
+            v-layout(row wrap style="padding: 20px;")
+              v-flex(xs6)
+                v-checkbox(v-model="checkbox" label="Tarjeta de Débito")
+                //v-text-field(color="#003b94;" :value="client" label="Tarjeta de Débito"  name= "clientname" )
+            v-divider(id="divi")
+            v-layout(row wrap style="padding: 20px;")
+              v-flex(xs6)
+                v-checkbox(v-model="checkbox" label="Tarjeta de Débito")
+                //v-text-field(color="#003b94;" :value="client" label="c"  name= "clientname" )
           v-layout(row wrap style="padding: 20px;")
-            v-flex(xs6)
-              v-checkbox(v-model="checkbox" :label="`Checkbox 1: ${checkbox.toString()}`")
-              v-text-field(color="#003b94;" :value="client" label="Tarjeta de Débito"  name= "clientname" )
-          v-divider(id="divi")
-          v-layout(row wrap style="padding: 20px;")
-            v-flex(xs6)
-              v-checkbox(v-model="checkbox" :label="`Checkbox 1: ${checkbox.toString()}`")
-              v-text-field(color="#003b94;" :value="client" label="Transferencia Electrónica"  name= "clientname" )
-          v-layout(row wrap style="padding: 20px;")
-            v-flex(xs6 style="padding-left:50px; padding-top:10px;")              
+            v-flex(xs6 style="padding-left:25%;")              
               v-btn(color="#003b94;" @click="guardar") Siguiente              
           //v-speacer
           v-layout(row wrap class="blue--text" )
@@ -138,9 +148,10 @@ export default {
 
  methods: {
    guardar(){
+     alert('gracias por su compra')
      //this.$router.push({ path: '/aplicacion/pagar'});
      //this.$router.push({ name: 'pagar'});
-     this.$router.push({ path: '/aplicacion/pagar'});
+     //this.$router.push({ path: '/aplicacion/pagar'});
       /*api.post('/products/stockup', $(event.currentTarget).serializeArray())
       .then(response => {
         alert(response.data)
@@ -209,5 +220,8 @@ created() {
   }
   .theme--light.v-label {
     color: #003b94 !important;
-}
+  }
+  .v-input__control{
+    width: -webkit-fill-available;
+  }
 </style>
