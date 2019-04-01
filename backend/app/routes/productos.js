@@ -165,7 +165,8 @@ router.post('/stockup', function(req, res, next) {
       return res.status(404).send({message: 'Ningun registro identificado'});
     }else{
       console.log('correcto')
-      new_stock = rawResponse[0].stock
+      var stock = rawResponse[0].stock
+      new_stock = stock - data[1].value
       console.log(new_stock)
 
       //metodo que cambia el stock
