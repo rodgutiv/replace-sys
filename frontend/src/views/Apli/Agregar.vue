@@ -202,7 +202,21 @@ export default {
      //alert("entro")
       api.post('/products/stockup',$(event.currentTarget).serializeArray())
       .then(response => {
-        alert(response.data)
+        if(!response.data[0].success){
+          alert(response.data)
+        }else{
+          if(response.data[0].success==true){
+            api.post('/products/addcar',{'id':response.data[1].id},{'stock':response.data[2].stock})
+            .then(response => {
+              
+            })
+            .catch(e => {
+              this.errors.push(e)
+            })
+          }else{
+            alert('algo salio mal')
+          }
+        }
       })
       .catch(e => {
         this.errors.push(e)
@@ -210,12 +224,13 @@ export default {
    },
    comprar(){
      //alert(this.code)
-     this.$router.push({ path: '/aplicacion/comprar'});
-     //this.$router.push({name: 'comprar', params: { codigo: this.code  } })  
+     //this.$router.push({ path: '/aplicacion/comprar'});
+     this.$router.push({name: 'comprar', params: { id: this.code  } })  
    }
  },
 created() {
-    this.code = sessionStorage.getItem("code");
+    //this.code = sessionStorage.getItem("code");
+    this.code = 1
     //alert(this.code)
     api.get(`/products/search/`+this.code)
     //api.get(`/producto`)
@@ -231,6 +246,7 @@ created() {
       this.descripcion = response.data.descripcion
       this.items = response.data.autos
       this.codigo=response.data.codigo
+      this.exist=response.data.stock
 
       if(this.exist==0){
       this.existencia="No hay en existencia"

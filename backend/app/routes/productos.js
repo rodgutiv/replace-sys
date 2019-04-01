@@ -166,7 +166,10 @@ router.post('/stockup', function(req, res, next) {
     }else{
       console.log('correcto')
       var stock = rawResponse[0].stock
-      new_stock = stock - data[1].value
+      console.log(stock)
+      var quit_stock = data[1].value
+      console.log(quit_stock)
+      new_stock = stock - quit_stock
       console.log(new_stock)
 
       //metodo que cambia el stock
@@ -174,41 +177,20 @@ router.post('/stockup', function(req, res, next) {
       .then((producto) => {
         console.log('update')
         console.log(producto)
+
+        var result = [{'success':true},{'id':data[0].value},{'stock':data[1].value}]
+        console.log(result)
+        return res.json(result);
       })
       .catch((err) => {
         return res.status(500).send('Error en la peticion');
       });
     }
-
-
-    /*if(err)
-      return res.status(500).send('Error en la peticion');
-    if(!producto)
-      return res.status(404).send({message: 'Ningun registro identificado'});
-    var stock = producto[0].stock;
-    console.log(stock)
-    console.log(producto)
-    new_stock = stock - data[1].value;
-    console.log(new_stock)*/
-    /*if(new_stock >= 0){
-      producto.update({'codigo': data[0].value}, {'stock': new_stock })
-      .then((rawResponse) => {
-        console.log(rawResponse)
-      })
-      .catch((err) => {
-        return res.status(500).send('Error en la peticion');
-      });
-    }
-    else {
-        return res.status(404).send({message: 'Valor incorrecto'});
-    }*/
-
-
   })
   .catch((err) => {
     console.log(err)
     return res.status(500).send('Error en la peticion');
-  })
+  });
   
   
 });

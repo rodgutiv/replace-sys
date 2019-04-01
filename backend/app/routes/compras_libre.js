@@ -21,26 +21,28 @@ router.post('/buy', function(req, res, next) {
   console.log('DATOS DE COMPRA')
   console.log(specific_data)
   var query = {
-    'id': specific_data[0].code,
+    'id': specific_data[0].value,
     'datos_personales':
     {
-      'nombre_completo': specific_data[1].fullname,
-      'email': specific_data[2].email,
-      'telefono': specific_data[3].phone
+      'nombre_completo': specific_data[1].value,
+      'email': specific_data[2].value,
+      'telefono': specific_data[3].value
     },
     'datos_entrega':
     {
-      'codigo_postal': specific_data[4].cp,
-      'estado': specific_data[5].state,
-      'municipio': specific_data[6].city,
-      'calle': specific_data[7].street,
-      'num_interior': specific_data[8].interiornum,
-      'num_exterior': specific_data[9].exteriornum,
-      'colonia': specific_data[10].col,
-      'referencias': specific_data[11].references
+      'codigo_postal': specific_data[4].value,
+      'estado': specific_data[5].value,
+      'municipio': specific_data[6].value,
+      'calle': specific_data[7].value,
+      'num_interior': specific_data[8].value,
+      'num_exterior': specific_data[9].value,
+      'colonia': specific_data[10].value,
+      'referencias': specific_data[11].value
     }
   }
   compras_libre.create(query,function (err, compras_libre){
+    console.log(query)
+    console.log(compras_libre)
     if(err)
       return res.status(500).send('Error en la peticion');
     if(!compras_libre)

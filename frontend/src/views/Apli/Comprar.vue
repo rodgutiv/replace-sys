@@ -12,6 +12,7 @@ v-app
               h1(style="color:#003b94; ") Entrega
           v-layout(row wrap style="padding: 20px;")
             v-flex(xs6)
+              v-text-field(color="#003b94;" label="Nombre" style="display:none;" :value="codigo" name= "id" )
               v-text-field(color="#003b94;" label="Nombre" :value="nombre_cliente" name= "nombre" )
             v-flex(xs6)
               v-text-field(color="#003b94;" ref="email" label="Email" :value="email" name= "email" )
@@ -177,7 +178,7 @@ export default {
    }
  },
 created() {
-    //this.codigo = this.$route.params.codigo
+    this.codigo = this.$route.params.id
     //alert(this.codigo)
     this.code = sessionStorage.getItem("code");
     //Carrito

@@ -44,7 +44,7 @@ export default new Router({
               component: () => import( './views/Apli/Ayuda.vue')
             },
             {
-              path: 'comprar',
+              path: 'comprar/:id',
               name: 'comprar',
               component: () => import( './views/Apli/Comprar.vue')
             },
