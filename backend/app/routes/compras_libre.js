@@ -71,4 +71,16 @@ router.post('/addcar', function(req, res, next) {
   });
 });
 
+/*Get last index car*/
+router.get('/lastindex', function(req, res, next) {
+  compras_libre.findOne().sort({created_at: -1}).distinct('id', function (err, compras_libre){
+      if(err)
+        return res.status(500).send('Error en la peticion');
+      if(!compras_libre)
+        return res.status(404).send({message: 'Ningun identificador '});
+    return res.json(compras_libre);
+  });
+});
+
+
 module.exports = router;
