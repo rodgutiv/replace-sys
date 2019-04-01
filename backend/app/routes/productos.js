@@ -153,13 +153,34 @@ router.post('/specific', function(req, res, next) {
   });
 });
 
-/*Delete from stock */
 router.post('/stockup', function(req, res, next) {
   var data = req.body;
   var new_stock = 0;
   console.log(data)
-  producto.find({'codigo': data[0].value}, function (err, producto){
-    if(err)
+
+  //metodo para buscar el producto
+  producto.find({'codigo': data[0].value})
+  .then((rawResponse) =>{
+    if(!rawResponse){
+      return res.status(404).send({message: 'Ningun registro identificado'});
+    }else{
+      console.log('correcto')
+      new_stock = rawResponse[0].stock
+      console.log(new_stock)
+
+      //metodo que cambia el stock
+      producto.updateOne({'codigo': data[0].value}, {'stock': new_stock })
+      .then((producto) => {
+        console.log('update')
+        console.log(producto)
+      })
+      .catch((err) => {
+        return res.status(500).send('Error en la peticion');
+      });
+    }
+
+
+    /*if(err)
       return res.status(500).send('Error en la peticion');
     if(!producto)
       return res.status(404).send({message: 'Ningun registro identificado'});
@@ -167,8 +188,8 @@ router.post('/stockup', function(req, res, next) {
     console.log(stock)
     console.log(producto)
     new_stock = stock - data[1].value;
-    console.log(new_stock)
-    if(new_stock >= 0){
+    console.log(new_stock)*/
+    /*if(new_stock >= 0){
       producto.update({'codigo': data[0].value}, {'stock': new_stock })
       .then((rawResponse) => {
         console.log(rawResponse)
@@ -179,38 +200,18 @@ router.post('/stockup', function(req, res, next) {
     }
     else {
         return res.status(404).send({message: 'Valor incorrecto'});
-    }
-  });
+    }*/
 
-  console.log('new_stock');
-  console.log(new_stock);
-  /*producto.update({'codigo': data[0].value}, {'stock': new_stock })
-  .then((rawResponse) => {
-    console.log(rawResponse)
+
   })
   .catch((err) => {
+    console.log(err)
     return res.status(500).send('Error en la peticion');
-  });*/
+  })
+  
+  
 });
 
-/*router.put('/stockup', function(req,res, next){
-  var data = req.body;
-  producto.update({'codigo': data[0].value},{'stock': new_stock }, function (err, producto){
-    if(err)
-      return res.status(500).send('Error en la peticion');
-    if(!producto)
-      return res.status(404).send({message: 'Ningun registro identificado'});
-    console.log('producto')
-    console.log(producto)
-    var stock = producto[0].stock;
-    console.log('stock')
-    console.log( producto[0].stock)
-    new_stock = stock - data[1].value;
-    console.log('new_stock')
-    console.log(new_stock)
-  
-  });
-});*/
 
 /*Get categories*/
 router.get('/category', function(req, res, next) {
