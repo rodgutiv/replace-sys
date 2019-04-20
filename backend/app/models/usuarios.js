@@ -13,7 +13,7 @@ var UsuariosSchema = Schema({
     email: String,
     password: String,
     fecha_nacimiento: String,
-    teléfono: String
+    telefono: String
   },
   domicilio:
   {
@@ -28,7 +28,7 @@ var UsuariosSchema = Schema({
     codigo_pais: String,
     referencias: String
   },
-  forma_pago: String
+  status: String
 });
 
 

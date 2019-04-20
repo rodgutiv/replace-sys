@@ -153,6 +153,7 @@ router.post('/specific', function(req, res, next) {
   });
 });
 
+//metodo para actualizar el stock
 router.post('/stockup', function(req, res, next) {
   var data = req.body;
   var new_stock = 0;

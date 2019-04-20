@@ -4,14 +4,12 @@ var mongoose =  require('mongoose');
 // Usaremos los esquemas
 var Schema = mongoose.Schema;
 // Creamos el objeto del esquema y sus atributos
-var CarritoComprasSchema = Schema({
+var DatosPagoSchema = Schema({
   id_compras: String,
-  clave_productos: String,
-  nombre: String,
-  cantidades: Number,
-  precio: Number,
-  total: Number,
-  fecha: 
+  numero_tarjeta: String,
+  cvv: String,
+  fecha_venc: String,
+  tipo_tarjeta: String
 });
 // Exportamos el modelo para usarlo en otros ficheros
-module.exports = mongoose.model('CarritoCompras', CarritoComprasSchema);
+module.exports = mongoose.model('DatosPago', DatosPagoSchema);
