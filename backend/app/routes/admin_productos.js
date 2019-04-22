@@ -100,12 +100,12 @@ router.post('/new-product', function(req, res, next) {
     'status' : "Activo"
   }
 
-  compras_libre.create(query,function (err, nuevo_producto){
+  producto.create(query,function (err, producto){
     console.log(query)
-    console.log(nuevo_producto)
+    console.log(producto)
     if(err)
       return res.status(500).send('Error en la peticion');
-    if(!compras_libre)
+    if(!producto)
       return res.status(404).send({message: 'Ningun registro identificado'});
     else
       return res.status(404).send({message: 'Saved!'});
@@ -115,7 +115,7 @@ router.post('/new-product', function(req, res, next) {
 //delete product
 router.post('/delete-product/:code', function(req, res, next) {
   var code = req.params.code;
-  console.log(data)
+  console.log(code)
   //metodo para buscar el producto
   producto.find({'clave_interna': code})
   .then((rawResponse) =>{
