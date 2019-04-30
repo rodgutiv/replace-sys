@@ -1,7 +1,5 @@
 <template lang="pug">
 v-app
-  div
-    toolbar
     div
       router-view
     v-container(grid-list-md text-xs-center style="background: white;")
@@ -90,7 +88,7 @@ v-app
 import toolbar from '@/components/Toolbar.vue'
 //import Modaldetalles from '@/components/Detalles.Vue'
 import {api} from '@/api'
-//import $ from 'jquery'
+import $ from 'jquery'
 //import axios from 'axios'
 export default {
     components:{
@@ -126,6 +124,8 @@ export default {
    }
  },
 created() {
+    this.info = this.$route.params.info,
+    //alert("ejemplo "+this.info)
     sessionStorage.setItem("content1","display:none")
     sessionStorage.setItem("content2",null)
     //alert(this.content2)

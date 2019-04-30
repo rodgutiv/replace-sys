@@ -11,7 +11,7 @@ var CarritoComprasSchema = Schema({
   cantidades: Number,
   precio: Number,
   total: Number,
-  fecha: 
+  fecha: Date
 });
 // Exportamos el modelo para usarlo en otros ficheros
 module.exports = mongoose.model('CarritoCompras', CarritoComprasSchema);

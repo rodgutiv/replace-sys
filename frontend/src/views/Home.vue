@@ -1,227 +1,22 @@
 <template lang="pug">
 v-app
   div
-    v-container(grid-list-md r id="carrusel1")
-        v-carousel(id ="carru1")
+    v-container(style="padding: 0px;" )
+        v-carousel(hide-delimiters height="50%")
             v-carousel-item(v-for="(item,i) in items" :key="i" :src="item.src")
-    v-container(grid-list-md r id="contenido-busca")
-      v-layout(row center)
-        v-flex(xs6 sm6 id="bloques")
-          v-layout(row id="busquedas" style="height:100%;")
-            v-flex(xs2 style="padding-top: 130px; margin-left: 25%;")
-              a(v-on:click="Submit()")
-                v-img(src="http://localhost:3000/imagenes/lupita busqueda.png" width="50px")
-            v-flex(xs6 style="padding-top: 130px;")
-              v-text-field(ref="dat" color="black" v-model="datos" label="BÚSQUEDA GENERAL" solo name="buscar" v-on:keyup.enter="Submit()")
-        v-flex(xs6 sm6 id="bloques")
-          v-layout(row  id="busquedas")
-            v-flex(xs5 class="white--text" padding-top="160px")
-              v-layout(row  )
-                v-flex(xs4 style="padding-top: 30px;")
-                  a(v-on:click="Submit2")
-                    v-img(src="http://localhost:3000/imagenes/lupita busqueda.png" max-width="40px")
-                v-flex(xs8 style="padding-top: 30px;")
-                  h3 BÚSQUEDA ESPECÍFICA
-            v-flex(flex xs7)
-              v-layout(row)
-                v-flex(xs10 sm10)
-                  h3(class="white--text" id="text") MARCA
-                  v-select(v-model="selec1"
-                    :items="brands"
-                    attach
-                    solo
-                    color="black"
-                    item-value="marca"
-                    @change="model(selec1)"
-                    v-on:keyup.enter="Submit2()"
-                    required
-                    )
-                  v-text-field(ref="marcas" name="marca" style="display:none" readonly :value="selec1")
-                  h3(class="white--text" id="text")  MODELO
-                  v-select(
-                  v-model="selec2"
-                  attach
-                  color="black"
-                  :items="models"
-                  item-value="name"
-                  @change="year(selec2)"
-                  v-on:keyup.enter="Submit2()"
-                  required
-                  solo)
-                  v-text-field(ref="modelos" name="modelo" style="display:none" readonly :value="selec2" )
-                  h3(class="white--text" id="text") AÑO
-                  v-select(
-                  attach
-                  color="black"
-                  v-model="selec3"
-                  :items="years"
-                  item-value="año"
-                  @change="engine(selec3)"
-                  v-on:keyup.enter="Submit2()"
-                  required
-                  solo)
-                  v-text-field(ref="años" name="año" style="display:none" readonly :value="selec3" )
-                  h3(class="white--text" id="text") MOTOR
-                  v-select(
-                  attach
-                  color="black"
-                  v-model="selec4"
-                  :items="engines"
-                  item-value="motor"
-                  @change="sparepart(selec4)"
-                  v-on:keyup.enter="Submit2()"
-                  required
-                  solo)
-                  v-text-field(ref="motores" name="motor" style="display:none" readonly :value="selec4" )
-                  h3(class="white--text" id="text") REFACCION
-                  v-select(
-                  attach
-                  color="black"
-                  v-model="selec5"
-                  :items="spareparts"
-                  item-value="refaccion"
-                  @change="final(selec5)"
-                  v-on:keyup.enter="Submit2()"
-                  required
-                  solo)
-    v-container(grid-list-md r )
-      v-layout(id="destacados")
-        v-flex(xs12 sm6)
-          h2(class="white--text" style="padding-left:30%;") PRODUCTOS DESTACADOS
-      v-layout(id="carrusel" center )
-        v-flex(xs3 style="padding:0" )
+    v-container(id="segundo")
+        v-carousel(hide-delimiters height="50%")
+            v-carousel-item(v-for="(item,i) in items" :key="i" :src="item.src")
+    v-container(style="padding-top:30%")
+      v-img(src="http://localhost:3000/imagenes/carro_detalles.png")
+    v-container(id="tercero")
+      v-flex(xs4)
+        h1.display-2.font-weight-bold(class="text-md-center") PROMOCIONES DEL MES 
+      v-flex(xs3 style="padding-left: 8%")
+        p(class="text-md-center") Desubre todas las ofertas que tenemos en REFACE durante mayo
+      v-flex(xs4 style="padding-left:12%")
+        v-btn(color="#062252" class="white--text" to="/") Ver más
 
-            div
-              v-img(v-on:click="width=500;height=400;" src="http://localhost:3000/imagenes/freno1.png")
-            h3(class="white--text" style="padding-left:30%;") FRENOS
-        v-flex(xs3 style="padding:0")
-
-            div
-              v-img(src="http://localhost:3000/imagenes/bujia.png")
-            h3(class="white--text" style="padding-left:30%;") BUJIAS
-        v-flex(xs3 style="padding:0")
-
-            div
-              v-img(src="http://localhost:3000/imagenes/escape.png")
-            h3(class="white--text" style="padding-left:30%;") ESCAPES
-        v-flex(xs3 style="padding:0")
-
-            div
-              v-img(src="http://localhost:3000/imagenes/filtro.png")
-            h3(class="white--text" style="padding-left:30%;") FILTROS
-        v-flex(xs3 style="padding:0")
-
-            div
-              v-img(src="http://localhost:3000/imagenes/freno2.png")
-            h3(class="white--text" style="padding-left:30%;") FRENOS
-
-    v-container(grid-list-md r id="mas_vendidos")
-      v-layout(id="destacados")
-        v-flex(xs12 sm6)
-          h2(class="white--text" style="padding-left:30%;") PRODUCTOS MÁS VENDIDOS
-      v-layout(id="carrusel" center)
-        v-flex(xs3 style="padding:0")
-
-            div
-              v-img(src="http://localhost:3000/imagenes/freno1.png")
-            h3(class="white--text" style="padding-left:30%;") FRENOS
-        v-flex(xs3 style="padding:0")
-
-            div
-              v-img(src="http://localhost:3000/imagenes/bujia.png")
-            h3(class="white--text" style="padding-left:30%;") BUJIAS
-        v-flex(xs3 style="padding:0")
-
-            div
-              v-img(src="http://localhost:3000/imagenes/escape.png")
-            h3(class="white--text" style="padding-left:30%;") ESCAPES
-        v-flex(xs3 style="padding:0")
-
-            div
-              v-img(src="http://localhost:3000/imagenes/filtro.png")
-            h3(class="white--text" style="padding-left:30%;") FILTROS
-        v-flex(xs3 style="padding:0")
-
-            div
-              v-img(src="http://localhost:3000/imagenes/freno2.png")
-            h3(class="white--text" style="padding-left:30%;") FRENOS
-    v-container(grid-list-md r id="nuevos")
-      v-layout(id="destacados")
-        v-flex(xs12 sm6)
-          h2(class="white--text" style="padding-left:30%;") PRODUCTOS NUEVOS
-      v-layout(id="carrusel" center)
-        v-flex(xs3 style="padding:0")
-
-            div
-              v-img(src="http://localhost:3000/imagenes/freno1.png")
-            h3(class="white--text" style="padding-left:30%;") FRENOS
-        v-flex(xs3 style="padding:0")
-
-            div
-              v-img(src="http://localhost:3000/imagenes/bujia.png")
-            h3(class="white--text" style="padding-left:30%;") BUJIAS
-        v-flex(xs3 style="padding:0")
-
-            div
-              v-img(src="http://localhost:3000/imagenes/escape.png")
-            h3(class="white--text" style="padding-left:30%;") ESCAPES
-        v-flex(xs3 style="padding:0")
-
-            div
-              v-img(src="http://localhost:3000/imagenes/filtro.png")
-            h3(class="white--text" style="padding-left:30%;") FILTROS
-        v-flex(xs3 style="padding:0")
-
-            div
-              v-img(src="http://localhost:3000/imagenes/freno2.png")
-            h3(class="white--text" style="padding-left:30%;") FRENOS
-    //footer
-    v-container
-      v-layout(class="white--text" text-xs-center row  wrap style="width: 100%;")
-                v-flex(flex xs4)
-                    h3 SERVICIO AL CLIENTE
-                    v-layout(row  wrap)
-                        v-flex(xs4)
-                            v-img(src="http://localhost:3000/imagenes/atención_al_cliente.png" width="30%"  style="margin-left:80%;")
-                        v-flex(xs8)
-                            v-layout(row  wrap)
-                                v-flex(xs12)
-                                    span Contactanos
-                                v-flex(xs12)
-                                    span (443) 254 34 56
-                    v-spacer
-                    v-layout(row  wrap)
-                        v-flex(xs4)
-                            v-img(src="http://localhost:3000/imagenes/ubicación.png" width="30%"    style="margin-left:80%;")
-                        v-flex(xs8)
-                            v-layout(row  wrap)
-                                v-flex(xs12)
-                                    span Encuentranos en:
-                                v-flex(xs12)
-                                    span Av. Acueducto 1969
-                                v-flex(xs12)
-                                    span Matamoros 58240
-                                v-flex(xs12)
-                                    span Morelia, mich.
-
-                v-flex(flex xs4)
-                    h3 CUENTAS Y PEDIDOS
-                    v-layout(row  wrap)
-                        v-flex(xs12)
-                            span Contactanos
-                        v-flex(xs12)
-                            span Factura electrónica
-                        v-flex(xs12)
-                            span Preguntas frecuentes
-                v-flex(flex xs4)
-                    h3 INFORMACIÓN
-                    v-layout(row  wrap)
-                        v-flex(xs12)
-                            span Contactanos
-                        v-flex(xs12)
-                            span Factura electrónica
-                        v-flex(xs12)
-                            span Preguntas frecuentes
 </template>
 <script>
 //import footer from '@/components/Footer.vue'
@@ -350,40 +145,22 @@ export default {
 
 </script>
 <style>
-  #contenido-busca{
-      max-width: 1485px;
+  #segundo{
+    position:absolute;
+    z-index:1;
+    top:25%;
+    left:5%;
+    width:90%;
   }
-  #busquedas{
-    background: linear-gradient(to bottom, black,#2b467b);
-    padding: 30px;
+  #tercero{
+    position:absolute;
+    z-index:1;
+    top:60%;
+    left:5%;
+    width:90%;
+    color:#062252;
   }
-  #bloques{
-    padding: 10px;
-
-  }
-  #carrusel1{
-      max-width: 1485px;
-      
-  }
-  .v-text-field--solo .v-input__slot {
-    min-height: 10px;
-  }
-  .v-text-field--solo .v-input__slot {
-    border-radius: 4px;
-  }
-  #text{
-    position: relative;
-    text-align: right;
-  }
-  #pie{
-    background: linear-gradient(to bottom, black,#2b467b);
-  }
-  #destacados{
-    background: linear-gradient(to bottom, black,#2b467b);
-    /*padding: 30px;*/
-  }
-  #carrusel{
-    background: linear-gradient(to bottom, black,#2b467b);
-    /*padding: 30px;*/
+  .carousel {
+    height: 30% !important;
   }
 </style>
