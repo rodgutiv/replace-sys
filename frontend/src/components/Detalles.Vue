@@ -1,7 +1,7 @@
 <template lang="pug">
 //div
   v-dialog(v-model="dialog" max-width="500" hide-overlay)
-    v-btn( @click="dialog = true" small slot="activator" color="blue" fab dark)
+    v-btn( small slot="activator" color="blue" fab dark)
       v-icon add
     v-card
       v-toolbar(dark color="indigo")

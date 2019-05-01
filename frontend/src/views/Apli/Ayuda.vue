@@ -3,7 +3,8 @@ v-app
     div
       router-view
     v-container(grid-list-md text-xs-center)
-      v-card( style="background: linear-gradient(180deg,#000,#2b467b);     padding: 10px;")
+      //v-card( style="background: linear-gradient(180deg,#000,#2b467b);     padding: 10px;")
+      v-card( style="background: #152d5b;     padding: 10px;")
         v-form(ref="form" v-model="valid" v-on:submit.prevent="Submit3()" lazy-validation)
           v-layout(row wrap class="white--text")
             v-flex(xs12 center)
@@ -27,11 +28,11 @@ v-app
                   v-btn(type="submit") Enviar
     v-container
       v-layout(class="white--text" :style="content1" text-xs-center row  wrap style="width: 100%;")
-                v-flex(flex xs4)
+                v-flex(flex xs4 style="color: #152d5b;" )
                     h3 SERVICIO AL CLIENTE
                     v-layout(row  wrap)
                         v-flex(xs4)
-                            v-img(src="http://localhost:3000/imagenes/atención_al_cliente.png" width="30%"  style="margin-left:80%;")
+                            v-img(src="http://localhost:3000/imagenes/atención.png" width="30%"  style="margin-left:80%;")
                         v-flex(xs8)
                             v-layout(row  wrap)
                                 v-flex(xs12)
@@ -41,7 +42,7 @@ v-app
                     v-spacer
                     v-layout(row  wrap)
                         v-flex(xs4)
-                            v-img(src="http://localhost:3000/imagenes/ubicación.png" width="30%"    style="margin-left:80%;")
+                            v-img(src="http://localhost:3000/imagenes/ubicación2.png" width="30%"    style="margin-left:80%;")
                         v-flex(xs8)
                             v-layout(row  wrap)
                                 v-flex(xs12)
@@ -53,7 +54,7 @@ v-app
                                 v-flex(xs12)
                                     span Morelia, mich.
 
-                v-flex(flex xs4)
+                v-flex(flex xs4 style="color: #152d5b;" )
                     h3 CUENTAS Y PEDIDOS
                     v-layout(row  wrap)
                         v-flex(xs12)
@@ -62,7 +63,7 @@ v-app
                             span Factura electrónica
                         v-flex(xs12)
                             span Preguntas frecuentes
-                v-flex(flex xs4)
+                v-flex(flex xs4 style="color: #152d5b;" )
                     h3 INFORMACIÓN
                     v-layout(row  wrap)
                         v-flex(xs12)

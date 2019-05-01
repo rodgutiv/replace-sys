@@ -1,7 +1,5 @@
 <template lang="pug">
 v-app
-  div
-    toolbar
     div
       router-view
     v-container(grid-list-md style="    max-width: fit-content;")
