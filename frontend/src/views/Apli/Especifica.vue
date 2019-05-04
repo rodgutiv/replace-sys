@@ -1,7 +1,5 @@
 <template lang="pug">
-v-app
-  div
-    toolbar
+v-appr
     div
       router-view
     v-container(grid-list-md text-xs-center style="background: white;")
@@ -15,7 +13,7 @@ v-app
           v-data-iterator(:items="items" :search="escrito" item-key="key_ext" :rows-per-page-items="rowsPerPageItems"  row wrap :pagination.sync="pagination" content-tag="v-layout")
             v-flex(slot="item" slot-scope="props" text-xs-left xs12 sm6 md3 lg3)
               v-card(id="bloque")
-                v-img(src="http://localhost:3000/imagenes/disco.png")
+                v-img(src="http://vps-nodolab.com/imagenes/disco.png")
                 v-divider(id="division")
                 v-card-title(id="act" primary-title)
                   div
@@ -27,22 +25,8 @@ v-app
                       v-rating(id="stars" v-model="rating" readonly  background-color="#003b94" style="color:#003b94;")
                 v-card-actions(id="act")
                   v-btn(id="boton_prod" round v-on:click="comprar(props.item.codigo)") Comprar
-                    router-link(class="white--text"  :to="{ name: 'agregar', params: { code: props.item.code } }")
-                  v-btn(id="boton_prod" round @click="show = !show") Ver detalles
-                v-card-text(v-show="show" id="datos") 
-                  h4 Marca: {{props.item.marca}}
-                  h4 Garantía de 2 años
-                  h4 Condiciones Producto Cerrado y nuevo
-          //v-flex(xs12 lg5 mb-3)
-            v-expansion-panel(popout)
-              v-expansion-panel-content(v-for="(item,i) in 5" :key="i")
-                template(v-slot="header")
-                  div Item
-                v-card
-                  v-card-text Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</v-card-text>
-      
-      
-    
+                   Modaldetalles(:nombre="props.item.nombre" :marca="props.item.marca")
+                   
     
     
     
@@ -50,7 +34,7 @@ v-app
     v-container
       v-layout.white(style="color:#084a9f;" :style="content2" text-xs-center row  wrap )
         v-flex(flex xs4)
-            v-img(src="http://localhost:3000/imagenes/tarjeta cash.png" width="30%"  style="margin-left: 35%;") 
+            v-img(src="http://vps-nodolab.com/imagenes/tarjeta cash.png" width="30%"  style="margin-left: 35%;") 
             h3 Paga con tarjeta o en fectivo
             v-flex(xs12)
                 span Con Mercado Pago,
@@ -61,7 +45,7 @@ v-app
             v-flex(xs12)
                 span de pago. ¡Y siempre es seguro!
         v-flex(flex xs4)
-            v-img(src="http://localhost:3000/imagenes/envio.png" width="30%"  style="margin-left: 35%;") 
+            v-img(src="http://vps-nodolab.com/imagenes/envio.png" width="30%"  style="margin-left: 35%;") 
             h3 Envío gratis desde $449
             v-flex(xs12)
                 span Con Mercado Pago,
@@ -72,7 +56,7 @@ v-app
             v-flex(xs12)
                 span de pago. ¡Y siempre es seguro!
         v-flex(flex xs4)
-            v-img(src="http://localhost:3000/imagenes/seguridad.png" width="30%"  style="margin-left: 35%;") 
+            v-img(src="http://vps-nodolab.com/imagenes/seguridad.png" width="30%"  style="margin-left: 35%;") 
             h3 Seguridad
             v-flex(xs12)
                 span Con Mercado Pago,
@@ -85,13 +69,13 @@ v-app
 </template>
 <script>
 import toolbar from '@/components/Toolbar.vue'
-
+import Modaldetalles from '@/components/Detalles.vue'
 import {api} from '@/api'
 //import $ from 'jquery'
 //import axios from 'axios'
 export default {
     components:{
-    toolbar
+    toolbar, Modaldetalles
   },
   data () {
     return {

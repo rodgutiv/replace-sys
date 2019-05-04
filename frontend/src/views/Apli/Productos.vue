@@ -34,49 +34,8 @@ v-app
                       v-rating(id="stars" v-model="rating" readonly background-color="#003b94" style="color:#003b94;")
                 v-card-actions(id="act")
                   v-btn(id="boton_prod" round v-on:click="comprar(props.item.codigo)") Comprar
-                  v-dialog(v-model="dialog" max-width="500" hide-overlay)
-                    v-btn( small slot="activator" color="blue" fab dark)
-                      v-icon add
-                    v-card
-                      v-toolbar(dark color="indigo")
-                        v-btn(icon dark @click.native="dialog = false")
-                          v-icon close
-                        v-toolbar-title Add to Product
-                        v-spacer
-                        v-toolbar-items
-                          v-btn(dark flat @click.native="dialog = false" ) Cancel
-                      v-card-title(primary-title)
-                        h3.headline.mb-0 {{catalog}}
-                      v-layout(row wrap center)
-                        v-flex(xs12 offset-xs5)
-                          v-switch(v-model="joto" color="green" :label="'Edit'")
-                      v-form(ref="form" v-on:submit.prevent="onSubmit()" )
-                        v-layout(row).text-xs-center
-                          v-flex(xs10 offset-xs1 )
-                            v-input.muere( prepend-icon="vpn_key")
-                              v-text-field(:value="id"  label="External key" name="id")
-                            v-input(prepend-icon="reorder")
-                              v-textarea(outline :value="codex" autofocus  :disabled="!joto" label="Insert URL Code" name="barcode" )
-
-                          
-                        
-                        v-divider 
-                        v-card-actions
-                          v-spacer
-                          v-btn.error(type="submit" @click.native="dialog = false") Save 
-                    //router-link(class="white--text"  :to="{ name: 'agregar', params: { code: props.item.code } }")
-                  //v-btn(id="boton_prod" round @click="show = !show") Ver detalles
-                //v-card-text(v-show="show" id="datos") 
-                  h4 Marca: {{marca}}
-                  h4 Garantía de 2 años
-                  h4 Condiciones Producto Cerrado y nuevo
-                  Modaldetalles(:marca="props.item.marca")
-      
-    
-    
-    
-    
-    //foother
+                  Modaldetalles(:nombre="props.item.nombre" :marca="props.item.marca")
+                
     v-container
       v-layout.white(style="color:#084a9f;" :style="content2" text-xs-center row  wrap )
         v-flex(flex xs4)
@@ -115,13 +74,13 @@ v-app
 </template>
 <script>
 import toolbar from '@/components/Toolbar.vue'
-//import Modaldetalles from '@/components/Detalles.Vue'
+import Modaldetalles from '@/components/Detalles.vue'
 import {api} from '@/api'
 //import $ from 'jquery'
 //import axios from 'axios'
 export default {
     components:{
-    toolbar//, Modaldetalles
+    toolbar, Modaldetalles
   },
   data () {
     return {

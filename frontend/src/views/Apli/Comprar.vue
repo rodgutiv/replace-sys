@@ -65,6 +65,10 @@ v-app
                   td {{props.item.cantidades}}
                   td {{props.item.precio}}
                   td {{props.item.total}}
+                  td 
+                    Agregar(:producto="props.item.claves_productos" :nombre="props.item.nombre" :cantidades="props.item.cantidades") 
+                  td 
+                    Borrar(:producto="props.item.claves_productos" :cantidad="props.item.cantidades" :nombre="props.item.nombre") 
     
     v-container()
       v-layout.white(style="color:#084a9f;" text-xs-center row  wrap )
@@ -103,14 +107,15 @@ v-app
                 span de pago. ¡Y siempre es seguro!
 </template>
 <script>
-import toolbar from '@/components/Toolbar.vue'
+import Borrar from '@/components/Borrarcarrito.vue'
+import Agregar from '@/components/Agregar.vue'
 
 import {api} from '@/api'
 import $ from 'jquery'
 //import axios from 'axios'
 export default {
     components:{
-    toolbar
+    toolbar, Borrar, Agregar
   },
   data () {
     return {
@@ -143,12 +148,15 @@ export default {
         { text: 'Nombre', value: 'nombre', sortable:false },  
         { text: 'Cantidades', value: null },
         { text: 'Precio', value: null },
-        { text: 'Total', value: null }
+        { text: 'Total', value: null },
+        { text: 'Agregar', value: null},
+        { text: 'Borrar', value: null }
       ],
       exist:7,
       existencia:null,
       nombre_cliente:null,
-      email:null
+      email:null,
+      info:null
     }
 
 
@@ -165,6 +173,7 @@ export default {
       api.post('/compra/buy', $(event.currentTarget).serializeArray())
       //api.post('/compra/buy', {id:'1'},{nombre_completo:this.nombre_cliente})
       .then(response => {
+        this.info = response.data
         //alert(response.data)
         //this.$router.push({  path: '/aplicacion/pagar'});
         this.$router.push({name: 'pagar', params: { id: this.codigo  } }) 

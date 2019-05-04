@@ -52,9 +52,70 @@ export default new Router({
               path: 'pagar/:id',
               name: 'pagar',
               component: () => import( './views/Apli/Pagar.vue')
+            },
+            {
+              path:'login',
+              name: 'login',
+              component: () => import('./views/Apli/Login.vue')
             }
           ]
         }
       ]
-    }]
+    },
+  /*Chanchuyo*/
+  {
+    path: '/inicio',
+    name: 'index',
+    component: () =>
+        import ( /*R outer 1*/ './views/Router.vue'),
+    children: [{
+            path: '',
+            name: 'home',
+            component: () =>
+                import ( /*Index Inicial */ './views/Home.vue')
+        },
+        {
+          path: '/aplicacion',
+          name: 'aplicacion',
+          component:() => import( './views/Apli/RouterApp.vue'),
+          children:[
+            {
+              path: 'productos',
+              name: 'productos',
+              component: () => import( './views/Apli/Productos.vue')
+            },
+            {
+              path: 'especifica',
+              name: 'especifica',
+              component: () => import( './views/Apli/Especifica.vue')
+            },
+            {
+              path: 'agregar/:id',
+              name: 'agregar',
+              component: () => import( './views/Apli/Agregar.vue')
+            },
+            {
+              path: 'ayuda',
+              name: 'ayuda',
+              component: () => import( './views/Apli/Ayuda.vue')
+            },
+            {
+              path: 'comprar/:id',
+              name: 'comprar',
+              component: () => import( './views/Apli/Comprar.vue')
+            },
+            {
+              path: 'pagar/:id',
+              name: 'pagar',
+              component: () => import( './views/Apli/Pagar.vue')
+            },
+            {
+              path:'login',
+              name: 'login',
+              component: () => import('./views/Apli/Login.vue')
+            }
+          ]
+        }
+    ]
+},]
 })

@@ -61,7 +61,7 @@ v-app
     v-container()
       v-layout.white(style="color:#084a9f;" text-xs-center row  wrap )
         v-flex(flex xs4)
-            v-img(src="http://localhost:3000/imagenes/tarjeta cash.png" width="30%"  style="margin-left: 35%;")
+            v-img(src="http://vps-nodolab.com/imagenes/tarjeta cash.png" width="30%"  style="margin-left: 35%;")
             h3 Paga con tarjeta o en fectivo
             v-flex(xs12)
                 span Con Mercado Pago,
@@ -72,7 +72,7 @@ v-app
             v-flex(xs12)
                 span de pago. ¡Y siempre es seguro!
         v-flex(flex xs4)
-            v-img(src="http://localhost:3000/imagenes/envio.png" width="30%"  style="margin-left: 35%;")
+            v-img(src="http://vps-nodolab.com/imagenes/envio.png" width="30%"  style="margin-left: 35%;")
             h3 Envío gratis desde $449
             v-flex(xs12)
                 span Con Mercado Pago,
@@ -83,7 +83,7 @@ v-app
             v-flex(xs12)
                 span de pago. ¡Y siempre es seguro!
         v-flex(flex xs4)
-            v-img(src="http://localhost:3000/imagenes/seguridad.png" width="30%"  style="margin-left: 35%;")
+            v-img(src="http://vps-nodolab.com/imagenes/seguridad.png" width="30%"  style="margin-left: 35%;")
             h3 Seguridad
             v-flex(xs12)
                 span Con Mercado Pago,

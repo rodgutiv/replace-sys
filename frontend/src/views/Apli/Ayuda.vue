@@ -32,7 +32,7 @@ v-app
                     h3 SERVICIO AL CLIENTE
                     v-layout(row  wrap)
                         v-flex(xs4)
-                            v-img(src="http://localhost:3000/imagenes/atención.png" width="30%"  style="margin-left:80%;")
+                            v-img(src="http://vps-nodolab.com/imagenes/atencion.png" width="30%"  style="margin-left:80%;")
                         v-flex(xs8)
                             v-layout(row  wrap)
                                 v-flex(xs12)
@@ -42,7 +42,7 @@ v-app
                     v-spacer
                     v-layout(row  wrap)
                         v-flex(xs4)
-                            v-img(src="http://localhost:3000/imagenes/ubicación2.png" width="30%"    style="margin-left:80%;")
+                            v-img(src="http://vps-nodolab.com/imagenes/ubicacion2.png" width="30%"    style="margin-left:80%;")
                         v-flex(xs8)
                             v-layout(row  wrap)
                                 v-flex(xs12)

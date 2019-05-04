@@ -4,9 +4,31 @@ v-app
     v-container(style="padding: 0px;" )
         v-carousel(hide-delimiters height="50%")
             v-carousel-item(v-for="(item,i) in items" :key="i" :src="item.src")
-    v-container(id="segundo")
+    //v-container(id="segundo")
         v-carousel(hide-delimiters height="50%")
             v-carousel-item(v-for="(item,i) in items" :key="i" :src="item.src")
+    v-container(id="segundo")
+      v-card
+        v-card-media
+          swiper(:options="swiperOption")
+            swiper-slide 
+              div()
+                v-img( style="padding-bottom: 30.2092%!important;" src="http://localhost:3000/imagenes/disco1.png")
+            swiper-slide 
+              div()
+                v-img( src="http://localhost:3000/imagenes/bujia.png")
+            swiper-slide 
+              div()
+                v-img( src="http://localhost:3000/imagenes/Rin-01.png")
+            swiper-slide              
+              div()
+                v-img( src="http://localhost:3000/imagenes/filtro.png")
+            swiper-slide 
+              div()
+                v-img( src="http://localhost:3000/imagenes/escape.png")
+            //div(class="swiper-button-prev" slot="button-prev")
+            //div(class="swiper-button-next" slot="button-next")
+            //div(class="swiper-pagination" slot="pagination")
     v-container(style="padding-top:30%")
       v-img(src="http://localhost:3000/imagenes/carro_detalles.png")
     v-container(id="tercero")
@@ -22,10 +44,12 @@ v-app
 //import footer from '@/components/Footer.vue'
 
 import {api} from '@/api'
+
 //import $ from 'jquery'
 //import axios from 'axios'
 export default {
     components:{
+      
   },
   data () {
     return {
@@ -46,10 +70,10 @@ export default {
         empty: [],
         items: [
           {
-            src: 'http://localhost:3000/imagenes/slider.png'
+            src: 'http://localhost:3000/imagenes/foto_home.png'
           },
           {
-            src: 'https://cdn.vuetifyjs.com/images/carousel/sky.jpg'
+            src: 'http://localhost:3000/imagenes/slider.png'
           },
           {
             src: 'https://cdn.vuetifyjs.com/images/carousel/bird.jpg'
@@ -62,7 +86,19 @@ export default {
         selec2:null,
         selec3:null,
         selec4:null,
-        selec5:null
+        selec5:null,
+        swiperOption: {
+          slidesPerView: 3,
+          freeMode: true,
+          pagination: {
+            el: '.swiper-pagination',
+            clickable: true
+          },
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev'
+          }
+        }
 
     }
   },
@@ -122,7 +158,13 @@ export default {
     final(dato){
       var refaccion = dato;
       sessionStorage.setItem("nombre",refaccion);
-    }
+    },
+    /*Submit(escrito){
+        //alert(escrito)
+        //alert(sessionStorage.getItem("dato"))
+        //this.$router.push({ path: '/aplicacion/productos'})
+        this.$router.go({path: '/aplicacion/productos' });
+    }*/
   },
   created(){
     sessionStorage.setItem("content1",null)
@@ -148,7 +190,7 @@ export default {
   #segundo{
     position:absolute;
     z-index:1;
-    top:25%;
+    top:30%;
     left:5%;
     width:90%;
   }
@@ -163,4 +205,7 @@ export default {
   .carousel {
     height: 30% !important;
   }
+  /*.v-responsive__sizer{
+      padding-bottom: initial!important;
+  }*/
 </style>
