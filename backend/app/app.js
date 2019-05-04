@@ -10,6 +10,10 @@ var productosRouter = require('./routes/productos');
 var ayudaRouter = require('./routes/ayuda');
 var comprasLibreRouter = require('./routes/compras_libre');
 
+var adminPagosRouter = require('./routes/admin_pagos');
+var adminProductosRouter = require('./routes/admin_productos');
+var adminUsuariosRouter = require('./routes/admin_usuarios');
+
 var app = express();
 
 // view engine setup
@@ -27,6 +31,10 @@ app.use('/users', usersRouter);
 app.use('/products', productosRouter);
 app.use('/ayuda', ayudaRouter);
 app.use('/compra', comprasLibreRouter);
+
+app.use('/ad-pagos', adminPagosRouter);
+app.use('/ad-productos', adminProductosRouter);
+app.use('/ad-usuarios', adminUsuariosRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
