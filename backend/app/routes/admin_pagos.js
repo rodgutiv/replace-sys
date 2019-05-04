@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var pago = require('../models/datos_pago_pago');
+var pago = require('../models/datos_pago');
 
 /* GET pago by id */
 router.get('/pagos/:id', function(req, res, next) {
@@ -115,3 +115,5 @@ router.post('/delete-prepayment/:id', function(req, res, next) {
     return res.status(500).send('Error en la peticion');
   });
 });
+
+module.exports = router;
