@@ -14,7 +14,8 @@ export default {
 </script>
 <style>
   .theme--light.application{
-        background: linear-gradient(to bottom, black,#2b467b);
+        /*background: linear-gradient(to bottom, black,#2b467b);*/
+        background: #f3f3f3;
   }
 </style>
 
