@@ -27,12 +27,13 @@
                             v-layout
                                 v-divider(color="white" style="margin: 40px")
                                 v-avatar(style="border-radius: initial;")
-                                    v-img(style="border-radius: initial;" src="http://vps-nodolab.com/imagenes/Logo.png") 
+                                    v-img(style="border-radius: initial;" src="http://localhost:3000/imagenes/Logo.png") 
                                 v-divider(color="white" style="margin: 40px")
                         v-flex(xs12)
                             v-layout
                                 v-flex(xs6)
-                                    a( class="white--text" @click="mostrar_politic") Condiciones de uso
+                                    Cookies
+                                    //a( class="white--text" @click="mostrar_politic") Condiciones de uso
                                     v-divider(vertical color="white" style="margin-left: 10px; margin-right: 10px;     min-height: 60%;")
                                     //a(class="white--text" @click="mostrar_politic") Aviso de privacidad
                                     Privacidad
@@ -43,9 +44,10 @@
 </template>
 <script>
 import Privacidad from '@/components/Privacidad.vue'
+import Cookies from '@/components/Cookies.vue'
 export default {
     components:{
-        Privacidad
+        Privacidad, Cookies
     },
     data () {
         return {

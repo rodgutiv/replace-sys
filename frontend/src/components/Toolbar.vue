@@ -109,16 +109,27 @@ export default {
         drawer: false,
         rightDrawer: false,
         info: null,
-        escrito: null
+        escrito: null,
+        currentUrl:null
         }    
     },
     methods: {
             Submit(escrito){
                 //alert(escrito)
+                this.currentUrl = window.location.pathname;
                 sessionStorage.setItem("dato",escrito)
+                if(this.currentUrl == '/aplicacion/productos'){
+                    alert('go')
+                    this.$forceUpdate('/aplicacion/productos')
+                    //this.$router.go({path: '/aplicacion/productos' })
+                }else{
+                    this.$router.push({path: '/aplicacion/productos' });
+                    alert('push')
+                }
+                
                 //alert(sessionStorage.getItem("dato"))
                 //this.$router.push({ path: '/aplicacion/productos'})
-                this.$router.go({path: '/aplicacion/productos' });
+                
             }
         }
 }
