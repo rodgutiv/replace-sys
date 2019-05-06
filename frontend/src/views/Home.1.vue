@@ -10,7 +10,7 @@ v-app
           v-layout(row id="busquedas" style="height:100%;")
             v-flex(xs2 style="padding-top: 130px; margin-left: 25%;")
               a(v-on:click="Submit()")
-                v-img(src="http://localhost:3000/imagenes/lupita busqueda.png" width="50px")
+                v-img(src="http://vps-nodolab.com:3000/imagenes/lupita busqueda.png" width="50px")
             v-flex(xs6 style="padding-top: 130px;")
               v-text-field(ref="dat" color="black" v-model="datos" label="BÚSQUEDA GENERAL" solo name="buscar" v-on:keyup.enter="Submit()")
         v-flex(xs6 sm6 id="bloques")
@@ -19,7 +19,7 @@ v-app
               v-layout(row  )
                 v-flex(xs4 style="padding-top: 30px;")
                   a(v-on:click="Submit2")
-                    v-img(src="http://localhost:3000/imagenes/lupita busqueda.png" max-width="40px")
+                    v-img(src="http://vps-nodolab.com:3000/imagenes/lupita busqueda.png" max-width="40px")
                 v-flex(xs8 style="padding-top: 30px;")
                   h3 BÚSQUEDA ESPECÍFICA
             v-flex(flex xs7)
@@ -92,27 +92,27 @@ v-app
         v-flex(xs3 style="padding:0" )
 
             div
-              v-img(v-on:click="width=500;height=400;" src="http://localhost:3000/imagenes/freno1.png")
+              v-img(v-on:click="width=500;height=400;" src="http://vps-nodolab.com:3000/imagenes/freno1.png")
             h3(class="white--text" style="padding-left:30%;") FRENOS
         v-flex(xs3 style="padding:0")
 
             div
-              v-img(src="http://localhost:3000/imagenes/bujia.png")
+              v-img(src="http://vps-nodolab.com:3000/imagenes/bujia.png")
             h3(class="white--text" style="padding-left:30%;") BUJIAS
         v-flex(xs3 style="padding:0")
 
             div
-              v-img(src="http://localhost:3000/imagenes/escape.png")
+              v-img(src="http://vps-nodolab.com:3000/imagenes/escape.png")
             h3(class="white--text" style="padding-left:30%;") ESCAPES
         v-flex(xs3 style="padding:0")
 
             div
-              v-img(src="http://localhost:3000/imagenes/filtro.png")
+              v-img(src="http://vps-nodolab.com:3000/imagenes/filtro.png")
             h3(class="white--text" style="padding-left:30%;") FILTROS
         v-flex(xs3 style="padding:0")
 
             div
-              v-img(src="http://localhost:3000/imagenes/freno2.png")
+              v-img(src="http://vps-nodolab.com:3000/imagenes/freno2.png")
             h3(class="white--text" style="padding-left:30%;") FRENOS
 
     v-container(grid-list-md r id="mas_vendidos")
@@ -123,27 +123,27 @@ v-app
         v-flex(xs3 style="padding:0")
 
             div
-              v-img(src="http://localhost:3000/imagenes/freno1.png")
+              v-img(src="http://vps-nodolab.com:3000/imagenes/freno1.png")
             h3(class="white--text" style="padding-left:30%;") FRENOS
         v-flex(xs3 style="padding:0")
 
             div
-              v-img(src="http://localhost:3000/imagenes/bujia.png")
+              v-img(src="http://vps-nodolab.com:3000/imagenes/bujia.png")
             h3(class="white--text" style="padding-left:30%;") BUJIAS
         v-flex(xs3 style="padding:0")
 
             div
-              v-img(src="http://localhost:3000/imagenes/escape.png")
+              v-img(src="http://vps-nodolab.com:3000/imagenes/escape.png")
             h3(class="white--text" style="padding-left:30%;") ESCAPES
         v-flex(xs3 style="padding:0")
 
             div
-              v-img(src="http://localhost:3000/imagenes/filtro.png")
+              v-img(src="http://vps-nodolab.com:3000/imagenes/filtro.png")
             h3(class="white--text" style="padding-left:30%;") FILTROS
         v-flex(xs3 style="padding:0")
 
             div
-              v-img(src="http://localhost:3000/imagenes/freno2.png")
+              v-img(src="http://vps-nodolab.com:3000/imagenes/freno2.png")
             h3(class="white--text" style="padding-left:30%;") FRENOS
     v-container(grid-list-md r id="nuevos")
       v-layout(id="destacados")
@@ -153,27 +153,27 @@ v-app
         v-flex(xs3 style="padding:0")
 
             div
-              v-img(src="http://localhost:3000/imagenes/freno1.png")
+              v-img(src="http://vps-nodolab.com:3000/imagenes/freno1.png")
             h3(class="white--text" style="padding-left:30%;") FRENOS
         v-flex(xs3 style="padding:0")
 
             div
-              v-img(src="http://localhost:3000/imagenes/bujia.png")
+              v-img(src="http://vps-nodolab.com:3000/imagenes/bujia.png")
             h3(class="white--text" style="padding-left:30%;") BUJIAS
         v-flex(xs3 style="padding:0")
 
             div
-              v-img(src="http://localhost:3000/imagenes/escape.png")
+              v-img(src="http://vps-nodolab.com:3000/imagenes/escape.png")
             h3(class="white--text" style="padding-left:30%;") ESCAPES
         v-flex(xs3 style="padding:0")
 
             div
-              v-img(src="http://localhost:3000/imagenes/filtro.png")
+              v-img(src="http://vps-nodolab.com:3000/imagenes/filtro.png")
             h3(class="white--text" style="padding-left:30%;") FILTROS
         v-flex(xs3 style="padding:0")
 
             div
-              v-img(src="http://localhost:3000/imagenes/freno2.png")
+              v-img(src="http://vps-nodolab.com:3000/imagenes/freno2.png")
             h3(class="white--text" style="padding-left:30%;") FRENOS
     //footer
     v-container
@@ -182,7 +182,7 @@ v-app
                     h3 SERVICIO AL CLIENTE
                     v-layout(row  wrap)
                         v-flex(xs4)
-                            v-img(src="http://localhost:3000/imagenes/atención_al_cliente.png" width="30%"  style="margin-left:80%;")
+                            v-img(src="http://vps-nodolab.com:3000/imagenes/atención_al_cliente.png" width="30%"  style="margin-left:80%;")
                         v-flex(xs8)
                             v-layout(row  wrap)
                                 v-flex(xs12)
@@ -192,7 +192,7 @@ v-app
                     v-spacer
                     v-layout(row  wrap)
                         v-flex(xs4)
-                            v-img(src="http://localhost:3000/imagenes/ubicación.png" width="30%"    style="margin-left:80%;")
+                            v-img(src="http://vps-nodolab.com:3000/imagenes/ubicación.png" width="30%"    style="margin-left:80%;")
                         v-flex(xs8)
                             v-layout(row  wrap)
                                 v-flex(xs12)
@@ -251,7 +251,7 @@ export default {
         empty: [],
         items: [
           {
-            src: 'http://localhost:3000/imagenes/slider.png'
+            src: 'http://vps-nodolab.com:3000/imagenes/slider.png'
           },
           {
             src: 'https://cdn.vuetifyjs.com/images/carousel/sky.jpg'

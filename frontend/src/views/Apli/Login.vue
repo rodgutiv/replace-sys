@@ -3,7 +3,7 @@ v-app
      v-container(grid-list-xl text-xs-center)
         v-layout(row wrap)
           //v-flex(md4 offset-md4) Bienvendio
-              v-img(src="http://localhost:3000/imagenes/Logo.png")
+              v-img(src="http://vps-nodolab.com:3000/imagenes/Logo.png")
                
           v-flex(xs12 lg6 offset-lg3)
             v-card
@@ -11,7 +11,7 @@ v-app
                     v-toolbar-title Bienvendio
                     v-spacer
                     v-btn(flat)
-                        v-img(src="http://localhost:3000/imagenes/Logo.png")
+                        v-img(src="http://vps-nodolab.com:3000/imagenes/Logo.png")
                 v-card-media(style="padding:5%")
                    v-form(ref="form" v-model="valid" v-on:submit.prevent="m_login()" lazy-validation)
                       v-text-field(v-model="login.usuario" label="Usuario" name="usuario")
