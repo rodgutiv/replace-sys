@@ -6,7 +6,7 @@ v-app
       v-card(style="padding: 10px;")
         v-layout(row wrap class="blue--text"  )
           v-flex(xs5)
-            v-img(src="http://vps-nodolab.com:3000/imagenes/disco2.png")
+            v-img(src="http://vps-nodolab.com:3000/public/imagenes/disco2.png")
           v-divider(vertical)
           v-flex(xs6 style="    padding-left: 10%; padding-top: 8%;")
             v-layout(row wrap class="text-md-center")
@@ -14,7 +14,7 @@ v-app
             v-layout(row wrap)
               v-flex(xs6 )
                 h3(style="color:#003b94;") {{existencia}}
-              v-flex(xs6)            
+              v-flex(xs6)
                 h3(style="color:#003b94;") ${{precio}}
             v-form( v-on:submit.prevent="agregar()" lazy-validation )
               v-layout(row wrap)
@@ -24,10 +24,10 @@ v-app
                   v-flex(xs9)
                     v-btn.white--text(type="submit" color="#003b94" ) agregar
                     v-btn.white--text(color="#003b94" v-on:click="comprar") comprar
-                
+
             v-layout(row wrap)
               v-flex(xs12  style="padding-left: 10%;")
-                v-img(src="http://vps-nodolab.com:3000/imagenes/tarjetas.png" style="width:80%;")
+                v-img(src="http://vps-nodolab.com:3000/public/imagenes/tarjetas.png" style="width:80%;")
         v-divider
         v-layout(row wrap class="blue--text")
           v-flex(xs5)
@@ -51,7 +51,7 @@ v-app
                 v-data-iterator(:items="items2" item-key="key_ext" :rows-per-page-items="rowsPerPageItems2"  row wrap :pagination.sync="pagination2" content-tag="v-layout")
                   v-flex(slot="item" slot-scope="props" text-xs-left xs12 sm6 md3 lg3)
                     v-card(id="bloque")
-                      v-img(src="http://vps-nodolab.com:3000/imagenes/disco.png")
+                      v-img(src="http://vps-nodolab.com:3000/public/imagenes/disco.png")
                       v-divider(id="division")
                       v-card-title(id="act" primary-title style="al" )
                         div
@@ -59,13 +59,13 @@ v-app
                             h5(style="color:#003b94;") {{props.item.nombre}}
                           div
                             h5(style="color:#003b94;") ${{props.item.precio}}
-                          div 
+                          div
                             v-rating(id="stars" size="10" v-model="rating" readonly background-color="#003b94" style="color:#003b94;")
                       v-card-actions(id="act")
                         v-btn(id="boton_prod" small round v-on:click="ver(props.item.codigo)") Comprar
                           //router-link(class="white--text"  :to="{ name: 'agregar', params: { code: props.item.code } }")
                         v-btn(id="boton_prod" small round @click="show = !show") Ver detalles
-                      v-card-text(v-show="show" id="datos") 
+                      v-card-text(v-show="show" id="datos")
                         h6 Marca: {{marca}}
                         h6 Garantía de 2 años
                         h6 Condiciones PRoducto Cerrado y nuevo
@@ -83,12 +83,12 @@ v-app
         v-layout(row wrap class="blue--text" )
           v-flex(xs6 class="text-lg-left")
             h2(style="color:#084a9f;") Compatibilidad
-            v-data-table( 
-            :headers="headers" 
+            v-data-table(
+            :headers="headers"
             :pagination.sync="pagination"
-            :rows-per-page-items="rowsPerPageItems" 
-            item-key="name" 
-            :items="items" 
+            :rows-per-page-items="rowsPerPageItems"
+            item-key="name"
+            :items="items"
               class="elevation-1"
             )
               template(slot="headerCell" slot-scope="props")
@@ -107,7 +107,7 @@ v-app
     v-container()
       v-layout.white(style="color:#084a9f;" text-xs-center row  wrap )
         v-flex(flex xs4)
-            v-img(src="http://vps-nodolab.com:3000/imagenes/tarjeta cash.png" width="30%"  style="margin-left: 35%;")
+            v-img(src="http://vps-nodolab.com:3000/public/imagenes/tarjeta cash.png" width="30%"  style="margin-left: 35%;")
             h3 Paga con tarjeta o en fectivo
             v-flex(xs12)
                 span Con Mercado Pago,
@@ -118,7 +118,7 @@ v-app
             v-flex(xs12)
                 span de pago. ¡Y siempre es seguro!
         v-flex(flex xs4)
-            v-img(src="http://vps-nodolab.com:3000/imagenes/envio.png" width="30%"  style="margin-left: 35%;")
+            v-img(src="http://vps-nodolab.com:3000/public/imagenes/envio.png" width="30%"  style="margin-left: 35%;")
             h3 Envío gratis desde $449
             v-flex(xs12)
                 span Con Mercado Pago,
@@ -129,7 +129,7 @@ v-app
             v-flex(xs12)
                 span de pago. ¡Y siempre es seguro!
         v-flex(flex xs4)
-            v-img(src="http://vps-nodolab.com:3000/imagenes/seguridad.png" width="30%"  style="margin-left: 35%;")
+            v-img(src="http://vps-nodolab.com:3000/public/imagenes/seguridad.png" width="30%"  style="margin-left: 35%;")
             h3 Seguridad
             v-flex(xs12)
                 span Con Mercado Pago,
@@ -177,7 +177,7 @@ export default {
       errors: [],
       empty: [],
       headers:[
-        { text: 'Marca', value: null, sortable:false },  
+        { text: 'Marca', value: null, sortable:false },
         { text: 'Modelo', value: null },
         { text: 'Año', value: null },
         { text: 'Motor', value: null }
@@ -231,7 +231,7 @@ export default {
    comprar(){
      //alert(this.code)
      //this.$router.push({ path: '/aplicacion/comprar'});
-     this.$router.push({name: 'comprar', params: { id: this.id_compra  } })  
+     this.$router.push({name: 'comprar', params: { id: this.id_compra  } })
    }
  },
 created() {
@@ -289,7 +289,7 @@ created() {
       //alert(e)
       this.errors.push(e)
     })
-    
+
 
 
 }

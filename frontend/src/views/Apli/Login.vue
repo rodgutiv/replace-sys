@@ -3,25 +3,25 @@ v-app
      v-container(grid-list-xl text-xs-center)
         v-layout(row wrap)
           //v-flex(md4 offset-md4) Bienvendio
-              v-img(src="http://vps-nodolab.com:3000/imagenes/Logo.png")
-               
+              v-img(src="http://vps-nodolab.com:3000/public/imagenes/Logo.png")
+
           v-flex(xs12 lg6 offset-lg3)
             v-card
-                v-card-title.center(style="padding-left:10%") 
+                v-card-title.center(style="padding-left:10%")
                     v-toolbar-title Bienvendio
                     v-spacer
                     v-btn(flat)
-                        v-img(src="http://vps-nodolab.com:3000/imagenes/Logo.png")
+                        v-img(src="http://vps-nodolab.com:3000/public/imagenes/Logo.png")
                 v-card-media(style="padding:5%")
                    v-form(ref="form" v-model="valid" v-on:submit.prevent="m_login()" lazy-validation)
                       v-text-field(v-model="login.usuario" label="Usuario" name="usuario")
                       v-text-field(
-                      v-model="login.password" 
-                      :append-icon="show1 ? 'visibility_off' : 'visibility'" 
-                      :rules="[rules.required, rules.min]" 
-                      :type="show1 ? 'text' : 'password'" 
-                      name="password" 
-                      label="Contraseña" 
+                      v-model="login.password"
+                      :append-icon="show1 ? 'visibility_off' : 'visibility'"
+                      :rules="[rules.required, rules.min]"
+                      :type="show1 ? 'text' : 'password'"
+                      name="password"
+                      label="Contraseña"
                       hint="Al menos 8 Caracteres"
                       counter
                       @click:append="show1 = !show1")
@@ -29,7 +29,7 @@ v-app
                     v-spacer
                     v-btn.success.white--text(type="submit") Iniciar Sesion
                     v-btn.error(@click="clear") Cancelar
-            
+
           v-flex(xs12 lg6 offset-lg3)
             v-progress-circular(:style="ver" indeterminate)
             h1 {{info}}
@@ -104,7 +104,7 @@ import $ from 'jquery'
         .then(response => {
           if (response.data==null) {
             this.info="Contraseña Incorrecta"
-            
+
 
           }
           else if (response.data.nickname!=null && response.data.id!=null ) {
@@ -113,21 +113,21 @@ import $ from 'jquery'
             sessionStorage.setItem("nick",response.data.nickname)
             sessionStorage.setItem("sucursal",response.data.sucursal)
             this.$router.push({ name: 'aplication'})
-            
+
 
 
           }
-       
-        
+
+
         }).catch(error => {
           this.info= error
-         
+
         })
-      },  
+      },
        clear () {
          this.$refs.form.reset()
        }
      }
-   
+
    }
 </script>

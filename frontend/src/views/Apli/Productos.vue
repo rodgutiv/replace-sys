@@ -3,7 +3,7 @@ v-app
     div
       router-view
     v-container(grid-list-md text-xs-center style="background: white;")
-      v-layout(row wrap center)  
+      v-layout(row wrap center)
         v-flex(xs12 lg5 mb-3)
           v-expansion-panel(popout)
             v-expansion-panel-content()
@@ -21,13 +21,13 @@ v-app
           v-select(:items="categorias" v-model="sub" solo label="Todas las categorías" @change="subcatego(sub)" v-on:keyup.enter="Submit2(sub)")
         v-flex(xs12 md4 lg4)
           v-select(:items="subcategorias" v-model="sub2" solo label="Subcategoría" @change="Submit2(sub2)" v-on:keyup.enter="Submit2(sub2)")
-            
+
       v-layout(row wrap)
          v-flex(lg12 xs12)
           v-data-iterator(:items="items"  :search="escrito" item-key="key_ext" :rows-per-page-items="rowsPerPageItems"  row wrap :pagination.sync="pagination" content-tag="v-layout")
             v-flex(slot="item" slot-scope="props" text-xs-left xs12 sm6 md3 lg3)
               v-card(id="bloque")
-                v-img(src="http://vps-nodolab.com:3000/imagenes/disco.png")
+                v-img(src="http://vps-nodolab.com:3000/public/imagenes/disco.png")
                 v-divider(id="division")
                 v-card-title(id="act" primary-title style="al" )
                   div
@@ -35,16 +35,16 @@ v-app
                       h3(style="color:#003b94;") {{props.item.nombre}}
                     div
                       h3(style="color:#003b94;") ${{props.item.precio}}
-                    div 
+                    div
                       v-rating(id="stars" v-model="rating" readonly background-color="#003b94" style="color:#003b94;")
                 v-card-actions(id="act")
                   v-btn(id="boton_prod" round v-on:click="comprar(props.item.codigo)") Comprar
                   Modaldetalles(:nombre="props.item.nombre" :marca="props.item.marca")
-                
+
     v-container
       v-layout.white(style="color:#084a9f;" :style="content2" text-xs-center row  wrap )
         v-flex(flex xs4)
-            v-img(src="http://vps-nodolab.com:3000/imagenes/tarjeta cash.png" width="30%"  style="margin-left: 35%;") 
+            v-img(src="http://vps-nodolab.com:3000/public/imagenes/tarjeta cash.png" width="30%"  style="margin-left: 35%;")
             h3 Paga con tarjeta o en fectivo
             v-flex(xs12)
                 span Con Mercado Pago,
@@ -55,7 +55,7 @@ v-app
             v-flex(xs12)
                 span de pago. ¡Y siempre es seguro!
         v-flex(flex xs4)
-            v-img(src="http://vps-nodolab.com:3000/imagenes/envio.png" width="30%"  style="margin-left: 35%;") 
+            v-img(src="http://vps-nodolab.com:3000/public/imagenes/envio.png" width="30%"  style="margin-left: 35%;")
             h3 Envío gratis desde $449
             v-flex(xs12)
                 span Con Mercado Pago,
@@ -66,7 +66,7 @@ v-app
             v-flex(xs12)
                 span de pago. ¡Y siempre es seguro!
         v-flex(flex xs4)
-            v-img(src="http://vps-nodolab.com:3000/imagenes/seguridad.png" width="30%"  style="margin-left: 35%;") 
+            v-img(src="http://vps-nodolab.com:3000/public/imagenes/seguridad.png" width="30%"  style="margin-left: 35%;")
             h3 Seguridad
             v-flex(xs12)
                 span Con Mercado Pago,
@@ -151,7 +151,7 @@ export default {
       this.escrito = sub
       switch(sub){
         case 'ACCESORIOS':
-          this.subcategorias = ['PLUMA LIMPIAPARABRISAS','ANTISULFANTE','PLAFONES CALAVERAS','LIMPIAPARABRISAS','TAPETES']          
+          this.subcategorias = ['PLUMA LIMPIAPARABRISAS','ANTISULFANTE','PLAFONES CALAVERAS','LIMPIAPARABRISAS','TAPETES']
           break
         case 'ADITIVOS, QUIMICOS Y LUBRICANTES':
           this.subcategorias = ['ANTICONGELANTE','GRASAS','LIMPIADORES','ADITIVOS','QUIMICOS','DESENGRASANTE','SILICONES','ACCESORIOS','MARCADOR PARA AJUSTES','ADITIVO']
@@ -517,7 +517,7 @@ created() {
     }else{
       this.escrito=''
     }
-    api.get(`/products/all`)    
+    api.get(`/products/all`)
     .then(response => {
       // JSON responses are automatically parsed.
       this.items = response.data
@@ -525,8 +525,8 @@ created() {
     .catch(e => {
       this.errors.push(e)
     })
-    
-    
+
+
 }
 
 
@@ -551,7 +551,7 @@ created() {
   #division{
     margin-left: 5%;
     max-width: 90%;
-    border-width: 1px; 
+    border-width: 1px;
   }
   .theme--light.v-divider{
     border-color:#bac5df

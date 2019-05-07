@@ -11,29 +11,29 @@ v-app
       v-card
         v-card-media
           swiper(:options="swiperOption")
-            swiper-slide 
+            swiper-slide
               div()
-                v-img( style="padding-bottom: 30.2092%!important;" src="http://vps-nodolab.com:3000/imagenes/disco1.png")
-            swiper-slide 
+                v-img( style="padding-bottom: 30.2092%!important;" src="http://vps-nodolab.com:3000/public/imagenes/disco1.png")
+            swiper-slide
               div()
-                v-img( src="http://vps-nodolab.com:3000/imagenes/bujia.png")
-            swiper-slide 
+                v-img( src="http://vps-nodolab.com:3000/public/imagenes/bujia.png")
+            swiper-slide
               div()
-                v-img( src="http://vps-nodolab.com:3000/imagenes/Rin-01.png")
-            swiper-slide              
+                v-img( src="http://vps-nodolab.com:3000/public/imagenes/Rin-01.png")
+            swiper-slide
               div()
-                v-img( src="http://vps-nodolab.com:3000/imagenes/filtro.png")
-            swiper-slide 
+                v-img( src="http://vps-nodolab.com:3000/public/imagenes/filtro.png")
+            swiper-slide
               div()
-                v-img( src="http://vps-nodolab.com:3000/imagenes/escape.png")
+                v-img( src="http://vps-nodolab.com:3000/public/imagenes/escape.png")
             //div(class="swiper-button-prev" slot="button-prev")
             //div(class="swiper-button-next" slot="button-next")
             //div(class="swiper-pagination" slot="pagination")
     v-container(style="padding-top:30%")
-      v-img(src="http://vps-nodolab.com:3000/imagenes/carro_detalles.png")
+      v-img(src="http://vps-nodolab.com:3000/public/imagenes/carro_detalles.png")
     v-container(id="tercero")
       v-flex(xs4)
-        h1.display-2.font-weight-bold(class="text-md-center") PROMOCIONES DEL MES 
+        h1.display-2.font-weight-bold(class="text-md-center") PROMOCIONES DEL MES
       v-flex(xs3 style="padding-left: 8%")
         p(class="text-md-center") Desubre todas las ofertas que tenemos en REFACE durante mayo
       v-flex(xs4 style="padding-left:12%")
@@ -49,7 +49,7 @@ import {api} from '@/api'
 //import axios from 'axios'
 export default {
     components:{
-      
+
   },
   data () {
     return {
@@ -70,10 +70,10 @@ export default {
         empty: [],
         items: [
           {
-            src: 'http://vps-nodolab.com:3000/imagenes/foto_home.png'
+            src: 'http://vps-nodolab.com:3000/public/imagenes/foto_home.png'
           },
           {
-            src: 'http://vps-nodolab.com:3000/imagenes/slider.png'
+            src: 'http://vps-nodolab.com:3000/public/imagenes/slider.png'
           },
           {
             src: 'https://cdn.vuetifyjs.com/images/carousel/bird.jpg'

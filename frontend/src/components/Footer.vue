@@ -27,7 +27,7 @@
                             v-layout
                                 v-divider(color="white" style="margin: 40px")
                                 v-avatar(style="border-radius: initial;")
-                                    v-img(style="border-radius: initial;" src="http://vps-nodolab.com:3000/imagenes/Logo.png") 
+                                    v-img(style="border-radius: initial;" src="http://vps-nodolab.com:3000/public/imagenes/Logo.png")
                                 v-divider(color="white" style="margin: 40px")
                         v-flex(xs12)
                             v-layout
@@ -38,7 +38,7 @@
                                     //a(class="white--text" @click="mostrar_politic") Aviso de privacidad
                                     Privacidad
                                 v-flex(xs3)
-                                    
+
                                 v-flex(xs3)
                                     a( class="white--text") Todos los derechos reservados/REFACE/2019
 </template>

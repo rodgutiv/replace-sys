@@ -40,19 +40,19 @@ v-app
           v-layout(row wrap style="padding: 20px;")
             v-flex(xs6)
               v-text-field(color="#003b94;" label="Colonia"  name= "colonia"  )
-            v-flex(xs6 style="padding-left:50px; padding-top:10px;")              
-              v-btn(color="#003b94;" type="submit") Siguiente              
-              //v-btn(color="#003b94;" v-on:click="guardar") Siguiente              
+            v-flex(xs6 style="padding-left:50px; padding-top:10px;")
+              v-btn(color="#003b94;" type="submit") Siguiente
+              //v-btn(color="#003b94;" v-on:click="guardar") Siguiente
           //v-speacer
           v-layout(row wrap class="blue--text" )
             v-flex(xs12 class="text-lg-left")
               h2(style="color:#084a9f;") Productos
-              v-data-table( 
-              :headers="headers" 
+              v-data-table(
+              :headers="headers"
               :pagination.sync="pagination"
-              :rows-per-page-items="rowsPerPageItems" 
-              item-key="name" 
-              :items="items" 
+              :rows-per-page-items="rowsPerPageItems"
+              item-key="name"
+              :items="items"
                 class="elevation-1"
               )
                 template(slot="headerCell" slot-scope="props")
@@ -65,15 +65,15 @@ v-app
                   td {{props.item.cantidades}}
                   td {{props.item.precio}}
                   td {{props.item.total}}
-                  td 
-                    Agregar(:producto="props.item.claves_productos" :nombre="props.item.nombre" :cantidades="props.item.cantidades") 
-                  td 
-                    Borrar(:producto="props.item.claves_productos" :cantidad="props.item.cantidades" :nombre="props.item.nombre") 
-    
+                  td
+                    Agregar(:producto="props.item.claves_productos" :nombre="props.item.nombre" :cantidades="props.item.cantidades")
+                  td
+                    Borrar(:producto="props.item.claves_productos" :cantidad="props.item.cantidades" :nombre="props.item.nombre")
+
     v-container()
       v-layout.white(style="color:#084a9f;" text-xs-center row  wrap )
         v-flex(flex xs4)
-            v-img(src="http://vps-nodolab.com:3000/imagenes/tarjeta cash.png" width="30%"  style="margin-left: 35%;")
+            v-img(src="http://vps-nodolab.com:3000/public/imagenes/tarjeta cash.png" width="30%"  style="margin-left: 35%;")
             h3 Paga con tarjeta o en fectivo
             v-flex(xs12)
                 span Con Mercado Pago,
@@ -84,7 +84,7 @@ v-app
             v-flex(xs12)
                 span de pago. ¡Y siempre es seguro!
         v-flex(flex xs4)
-            v-img(src="http://vps-nodolab.com:3000/imagenes/envio.png" width="30%"  style="margin-left: 35%;")
+            v-img(src="http://vps-nodolab.com:3000/public/imagenes/envio.png" width="30%"  style="margin-left: 35%;")
             h3 Envío gratis desde $449
             v-flex(xs12)
                 span Con Mercado Pago,
@@ -95,7 +95,7 @@ v-app
             v-flex(xs12)
                 span de pago. ¡Y siempre es seguro!
         v-flex(flex xs4)
-            v-img(src="http://vps-nodolab.com:3000/imagenes/seguridad.png" width="30%"  style="margin-left: 35%;")
+            v-img(src="http://vps-nodolab.com:3000/public/imagenes/seguridad.png" width="30%"  style="margin-left: 35%;")
             h3 Seguridad
             v-flex(xs12)
                 span Con Mercado Pago,
@@ -145,7 +145,7 @@ export default {
       errors: [],
       empty: [],
       headers:[
-        { text: 'Nombre', value: 'nombre', sortable:false },  
+        { text: 'Nombre', value: 'nombre', sortable:false },
         { text: 'Cantidades', value: null },
         { text: 'Precio', value: null },
         { text: 'Total', value: null },
@@ -176,12 +176,12 @@ export default {
         this.info = response.data
         //alert(response.data)
         //this.$router.push({  path: '/aplicacion/pagar'});
-        this.$router.push({name: 'pagar', params: { id: this.codigo  } }) 
+        this.$router.push({name: 'pagar', params: { id: this.codigo  } })
       })
       .catch(e => {
         this.errors.push(e)
         //this.$router.push({  path: '/aplicacion/pagar'});
-        this.$router.push({name: 'pagar', params: { id: this.codigo  } })  
+        this.$router.push({name: 'pagar', params: { id: this.codigo  } })
       })
 
    }

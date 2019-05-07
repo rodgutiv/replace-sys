@@ -36,7 +36,7 @@
             right= true
             app
             )
-            v-list  
+            v-list
                 v-list-tile
                     v-list-tile-content
                     v-list-tile-title
@@ -46,56 +46,56 @@
                     v-list-tile-title
                         router-link(id="list" style="text-decoration: none" to="/aplicacion/ayuda") Ayuda
 
-        v-toolbar(color="#152d5b")    
+        v-toolbar(color="#152d5b")
             v-flex(xl1 lg1  md1 sm2 xs1)
                 v-flex
-                    router-link(style="text-decoration: none" to="/") 
-                        v-img(id="logo" style="border-radius: inherit; " to="/" src="http://vps-nodolab.com:3000/imagenes/Logo.png") 
-            v-flex(xs1)                    
-                v-toolbar-side-icon(class="white--text " class="hidden-lg-and-up" @click.stop="drawer = !drawer")                
+                    router-link(style="text-decoration: none" to="/")
+                        v-img(id="logo" style="border-radius: inherit; " to="/" src="http://vps-nodolab.com:3000/public/imagenes/Logo.png")
+            v-flex(xs1)
+                v-toolbar-side-icon(class="white--text " class="hidden-lg-and-up" @click.stop="drawer = !drawer")
             v-flex(xs11 sm10 md11 lg11)
                 v-layout(row wrap style="padding-left: 5%;")
                     v-flex(lg4 md6 xs6 order-md2 order-sm2 order-xs2 style="padding-top: 1%")
                         v-layout(row wrap class="text-md-center" )
-                            router-link(class="hidden-sm-and-down" style="text-decoration: none; padding-top: 1%;" to="/aplicacion/login" ) 
+                            router-link(class="hidden-sm-and-down" style="text-decoration: none; padding-top: 1%;" to="/aplicacion/login" )
                                 v-btn(flat md2 class="white--text" small) Iniciar Sesión
-                            router-link(class="hidden-sm-and-down" style="text-decoration: none; padding-top: 1%;" to="/aplicacion/ayuda") 
+                            router-link(class="hidden-sm-and-down" style="text-decoration: none; padding-top: 1%;" to="/aplicacion/ayuda")
                                 v-btn(flat class="white--text" small) Ayuda
                             v-btn(small class="white--text" flat icon href="https://www.facebook.com/")
-                                v-img(id="ima" src="http://vps-nodolab.com:3000/imagenes/FB.png")
+                                v-img(id="ima" src="http://vps-nodolab.com:3000/public/imagenes/FB.png")
                             v-btn(small class="white--text" flat icon href="https://www.instagram.com/?hl=es-la")
-                                v-img(id="ima" src="http://vps-nodolab.com:3000/imagenes/IG.png")
+                                v-img(id="ima" src="http://vps-nodolab.com:3000/public/imagenes/IG.png")
                             v-btn(icon @click.stop="rightDrawer = !rightDrawer" class="hidden-md-and-up")
                                 v-icon(class="white--text " ) more_vert
-                                //v-img(id="ima" src="http://vps-nodolab.com:3000/imagenes/IG.png")
-                    v-flex(lg8 md5 xs4 order-md1 order-sm1 order-xs1 style="padding-top: 2%;") 
+                                //v-img(id="ima" src="http://vps-nodolab.com:3000/public/imagenes/IG.png")
+                    v-flex(lg8 md5 xs4 order-md1 order-sm1 order-xs1 style="padding-top: 2%;")
                         v-text-field(class="black--text"  ref="dat" v-model="escrito" class="black--text" label="Find Product" solo append-icon="search" v-on:keyup.enter="Submit(escrito)")
                     v-flex(order-md3 md1 xs1 order-sm3 order-xs3 class="hidden-lg-and-up" style="padding-top: 1%;" class="text-md-center")
                         v-btn(flat icon small class="text-md-center")
-                            v-img(src="http://vps-nodolab.com:3000/imagenes/carrito.png")
+                            v-img(src="http://vps-nodolab.com:3000/public/imagenes/carrito.png")
                 v-layout(row wrap class="hidden-md-and-down" style="margin-bottom:20px" )
                     v-spacer()
-                    router-link(style="text-decoration: none" to="/") 
+                    router-link(style="text-decoration: none" to="/")
                         v-btn(flat class="white--text" small) Inicio
                     v-divider(vertical color="white")
-                    router-link(style="text-decoration: none" to="/aplicacion/productos") 
+                    router-link(style="text-decoration: none" to="/aplicacion/productos")
                         v-btn(flat class="white--text" small) Productos
                     v-divider(vertical color="white")
-                    router-link(style="text-decoration: none" to="/") 
+                    router-link(style="text-decoration: none" to="/")
                         v-btn(flat class="white--text" small) Servicio Pesado
                     v-divider(vertical color="white")
-                    router-link(style="text-decoration: none" to="/") 
+                    router-link(style="text-decoration: none" to="/")
                         v-btn(flat class="white--text" small) Outlet
                     v-divider(vertical color="white")
-                    router-link(style="text-decoration: none" to="/") 
+                    router-link(style="text-decoration: none" to="/")
                         v-btn(flat class="white--text" small) Noticias
                     v-divider(vertical color="white")
-                    router-link(style="text-decoration: none" to="/") 
+                    router-link(style="text-decoration: none" to="/")
                         v-btn(flat class="white--text" small) Promociones
                     v-spacer
-                    router-link(style="text-decoration: none" to="/") 
+                    router-link(style="text-decoration: none" to="/")
                         v-avatar
-                            v-img(src="http://vps-nodolab.com:3000/imagenes/carrito.png")
+                            v-img(src="http://vps-nodolab.com:3000/public/imagenes/carrito.png")
                         v-btn(flat class="white--text" small) Carrito
 
 </template>
@@ -111,7 +111,7 @@ export default {
         info: null,
         escrito: null,
         currentUrl:null
-        }    
+        }
     },
     methods: {
             Submit(escrito){
@@ -126,10 +126,10 @@ export default {
                     this.$router.push({path: '/aplicacion/productos' });
                     alert('push')
                 }
-                
+
                 //alert(sessionStorage.getItem("dato"))
                 //this.$router.push({ path: '/aplicacion/productos'})
-                
+
             }
         }
 }
