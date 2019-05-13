@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var producto = require('../models/productos');
 
-const csv = require('csv-parser');
+//const csv = require('csv-parser');
 const fs = require('fs');
 const results = [];
 

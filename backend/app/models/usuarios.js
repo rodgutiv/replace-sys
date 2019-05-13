@@ -25,7 +25,7 @@ var UsuariosSchema = Schema({
     municipio: String,
     estado: String,
     pais: String,
-    codigo_pais: String,
+    codigo_postal: String,
     referencias: String
   },
   status: String

@@ -5,29 +5,33 @@ v-app
     v-container(grid-list-md text-xs-center)
       v-card(style="padding: 10px;")
         v-layout(row wrap class="blue--text"  )
-          v-flex(xs5)
+          v-flex(xs6)
             v-img(src="http://vps-nodolab.com:3000/imagenes/disco2.png")
           v-divider(vertical)
-          v-flex(xs6 style="    padding-left: 10%; padding-top: 8%;")
+          v-flex(xs5 class="text-md-center" style="padding-top: 6%;padding-left: 10%;")
             v-layout(row wrap class="text-md-center")
-              h1(id="titulo" style="color:#003b94;") {{nombre}}
-            v-layout(row wrap)
-              v-flex(xs6 )
-                h3(style="color:#003b94;") {{existencia}}
-              v-flex(xs6)
-                h3(style="color:#003b94;") ${{precio}}
+              v-flex(xs12)
+                h1(style="color:#003b94;") {{nombre}}
+            v-layout(row wrap )
+              v-flex(xs6 class="text-md-center")
+                h1(style="color:#003b94;") {{existencia}}
+              v-flex(xs6 class="text-md-center")
+                h1(style="color:#003b94;") ${{precio}}
             v-form( v-on:submit.prevent="agregar()" lazy-validation )
               v-layout(row wrap)
-                  v-flex(xs3)
-                    v-text-field(style="width: 50px; color:#003b94;display:none;" :value="codigo" name="code")
-                    v-text-field(ref="cant" style=" color:#003b94;" type="number"  min="1" :value=0 name="stock")
-                  v-flex(xs9)
-                    v-btn.white--text(type="submit" color="#003b94" ) agregar
-                    v-btn.white--text(color="#003b94" v-on:click="comprar") comprar
-
+                v-flex(xs4 class="text-md-center")
+                  v-text-field(style="display:none;" :value="codigo" name="code")
+                  v-text-field(ref="cant" style=" color:#003b94;" type="number"  min="1" :value=0 name="stock")
+                v-flex(xs4 class="text-md-center")
+                  v-btn.white--text(type="submit" color="#003b94" ) agregar
+                v-flex(xs4 class="text-md-center")
+                  v-btn.white--text(color="#003b94" v-on:click="comprar") comprar
             v-layout(row wrap)
-              v-flex(xs12  style="padding-left: 10%;")
-                v-img(src="http://vps-nodolab.com:3000/imagenes/tarjetas.png" style="width:80%;")
+              v-flex(xs12  class="text-md-center")
+                v-img(src="http://vps-nodolab.com:3000/imagenes/tarjetas.png")      
+
+
+            
         v-divider
         v-layout(row wrap class="blue--text")
           v-flex(xs5)
@@ -63,13 +67,14 @@ v-app
                             v-rating(id="stars" size="10" v-model="rating" readonly background-color="#003b94" style="color:#003b94;")
                       v-card-actions(id="act")
                         v-btn(id="boton_prod" small round v-on:click="ver(props.item.codigo)") Comprar
+                        Modaldetalles(:nombre="props.item.nombre" :marca="props.item.marca")
                           //router-link(class="white--text"  :to="{ name: 'agregar', params: { code: props.item.code } }")
-                        v-btn(id="boton_prod" small round @click="show = !show") Ver detalles
+                    //      v-btn(id="boton_prod" small round @click="show = !show") Ver detalles
                       v-card-text(v-show="show" id="datos")
                         h6 Marca: {{marca}}
                         h6 Garantía de 2 años
                         h6 Condiciones PRoducto Cerrado y nuevo
-                        //Modaldetalles(:marca="props.item.marca")
+                        
     v-container(grid-list-md )
       v-card(style="background: white; padding: 50px;")
         v-layout(row wrap class="blue--text")
@@ -141,14 +146,14 @@ v-app
                 span de pago. ¡Y siempre es seguro!
 </template>
 <script>
-import toolbar from '@/components/Toolbar.vue'
 
+import Modaldetalles from '@/components/Detalles2.vue'
 import {api} from '@/api'
 import $ from 'jquery'
 //import axios from 'axios'
 export default {
     components:{
-    toolbar
+    Modaldetalles
   },
   data () {
     return {
@@ -187,7 +192,8 @@ export default {
       codigo:null,
       total:null,
       id_compra:0,
-      info:null
+      info:null,
+      usuario:null
     }
 
 
@@ -235,6 +241,7 @@ export default {
    }
  },
 created() {
+    
     this.code = this.$route.params.id
     //this.code = sessionStorage.getItem("code");
     //sthis.code = 1
@@ -283,6 +290,7 @@ created() {
     //api.get(`/producto`)
     .then(response => {
       this.id_compra = parseInt(response.data) + 1
+      sessionStorage.setItem("compra",this.id_compra)
       //alert(this.id_compra)
     })
     .catch(e => {
@@ -306,16 +314,13 @@ created() {
     color:#003b94;
   }
   #boton_prod{
-    font-size: 12px;
+    font-size: 10px;
     color: white;
     background-color: #003b94;
     border-bottom-left-radius: 20px;
     border-top-left-radius: 20px;
     border-bottom-right-radius: 20px;
     border-top-right-radius: 20px;
-  }
-  #act{
-    display: block;
   }
   #division{
     margin-left: 5%;
@@ -327,10 +332,6 @@ created() {
   }
   #datos{
     text-align: left;
-  }
-  #titulo{
-    padding-left: 40px;
-    padding-top: 20px;
   }
   #precio{
     padding-left: 40px;
