@@ -7,32 +7,35 @@ v-app
 
           v-flex(xs12 lg6 offset-lg3)
             v-card
-                v-card-title.center(style="padding-left:10%")
-                    v-toolbar-title Bienvendio
-                    v-spacer
-                    v-btn(flat)
-                        v-img(src="http://localhost:3000/imagenes/Logo.png")
+                v-card-title.center( center class="headline grey lighten-2 text-xs-right" primary-title  style="padding-left:10%") Bienvendio
+                    //v-btn(flat)
+                        v-img(src="http://vps-nodolab.com:3000/imagenes/Logo.png")
                 v-card-media(style="padding:5%")
-                   v-form(ref="form" v-model="valid" v-on:submit.prevent="m_login()" lazy-validation)
-                      v-text-field(v-model="login.usuario" label="Usuario" name="usuario")
+                  v-form(ref="form" v-model="valid" v-on:submit.prevent="m_login()" lazy-validation)
+                      v-text-field( v-model="login.email"
+                        :rules="emailRules"
+                        label="Correo electronico"
+                        name="id"
+                        required)
                       v-text-field(
-                      v-model="login.password"
-                      :append-icon="show1 ? 'visibility_off' : 'visibility'"
-                      :rules="[rules.required, rules.min]"
-                      :type="show1 ? 'text' : 'password'"
-                      name="password"
-                      label="Contraseña"
-                      hint="Al menos 8 Caracteres"
-                      counter
-                      @click:append="show1 = !show1")
-                v-card-actions
-                    v-spacer
-                    v-btn.success.white--text(type="submit") Iniciar Sesion
-                    v-btn.error(@click="clear") Cancelar
+                        v-model="login.password"
+                        :append-icon="show1 ? 'visibility_off' : 'visibility'"
+                        :rules="[rules.required, rules.min]"
+                        :type="show1 ? 'text' : 'password'"
+                        name="password"
+                        label="Contraseña"
+                        hint="Al menos 8 Caracteres"
+                        counter
+                        @click:append="show1 = !show1")
+                      v-card-actions
+                          v-btn.primary.white--text(v-on:click="registrar") Registrarse
+                          v-spacer
+                          v-btn.white--text(type="submit" :disabled="!valid" color="success") Iniciar Sesion
+                      //v-btn.error(@click="clear") Cancelar
 
           v-flex(xs12 lg6 offset-lg3)
             v-progress-circular(:style="ver" indeterminate)
-            h1 {{info}}
+            h1 {{info2}}
             h1 {{result}}
 
 
@@ -50,83 +53,57 @@ import $ from 'jquery'
    export default {
      data () {
        return {
+          valid:true,
           info: null,
           show1: false,
           result:null,
           password: '',
           ver:"display:none",
           login: {
-            usuario: "",
+            email: "",
             password: ""
           },
           rules: {
             required: value => !!value || 'Required.',
             min: v => v.length >= 8 || 'Al menos 8 Caracteres'
           },
+
+          emailRules: [
+            v => !!v || 'E-mail is required',
+            v => /.+@.+/.test(v) || 'E-mail must be valid'
+          ],
+          info2:""
        }
      },
      methods: {
 
-      /*m_login() {
-        this.ver=true
-        if (this.login.usuario.length === 0) {
-          this.info = "Necesitas ingresar tu usuario"
-        } else if (this.login.password.length === 0) {
-          this.info = "Indica tu contraseña"
-        } else {
-          this.request_status = ""
-          let data = {
-              usuario: this.login.usuario,
-              password: this.login.password,
-          }
-          this.$http.post(V.SERVER + V.OPS.LOGIN, data).then(response => {
-            if (response.data.success==false) {
-              this.ver="display:none"
-              this.info="Contraseña Incorrecta"
-            }
-            else if (response.data.nickname!=null && response.data.id!=null ) {
-              this.info="Bienvenido"+response.data.nickname
-              this.ver="display:none"
-              sessionStorage.setItem("id",response.data.id)
-              sessionStorage.setItem("rol",response.data.rol)
-              sessionStorage.setItem("nick",response.data.nickname)
-              sessionStorage.setItem("sucursal",response.data.sucursal)
-              this.$router.push({ name: 'aplication'})
-            }
-          }, er => {
-            this.info= er
-          })
-        }
-      },*/
-      onSubmit() {
-        api.post('/form', $(event.currentTarget).serializeArray())
-        //api.post('/form', $(event.currentTarget).serializeArray())
-        .then(response => {
-          if (response.data==null) {
-            this.info="Contraseña Incorrecta"
-
-
-          }
-          else if (response.data.nickname!=null && response.data.id!=null ) {
-            sessionStorage.setItem("id",response.data.id)
-            sessionStorage.setItem("rol",response.data.rol)
-            sessionStorage.setItem("nick",response.data.nickname)
-            sessionStorage.setItem("sucursal",response.data.sucursal)
-            this.$router.push({ name: 'aplication'})
-
-
-
-          }
-
-
-        }).catch(error => {
-          this.info= error
-
-        })
+      registrar() {
+        this.$router.push({ name: 'registrar'});
       },
-       clear () {
-         this.$refs.form.reset()
-       }
+      m_login() {
+        api.post('/ad-usuarios/login', $(event.currentTarget).serializeArray())
+        .then(response => {
+          //alert('entro al api')
+          this.info = response.data.message
+          if(this.info == 'Bienvenido'){
+            sessionStorage.setItem("id",response.data.data.id)
+            sessionStorage.setItem("nombre",response.data.data.datos_personles.username)
+            alert(sessionStorage.getItem("nombre"))
+            this.info2 = 'Bienvenido '+response.data.data.datos_personles.username
+            sessionStorage.setItem("variable",1)
+            //this.$router.push({ name: 'inicio'});
+            this.$router.push({ name: 'home'});
+          }else{
+            this.info2 = this.info
+            //alert(this.info)
+          }
+        })
+        .catch(e => {
+          alert('fallo')
+          this.errors.push(e)
+          alert(e)
+        })
+      }
      }
 
    }

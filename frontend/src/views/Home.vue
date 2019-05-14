@@ -167,14 +167,19 @@ export default {
     }*/
   },
   created(){
+    if(sessionStorage.getItem("variable") == 1){
+      sessionStorage.removeItem("variable")
+      this.$router.go();
+    }
+    //alert(sessionStorage.getItem("nombre"))
     sessionStorage.setItem("content1",null)
     sessionStorage.setItem("content2","display:none")
-    sessionStorage.removeItem('marca');
-    sessionStorage.removeItem('modelo');
-    sessionStorage.removeItem('año');
-    sessionStorage.removeItem('motor');
-    sessionStorage.removeItem('nombre');
-    sessionStorage.removeItem('dato');
+    //sessionStorage.removeItem('marca');
+    //sessionStorage.removeItem('modelo');
+    //sessionStorage.removeItem('año');
+    //sessionStorage.removeItem('motor');
+    //sessionStorage.removeItem('nombre');
+    //sessionStorage.removeItem('dato');
     api.get('/products/specific/brand')
     .then(response => {
       this.brands = response.data

@@ -1,6 +1,6 @@
 <template lang="pug">
   v-dialog(v-model="dialog" max-width="500")
-    v-btn( @click="dialog = true" round slot="activator" style="font-size: 10px;" color="#003b94" dark) Detalles
+    v-btn( @click="dialog = true" small round slot="activator" color="#003b94" dark) Detalles
     v-card
       v-toolbar(dark color="indigo")
         v-toolbar-title {{nombre}}

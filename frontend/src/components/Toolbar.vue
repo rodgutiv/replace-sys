@@ -40,7 +40,8 @@
                 v-list-tile
                     v-list-tile-content
                     v-list-tile-title
-                        router-link(id="list" style="text-decoration: none" to="/") Inisiar Sesión
+                        router-link(id="list" style="text-decoration: none" :style="ver1" to="/aplicacion/login" ) Inisiar Sesión
+                        v-btn(flat :style="ver2" md2 class="white--text" small v-on:click="cerrar()") Cerrar Sesión
                 v-list-tile
                     v-list-tile-content
                     v-list-tile-title
@@ -57,9 +58,11 @@
                 v-layout(row wrap style="padding-left: 5%;")
                     v-flex(lg4 md6 xs6 order-md2 order-sm2 order-xs2 style="padding-top: 1%")
                         v-layout(row wrap class="text-md-center" )
-                            router-link(class="hidden-sm-and-down" style="text-decoration: none; padding-top: 1%;" to="/aplicacion/login" )
-                                v-btn(flat md2 class="white--text" small) Iniciar Sesión
-                            router-link(class="hidden-sm-and-down" style="text-decoration: none; padding-top: 1%;" to="/aplicacion/ayuda")
+                            router-link(id="boton" class="hidden-sm-and-down" :style="ver1" to="/aplicacion/login" )
+                                v-btn( flat md2 class="white--text" small) Iniciar Sesión
+                            //router-link(id="boton" class="hidden-sm-and-down"  to="/aplicacion/login" )
+                            v-btn(flat :style="ver2" md2 class="white--text" small v-on:click="cerrar()") Cerrar Sesión
+                            router-link(id="boton" class="hidden-sm-and-down" to="/aplicacion/ayuda")
                                 v-btn(flat class="white--text" small) Ayuda
                             v-btn(small class="white--text" flat icon href="https://www.facebook.com/")
                                 v-img(id="ima" src="http://localhost:3000/imagenes/FB.png")
@@ -71,8 +74,8 @@
                     v-flex(lg8 md5 xs4 order-md1 order-sm1 order-xs1 style="padding-top: 2%;")
                         v-text-field(class="black--text"  ref="dat" v-model="escrito" class="black--text" label="Find Product" solo append-icon="search" v-on:keyup.enter="Submit(escrito)")
                     v-flex(order-md3 md1 xs1 order-sm3 order-xs3 class="hidden-lg-and-up" style="padding-top: 1%;" class="text-md-center")
-                        v-btn(flat icon small class="text-md-center")
-                            v-img(src="http://localhost:3000/imagenes/carrito.png")
+                        v-btn(flat icon small class="text-md-center" v-on:click="comprar()" )
+                            v-img(src="http://vps-nodolab.com:3000/imagenes/carrito.png")
                 v-layout(row wrap class="hidden-md-and-down" style="margin-bottom:20px" )
                     v-spacer()
                     router-link(style="text-decoration: none" to="/")
@@ -93,10 +96,9 @@
                     router-link(style="text-decoration: none" to="/")
                         v-btn(flat class="white--text" small) Promociones
                     v-spacer
-                    router-link(style="text-decoration: none" to="/")
-                        v-avatar
-                            v-img(src="http://localhost:3000/imagenes/carrito.png")
-                        v-btn(flat class="white--text" small) Carrito
+                    v-avatar
+                        v-img(src="http://vps-nodolab.com:3000/imagenes/carrito.png" )
+                    v-btn(flat class="white--text" small v-on:click="comprar()") Carrito
 
 </template>
 
@@ -110,7 +112,11 @@ export default {
         rightDrawer: false,
         info: null,
         escrito: null,
-        currentUrl:null
+        currentUrl:null,
+        usuario:null,
+        ver1:"display:none",
+        ver2:"display:none",
+        compra:null
         }
     },
     methods: {
@@ -130,7 +136,42 @@ export default {
                 //alert(sessionStorage.getItem("dato"))
                 //this.$router.push({ path: '/aplicacion/productos'})
 
+            },
+            cerrar(){
+                alert('cerrar sesion')
+                sessionStorage.removeItem("id")
+                sessionStorage.removeItem("nombre")
+                sessionStorage.removeItem("variable")
+                this.$router.push({ name: 'home'})
+            },
+            comprar(){
+                if(this.usuario != null){
+                    this.compra=sessionStorage.getItem("compra")
+                    if(this.comprar != null ){
+                        this.$router.push({name: 'comprar', params: { id: this.compra  } })
+                    }else{
+                        this.$router.push({name: 'comprar', params: { id: 0  } })
+                    }
+                }else{
+                    this.$router.push({name: 'login' });
+                }
+                //alert(this.code)
+                //this.$router.push({ path: '/aplicacion/comprar'});
+
             }
+        },
+        created(){
+
+            //alert(sessionStorage.getItem("nombre"))
+            this.usuario=sessionStorage.getItem("nombre")
+            if(this.usuario == null){
+                this.ver2="display:none;"
+                this.ver1=true
+            }else{
+                this.ver1="display:none;"
+                this.ver2=true
+            }
+
         }
 }
 </script>
@@ -146,10 +187,8 @@ export default {
     .primary--text{
         color: #003b94 !important;
     }
-    @media (min-width: 1904px){
-        #logo{
-            width: 80%;
-        }
+    #logo{
+        width: 80%;
     }
     #nav{
         background-color: #F3F3F3;
@@ -159,5 +198,9 @@ export default {
     }
     #list{
         color: #152d5b;
+    }
+    #boton{
+        text-decoration: none;
+        padding-top: 1%;
     }
 </style>

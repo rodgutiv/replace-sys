@@ -6,47 +6,47 @@ v-app
       v-card(style="padding: 50px; with:80%")
         v-form(ref="form" v-model="valid" v-on:submit.prevent="guardar()" lazy-validation)
           v-layout(row wrap class="blue--text" center style="padding: 20px;")
-            v-flex(xs12 right)
-              h1(style="color:#003b94; ") Entrega
-          v-layout(row wrap style="padding: 20px;")
+            v-flex(xs6)
+              h1(style="color:#003b94; ") Direcció de Entrega
+            v-spacer
+            v-flex(xs6 class="text-md-rigth" style="padding-left:33%;" )
+              v-btn(color="#003b94;" @click="reset") Otra
+          v-layout(row wrap style="padding: 20px; display:none")
             v-flex(xs6)
               v-text-field(color="#003b94;" label="Nombre" style="display:none;" :value="codigo" name= "id" )
               v-text-field(color="#003b94;" label="Nombre" :value="nombre_cliente" name= "nombre" )
             v-flex(xs6)
               v-text-field(color="#003b94;" ref="email" label="Email" :value="email" name= "email" )
             v-flex(xs6)
-              v-text-field(color="#003b94;" label="Teléfono"  name= "tel" )
-            v-flex(xs6)
-              v-text-field(color="#003b94;" label="Código Postal"  name= "cpostal" )
+              v-text-field(color="#003b94;" label="Teléfono" :value="tel" name= "tel" )
           v-divider(id="divi" gradient="to rigth, #7B1FA2, #E1BEE7")
           v-layout(row wrap style="padding: 20px;")
             v-flex(xs6)
-              v-text-field(color="#003b94;" label="Estado"  name= "estado"  )
+              v-text-field(color="#003b94;" label="Código Postal" :value="cp" name= "cpostal" )
+          v-divider(id="divi" gradient="to rigth, #7B1FA2, #E1BEE7")
+          v-layout(row wrap style="padding: 20px;")
             v-flex(xs6)
-              v-text-field(color="#003b94;" label="Municipio"  name= "mun" )
+              v-text-field(color="#003b94;" label="Estado" :value="estado" name= "estado"  )
+            v-flex(xs6)
+              v-text-field(color="#003b94;" label="Municipio" :value="municipio" name= "mun" )
           v-divider(id="divi")
           v-layout(row wrap style="padding: 20px;")
             v-flex(xs6)
-              v-text-field(color="#003b94;" label="Calle"  name= "calle"  )
+              v-text-field(color="#003b94;" label="Calle" :value="calle" name= "calle"  )
             v-flex(xs3)
-              v-text-field(color="#003b94;" label="Núm Ext."  name= "next"  )
+              v-text-field(color="#003b94;" label="Núm Ext." :value="ni" name= "next"  )
             v-flex(xs3)
-              v-text-field(color="#003b94;" label="Núm Int."  name= "nint"  )
+              v-text-field(color="#003b94;" label="Núm Int." :value="ne"  name= "nint"  )
           v-divider(id="divi")
           v-layout(row wrap style="padding: 20px;")
             v-flex(xs12 lg6)
-                v-text-field(color="#003b94;" label="Referencias"  name= "referencia" )
-          v-divider(id="divi")
-          v-layout(row wrap style="padding: 20px;")
+              v-text-field(color="#003b94;" label="Referencias" :referencia="referencia" name= "referencia" )
             v-flex(xs6)
-              v-text-field(color="#003b94;" label="Colonia"  name= "colonia"  )
-            v-flex(xs6 style="padding-left:50px; padding-top:10px;")
-              v-btn(color="#003b94;" type="submit") Siguiente
-              //v-btn(color="#003b94;" v-on:click="guardar") Siguiente
-          //v-speacer
+              v-text-field(color="#003b94;" label="Colonia" :colonia="colonia" name= "colonia"  )
+          
           v-layout(row wrap class="blue--text" )
             v-flex(xs12 class="text-lg-left")
-              h2(style="color:#084a9f;") Productos
+              h2(style="color:#084a9f;") Carrito
               v-data-table(
               :headers="headers"
               :pagination.sync="pagination"
@@ -70,6 +70,11 @@ v-app
                   td
                     Borrar(:producto="props.item.claves_productos" :cantidad="props.item.cantidades" :nombre="props.item.nombre")
 
+          
+          v-layout(row wrap style="padding: 20px;")                    
+            v-flex(xs12 class="text-md-right")
+              v-btn(color="#003b94;" type="submit") Siguiente
+              //v-btn(color="#003b94;" v-on:click="guardar") Siguiente
     v-container()
       v-layout.white(style="color:#084a9f;" text-xs-center row  wrap )
         v-flex(flex xs4)
@@ -156,7 +161,17 @@ export default {
       existencia:null,
       nombre_cliente:null,
       email:null,
-      info:null
+      info:null,
+      tel:null,
+      cp:null,
+      estado:null,
+      municipio:null,
+      calle:null,
+      ni:null,
+      ne:null,
+      referencia:null,
+      colonia:null,
+      nombre_user:null
     }
 
 
@@ -164,6 +179,9 @@ export default {
 },
 
  methods: {
+    reset () {
+      this.$refs.form.reset()
+    },
     guardar(){
       //this.$router.push({ path: '/aplicacion/pagar'});
       //this.$router.push({ name: 'pagar'});
@@ -187,6 +205,26 @@ export default {
    }
  },
 created() {
+    this.usuario=sessionStorage.getItem("id")
+    if(this.usuario != null){
+      api.get('/ad-usuarios/all-users/'+this.usuario)
+      .then(response => {
+        // JSON responses are automatically parsed.
+        this.nombre_cliente=response.data.datos_personles.nombre_completo
+        this.email=response.data.datos_personles.email
+        this.tel=response.data.datos_personles.telefono
+        this.cp=response.data.domicilio.codigo_postal
+        this.estado=response.data.domicilio.estado
+        this.municipio=response.data.domicilio.municipio
+        this.ni=response.data.domicilio.num_interior
+        this.ne=response.data.domicilio.num_exterior
+        this.referencia=response.data.domicilio.referencias
+        this.colonia=response.data.domicilio.colonia
+      })
+      .catch(e => {
+        this.errors.push(e)
+      })
+    }
     this.codigo = this.$route.params.id
     //alert(this.codigo)
     //this.code = sessionStorage.getItem("code");
