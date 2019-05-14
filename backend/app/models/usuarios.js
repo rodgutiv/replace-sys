@@ -6,7 +6,7 @@ var Schema = mongoose.Schema;
 // Creamos el objeto del esquema y sus atributos
 var UsuariosSchema = Schema({
   id: String,
-  datos_personles:
+  datos_personales:
   {
     nombre_completo: String,
     username: String,
@@ -30,7 +30,6 @@ var UsuariosSchema = Schema({
   },
   status: String
 });
-
 
 // Exportamos el modelo para usarlo en otros ficheros
 module.exports = mongoose.model('Usuarios', UsuariosSchema);

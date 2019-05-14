@@ -22,7 +22,10 @@ var ComprasLibreSchema = Schema({
     num_exterior: String,
     colonia: String,
     referencias: String
-  }
+  },
+  total_productos: Number,
+  total_venta: Number,
+  status: String
 });
 // Exportamos el modelo para usarlo en otros ficheros
 module.exports = mongoose.model('ComprasLibre', ComprasLibreSchema);

@@ -134,8 +134,9 @@ router.post('/new-user', function(req, res, next) {
 
 //delete user
 router.post('/delete-user/:id', function(req, res, next) {
+  console.log("Entro al metodo")
   var id_user = req.params.id;
-  console.log(data)
+  console.log(id_user)
   //metodo para buscar el usuario
   usuario.find({'id': id_user})
   .then((rawResponse) =>{

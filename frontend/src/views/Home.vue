@@ -13,24 +13,24 @@ v-app
           swiper(:options="swiperOption")
             swiper-slide
               div()
-                v-img( style="padding-bottom: 30.2092%!important;" src="http://vps-nodolab.com:3000/imagenes/disco1.png")
+                v-img( style="padding-bottom: 30.2092%!important;" src="http://localhost:3000/imagenes/disco1.png")
             swiper-slide
               div()
-                v-img( src="http://vps-nodolab.com:3000/imagenes/bujia.png")
+                v-img( src="http://localhost:3000/imagenes/bujia.png")
             swiper-slide
               div()
-                v-img( src="http://vps-nodolab.com:3000/imagenes/Rin-01.png")
+                v-img( src="http://localhost:3000/imagenes/Rin-01.png")
             swiper-slide
               div()
-                v-img( src="http://vps-nodolab.com:3000/imagenes/filtro.png")
+                v-img( src="http://localhost:3000/imagenes/filtro.png")
             swiper-slide
               div()
-                v-img( src="http://vps-nodolab.com:3000/imagenes/escape.png")
+                v-img( src="http://localhost:3000/imagenes/escape.png")
             //div(class="swiper-button-prev" slot="button-prev")
             //div(class="swiper-button-next" slot="button-next")
             //div(class="swiper-pagination" slot="pagination")
     v-container(style="padding-top:30%")
-      v-img(src="http://vps-nodolab.com:3000/imagenes/carro_detalles.png")
+      v-img(src="http://localhost:3000/imagenes/carro_detalles.png")
     v-container(id="tercero")
       v-flex(xs4)
         h1.display-2.font-weight-bold(class="text-md-center") PROMOCIONES DEL MES
@@ -70,10 +70,10 @@ export default {
         empty: [],
         items: [
           {
-            src: 'http://vps-nodolab.com:3000/imagenes/foto_home.png'
+            src: 'http://localhost:3000/imagenes/foto_home.png'
           },
           {
-            src: 'http://vps-nodolab.com:3000/imagenes/slider.png'
+            src: 'http://localhost:3000/imagenes/slider.png'
           },
           {
             src: 'https://cdn.vuetifyjs.com/images/carousel/bird.jpg'

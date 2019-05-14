@@ -27,7 +27,7 @@
                             v-layout
                                 v-divider(color="white" style="margin: 40px")
                                 v-avatar(style="border-radius: initial;")
-                                    v-img(style="border-radius: initial;" src="http://vps-nodolab.com:3000/imagenes/Logo.png")
+                                    v-img(style="border-radius: initial;" src="http://localhost:3000/imagenes/Logo.png")
                                 v-divider(color="white" style="margin: 40px")
                         v-flex(xs12)
                             v-layout

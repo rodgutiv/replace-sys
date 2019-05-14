@@ -8,7 +8,7 @@ var DatosPagoSchema = Schema({
   id_compras: String,
   numero_tarjeta: String,
   cvv: String,
-  fecha_venc: String,
+  fecha_venc: Date,
   tipo_tarjeta: String
 });
 // Exportamos el modelo para usarlo en otros ficheros
