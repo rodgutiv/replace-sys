@@ -34,7 +34,7 @@ v-app
 
         v-divider
         v-layout(row wrap class="blue--text")
-          v-flex(xs5)
+          v-flex(xs6)
             v-layout(row wrap)
               v-flex(xs12 center)
                 h2(style="color:#084a9f;") Especificaciones
@@ -48,14 +48,14 @@ v-app
                 h3(style="color:#084a9f;") Tipo:
               v-flex(xs6)
                 h3(style="color:#084a9f;") {{tipo}}
-          v-flex(xs7)
+          v-flex(xs6 class="hidden-sm-and-down")
             v-layout(row wrap)
-              v-flex(xs12 center)
+              v-flex(xs12  center)
                 h2(style="color:#084a9f;") Te puede gustar
                 v-data-iterator(:items="items2" item-key="key_ext" :rows-per-page-items="rowsPerPageItems2"  row wrap :pagination.sync="pagination2" content-tag="v-layout")
                   v-flex(slot="item" slot-scope="props" text-xs-left xs12 sm6 md3 lg3)
                     v-card(id="bloque")
-                      v-img(src="http://localhost:3000/imagenes/disco.png")
+                      v-img(src="http://vps-nodolab.com:3000/imagenes/disco.png")
                       v-divider(id="division")
                       v-card-title(id="act" primary-title style="al" )
                         div
@@ -66,8 +66,8 @@ v-app
                           div
                             v-rating(id="stars" size="10" v-model="rating" readonly background-color="#003b94" style="color:#003b94;")
                       v-card-actions(id="act")
-                        v-btn(id="boton_prod" small round v-on:click="ver(props.item.codigo)") Comprar
-                        Modaldetalles(:nombre="props.item.nombre" :marca="props.item.marca")
+                          v-btn(id="boton_prod" small round v-on:click="ver(props.item.codigo)") Comprar
+                          Modaldetalles(:nombre="props.item.nombre" :marca="props.item.marca")
                           //router-link(class="white--text"  :to="{ name: 'agregar', params: { code: props.item.code } }")
                     //      v-btn(id="boton_prod" small round @click="show = !show") Ver detalles
                       v-card-text(v-show="show" id="datos")
@@ -78,15 +78,15 @@ v-app
     v-container(grid-list-md )
       v-card(style="background: white; padding: 50px;")
         v-layout(row wrap class="blue--text")
-          v-flex(xs6 class="text-lg-left")
+          v-flex( xs12 md6 sm6 class="text-lg-left")
             h2(style="color:#084a9f;") Descripción
             h3(style="color:#084a9f;") {{descripcion}}
-          v-flex(xs6 text-xs-center)
+          v-flex( xs12 md6 sm6 text-xs-center)
             h2(style="color:#084a9f;") ¿En que te podemos ayudar?
             v-input
               v-text-field( label="REALIZA UNA PREGUNTA" single-line solo )
         v-layout(row wrap class="blue--text" )
-          v-flex(xs6 class="text-lg-left")
+          v-flex( xs12 md6 sm6 class="text-lg-left")
             h2(style="color:#084a9f;") Compatibilidad
             v-data-table(
             :headers="headers"
@@ -106,13 +106,13 @@ v-app
                 td {{props.item.modelo}}
                 td {{props.item.anio}}
                 td {{props.item.motor}}
-          v-flex(xs6 text-xs-center)
+          v-flex( xs12 md6 sm6 text-xs-center)
             h2(style="color:#084a9f;") Califica nuestro producto
             v-rating(id="stars" v-model="rating"  background-color="#003b94" color="#003b94")
     v-container()
       v-layout.white(style="color:#084a9f;" text-xs-center row  wrap )
-        v-flex(flex xs4)
-            v-img(src="http://localhost:3000/imagenes/tarjeta cash.png" width="30%"  style="margin-left: 35%;")
+        v-flex(flex  xs12 md4 sm4)
+            v-img(src="http://vps-nodolab.com:3000/imagenes/tarjeta cash.png" width="30%"  style="margin-left: 35%;")
             h3 Paga con tarjeta o en fectivo
             v-flex(xs12)
                 span Con Mercado Pago,
@@ -122,8 +122,8 @@ v-app
                 span con tarjeta o efectivo en puntos
             v-flex(xs12)
                 span de pago. ¡Y siempre es seguro!
-        v-flex(flex xs4)
-            v-img(src="http://localhost:3000/imagenes/envio.png" width="30%"  style="margin-left: 35%;")
+        v-flex(flex  xs12 md4 sm4)
+            v-img(src="http://vps-nodolab.com:3000/imagenes/envio.png" width="30%"  style="margin-left: 35%;")
             h3 Envío gratis desde $449
             v-flex(xs12)
                 span Con Mercado Pago,
@@ -133,8 +133,8 @@ v-app
                 span con tarjeta o efectivo en puntos
             v-flex(xs12)
                 span de pago. ¡Y siempre es seguro!
-        v-flex(flex xs4)
-            v-img(src="http://localhost:3000/imagenes/seguridad.png" width="30%"  style="margin-left: 35%;")
+        v-flex(flex  xs12 md4 sm4)
+            v-img(src="http://vps-nodolab.com:3000/imagenes/seguridad.png" width="30%"  style="margin-left: 35%;")
             h3 Seguridad
             v-flex(xs12)
                 span Con Mercado Pago,

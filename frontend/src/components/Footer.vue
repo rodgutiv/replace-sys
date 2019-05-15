@@ -20,27 +20,20 @@
                     p(id="derechos") LOREM IPSUM
                     p(id="derechos") LOREM IPSUM
 
-                v-flex(xs12)
-                    v-layout(flex class="white--text" text-xs-center row  wrap style="margin-top: 30px;")
-                        v-spacer
-                        v-flex(xs12)
-                            v-layout
-                                v-divider(color="white" style="margin: 40px")
+                v-flex(xs12)                    
+                            v-layout(xs12)
+                                v-divider(color="white" style="margin: 3%")
                                 v-avatar(style="border-radius: initial;")
-                                    v-img(style="border-radius: initial;" src="http://localhost:3000/imagenes/Logo.png")
-                                v-divider(color="white" style="margin: 40px")
-                        v-flex(xs12)
-                            v-layout
-                                v-flex(xs6)
+                                    v-img(style="border-radius: initial;" src="http://vps-nodolab.com:3000/imagenes/Logo.png")
+                                v-divider(color="white" style="margin: 3%")
+                    
+                            v-layout(raw wrap)
+                                v-flex(xs12 sm4 md4)
                                     Cookies
-                                    //a( class="white--text" @click="mostrar_politic") Condiciones de uso
-                                    v-divider(vertical color="white" style="margin-left: 10px; margin-right: 10px;     min-height: 60%;")
-                                    //a(class="white--text" @click="mostrar_politic") Aviso de privacidad
+                                v-flex(xs12 sm4  md4)
                                     Privacidad
-                                v-flex(xs3)
-
-                                v-flex(xs12)
-                                    a( class="white--text") Todos los derechos reservados/REFACE/2019
+                                v-flex(xs12 sm4 md4 style="padding-top:1%")
+                                    a( class="white--text text-md-center" ) Todos los derechos reservados/REFACE/2019
 </template>
 <script>
 import Privacidad from '@/components/Privacidad.vue'

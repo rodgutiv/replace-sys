@@ -6,10 +6,10 @@ v-app
       v-card(style="padding: 50px; with:80%")
         v-form(ref="form" v-model="valid" v-on:submit.prevent="guardar()" lazy-validation)
           v-layout(row wrap class="blue--text" center style="padding: 20px;")
-            v-flex(xs6)
+            v-flex(xs12  sm6 md6)
               h1(style="color:#003b94; ") Direcció de Entrega
             v-spacer
-            v-flex(xs6 class="text-md-rigth" style="padding-left:33%;" )
+            v-flex(xs12  sm6 md6 class="text-md-rigth" style="padding-left:33%;" )
               //Agregar()
               v-btn(color="#003b94;" @click="reset") Otra
           v-layout(row wrap style="padding: 20px; display:none")
@@ -22,27 +22,27 @@ v-app
               v-text-field(color="#003b94;" label="Teléfono" :value="tel" name= "tel" )
           v-divider(id="divi" gradient="to rigth, #7B1FA2, #E1BEE7")
           v-layout(row wrap style="padding: 20px;")
-            v-flex(xs6)
+            v-flex(xs12  sm6 md6)
               v-text-field(color="#003b94;" label="Código Postal" :value="cp" name= "cpostal" )
           v-divider(id="divi" gradient="to rigth, #7B1FA2, #E1BEE7")
           v-layout(row wrap style="padding: 20px;")
-            v-flex(xs6)
+            v-flex(xs12 sm6 md6)
               v-text-field(color="#003b94;" label="Estado" :value="estado" name= "estado"  )
-            v-flex(xs6)
+            v-flex(xs12  sm6  md6)
               v-text-field(color="#003b94;" label="Municipio" :value="municipio" name= "mun" )
           v-divider(id="divi")
           v-layout(row wrap style="padding: 20px;")
-            v-flex(xs6)
+            v-flex(xs12  sm4 md4)
               v-text-field(color="#003b94;" label="Calle" :value="calle" name= "calle"  )
-            v-flex(xs3)
+            v-flex(xs12 sm4 md4)
               v-text-field(color="#003b94;" label="Núm Ext." :value="ni" name= "next"  )
-            v-flex(xs3)
+            v-flex(xs12 sm4 md4)
               v-text-field(color="#003b94;" label="Núm Int." :value="ne"  name= "nint"  )
           v-divider(id="divi")
           v-layout(row wrap style="padding: 20px;")
-            v-flex(xs12 lg6)
+            v-flex(xs12 sm6 md6)
               v-text-field(color="#003b94;" label="Referencias" :value="referencia" name= "referencia" )
-            v-flex(xs6)
+            v-flex(xs12  sm6 md6)
               v-text-field(color="#003b94;" label="Colonia" :value="colonia" name= "colonia"  )
               
           v-layout(row wrap class="blue--text" )
@@ -78,8 +78,8 @@ v-app
               //v-btn(color="#003b94;" v-on:click="guardar") Siguiente
     v-container()
       v-layout.white(style="color:#084a9f;" text-xs-center row  wrap )
-        v-flex(flex xs4)
-            v-img(src="http://localhost:3000/imagenes/tarjeta cash.png" width="30%"  style="margin-left: 35%;")
+        v-flex(flex xs12 md4 sm4)
+            v-img(src="http://vps-nodolab.com:3000/imagenes/tarjeta cash.png" width="30%"  style="margin-left: 35%;")
             h3 Paga con tarjeta o en fectivo
             v-flex(xs12)
                 span Con Mercado Pago,
@@ -89,8 +89,8 @@ v-app
                 span con tarjeta o efectivo en puntos
             v-flex(xs12)
                 span de pago. ¡Y siempre es seguro!
-        v-flex(flex xs4)
-            v-img(src="http://localhost:3000/imagenes/envio.png" width="30%"  style="margin-left: 35%;")
+        v-flex(flex xs12 md4 sm4)
+            v-img(src="http://vps-nodolab.com:3000/imagenes/envio.png" width="30%"  style="margin-left: 35%;")
             h3 Envío gratis desde $449
             v-flex(xs12)
                 span Con Mercado Pago,
@@ -100,8 +100,8 @@ v-app
                 span con tarjeta o efectivo en puntos
             v-flex(xs12)
                 span de pago. ¡Y siempre es seguro!
-        v-flex(flex xs4)
-            v-img(src="http://localhost:3000/imagenes/seguridad.png" width="30%"  style="margin-left: 35%;")
+        v-flex(flexxs12 md4 sm4)
+            v-img(src="http://vps-nodolab.com:3000/imagenes/seguridad.png" width="30%"  style="margin-left: 35%;")
             h3 Seguridad
             v-flex(xs12)
                 span Con Mercado Pago,
