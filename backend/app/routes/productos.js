@@ -153,6 +153,23 @@ router.post('/specific', function(req, res, next) {
   });
 });
 
+/* GET full specific query */
+router.post('/specific2', function(req, res, next) {
+  var specific_data = req.body;
+  console.log(specific_data[0].marca)
+  query = {
+    'marca': specific_data[0].marca
+  };
+  producto.find(query, function (err, producto){
+      if(err)
+        return res.status(500).send('Error en la peticion');
+      if(!producto)
+        return res.status(404).send({message: 'Ningun registro identificado'});
+    //console.log(producto)
+    return res.json(producto);
+  });
+});
+
 //metodo para actualizar el stock
 router.post('/stockup', function(req, res, next) {
   var data = req.body;
@@ -180,6 +197,49 @@ router.post('/stockup', function(req, res, next) {
         console.log(producto)
 
         var result = [{'success':true},{'id':data[0].value},{'stock':data[1].value}]
+        console.log(result)
+        return res.json(result);
+      })
+      .catch((err) => {
+        return res.status(500).send('Error en la peticion');
+      });
+    }
+  })
+  .catch((err) => {
+    console.log(err)
+    return res.status(500).send('Error en la peticion');
+  });
+});
+
+//metodo para actualizar el stock
+router.post('/addstock', function(req, res, next) {
+  var data = req.body;
+  var new_stock = 0;
+  console.log(data)
+  var data = req.body;
+  var new_stock = 0;
+  console.log(data[0].clave)
+  console.log(data[1].stock)
+  //metodo para buscar el producto
+  producto.find({'codigo': data[0].clave})
+  .then((rawResponse) =>{
+    if(!rawResponse){
+      return res.status(404).send({message: 'Ningun registro identificado'});
+    }else{
+      console.log('correcto')
+      var stock = rawResponse[0].stock
+      console.log(stock)
+      var add_stock = data[1].stock
+      new_stock = stock + add_stock
+      console.log(new_stock)
+
+      //metodo que cambia el stock
+      producto.updateOne({'codigo': data[0].clave}, {'stock': new_stock })
+      .then((producto) => {
+        console.log('update')
+        console.log(producto)
+
+        var result = [{'success':true},{'id':data[0].code},{'stock':data[1].stock}]
         console.log(result)
         return res.json(result);
       })

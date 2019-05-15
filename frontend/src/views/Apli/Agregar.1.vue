@@ -28,10 +28,10 @@ v-app
                   v-btn.white--text(color="#003b94" v-on:click="comprar") comprar
             v-layout(row wrap)
               v-flex(xs12  class="text-md-center")
-                v-img(src="http://vps-nodolab.com:3000/imagenes/tarjetas.png")
+                v-img(src="http://vps-nodolab.com:3000/imagenes/tarjetas.png")      
 
 
-
+            
         v-divider
         v-layout(row wrap class="blue--text")
           v-flex(xs5)
@@ -55,7 +55,7 @@ v-app
                 v-data-iterator(:items="items2" item-key="key_ext" :rows-per-page-items="rowsPerPageItems2"  row wrap :pagination.sync="pagination2" content-tag="v-layout")
                   v-flex(slot="item" slot-scope="props" text-xs-left xs12 sm6 md3 lg3)
                     v-card(id="bloque")
-                      v-img(src="http://localhost:3000/imagenes/disco.png")
+                      v-img(src="http://vps-nodolab.com:3000/imagenes/disco.png")
                       v-divider(id="division")
                       v-card-title(id="act" primary-title style="al" )
                         div
@@ -74,7 +74,7 @@ v-app
                         h6 Marca: {{marca}}
                         h6 Garantía de 2 años
                         h6 Condiciones PRoducto Cerrado y nuevo
-
+                        
     v-container(grid-list-md )
       v-card(style="background: white; padding: 50px;")
         v-layout(row wrap class="blue--text")
@@ -112,7 +112,7 @@ v-app
     v-container()
       v-layout.white(style="color:#084a9f;" text-xs-center row  wrap )
         v-flex(flex xs4)
-            v-img(src="http://localhost:3000/imagenes/tarjeta cash.png" width="30%"  style="margin-left: 35%;")
+            v-img(src="http://vps-nodolab.com:3000/imagenes/tarjeta cash.png" width="30%"  style="margin-left: 35%;")
             h3 Paga con tarjeta o en fectivo
             v-flex(xs12)
                 span Con Mercado Pago,
@@ -123,7 +123,7 @@ v-app
             v-flex(xs12)
                 span de pago. ¡Y siempre es seguro!
         v-flex(flex xs4)
-            v-img(src="http://localhost:3000/imagenes/envio.png" width="30%"  style="margin-left: 35%;")
+            v-img(src="http://vps-nodolab.com:3000/imagenes/envio.png" width="30%"  style="margin-left: 35%;")
             h3 Envío gratis desde $449
             v-flex(xs12)
                 span Con Mercado Pago,
@@ -134,7 +134,7 @@ v-app
             v-flex(xs12)
                 span de pago. ¡Y siempre es seguro!
         v-flex(flex xs4)
-            v-img(src="http://localhost:3000/imagenes/seguridad.png" width="30%"  style="margin-left: 35%;")
+            v-img(src="http://vps-nodolab.com:3000/imagenes/seguridad.png" width="30%"  style="margin-left: 35%;")
             h3 Seguridad
             v-flex(xs12)
                 span Con Mercado Pago,
@@ -193,8 +193,7 @@ export default {
       total:null,
       id_compra:0,
       info:null,
-      usuario:null,
-      id_ultima_compra:null
+      usuario:null
     }
 
 
@@ -208,7 +207,7 @@ export default {
    },
    agregar(){
      //alert("entro")
-     api.post('/products/stockup',$(event.currentTarget).serializeArray())
+      api.post('/products/stockup',$(event.currentTarget).serializeArray())
       .then(response => {
         if(!response.data[0].success){
           alert(response.data)
@@ -216,7 +215,33 @@ export default {
           if(response.data[0].success==true){
             this.total = this.precio * response.data[2].stock
             //alert(this.total)
-            api.post('/compra/addcar',[{'code':this.id_compra},{'claves':response.data[1].id},{'nombre':this.nombre},{'canti':response.data[2].stock},{'precio':this.precio},{'total':this.total}])
+            if(!sessionStorage.getItem("id")){
+              if(!sessionStorage.getItem("carrito")){
+                var producto = [{'claves':response.data[1].id},{'nombre':this.nombre},{'canti':response.data[2].stock},{'precio':this.precio},{'total':this.total}]
+                sessionStorage.setItem("carrito",producto)
+                var local = sessionStorage.getItem("carrito")
+                
+                alert(local[0])
+              }else{
+                var cant = sessionStorage.getItem("carrito").length
+                alert(cant)
+                var producto = sessionStorage.getItem("carrito")
+                //var producto[]
+                //alert(sessionStorage.getItem("carrito"))
+              }
+            }else{
+              api.post('/compra/addcar',[{'code':this.id_compra},{'id_cliente':sessionStorage.getItem("id")},{'claves':response.data[1].id},{'nombre':this.nombre},{'canti':response.data[2].stock},{'precio':this.precio},{'total':this.total}])
+              .then(response => {
+                this.info = response.data
+                alert('Producto agregado al carrito')
+              })
+              .catch(e => {
+                //alert(e)
+                alert('Producto agregado al carrito')
+                this.errors.push(e)
+              })
+            }
+            /*api.post('/compra/addcar',[{'code':this.id_compra},{'claves':response.data[1].id},{'nombre':this.nombre},{'canti':response.data[2].stock},{'precio':this.precio},{'total':this.total}])
             .then(response => {
               this.info = response.data
               alert('Producto agregado al carrito')
@@ -225,7 +250,7 @@ export default {
               //alert(e)
               alert('Producto agregado al carrito')
               this.errors.push(e)
-            })
+            })*/
           }else{
             alert('algo salio mal')
           }
@@ -242,7 +267,7 @@ export default {
    }
  },
 created() {
-
+    
     this.code = this.$route.params.id
     //this.code = sessionStorage.getItem("code");
     //sthis.code = 1
@@ -286,32 +311,21 @@ created() {
     })
     .catch(e => {
       this.errors.push(e)
+    }),
+    api.get(`/compra/lastindex`)
+    //api.get(`/producto`)
+    .then(response => {
+      this.id_compra = parseInt(response.data) + 1
+      sessionStorage.setItem("compra",this.id_compra)
+      //alert(this.id_compra)
     })
-    if(!sessionStorage.getItem("compra")){
-      api.get(`/compra/lastindex`)
-      //api.get(`/producto`)
-      .then(response => {
-        this.id_compra = parseInt(response.data) + 1
-        sessionStorage.setItem("compra",this.id_compra)
-        api.post('/compra/add_buy', [{'id':this.id_compra},{'estado':'proceso'}])
-        //api.post('/compra/buy', {id:'1'},{nombre_completo:this.nombre_cliente})
-        .then(response => {
-          this.info = response.data
-        })
-        .catch(e => {
-          this.errors.push(e)
-          //this.$router.push({  path: '/aplicacion/pagar'})
-        })
+    .catch(e => {
+      //alert(e)
+      this.errors.push(e)
+    })
 
-      })
-      .catch(e => {
-        //alert(e)
-        this.errors.push(e)
-      })
-    }else{
-      this.id_compra = sessionStorage.getItem("compra")
-    }
-    
+
+
 }
 
 

@@ -6,6 +6,9 @@ var Schema = mongoose.Schema;
 // Creamos el objeto del esquema y sus atributos
 var ComprasLibreSchema = Schema({
   id: String,
+  estado: String,
+  total_productos:Number,
+  total_venta:Number,
   datos_personales:
   {
     nombre_completo: String,

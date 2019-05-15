@@ -78,7 +78,7 @@ router.post('/update-user', function(req, res, next) {
       'municipio':        specific_data[12].value,
       'estado':           specific_data[13].value,
       'pais':             specific_data[14].value,
-      'codigo_pais':      specific_data[15].value,
+      'codigo_postal':    specific_data[15].value,
       'referencias':      specific_data[16].value
     }
   }
@@ -135,7 +135,7 @@ router.post('/new-user', function(req, res, next) {
       'municipio':        specific_data[11].value,
       'estado':           specific_data[12].value,
       'pais':             specific_data[13].value,
-      'codigo_pais':      specific_data[14].value,
+      'codigo_postal':    specific_data[14].value,
       'referencias':      specific_data[15].value
     },
     'status':             "Activo"
