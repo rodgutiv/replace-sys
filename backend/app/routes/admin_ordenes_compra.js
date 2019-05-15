@@ -3,6 +3,7 @@ var express = require('express');
 var router = express.Router();
 var compras_libre = require('../models/compras_libre');
 var carrito_compras = require('../models/carrito-compras');
+var facturas = require('../models/facturas');
 
 //Obtener todas las compras
 /* GET all products */
@@ -66,5 +67,35 @@ router.post('/compra-status', function(req, res, next) {
     return res.status(500).send('Error en la peticion');
   });
 });
+
+//Actualizar referencia de Oxxo
+router.post('/actualizar-referencia/:referencia', function(req, res, next) {
+  var num_ref = req.params.referencia;
+  console.log(num_ref)
+  console.log('correcto')
+  //metodo que cambia el status
+  facturas.updateOne({'numero_referencia': num_ref })
+    .then((facturas) => {
+        console.log('update')
+        console.log(facturas)
+        return res.json(facturas);
+      })
+      .catch((err) => {
+        return res.status(500).send('Error en la peticion');
+      });
+});
+
+//Obtener dato de referencia de Oxxo
+router.get('/obtener-referencia', function(req, res, next) {
+  facturas.find({ }, function (err, facturas){
+      if(err)
+        return res.status(500).send('Error en la peticion');
+      if(!facturas)
+        return res.status(404).send({message: 'Ningun registro identificado'});
+    //console.log(compras_libre)
+    return res.json(facturas);
+  });
+});
+
 
 module.exports = router;
