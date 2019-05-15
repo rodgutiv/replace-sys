@@ -16,7 +16,9 @@ var adminUsuariosRouter = require('./routes/admin_usuarios');
 var adminComprasRouter = require('./routes/admin_ordenes_compra');
 
 var app = express();
-
+var cors = require('cors');
+app.use(cors("http://localhost:3000"));
+app.use(cors("http://localhost:3000/web"));
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -25,8 +27,8 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use('/public', express.static(__dirname + '/public'));
-app.use('/', express.static(__dirname + '/admin'));
+app.use('/', express.static(__dirname + '/public'));
+app.use('/admin', express.static(__dirname + '/admin'));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
@@ -37,7 +39,7 @@ app.use('/compra', comprasLibreRouter);
 app.use('/ad-pagos', adminPagosRouter);
 app.use('/ad-productos', adminProductosRouter);
 app.use('/ad-usuarios', adminUsuariosRouter);
-app.use('/ad-compras,', adminComprasRouter);
+app.use('/ad-compras', adminComprasRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

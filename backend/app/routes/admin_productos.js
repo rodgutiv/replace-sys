@@ -94,25 +94,34 @@ router.post('/new-product', function(req, res, next) {
     'clave_interna': specific_data[1].value,
     'nombre': specific_data[2].value,
     'descripcion': specific_data[3].value,
-    'tipo': specific_data[4].value,
-    'marca': specific_data[5].value,
-    'precio': specific_data[6].value,
-    'imagenes':specific_data[7].value,
-    'autos': specific_data[8].value,
-    'stock': specific_data[9].value,
-    'categoria': specific_data[10].value,
-    'status' : "Activo"
+    'tipo': specific_data[5].value,
+    'marca': specific_data[6].value,
+    'precio': specific_data[7].value,
+//    'imagenes':specific_data[7].value,
+//    'autos': specific_data[7].value,
+    'stock': specific_data[8].value,
+    'categoria': specific_data[4].value,
+    'status': "Activo"
   }
 
   producto.create(query,function (err, producto){
     console.log(query)
     console.log(producto)
     if(err)
+    {
+      console.log("Error en la peticion")
       return res.status(500).send('Error en la peticion');
+    }
     if(!producto)
+    {
+      console.log("ningun producto")
       return res.status(404).send({message: 'Ningun registro identificado'});
+    }
     else
+    {
+      console.log("exito!")
       return res.status(404).send({message: 'Saved!'});
+    }
   });
 });
 

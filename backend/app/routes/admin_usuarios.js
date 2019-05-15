@@ -37,16 +37,16 @@ router.post('/login', function(req, res, next) {
       if(err)
         return res.send({message:'Error en la peticion'});
       if(!usuario)
-        return res.send({message: 'Ningun registro identificado'});    
+        return res.send({message: 'Ningun registro identificado'});
     var pass = shajs('sha256').update(datos[1].value).digest('hex')
-    if(pass == usuario.datos_personles.password){
+    if(pass == usuario.datos_personales.password){
       console.log(usuario)
       return res.send({message:'Bienvenido', data:usuario});
     }else{
       return res.send({message:'Esta mal el correo o la contraseña'});
     }
     //if(usuario[0].password)
-    
+
   });
 });
 
@@ -59,7 +59,7 @@ router.post('/update-user', function(req, res, next) {
   var id_user = specific_data[0].value
   var query = {
     'id': id_user,
-    'datos_personles':
+    'datos_personales':
     {
       'nombre_completo':  specific_data[1].value,
       'username':         specific_data[2].value,
@@ -116,7 +116,7 @@ router.post('/new-user', function(req, res, next) {
   var pass = shajs('sha256').update(specific_data[3].value).digest('hex')
   var query = {
     'id': specific_data[2].value,
-    'datos_personles':
+    'datos_personales':
     {
       'nombre_completo':  specific_data[0].value,
       'username':         specific_data[1].value,
@@ -146,7 +146,7 @@ router.post('/new-user', function(req, res, next) {
   .then((rawResponse) =>{
     //console.log(rawResponse)
     //console.log(rawResponse.length)
-    //console.log(rawResponse[0].datos_personles)
+    //console.log(rawResponse[0].datos_personales)
     if(rawResponse.length >= 1){
       console.log('es igual')
       return res.send({message: 'Este correo ya fue registrado, use uno diferente'})
