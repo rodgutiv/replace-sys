@@ -237,8 +237,13 @@ export default {
    },
    comprar(){
      //alert(this.code)
+     if(!sessionStorage.getItem("id")){
+       this.$router.push({name: 'login'})
+     }else{
+       this.$router.push({name: 'comprar', params: { id: this.id_compra  } })
+     }
      //this.$router.push({ path: '/aplicacion/comprar'});
-     this.$router.push({name: 'comprar', params: { id: this.id_compra  } })
+     
    }
  },
 created() {

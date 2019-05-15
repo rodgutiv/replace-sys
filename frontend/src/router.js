@@ -59,6 +59,16 @@ export default new Router({
               component: () => import('./views/Apli/Login.vue')
             },
             {
+              path: 'success',
+              name: 'success',
+              component: () => import( './views/Apli/Success.vue')
+            },
+            {
+              path: 'cancel',
+              name: 'cancel',
+              component: () => import( './views/Apli/Cancel.vue')
+            },
+            {
               path:'registrar',
               name: 'registrar',
               component: () => import('./views/Apli/Registrar.vue')

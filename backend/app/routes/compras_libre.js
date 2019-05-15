@@ -14,7 +14,7 @@ var express = require('express');
 var router = express.Router();
 var compras_libre = require('../models/compras_libre');
 var carrito_compras = require('../models/carrito-compras');
-
+var paypal = require('paypal-rest-sdk')
 /*Make buy */
 router.post('/buy', function(req, res, next) {
   var specific_data = req.body;
@@ -100,6 +100,26 @@ router.post('/agregar', function(req, res, next) {
   });
 });
 
+//metodo para actualizar el stock
+router.post('/finish', function(req, res, next) {
+  var data = req.body;
+  console.log(data)
+  var query = {
+    'total_productos': data[0].total_productos,
+    'total_venta':data[0].total_venta,
+    'estado':data[0].estado
+  }
+  console.log(query)
+  compras_libre.updateOne({'id': data[0].id}, query)
+  .then((producto) => {
+    console.log('update')
+    console.log(producto)
+    return res.json(producto);
+  })
+  .catch((err) => {
+    return res.status(500).send('Error en la peticion');
+  });
+});
 
 router.post('/borrar_carr', function(req, res, next) {
   var code = req.body;
@@ -182,5 +202,91 @@ router.post('/listcar', function(req, res, next) {
   });
 });
 
+paypal.configure({
+  'mode': 'sandbox', //sandbox or live
+  'client_id': 'AeM868ignL0Xu7t3S7cxzH7EO2BTGiW9WHbIRbSdNyxoLhm9DDp7CAm_S7i381sSBAJClS2nfg5wHk96',
+  'client_secret': 'EA3GgeFg6prhMZMLyCb-6_NQtQf7dFMd64r1jgVlpN22l3xF28_G6HE3XRfdDKfxRpfQKGtqGsNhK1Xx'
+});
 
+router.post('/pay', function(req, res){
+  var dato = req.body
+  console.log(dato[0].items)
+  const create_payment_json = {
+    "intent": "sale",
+    "payer": {
+        "payment_method": "paypal"
+    },
+    "redirect_urls": {
+        "return_url": "http://localhost:3000/aplicacion/success",
+        "cancel_url": "http://localhost:3000/aplicacion/cancel"
+    },
+    "transactions": [{
+        "item_list": {
+            "items": [{
+                "name": "Red Sox Hat",
+                "sku": "001",
+                "price": dato[0].total,
+                "currency": "MX",
+                "quantity": dato[0].cantidad
+            }]
+        },
+        "amount": {
+            "currency": "MX",
+            "total": dato[0].total
+        },
+        "description": "Hat for the best team ever"
+    }]
+  };
+
+  paypal.payment.create(create_payment_json, function (error, payment) {
+    if (error) {
+        console.log(error)
+        throw error;
+    } else {
+        for(let i = 0;i < payment.links.length;i++){
+          if(payment.links[i].rel === 'approval_url'){
+            res.redirect(payment.links[i].href);
+          }
+        }
+    }
+  });
+
+  
+
+  
+});
+
+router.get('/cancel', function(req, res) {
+  res.send('Cancelled');
+});
+
+
+ 
+
+  
+router.get('/success', function(req, res) {
+  const payerId = req.query.PayerID;
+  const paymentId = req.query.paymentId;
+  var dato = res.data
+  const execute_payment_json = {
+    "payer_id": payerId,
+    "transactions": [{
+        "amount": {
+            "currency": "MX",
+            "total": dato[0].total
+        }
+    }]
+  };
+
+  paypal.payment.execute(paymentId, execute_payment_json, function (error, payment) {
+    if (error) {
+        console.log(error.response);
+        throw error;
+    } else {
+        console.log(JSON.stringify(payment));
+        res.send('Success');
+    }
+  });
+
+});
 module.exports = router;

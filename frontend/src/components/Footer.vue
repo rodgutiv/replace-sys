@@ -2,18 +2,18 @@
     v-container(id="pie")
         v-footer(height="auto" )
             v-layout(flex class="white--text" text-xs-center row  wrap)
-                v-flex(xs4 style="padding-left: 20%;")
+                v-flex(xs12 lg4 md4 sm4 class="text-md-center")
                     h3 SERVICIO AL CLIENTE
                     p(id="derechos") LOREM IPSUM
                     p(id="derechos") LOREM IPSUM
                     p(id="derechos") LOREM IPSUM
                     p(id="derechos") LOREM IPSUM
-                v-flex(xs4)
+                v-flex(xs12 lg4 md4 sm4 class="text-md-center")
                     h3 CUENTAS Y PEDIDOS
                     p(id="derechos") LOREM IPSUM
                     p(id="derechos") LOREM IPSUM
                     p(id="derechos") LOREM IPSUM
-                v-flex(xs4 style="padding-right: 18%;")
+                v-flex(xs12 lg4 md4 sm4 class="text-md-center")
                     h3 AYUDA E INFORMACIÓN
                     p(id="derechos") LOREM IPSUM
                     p(id="derechos") LOREM IPSUM
@@ -39,7 +39,7 @@
                                     Privacidad
                                 v-flex(xs3)
 
-                                v-flex(xs3)
+                                v-flex(xs12)
                                     a( class="white--text") Todos los derechos reservados/REFACE/2019
 </template>
 <script>

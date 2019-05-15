@@ -10,8 +10,9 @@ v-app
                 v-card-title.center( center class="headline grey lighten-2 text-xs-right" primary-title  style="padding-left:10%") Bienvendio
                     //v-btn(flat)
                         v-img(src="http://vps-nodolab.com:3000/imagenes/Logo.png")
-                v-card-media(style="padding:5%")
-                  v-form(ref="form" v-model="valid" v-on:submit.prevent="m_login()" lazy-validation)
+                v-card-media(style="padding:5%") Fallo al realizar el pago
+                
+                  //v-form(ref="form" v-model="valid" v-on:submit.prevent="m_login()" lazy-validation)
                       v-text-field( v-model="login.email"
                         :rules="emailRules"
                         label="Correo electronico"
@@ -31,7 +32,7 @@ v-app
                           v-btn.primary.white--text(v-on:click="registrar") Registrarse
                           v-spacer
                           v-btn.white--text(type="submit" :disabled="!valid" color="success") Iniciar Sesion
-                      //v-btn.error(@click="clear") Cancelar
+                      v-btn.error(@click="clear") Cancelar
 
           v-flex(xs12 lg6 offset-lg3)
             v-progress-circular(:style="ver" indeterminate)
@@ -76,35 +77,18 @@ import $ from 'jquery'
        }
      },
      methods: {
-
-      registrar() {
-        this.$router.push({ name: 'registrar'});
-      },
-      m_login() {
-        api.post('/ad-usuarios/login', $(event.currentTarget).serializeArray())
+     },created(){
+       api.post('/compras/success', [{'total':sessionStorage.getItem("total")}])
         .then(response => {          
           //alert('entro al api')
-          this.info = response.data.message
-          if(this.info == 'Bienvenido'){
-            sessionStorage.setItem("id",response.data.data.id)
-            sessionStorage.setItem("nombre",response.data.data.datos_personles.username)
-            alert(sessionStorage.getItem("nombre"))
-            this.info2 = 'Bienvenido '+response.data.data.datos_personles.username
-            sessionStorage.setItem("variable",1)
-            //this.$router.push({ name: 'inicio'});
-            this.$router.push({ name: 'home'});
-          }else{
-            this.info2 = this.info
-            //alert(this.info)
-          }
+          alert(response.data)
         })
         .catch(e => {
-          alert('fallo')
           this.errors.push(e)
           alert(e)
-        })     
-      }
+        })   
      }
+
 
    }
 </script>
