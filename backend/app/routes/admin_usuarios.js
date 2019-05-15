@@ -37,7 +37,7 @@ router.post('/login', function(req, res, next) {
       if(err)
         return res.send({message:'Error en la peticion'});
       if(!usuario)
-        return res.send({message: 'Ningun registro identificado'});    
+        return res.send({message: 'Ningun registro identificado'});
     var pass = shajs('sha256').update(datos[1].value).digest('hex')
     if(pass == usuario.datos_personales.password){
       console.log(usuario)
@@ -46,7 +46,7 @@ router.post('/login', function(req, res, next) {
       return res.send({message:'Esta mal el correo o la contraseña'});
     }
     //if(usuario[0].password)
-    
+
   });
 });
 
@@ -146,7 +146,7 @@ router.post('/new-user', function(req, res, next) {
   .then((rawResponse) =>{
     //console.log(rawResponse)
     //console.log(rawResponse.length)
-    //console.log(rawResponse[0].datos_personles)
+    //console.log(rawResponse[0].datos_personales)
     if(rawResponse.length >= 1){
       console.log('es igual')
       return res.send({message: 'Este correo ya fue registrado, use uno diferente'})
@@ -181,8 +181,9 @@ router.post('/new-user', function(req, res, next) {
 
 //delete user
 router.post('/delete-user/:id', function(req, res, next) {
+  console.log("Entro al metodo")
   var id_user = req.params.id;
-  console.log(data)
+  console.log(id_user)
   //metodo para buscar el usuario
   usuario.find({'id': id_user})
   .then((rawResponse) =>{

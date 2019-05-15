@@ -277,3 +277,57 @@ db.productos.insertMany([
     categoria: "Radiadores"
   }
 ])
+
+db.usuario.insert({
+  id: "0",
+  datos_personales:
+  {
+    nombre_completo: "Administrador",
+    username: "admin",
+    email: "admin@refacenodo.mx",
+    password: "1234",
+    fecha_nacimiento: "25-07-20",
+    telefono: "4431811564"
+  },
+  domicilio:
+  {
+    num_interior: "1",
+    num_exterior: "50",
+    calle: "Arrocena",
+    colonia: "Erandeni 1",
+    localidad: "Morelia",
+    municipio: "Morelia",
+    estado: "Michoacán",
+    pais: "México",
+    codigo_pais: "58880",
+    referencias: "En contraesquina de escuela primaria, entre calles Garbanzal y Av. Erandeni"
+  },
+  status: "Activo"
+})
+
+db.usuario.insert({
+  id: "1",
+  datos_personales:
+  {
+    nombre_completo: "Rodrigo",
+    username: "rodrigo",
+    email: "rodrigo@refacenodo.mx",
+    password: "12345678",
+    fecha_nacimiento: "25-07-20",
+    telefono: "4431811564"
+  },
+  domicilio:
+  {
+    num_interior: "1",
+    num_exterior: "50",
+    calle: "Arrocena",
+    colonia: "Erandeni 1",
+    localidad: "Morelia",
+    municipio: "Morelia",
+    estado: "Michoacán",
+    pais: "México",
+    codigo_pais: "58880",
+    referencias: "En contraesquina de escuela primaria, entre calles Garbanzal y Av. Erandeni"
+  },
+  status: "Activo"
+})

@@ -8,7 +8,7 @@ var DatosPagoUsuarioSchema = Schema({
   id_user: String,
   numero_tarjeta: String,
   cvv: String,
-  fecha_venc: String,
+  fecha_venc: Date,
   tipo_tarjeta: String,
   status: String
 });

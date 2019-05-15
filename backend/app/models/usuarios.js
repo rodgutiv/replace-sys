@@ -31,6 +31,5 @@ var UsuariosSchema = Schema({
   status: String
 });
 
-
 // Exportamos el modelo para usarlo en otros ficheros
 module.exports = mongoose.model('Usuarios', UsuariosSchema);

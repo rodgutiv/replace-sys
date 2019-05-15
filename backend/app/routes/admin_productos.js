@@ -43,15 +43,17 @@ router.post('/update-product', function(req, res, next) {
     'clave_interna': specific_data[1].value,
     'nombre': specific_data[2].value,
     'descripcion': specific_data[3].value,
-    'tipo': specific_data[4].value,
-    'marca': specific_data[5].value,
-    'precio': specific_data[6].value,
-    'imagenes':specific_data[7].value,
-    'autos': specific_data[8].value,
-    'stock': specific_data[9].value,
-    'categoria': specific_data[10].value
+    'tipo': specific_data[5].value,
+    'marca': specific_data[6].value,
+    'precio': specific_data[7].value,
+//    'imagenes':specific_data[7].value,
+//    'autos': specific_data[7].value,
+    'stock': specific_data[8].value,
+    'categoria': specific_data[4].value,
+    'status': specific_data[9].value
   }
-
+  console.log('datos en query')
+  console.log(query)
   //metodo para buscar el producto
   producto.find({'clave_interna': specific_data[1].value})
   .then((rawResponse) =>{
@@ -60,7 +62,7 @@ router.post('/update-product', function(req, res, next) {
     }else{
       console.log('correcto')
       //metodo que cambia el stock
-      producto.update({'clave_interna': code}, query)
+      producto.updateOne({'clave_interna': specific_data[1].value}, query)
       .then((producto) => {
         console.log('update')
         console.log(producto)
@@ -69,6 +71,8 @@ router.post('/update-product', function(req, res, next) {
         return res.json(result);
       })
       .catch((err) => {
+        console.log('error en la consulta')
+        console.log(err)
         return res.status(500).send('Error en la peticion');
       });
     }
@@ -90,25 +94,34 @@ router.post('/new-product', function(req, res, next) {
     'clave_interna': specific_data[1].value,
     'nombre': specific_data[2].value,
     'descripcion': specific_data[3].value,
-    'tipo': specific_data[4].value,
-    'marca': specific_data[5].value,
-    'precio': specific_data[6].value,
-    'imagenes':specific_data[7].value,
-    'autos': specific_data[8].value,
-    'stock': specific_data[9].value,
-    'categoria': specific_data[10].value,
-    'status' : "Activo"
+    'tipo': specific_data[5].value,
+    'marca': specific_data[6].value,
+    'precio': specific_data[7].value,
+//    'imagenes':specific_data[7].value,
+//    'autos': specific_data[7].value,
+    'stock': specific_data[8].value,
+    'categoria': specific_data[4].value,
+    'status': "Activo"
   }
 
   producto.create(query,function (err, producto){
     console.log(query)
     console.log(producto)
     if(err)
+    {
+      console.log("Error en la peticion")
       return res.status(500).send('Error en la peticion');
+    }
     if(!producto)
+    {
+      console.log("ningun producto")
       return res.status(404).send({message: 'Ningun registro identificado'});
+    }
     else
+    {
+      console.log("exito!")
       return res.status(404).send({message: 'Saved!'});
+    }
   });
 });
 

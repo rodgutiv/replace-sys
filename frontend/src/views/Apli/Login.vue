@@ -3,7 +3,7 @@ v-app
      v-container(grid-list-xl text-xs-center)
         v-layout(row wrap)
           //v-flex(md4 offset-md4) Bienvendio
-              v-img(src="http://vps-nodolab.com:3000/imagenes/Logo.png")
+              v-img(src="http://localhost:3000/imagenes/Logo.png")
 
           v-flex(xs12 lg6 offset-lg3)
             v-card
@@ -67,7 +67,7 @@ import $ from 'jquery'
             required: value => !!value || 'Required.',
             min: v => v.length >= 8 || 'Al menos 8 Caracteres'
           },
-          
+
           emailRules: [
             v => !!v || 'E-mail is required',
             v => /.+@.+/.test(v) || 'E-mail must be valid'
@@ -82,7 +82,7 @@ import $ from 'jquery'
       },
       m_login() {
         api.post('/ad-usuarios/login', $(event.currentTarget).serializeArray())
-        .then(response => {          
+        .then(response => {
           //alert('entro al api')
           this.info = response.data.message
           if(this.info == 'Bienvenido'){
@@ -102,7 +102,7 @@ import $ from 'jquery'
           alert('fallo')
           this.errors.push(e)
           alert(e)
-        })     
+        })
       }
      }
 
