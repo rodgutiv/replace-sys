@@ -10,6 +10,7 @@ v-app
               h1(style="color:#003b94; ") Direcció de Entrega
             v-spacer
             v-flex(xs6 class="text-md-rigth" style="padding-left:33%;" )
+              //Agregar()
               v-btn(color="#003b94;" @click="reset") Otra
           v-layout(row wrap style="padding: 20px; display:none")
             v-flex(xs6)
@@ -40,10 +41,10 @@ v-app
           v-divider(id="divi")
           v-layout(row wrap style="padding: 20px;")
             v-flex(xs12 lg6)
-              v-text-field(color="#003b94;" label="Referencias" :referencia="referencia" name= "referencia" )
+              v-text-field(color="#003b94;" label="Referencias" :value="referencia" name= "referencia" )
             v-flex(xs6)
-              v-text-field(color="#003b94;" label="Colonia" :colonia="colonia" name= "colonia"  )
-          
+              v-text-field(color="#003b94;" label="Colonia" :value="colonia" name= "colonia"  )
+              
           v-layout(row wrap class="blue--text" )
             v-flex(xs12 class="text-lg-left")
               h2(style="color:#084a9f;") Carrito
@@ -66,11 +67,11 @@ v-app
                   td {{props.item.precio}}
                   td {{props.item.total}}
                   td
-                    Agregar(:producto="props.item.claves_productos" :nombre="props.item.nombre" :cantidades="props.item.cantidades")
+                    Agregar(:producto="props.item._id" :nombre="props.item.nombre" :precio="props.item.precio" :cantidades="props.item.cantidades")
                   td
-                    Borrar(:producto="props.item.claves_productos" :cantidad="props.item.cantidades" :nombre="props.item.nombre")
+                    Borrar(:producto="props.item._id" :nombre="props.item.nombre" :stock="props.item.cantidades" :clave="props.item.clave_productos")
 
-          
+              
           v-layout(row wrap style="padding: 20px;")                    
             v-flex(xs12 class="text-md-right")
               v-btn(color="#003b94;" type="submit") Siguiente
@@ -210,9 +211,12 @@ created() {
       api.get('/ad-usuarios/all-users/'+this.usuario)
       .then(response => {
         // JSON responses are automatically parsed.
-        this.nombre_cliente=response.data.datos_personles.nombre_completo
-        this.email=response.data.datos_personles.email
-        this.tel=response.data.datos_personles.telefono
+        //alert(response.data)
+        //alert(response.data.datos_personales.nombre_completo)
+        this.nombre_cliente=response.data.datos_personales.nombre_completo
+        //alert(this.nombre_cliente)
+        this.email=response.data.datos_personales.email
+        this.tel=response.data.datos_personales.telefono
         this.cp=response.data.domicilio.codigo_postal
         this.estado=response.data.domicilio.estado
         this.municipio=response.data.domicilio.municipio
@@ -220,6 +224,7 @@ created() {
         this.ne=response.data.domicilio.num_exterior
         this.referencia=response.data.domicilio.referencias
         this.colonia=response.data.domicilio.colonia
+        this.calle=response.data.domicilio.calle
       })
       .catch(e => {
         this.errors.push(e)

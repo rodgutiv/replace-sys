@@ -39,7 +39,7 @@ router.post('/login', function(req, res, next) {
       if(!usuario)
         return res.send({message: 'Ningun registro identificado'});    
     var pass = shajs('sha256').update(datos[1].value).digest('hex')
-    if(pass == usuario.datos_personles.password){
+    if(pass == usuario.datos_personales.password){
       console.log(usuario)
       return res.send({message:'Bienvenido', data:usuario});
     }else{
@@ -59,7 +59,7 @@ router.post('/update-user', function(req, res, next) {
   var id_user = specific_data[0].value
   var query = {
     'id': id_user,
-    'datos_personles':
+    'datos_personales':
     {
       'nombre_completo':  specific_data[1].value,
       'username':         specific_data[2].value,
@@ -78,7 +78,7 @@ router.post('/update-user', function(req, res, next) {
       'municipio':        specific_data[12].value,
       'estado':           specific_data[13].value,
       'pais':             specific_data[14].value,
-      'codigo_pais':      specific_data[15].value,
+      'codigo_postal':    specific_data[15].value,
       'referencias':      specific_data[16].value
     }
   }
@@ -116,7 +116,7 @@ router.post('/new-user', function(req, res, next) {
   var pass = shajs('sha256').update(specific_data[3].value).digest('hex')
   var query = {
     'id': specific_data[2].value,
-    'datos_personles':
+    'datos_personales':
     {
       'nombre_completo':  specific_data[0].value,
       'username':         specific_data[1].value,
@@ -135,7 +135,7 @@ router.post('/new-user', function(req, res, next) {
       'municipio':        specific_data[11].value,
       'estado':           specific_data[12].value,
       'pais':             specific_data[13].value,
-      'codigo_pais':      specific_data[14].value,
+      'codigo_postal':    specific_data[14].value,
       'referencias':      specific_data[15].value
     },
     'status':             "Activo"

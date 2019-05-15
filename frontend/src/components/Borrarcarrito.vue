@@ -4,25 +4,26 @@ v-layout(row justify-center)
     v-btn(slot="activator" small flat icon color="red lighten-2" dark)
       v-icon delete
     v-card(dark)
-      v-card-title.headline ¿Cuantos quieres quitar?
+      v-card-title.headline 
       v-flex( offset-xs5 xs1)
         v-icon(large color="red") warning
-      v-card-text Estas seguro que quieres quitar?
+      v-card-text ¿Seguro quieres quitar {{nombre}} del carrito?
       v-card-actions
         v-spacer
         v-btn(color="blue white--text darken-1"  @click.native="dialog = false") Cancelar
-        v-btn(color="red white--text darken-1"  @click="enviar(producto)"  @click.native="dialog2 = false") Quitar
+        v-btn(color="red white--text darken-1"  @click="enviar(producto)"  ) Quitar
         
 </template>
 
 <script >
-  //import {api} from '@/api'
+  import {api} from '@/api'
   //import $ from 'jquery'
   export default {
     props: {   
       producto:Number,
       nombre: String,
-      cantidad: Number
+      stock: Number,
+      clave: String
     },
     data (){
     return {
@@ -32,15 +33,22 @@ v-layout(row justify-center)
   methods: {
 
        enviar(key) {
-         alert(key)
-        /*api.post('/borrar_ext', [{name:"id",value:key}])
+         //alert(key)
+        api.post('/compra/borrar_carr', [{"id":key}])
         .then(response => {
           if (response.data==null) {
              this.info=response.data
           }
           else{
-              this.dialog=false            
-           this.$router.go()
+              api.post('/products/addstock', [{"clave":this.clave},{"stock":this.stock}])
+              .then(response => {
+                  
+                  this.dialog=false  
+              }).catch(error => {
+                this.info= error
+                alert(this.info)
+              })          
+           //this.$router.go()
           }
        
         
@@ -48,9 +56,7 @@ v-layout(row justify-center)
 
           this.info= error
         })
-           this.$router.go()*/
-        //this.$router.go(this.$router.currentRoute)
-        
+          
   
    }
  },

@@ -142,6 +142,7 @@ export default {
                 sessionStorage.removeItem("id")
                 sessionStorage.removeItem("nombre")
                 sessionStorage.removeItem("variable")
+                sessionStorage.removeItem("compra")
                 this.$router.push({ name: 'home'})
             },
             comprar(){

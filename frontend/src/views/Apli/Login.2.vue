@@ -87,9 +87,9 @@ import $ from 'jquery'
           this.info = response.data.message
           if(this.info == 'Bienvenido'){
             sessionStorage.setItem("id",response.data.data.id)
-            sessionStorage.setItem("nombre",response.data.data.datos_personales.username)
+            sessionStorage.setItem("nombre",response.data.data.datos_personles.username)
             alert(sessionStorage.getItem("nombre"))
-            this.info2 = 'Bienvenido '+response.data.data.datos_personales.username
+            this.info2 = 'Bienvenido '+response.data.data.datos_personles.username
             sessionStorage.setItem("variable",1)
             //this.$router.push({ name: 'inicio'});
             this.$router.push({ name: 'home'});

@@ -21,7 +21,6 @@ router.post('/buy', function(req, res, next) {
   console.log('DATOS DE COMPRA')
   console.log(specific_data)
   var query = {
-    'id': specific_data[0].value,
     'datos_personales':
     {
       'nombre_completo': specific_data[1].value,
@@ -40,6 +39,31 @@ router.post('/buy', function(req, res, next) {
       'referencias': specific_data[11].value
     }
   }
+  compras_libre.updateOne({'id': specific_data[0].value}, query)
+  .then((compras_libre) => {
+    console.log('update')
+    console.log(query)
+    console.log(compras_libre)
+    if(!compras_libre)
+      return res.status(404).send({message: 'Ningun registro identificado'});
+    else
+      return res.status(404).send({message: 'Saved!'});
+  })
+  .catch((err) => {
+    return res.status(500).send('Error en la peticion');
+  });
+});
+
+
+router.post('/add_buy', function(req, res, next) {
+  var specific_data = req.body;
+  console.log('DATOS DE COMPRA')
+  console.log(specific_data)
+  console.log(specific_data[0].id)
+  var query = {
+    'id': specific_data[0].id,
+    'estado': specific_data[1].estado
+  }
   compras_libre.create(query,function (err, compras_libre){
     console.log(query)
     console.log(compras_libre)
@@ -49,6 +73,48 @@ router.post('/buy', function(req, res, next) {
       return res.status(404).send({message: 'Ningun registro identificado'});
     else
       return res.status(404).send({message: 'Saved!'});
+  });
+});
+
+
+//metodo para actualizar el stock
+router.post('/agregar', function(req, res, next) {
+  var data = req.body;
+  console.log(data)
+  console.log(data[0].id)
+  var total = data[0].cantidad * data[0].precio
+  console.log(total)
+  var query = {
+    'cantidades': data[0].cantidad,
+    'total': total
+  }
+
+  carrito_compras.updateOne({'_id': data[0].id}, query)
+  .then((producto) => {
+    console.log('update')
+    console.log(producto)
+    return res.json(producto);
+  })
+  .catch((err) => {
+    return res.status(500).send('Error en la peticion');
+  });
+});
+
+
+router.post('/borrar_carr', function(req, res, next) {
+  var code = req.body;
+  console.log(code[0].id)
+  //metodo para buscar el producto
+  carrito_compras.remove({'_id': code[0].id})
+  .then((producto) => {
+    console.log('borrado')
+    console.log(producto)
+    var result = {'success':true}
+    console.log(result)
+    return res.json(result);
+  })
+  .catch((err) => {
+    return res.status(500).send('Error en la peticion');
   });
 });
 
@@ -84,6 +150,7 @@ router.get('/lastindex', function(req, res, next) {
     if(!rawResponse){
       return res.status(404).send({message: 'Ningun identificador '});
     }else{
+      console.log(rawResponse)
       return res.json(rawResponse[0].id);
     }
   })
