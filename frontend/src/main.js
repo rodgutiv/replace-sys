@@ -7,7 +7,9 @@ import './plugins/vuetify'
 import App from './App.vue'
 import 'roboto-fontface/css/roboto/roboto-fontface.css'
 import 'material-design-icons-iconfont/dist/material-design-icons.css'
+import VueCarousel from 'vue-carousel';
 
+Vue.use(VueCarousel);
 Vue.config.productionTip = false
 Vue.use(VueAwesomeSwiper, /* { default global options } */)
 

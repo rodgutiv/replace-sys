@@ -7,7 +7,7 @@ v-app
 
           v-flex(xs12 lg6 md6 offset-lg3 offset-md3 )
             v-card
-                v-card-title.center( center class="headline grey lighten-2 text-xs-right" primary-title  style="padding-left:10%") Bienvendio
+                v-card-title.center( center class="headline grey lighten-2 text-xs-right" primary-title  style="padding-left:10%") Bienvenido
                     //v-btn(flat)
                         v-img(src="http://vps-nodolab.com:3000/imagenes/Logo.png")
                 v-card-media(style="padding:5%")
@@ -83,6 +83,7 @@ import $ from 'jquery'
         this.$router.push({ name: 'registrar'});
       },
       m_login() {
+        alert($(event.currentTarget).serializeArray())
         api.post('/ad-usuarios/login', $(event.currentTarget).serializeArray())
         .then(response => {
           //alert('entro al api')
@@ -101,7 +102,7 @@ import $ from 'jquery'
           }
         })
         .catch(e => {
-          alert('fallo')
+          alert(e)
           this.errors.push(e)
           alert(e)
         })

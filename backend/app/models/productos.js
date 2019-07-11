@@ -12,15 +12,7 @@ var ProductosSchema = Schema({
   tipo: String,
   marca: String,
   precio: Number,
-  imagenes:[String],
-  autos:[
-    {
-      modelo: String,
-      anio: String,
-      marca_auto: String,
-      motor: String
-    }
-  ],
+  autos:String,
   stock: Number,
   categoria: String,
   status: String

@@ -5,10 +5,10 @@ v-app
     v-container(grid-list-md text-xs-center)
       v-card(style="padding: 10px;")
         v-layout(row wrap class="blue--text"  )
-          v-flex(xs6)
+          v-flex(xs12 md6)
             v-img(src="http://vps-nodolab.com:3000/imagenes/disco2.png")
           v-divider(vertical)
-          v-flex(xs5 class="text-md-center" style="padding-top: 6%;padding-left: 10%;")
+          v-flex(xs12 md5 class="text-md-center" style="padding-top: 6%;padding-left: 10%;")
             v-layout(row wrap class="text-md-center")
               v-flex(xs12)
                 h1(style="color:#003b94;") {{nombre}}
@@ -19,12 +19,12 @@ v-app
                 h1(style="color:#003b94;") ${{precio}}
             v-form( v-on:submit.prevent="agregar()" lazy-validation )
               v-layout(row wrap)
-                v-flex(xs4 class="text-md-center")
+                v-flex(xs12 md4 sm4 class="text-md-center")
                   v-text-field(style="display:none;" :value="codigo" name="code")
                   v-text-field(ref="cant" style=" color:#003b94;" type="number"  min="1" :value=0 name="stock")
-                v-flex(xs4 class="text-md-center")
+                v-flex(xs12 md4 sm4 class="text-md-center")
                   v-btn.white--text(type="submit" color="#003b94" ) agregar
-                v-flex(xs4 class="text-md-center")
+                v-flex(xs12 md4 sm4 class="text-md-center")
                   v-btn.white--text(color="#003b94" v-on:click="comprar") comprar
             v-layout(row wrap)
               v-flex(xs12  class="text-md-center")
@@ -34,7 +34,7 @@ v-app
 
         v-divider
         v-layout(row wrap class="blue--text")
-          v-flex(xs6)
+          v-flex(xs12 md6 )
             v-layout(row wrap)
               v-flex(xs12 center)
                 h2(style="color:#084a9f;") Especificaciones
@@ -66,6 +66,7 @@ v-app
                           div
                             v-rating(id="stars" size="10" v-model="rating" readonly background-color="#003b94" style="color:#003b94;")
                       v-card-actions(id="act")
+                        v-flex(sm12)
                           v-btn(id="boton_prod" small round v-on:click="ver(props.item.codigo)") Comprar
                           Modaldetalles(:nombre="props.item.nombre" :marca="props.item.marca")
                           //router-link(class="white--text"  :to="{ name: 'agregar', params: { code: props.item.code } }")
@@ -203,8 +204,8 @@ export default {
 
  methods: {
    ver(dato){
-     sessionStorage.setItem("code",dato);
-     this.$router.push({ path: '/aplicacion/agregar/'+dato});
+     //sessionStorage.setItem("code",dato);
+     this.$router.push({ name: 'agregar', params: { id: dato  }});
    },
    agregar(){
      //alert("entro")

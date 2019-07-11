@@ -138,13 +138,14 @@ export default {
      //this.$router.push({ path: '/aplicacion/pagar'});
      //this.$router.push({ name: 'pagar'});
      //this.$router.push({ path: '/aplicacion/pagar'});
-      api.post('/compra/pay', [{'total':this.total, 'cantidad':this.cantidad,'items':this.items2}])
+      /*api.post('/compra/pay', [{'total':this.total, 'cantidad':this.cantidad,'items':this.items2}])
       .then(response => {
         alert(response.data)
       })
       .catch(e => {
         this.errors.push(e)
-      })
+      })*/
+      alert('Pago realizado')
 
    }
  },

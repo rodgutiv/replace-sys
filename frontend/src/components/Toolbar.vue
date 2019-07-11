@@ -52,26 +52,30 @@
                 v-flex
                     router-link(style="text-decoration: none" to="/")
                         v-img(id="logo" style="border-radius: inherit; " to="/" src="http://vps-nodolab.com:3000/imagenes/Logo.png")
-            v-flex(xs1)
-                v-toolbar-side-icon(class="white--text " class="hidden-lg-and-up" @click.stop="drawer = !drawer")
+            v-flex(xs2 sm1 md1 class="hidden-lg-and-up")
+                v-toolbar-side-icon(class="white--text "  @click.stop="drawer = !drawer")
             v-flex(xs11 sm10 md11 lg11 class="text-md-center")
-                v-layout(row wrap style="padding-left: 5%;" class="text-md-center")
-                    v-flex(lg5 md6 xs9  sm4 order-md2 order-sm2 order-xs2 style="padding-top: 1%" class="text-md-center")
-                        v-layout(row wrap class="text-md-center" style="padding-left: 17%;")
-                            router-link(id="boton" class="hidden-sm-and-down" :style="ver1" to="/aplicacion/login" )
-                                v-btn( flat md2 class="white--text" small) Iniciar Sesión
-                            //router-link(id="boton" class="hidden-sm-and-down"  to="/aplicacion/login" )
-                            v-btn(flat :style="ver2" md2 class="white--text" small v-on:click="cerrar()") Cerrar Sesión
-                            router-link(id="boton" class="hidden-sm-and-down" to="/aplicacion/ayuda")
-                                v-btn(flat class="white--text" small) Ayuda
-                            v-btn(small class="white--text" flat icon href="https://www.facebook.com/")
-                                v-img(id="ima" src="http://vps-nodolab.com:3000/imagenes/FB.png")
-                            v-btn(small class="white--text" flat icon href="https://www.instagram.com/?hl=es-la")
-                                v-img(id="ima" src="http://vps-nodolab.com:3000/imagenes/IG.png")
-                            v-btn(icon @click.stop="rightDrawer = !rightDrawer" class="hidden-md-and-up")
-                                v-icon(class="white--text " ) more_vert
-                                //v-img(id="ima" src="http://vps-nodolab.com:3000/imagenes/IG.png")
-                    v-flex(lg7 md5 xs5 sm6 class="hidden-xs-only" order-md1 order-sm1 order-xs1  style="padding-top: 2%;")
+                v-layout(row wrap style="padding-left: 5%;" class="text-xs-center")
+                    v-flex(lg4 md6 xs9  sm4 order-md2 order-sm2 order-xs2 style="padding-top: 1.5%" class="text-md-center")
+                        v-layout(row wrap class="text-md-center")
+                            v-flex(lg4 :style="ver1" class="hidden-sm-and-down")
+                                router-link(id="boton"   to="/aplicacion/login" )
+                                    v-btn( flat md2 class="white--text" small) Iniciar Sesión
+                            v-flex(lg3 :style="ver2" class="hidden-sm-and-down")
+                                v-btn(flat  md2  class="white--text" small v-on:click="cerrar()") Cerrar Sesión
+                            v-flex(xs3 class="hidden-sm-and-down")
+                                router-link(id="boton"  to="/aplicacion/ayuda")
+                                    v-btn(flat class="white--text" small) Ayuda
+                            v-flex(xs4 md2 lg2)
+                                v-btn(small class="white--text" flat icon href="https://www.facebook.com/")
+                                    v-img( src="http://vps-nodolab.com:3000/imagenes/FB.png")
+                            v-flex(xs4 md2 lg2)
+                                v-btn(small  class="white--text" flat icon href="https://www.instagram.com/?hl=es-la")
+                                    v-img( src="http://vps-nodolab.com:3000/imagenes/IG.png")
+                            v-flex(xs4 md2 lg2 class="hidden-md-and-up")
+                                v-btn(icon @click.stop="rightDrawer = !rightDrawer")
+                                    v-icon(class="white--text " ) more_vert
+                    v-flex(lg8 md5 xs5 sm6 class="hidden-xs-only" order-md1 order-sm1 order-xs1  style="padding-top: 2%;")
                         v-text-field(class="black--text"  ref="dat" v-model="escrito" class="black--text" label="Find Product" solo append-icon="search" v-on:keyup.enter="Submit(escrito)")
                     v-flex(order-md3 md1 sm1 xs1 order-sm3 order-xs3 class="hidden-lg-and-up" style="padding-top: 1%;" class="text-xs-center")
                         v-btn(flat icon small class="text-xs-center" v-on:click="comprar()" )
@@ -80,24 +84,24 @@
                     v-spacer()
                     router-link(style="text-decoration: none" to="/")
                         v-btn(flat class="white--text" small) Inicio
-                    v-divider(vertical color="white")
+                    v-divider(vertical id="divison")
                     router-link(style="text-decoration: none" to="/aplicacion/productos")
                         v-btn(flat class="white--text" small) Productos
-                    v-divider(vertical color="white")
+                    v-divider(vertical id="divison")
                     router-link(style="text-decoration: none" to="/")
                         v-btn(flat class="white--text" small) Servicio Pesado
-                    v-divider(vertical color="white")
+                    v-divider(vertical id="divison")
                     router-link(style="text-decoration: none" to="/")
                         v-btn(flat class="white--text" small) Outlet
-                    v-divider(vertical color="white")
+                    v-divider(vertical id="divison")
                     router-link(style="text-decoration: none" to="/")
                         v-btn(flat class="white--text" small) Noticias
-                    v-divider(vertical color="white")
+                    v-divider(vertical id="divison")
                     router-link(style="text-decoration: none" to="/")
                         v-btn(flat class="white--text" small) Promociones
                     v-spacer
-                    v-avatar
-                        v-img(src="http://vps-nodolab.com:3000/imagenes/carrito.png" )
+                    v-btn(flat icon small class="text-xs-center" v-on:click="comprar()" )
+                        v-img(src="http://vps-nodolab.com:3000/imagenes/carrito.png")
                     v-btn(flat class="white--text" small v-on:click="comprar()") Carrito
 
 </template>
@@ -125,12 +129,12 @@ export default {
                 this.currentUrl = window.location.pathname;
                 sessionStorage.setItem("dato",escrito)
                 if(this.currentUrl == '/aplicacion/productos'){
-                    alert('go')
+                    //alert('go')
                     this.$forceUpdate('/aplicacion/productos')
                     //this.$router.go({path: '/aplicacion/productos' })
                 }else{
                     this.$router.push({path: '/aplicacion/productos' });
-                    alert('push')
+                    //alert('push')
                 }
 
                 //alert(sessionStorage.getItem("dato"))
@@ -143,7 +147,7 @@ export default {
                 sessionStorage.removeItem("nombre")
                 sessionStorage.removeItem("variable")
                 sessionStorage.removeItem("compra")
-                this.$router.push({ name: 'home'})
+                this.$router.go({ name: 'home'})
             },
             comprar(){
                 if(this.usuario != null){
@@ -162,7 +166,7 @@ export default {
             }
         },
         created(){
-
+            sessionStorage.removeItem("dato")
             //alert(sessionStorage.getItem("nombre"))
             this.usuario=sessionStorage.getItem("nombre")
             if(this.usuario == null){
@@ -203,5 +207,10 @@ export default {
     #boton{
         text-decoration: none;
         padding-top: 1%;
+    }
+    #divison{
+        background-color:white;
+        margin-top: 0.5%; 
+        margin-bottom: 0.5%
     }
 </style>

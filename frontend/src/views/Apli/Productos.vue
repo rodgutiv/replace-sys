@@ -35,7 +35,7 @@ v-app
                       h3(style="color:#003b94;") {{props.item.nombre}}
                     div
                       h3(style="color:#003b94;") ${{props.item.precio}}
-                    div
+                    //div
                       v-rating(id="stars" v-model="rating" readonly background-color="#003b94" style="color:#003b94;")
                 v-card-actions(id="act")
                   v-btn(id="boton_prod" round v-on:click="comprar(props.item.codigo)") Comprar

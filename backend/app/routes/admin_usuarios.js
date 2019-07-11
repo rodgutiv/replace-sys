@@ -32,20 +32,29 @@ router.get('/all-users/:id', function(req, res, next) {
 /* GET user by id */
 router.post('/login', function(req, res, next) {
   var datos = req.body;
-  //console.log(id_user)
-  usuario.findOne({ id: datos[0].value }, function (err, usuario){
-      if(err)
+  console.log(datos)
+  console.log(datos.nombre)
+  usuario.findOne({ id: datos.nombre }, function (err, usuario){
+      if(err){
         return res.send({message:'Error en la peticion'});
-      if(!usuario)
+      }
+      if(!usuario){
         return res.send({message: 'Ningun registro identificado'});
-    var pass = shajs('sha256').update(datos[1].value).digest('hex')
-    if(pass == usuario.datos_personales.password){
-      console.log(usuario)
-      return res.send({message:'Bienvenido', data:usuario});
-    }else{
-      return res.send({message:'Esta mal el correo o la contraseña'});
-    }
-    //if(usuario[0].password)
+      }else{
+        var pass = shajs('sha256').update(datos.pass).digest('hex')
+        if(pass == usuario.datos_personales.password){
+          console.log('se envio')
+          //console.log({success:true},{message:'Bienvenido '+usuario.datos_personales.username},{data:usuario})
+          //return res.json({success:true},{message:'Bienvenido '+usuario.datos_personales.username},{data:usuario})
+
+          return res.json({success:true,message:'Bienvenido '+usuario.datos_personales.username,data:{id:usuario.id,name:usuario.datos_personales.username}})
+        }else{
+          console.log('Esta mal el correo o la contraseña')
+          return res.json({success:false,message:'Esta mal el correo o la contraseña'});
+        }
+        //if(usuario[0].password)
+      }
+    
 
   });
 });
@@ -113,14 +122,14 @@ router.post('/update-user', function(req, res, next) {
 //create new usuario
 router.post('/new-user', function(req, res, next) {
   var specific_data = req.body;
-  var pass = shajs('sha256').update(specific_data[3].value).digest('hex')
+  var pass = shajs('sha256').update(specific_data.pass).digest('hex')
   var query = {
-    'id': specific_data[2].value,
+    'id': specific_data.email,
     'datos_personales':
     {
-      'nombre_completo':  specific_data[0].value,
-      'username':         specific_data[1].value,
-      'email':            specific_data[2].value,
+      'nombre_completo':  specific_data.nombre,
+      'username':         specific_data.usuario,
+      'email':            specific_data.email,
       'password':         pass,
       'fecha_nacimiento': specific_data[4].value,
       'telefono':         specific_data[5].value
@@ -140,7 +149,7 @@ router.post('/new-user', function(req, res, next) {
     },
     'status':             "Activo"
   }
-  var user = specific_data[2].value;
+  var user = specific_data.email;
   //console.log(user)
   usuario.find({'id': user})
   .then((rawResponse) =>{

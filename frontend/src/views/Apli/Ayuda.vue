@@ -28,7 +28,7 @@ v-app
                   v-btn(type="submit") Enviar
     v-container
       v-layout(class="white--text" :style="content1" text-xs-center row  wrap style="width: 100%;")
-                v-flex(flex xs4 style="color: #152d5b;" )
+                v-flex(flex xs12 md4 sm4 style="color: #152d5b;" )
                     h3 SERVICIO AL CLIENTE
                     v-layout(row  wrap)
                         v-flex(xs4)
@@ -54,7 +54,7 @@ v-app
                                 v-flex(xs12)
                                     span Morelia, mich.
 
-                v-flex(flex xs4 style="color: #152d5b;" )
+                v-flex(flex xs12 md4 sm4 style="color: #152d5b;" )
                     h3 CUENTAS Y PEDIDOS
                     v-layout(row  wrap)
                         v-flex(xs12)
@@ -63,7 +63,7 @@ v-app
                             span Factura electrónica
                         v-flex(xs12)
                             span Preguntas frecuentes
-                v-flex(flex xs4 style="color: #152d5b;" )
+                v-flex(flex xs12 md4 sm4 style="color: #152d5b;" )
                     h3 INFORMACIÓN
                     v-layout(row  wrap)
                         v-flex(xs12)
