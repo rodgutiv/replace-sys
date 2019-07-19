@@ -123,6 +123,9 @@ router.post('/update-user', function(req, res, next) {
 router.post('/new-user', function(req, res, next) {
   var specific_data = req.body;
   var pass = shajs('sha256').update(specific_data.pass).digest('hex')
+  console.log('datos1')
+  console.log(specific_data)
+  console.log(specific_data.email)
   var query = {
     'id': specific_data.email,
     'datos_personales':
@@ -130,30 +133,17 @@ router.post('/new-user', function(req, res, next) {
       'nombre_completo':  specific_data.nombre,
       'username':         specific_data.usuario,
       'email':            specific_data.email,
-      'password':         pass,
-      'fecha_nacimiento': specific_data[4].value,
-      'telefono':         specific_data[5].value
-    },
-    'domicilio':
-    {
-      'num_interior':     specific_data[6].value,
-      'num_exterior':     specific_data[7].value,
-      'calle':            specific_data[8].value,
-      'colonia':          specific_data[9].value,
-      'localidad':        specific_data[10].value,
-      'municipio':        specific_data[11].value,
-      'estado':           specific_data[12].value,
-      'pais':             specific_data[13].value,
-      'codigo_postal':    specific_data[14].value,
-      'referencias':      specific_data[15].value
+      'password':         pass
     },
     'status':             "Activo"
   }
   var user = specific_data.email;
-  //console.log(user)
+  console.log('user')
+  console.log(query)
+  console.log(specific_data.email)
   usuario.find({'id': user})
   .then((rawResponse) =>{
-    //console.log(rawResponse)
+    console.log(rawResponse)
     //console.log(rawResponse.length)
     //console.log(rawResponse[0].datos_personales)
     if(rawResponse.length >= 1){
