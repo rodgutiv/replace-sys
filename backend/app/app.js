@@ -15,6 +15,10 @@ var adminProductosRouter = require('./routes/admin_productos');
 var adminUsuariosRouter = require('./routes/admin_usuarios');
 var adminComprasRouter = require('./routes/admin_ordenes_compra');
 
+var adminNoticias = require('./routes/noticias');
+var estadisticas = require('./routes/estadisticas');
+var AdminProm = require('./routes/promociones');
+
 var app = express();
 var cors = require('cors');
 app.use(cors("http://localhost:3000"));
@@ -40,6 +44,10 @@ app.use('/ad-pagos', adminPagosRouter);
 app.use('/ad-productos', adminProductosRouter);
 app.use('/ad-usuarios', adminUsuariosRouter);
 app.use('/ad-compras', adminComprasRouter);
+
+app.use('/noticias', adminNoticias);
+app.use('/estadisticas', estadisticas);
+app.use('/promociones', AdminProm);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -73,3 +81,4 @@ app.use(function (req, res, next) {
 });*/
 
 module.exports = app;
+

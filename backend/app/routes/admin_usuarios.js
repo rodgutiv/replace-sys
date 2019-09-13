@@ -65,30 +65,24 @@ router.post('/update-user', function(req, res, next) {
   var specific_data = req.body;
   console.log('Datos de usuario a actualizar')
   console.log(specific_data)
-  var id_user = specific_data[0].value
+  var id_user = specific_data.id
   var query = {
     'id': id_user,
     'datos_personales':
     {
-      'nombre_completo':  specific_data[1].value,
-      'username':         specific_data[2].value,
-      'email':            specific_data[3].value,
-      'password':         specific_data[4].value,
-      'fecha_nacimiento': specific_data[5].value,
-      'telefono':         specific_data[6].value
+      'nombre_completo':  specific_data.nombre,      
+      'email':            specific_data.email,
+      'telefono':         specific_data.telefono
     },
     'domicilio':
     {
-      'num_interior':     specific_data[7].value,
-      'num_exterior':     specific_data[8].value,
-      'calle':            specific_data[9].value,
-      'colonia':          specific_data[10].value,
-      'localidad':        specific_data[11].value,
-      'municipio':        specific_data[12].value,
-      'estado':           specific_data[13].value,
-      'pais':             specific_data[14].value,
-      'codigo_postal':    specific_data[15].value,
-      'referencias':      specific_data[16].value
+      'num_interior':     specific_data.num_interior,
+      'calle':            specific_data.calle,
+      'colonia':          specific_data.colonia,
+      'municipio':        specific_data.municipio,
+      'estado':           specific_data.estado,
+      'pais':             specific_data.pais,
+      'codigo_postal':    specific_data.codigo_postal
     }
   }
 
@@ -106,7 +100,8 @@ router.post('/update-user', function(req, res, next) {
         console.log(usuario)
         var result = {'success':true}
         console.log(result)
-        return res.json(result);
+        return res.json({success:true,message:'Datos guardados '})
+        
       })
       .catch((err) => {
         return res.status(500).send('Error en la peticion');

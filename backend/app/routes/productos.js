@@ -26,6 +26,111 @@ router.get('/all', function(req, res, next) {
   });
 });
 
+router.get('/primeros', function(req, res, next) {
+  producto.find({ }, function (err, producto){
+      if(err)
+        return res.status(500).send('Error en la peticion');
+      if(!producto){
+        console.log('no hay')
+        return res.status(404).send({message: 'Ningun registro identificado'});
+      }else{
+       
+        return res.json({success:true,message:'Encontrados ',data:producto})
+      }
+  }).limit(8);
+});
+
+router.get('/vendidos', function(req, res, next) {
+  producto.find({ }, function (err, producto){
+      if(err)
+        return res.status(500).send('Error en la peticion');
+      if(!producto){
+        console.log('no hay')
+        return res.status(404).send({message: 'Ningun registro identificado'});
+      }else{
+       
+        return res.json({success:true,message:'Encontrados ',data:producto})
+      }
+  }).limit(8).skip(200);
+});
+
+router.get('/general_search/:word', function(req, res, next) {
+  var code = req.params.word;
+
+  query = {
+    'descripcion': { $regex: '.*' + code + '.*' }
+  };
+  //producto.find({ $text: { $search: code }}, function (err, producto){
+  producto.find(query, function (err, producto){
+      if(err)
+        return res.status(500).send('Error en la peticion');
+      if(!producto){
+        console.log('no hay')
+        return res.status(404).send({message: 'Ningun registro identificado'});
+      }else{
+        //console.log(producto)
+        return res.json({success:true,message:'Encontrados ',data:producto})
+      }
+  });
+});
+
+router.get('/promocion', function(req, res, next) {
+  query = {
+     'id_promo': { $ne: 'Ninguna' }
+  };
+  console.log(query)
+  //producto.find({ $text: { $search: code }}, function (err, producto){
+  producto.find(query, function (err, producto){
+      if(err)
+        return res.status(500).send('Error en la peticion');
+      if(!producto){
+        console.log('no hay')
+        return res.status(404).send({message: 'Ningun registro identificado'});
+      }else{
+        console.log(producto)
+        return res.json({success:true,message:'Encontrados ',data:producto})
+      }
+  });
+});
+
+router.get('/general_search2/:word', function(req, res, next) {
+  var code = req.params.word;
+ 
+  query = {
+    'categoria': code
+  };
+  //producto.find({ $text: { $search: code }}, function (err, producto){
+  producto.find(query, function (err, producto){
+      if(err)
+        return res.status(500).send('Error en la peticion');
+      if(!producto){
+        console.log('no hay')
+        return res.status(404).send({message: 'Ningun registro identificado'});
+      }else{
+        return res.json({success:true,message:'Encontrados ',data:producto})
+      }
+  }).limit(4);
+});
+
+router.get('/general_search3/:word', function(req, res, next) {
+  var code = req.params.word;
+  
+  query = {
+    'categoria': code
+  };
+  //producto.find({ $text: { $search: code }}, function (err, producto){
+  producto.find(query, function (err, producto){
+      if(err)
+        return res.status(500).send('Error en la peticion');
+      if(!producto){
+        console.log('no hay')
+        return res.status(404).send({message: 'Ningun registro identificado'});
+      }else{
+        return res.json({success:true,message:'Encontrados ',data:producto})
+      }
+  });
+});
+
 /* GET product by code */
 router.get('/search/:code', function(req, res, next) {
   var code = req.params.code;
@@ -34,7 +139,6 @@ router.get('/search/:code', function(req, res, next) {
         return res.status(500).send('Error en la peticion');
       if(!producto)
         return res.status(404).send({message: 'Ningun registro identificado'});
-    //console.log(producto)
     return res.send(producto);
   });
 });
@@ -42,7 +146,7 @@ router.get('/search/:code', function(req, res, next) {
 
 /* GET brands for options */
 router.get('/specific/brand', function(req, res, next) {
-  producto.find().distinct('autos.marca_auto', function (err, producto){
+  producto.find().distinct('marca', function (err, producto){
       if(err)
         return res.status(500).send('Error en la peticion');
       if(!producto)
@@ -53,9 +157,8 @@ router.get('/specific/brand', function(req, res, next) {
 
 
 /* GET model by brand */
-router.get('/specific/model/:brand', function(req, res, next) {
-  var brand = req.params.brand;
-  producto.find({ 'autos.marca_auto': brand }).distinct('autos.modelo', function (err, producto){
+router.get('/specific/categoria', function(req, res, next) {
+  producto.find().distinct('categoria', function (err, producto){
       if(err)
         return res.status(500).send('Error en la peticion');
       if(!producto)
@@ -64,10 +167,37 @@ router.get('/specific/model/:brand', function(req, res, next) {
   });
 });
 
-/* GET year by model */
-router.get('/specific/year/:model', function(req, res, next) {
-  var model = req.params.model;
-  producto.find({ 'autos.modelo': model }).distinct('autos.anio', function (err, producto){
+/* GET model by brand */
+router.get('/specific/pesado', function(req, res, next) {
+  producto.find({pesado:'Si'}, function (err, producto){
+      if(err)
+        return res.status(500).send('Error en la peticion');
+      if(!producto)
+        return res.status(404).send({message: 'Ningun registro identificado'});
+    console.log(producto)
+    return res.json(producto)
+    //return res.json(producto);
+  });
+});
+
+/* GET model by brand */
+router.get('/specific/outlet', function(req, res, next) {
+  producto.find({outlet:'Si'}, function (err, producto){
+      if(err)
+        return res.status(500).send('Error en la peticion');
+      if(!producto)
+        return res.status(404).send({message: 'Ningun registro identificado'});
+    //console.log(producto)
+    return res.json(producto)
+    //return res.json(producto);
+  });
+});
+
+
+/* GET model by brand */
+router.get('/specific/tipo/:categoria', function(req, res, next) {
+  var categoria = req.params.categoria;
+  producto.find({ 'categoria': categoria }).distinct('tipo', function (err, producto){
       if(err)
         return res.status(500).send('Error en la peticion');
       if(!producto)
@@ -76,10 +206,9 @@ router.get('/specific/year/:model', function(req, res, next) {
   });
 });
 
-/* GET engine by year */
-router.get('/specific/engine/:year', function(req, res, next) {
-  var year = req.params.year;
-  producto.find({ 'autos.anio': year }).distinct('autos.motor', function (err, producto){
+router.get('/specific/marca/:tipo', function(req, res, next) {
+  var tipo = req.params.tipo;
+  producto.find({ 'tipo': tipo }).distinct('marca', function (err, producto){
       if(err)
         return res.status(500).send('Error en la peticion');
       if(!producto)
@@ -88,58 +217,49 @@ router.get('/specific/engine/:year', function(req, res, next) {
   });
 });
 
-/* GET sparepart by engine */
-router.get('/specific/sparepart/:engine', function(req, res, next) {
-  var engine = req.params.engine;
-  producto.find({ 'autos.motor': engine }).distinct('nombre', function (err, producto){
-      if(err)
-        return res.status(500).send('Error en la peticion');
-      if(!producto)
-        return res.status(404).send({message: 'Ningun registro identificado'});
-    return res.send(producto);
-  });
-});
 
 /* GET full specific query */
 router.post('/specific', function(req, res, next) {
   var specific_data = req.body;
-  var data_size = specific_data.length;
+  
+  //var data_size = specific_data.length;
+  var cont = 0
+  if(specific_data.categoria != null ){
+    if(specific_data.tipo != null ){
+      if(specific_data.marca != null ){
+        cont = 3
+        console.log(cont)
+      }else{
+        cont = 2
+        console.log(cont)
+      }
+    }else{
+      cont = 1
+      console.log(cont)
+    }
+  }else{
+    console.log('no')
+  }
+//  console.log(specific_data.categoria)
   var query;
-  switch(data_size)
+  switch(cont)
   {
     case 1:
       query = {
-        'autos.marca_auto': specific_data[0].brand
+        'categoria': specific_data.categoria
       };
     break;
     case 2:
       query = {
-        'autos.marca_auto': specific_data[0].brand,
-        'autos.modelo': specific_data[1].model
+        'categoria': specific_data.categoria,
+        'tipo': specific_data.tipo
       };
     break;
     case 3:
       query = {
-        'autos.marca_auto': specific_data[0].brand,
-        'autos.modelo': specific_data[1].model,
-        'autos.anio': specific_data[2].year
-      };
-    break;
-    case 4:
-      query = {
-        'autos.marca_auto': specific_data[0].brand,
-        'autos.modelo': specific_data[1].model,
-        'autos.anio': specific_data[2].year,
-        'autos.motor': specific_data[3].engine
-      };
-    break;
-    case 5:
-      query = {
-        'autos.marca_auto': specific_data[0].brand,
-        'autos.modelo': specific_data[1].model,
-        'autos.anio': specific_data[2].year,
-        'autos.motor': specific_data[3].engine,
-        'nombre': specific_data[4].name
+        'categoria': specific_data.categoria,
+        'tipo': specific_data.tipo,
+        'marca': specific_data.marca
       };
     break;
   }
@@ -149,7 +269,8 @@ router.post('/specific', function(req, res, next) {
       if(!producto)
         return res.status(404).send({message: 'Ningun registro identificado'});
     //console.log(producto)
-    return res.json(producto);
+    return res.json({success:true,message:'Encontrados ',data:producto})
+    //return res.json(producto);
   });
 });
 
@@ -197,7 +318,7 @@ router.post('/stockup', function(req, res, next) {
         console.log(producto)
 
         var result = [{'success':true},{'id':data[0].value},{'stock':data[1].value}]
-        console.log(result)
+        //console.log(result)
         return res.json(result);
       })
       .catch((err) => {
@@ -240,7 +361,7 @@ router.post('/addstock', function(req, res, next) {
         console.log(producto)
 
         var result = [{'success':true},{'id':data[0].code},{'stock':data[1].stock}]
-        console.log(result)
+        //console.log(result)
         return res.json(result);
       })
       .catch((err) => {
