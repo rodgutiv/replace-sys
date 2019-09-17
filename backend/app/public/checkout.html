@@ -1,0 +1,652 @@
+<!doctype html>
+<html class="no-js" lang="es">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Reface - Refaccionaria Ceballos</title>
+    <meta name="robots" content="noindex, follow" />
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.jpg">
+
+    <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/vendor/line-awesome.css">
+    <link rel="stylesheet" href="assets/css/vendor/themify.css">
+    <link rel="stylesheet" href="assets/css/plugins/animate.css">
+    <link rel="stylesheet" href="assets/css/plugins/owl-carousel.css">
+    <link rel="stylesheet" href="assets/css/plugins/magnific-popup.css">
+    <link rel="stylesheet" href="assets/css/plugins/jquery-ui.css">
+    <link rel="stylesheet" href="assets/css/plugins/slick.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-143545810-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-143545810-1');
+    </script>
+    <script type="text/javascript">
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+        s1.async=true;
+        s1.src='https://embed.tawk.to/5d24a24822d70e36c2a4e5e7/default';
+        s1.charset='UTF-8';
+        s1.setAttribute('crossorigin','*');
+        s0.parentNode.insertBefore(s1,s0);
+        })();
+    </script>
+</head>
+
+<body>
+
+    <div class="main-wrapper wrapper-2">
+        <header class="header-area sticky-bar section-padding-1">
+            <div class="main-header-wrap">
+                <div class="container-fluid">
+                    <div class="row align-items-center">
+                        <div class="col-xl-1 col-lg-1">
+                            <div class="logo">
+                                <a href="index.html">
+                                    <img src="assets/images/logo/logo.png" alt="logo" style="width:120%;">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-xl-9 col-lg-9">
+                            <div class="main-menu">
+                                <nav>
+                                    <ul class="mobile-menu">
+                                        <li><a href="index.html">Inicio </a></li>
+                                        <li><a href="tienda.html">Productos </a></li>
+                                        <li><a href="pesado.html">Servicio pesado </a></li>
+                                        <li><a href="outlet.html">Outlet </a></li>
+                                        <li><a href="noticias.html">Noticias </a></li>
+                                        <li><a href="promociones.html">Promociones </a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                        <div class="col-xl-2 col-lg-2">
+                            <div class="header-right-wrap">
+                                <div class="same-style cart-wrap">
+                                    <a href="#" class="cart-active">
+                                        <i class="la la-shopping-cart"></i>
+                                        <div id="items"></div>
+                                    </a>
+                                </div>
+                                <div class="same-style header-search ml-15">
+                                    <a class="search-active" href="#"><i class="la la-search"></i></a>
+                                </div>
+                                <div class="same-style setting-wrap ml-15">
+                                    <a class="setting-active" href="#"><i class="la la-user"></i></a>
+                                    <div class="setting-content">
+                                        <ul>
+                                            <li>
+                                                <h4 id="user" class="user">Tu cuenta</h4>
+                                                <ul>
+                                                    <li id="inicio"><a href="login-registro.html">Iniciar sesión</a></li>
+                                                    <li id="cerrar"><a onclick="cerrar()">Cerrar sesión</a></li>
+                                                    <li id="crear"><a href="login-registro.html">Crear cuenta</a></li>
+                                                    <li><a href="">Mi cuenta</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="header-small-mobile">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-6">
+                            <div class="mobile-logo">
+                                <a href="index.html">
+                                    <img alt="" src="assets/images/logo/logo.png" style="width:43%;">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="header-right-wrap">
+                                <div class="same-style cart-wrap">
+                                    <a href="#" class="cart-active">
+                                        <i class="la la-shopping-cart"></i>
+                                        <div id="items2"></div>
+                                    </a>
+                                </div>
+                                <div class="same-style mobile-off-canvas">
+                                    <a class="mobile-aside-button" href="#" style="color: #FFF;"><i class="la la-navicon"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="mobile-off-canvas-active">
+            <a class="mobile-aside-close"><i class="la la-close"></i></a>
+            <div class="header-mobile-aside-wrap">
+                <div class="mobile-search">
+                    <div class="search-form">
+                        <input id="busca1" type="search" onkeypress="enter2(2)" placeholder="¿Qué estás buscando?">
+                    </div>
+                </div>
+                <div class="mobile-menu-wrap">
+                    <div class="mobile-navigation">
+                        <nav>
+                            <ul class="mobile-menu">
+                                <li><a href="index.html">Inicio </a></li>
+                                <li><a href="tienda.html">Productos </a></li>
+                                <li><a href="pesado.html">Servicio pesado </a></li>
+                                <li><a href="outlet.html">Outlet </a></li>
+                                <li><a href="noticias.html">Noticias </a></li>
+                                <li><a href="promociones.html">Promociones </a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                <div class="mobile-curr-lang-wrap">
+                    <div class="single-mobile-curr-lang">
+                        <a class="mobile-account-active" href="#">Mi cuenta <i class="la la-angle-down"></i></a>
+                        <div class="lang-curr-dropdown account-dropdown-active">
+                            <ul>
+                                <li id="inicio2"><a href="login-registro.html">Iniciar sesión</a></li>
+                                <li id="cerrar2"><a onclick="cerrar()">Cerrar sesión</a></li>
+                                <li id="crear2"><a href="login-registro.html">Crear cuenta</a></li>
+                                <li><a href="">Mi cuenta</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="quick-info">
+                    <ul>
+                        <li><i class="la la-phone"></i>443 3 15 16 89</li>
+                        <li> <i class="la la-envelope"></i> <a href="mailto:atencionclientes@reface.com.mx" >atencionclientes@reface.com.mx</a></li>
+                        <li> <i class="la la-clock-o"></i> LUN-SAB: 9:00 - 7:30</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="busqueda" class="search-content-wrap main-search-active">
+            <a class="search-close"><i class="la la-close"></i></a>
+            <div class="search-content">
+                <p>Escribe tu búsqueda y presiona enter</p>
+                <div class="search-form">
+                    <input id="buscar" type="text" onkeypress="enter2(2)" placeholder="¿Qué estás buscando?">
+                    <button type="button" onclick="search()" class="button-search"><i class="la la-search"></i></button>
+                </div>
+            </div>
+        </div>
+        <div class="sidebar-cart-active">
+            <div class="sidebar-cart-all">
+                <a class="cart-close" href="#"><i class="la la-close"></i></a>
+                <div class="cart-content">
+                    <h3>Carrito de compra</h3>
+                    <ul>
+                        <div id="carrito">
+
+                        </div>
+                    </ul>
+                    <div class="cart-total">
+                        <div id="total"></div>
+                    </div>
+                    <div class="cart-checkout-btn btn-hover default-btn">
+                        <a class="btn-size-md btn-bg-black btn-color" href="carrito.html">Ver carrito</a>
+                        <a class="no-mrg btn-size-md btn-bg-black btn-color"  href="checkout.html">Pagar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="breadcrumb-area pt-95 pb-100 bg-img" style="background-image:url(assets/images/bg/breadcrumb.jpg);">
+            <div class="container">
+                <div class="breadcrumb-content text-center">
+                    <div class="breadcrumb-title">
+                        <h2 class="color-b">Método de pago</h2>
+                    </div>
+                    <ul>
+                        <li>
+                            <a href="index.html" class="color-b">Inicio</a>
+                        </li>
+                        <li class="active color-b">Pago</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="checkout-main-area pt-100 pb-100">
+            <div class="container">
+                <!--<div id class="customer-zone mb-20">
+                    <p  class="cart-page-title">¿Ya eres cliente? <a class="checkout-click1" href="#">Inicia sesión</a></p>
+                    <div class="checkout-login-info">
+                        <p>Si ha comprado con nosotros anteriormente, ingrese sus datos en los cuadros a continuación. Si es un cliente nuevo, proceda a la sección Facturación y envío.</p>
+                        <form action="#">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="sin-checkout-login">
+                                        <label>Correo electrónico <span>*</span></label>
+                                        <input type="text" name="user-name">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="sin-checkout-login">
+                                        <label>Contraseña <span>*</span></label>
+                                        <input type="password" name="user-password">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="button-remember-wrap">
+                                <button class="button" type="submit">Entrar</button>
+                                <div class="checkout-login-toggle-btn">
+                                    <input type="checkbox">
+                                    <label>Recordarme</label>
+                                </div>
+                            </div>
+                            <div class="lost-password">
+                                <a href="#">¿Olvidaste tu contraseña?</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>-->
+                <!--<div class="customer-zone mb-20">
+                    <p class="cart-page-title">¿Tienes un cupón? <a class="checkout-click3" href="#">Clic aquí para ingresarlo</a></p>
+                    <div class="checkout-login-info3">
+                        <form action="#">
+                            <input type="text" placeholder="Código del cupón">
+                            <input type="submit" value="Aplicar cupón">
+                        </form>
+                    </div>
+                </div>-->
+                <div class="checkout-wrap pt-30">
+                    <div class="row">
+                        <div class="col-lg-7">
+                            <div class="billing-info-wrap mr-50">
+                                <div class="your-order-area">   
+                                    <h3>Envío</h3>
+                                    <div class="your-order-wrap gray-bg-4"> 
+                                        <div class="your-order-info-wrap">
+                                            <div class="col-lg-12 col-md-12">
+                                                <div class="billing-info mb-20">
+                                                    <label>Nombre Completo <abbr class="required" title="required">*</abbr></label>
+                                                    <input id="nombre" type="text">
+                                                </div>
+                                            </div>
+                                            <!--<div class="col-lg-12">
+                                                <div class="billing-info mb-20">
+                                                    <label>Compañia</label>
+                                                    <input type="text">
+                                                </div>
+                                            </div>-->
+                                            <div class="col-lg-12">
+                                                <div class="billing-select mb-20">
+                                                    <label>País <abbr class="required" title="required">*</abbr></label>
+                                                    <select id="pais">
+                                                        <option>Selecciona tu país</option>
+                                                        <option>México</option>
+                                                        <option>Estados Unidos</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12 col-md-12">
+                                                <div class="billing-info mb-20">
+                                                    <label>Teléfono <abbr class="required" title="required">*</abbr></label>
+                                                    <input id="telefono" type="text">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12 col-md-12">
+                                                <div class="billing-info mb-20">
+                                                    <label>Correo electrónico de contacto <abbr class="required" title="required">*</abbr></label>
+                                                    <input id="email" type="text">
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-6 col-md-12">
+                                                    <div class="billing-info mb-20">
+                                                        <label >Código Postal <abbr class="required" title="required">*</abbr></label>
+                                                        <input id="codigo_postal" type="text">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 col-md-12">
+                                                    <div style="padding-top: 10%;" class="Place-order md-10">
+                                                        <a class="btn-size-md btn-bg-black btn-color" onclick="codigo()">Buscar</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12 col-md-12">
+                                                <div class="billing-info mb-20">
+                                                    <label>Estado <abbr class="required" title="required">*</abbr></label>
+                                                    <input id="estado" type="text">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12 col-md-12">
+                                                <div class="billing-info mb-20">
+                                                    <label>Municipio <abbr class="required" title="required">*</abbr></label>
+                                                    <input id="municipio" type="text">
+                                                </div>
+                                            </div>   
+                                            <div class="col-lg-12">
+                                                <div class="billing-info mb-20">
+                                                    <label>Colonia <abbr class="required" title="required">*</abbr></label>
+                                                    <!--select id="pais">-->
+                                                    <div id="colonias"></div>
+                                                    <!--</select>-->
+                                                </div>
+                                            </div>                                         
+                                            <div class="col-lg-12">
+                                                <div class="billing-info mb-20">
+                                                    <label>Dirección <abbr class="required" title="required">*</abbr></label>
+                                                    <input id="calle" class="billing-address" placeholder="Calle" type="text">
+                                                    <input id="num_interior" placeholder="Número interior" type="text">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="Place-order mt-40">
+                                            <a onclick="datosusuario()">Guardar datos</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!--<div class="different-address open-toggle mt-30">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-6">
+                                            <div class="billing-info mb-20">
+                                                <label>Nombre(s)</label>
+                                                <input type="text">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6">
+                                            <div class="billing-info mb-20">
+                                                <label>Apellidos</label>
+                                                <input type="text">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="billing-info mb-20">
+                                                <label>Compañia</label>
+                                                <input type="text">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="billing-select mb-20">
+                                                <label>País <abbr class="required" title="required">*</abbr></label>
+                                            <select>
+                                                <option>Selecciona tu país</option>
+                                                <option>México</option>
+                                                <option>Estados Unidos</option>
+                                            </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                        <div class="billing-info mb-20">
+                                            <label>Dirección <abbr class="required" title="required">*</abbr></label>
+                                            <input class="billing-address" placeholder="Calle y número" type="text">
+                                            <input placeholder="Número interior" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="billing-info mb-20">
+                                            <label>Colonia <abbr class="required" title="required">*</abbr></label>
+                                            <input type="text">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12">
+                                        <div class="billing-info mb-20">
+                                            <label>Estado <abbr class="required" title="required">*</abbr></label>
+                                            <input type="text">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12">
+                                        <div class="billing-info mb-20">
+                                            <label>Municipio <abbr class="required" title="required">*</abbr></label>
+                                            <input type="text">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12">
+                                        <div class="billing-info mb-20">
+                                            <label>Código Postal <abbr class="required" title="required">*</abbr></label>
+                                            <input type="text">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12">
+                                        <div class="billing-info mb-20">
+                                            <label>Teléfono <abbr class="required" title="required">*</abbr></label>
+                                            <input type="text">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12">
+                                        <div class="billing-info mb-20">
+                                            <label>Correo electrónico de contacto <abbr class="required" title="required">*</abbr></label>
+                                            <input type="text">
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                                <div class="additional-info-wrap">
+                                    <label>Notas adicionales</label>
+                                    <textarea placeholder="Añade instrucciones especiales o referencias sobre tu pedido, por ejemplo 'Casa con fachada azul y puerta blanca' " name="message"></textarea>
+                                </div>-->
+                            </div>
+                        </div>
+                        <div class="col-lg-5">
+                            <div class="your-order-area">
+                                <h3>Tu orden</h3>
+                                <div class="your-order-wrap gray-bg-4">
+                                    <div class="your-order-info-wrap">
+                                        <div class="your-order-info">
+                                            <ul>
+                                                <li>Producto <span>total</span></li>
+                                            </ul>
+                                        </div>
+                                        <div class="your-order-middle">
+                                            <ul>
+                                                <div id="listado"></div>
+                                            </ul>
+                                        </div>
+                                        <div class="your-order-info order-subtotal">
+                                            <ul>
+                                                <div id="listtotal"></div>
+                                            </ul>
+                                        </div>
+                                        <div class="your-order-info order-shipping">
+                                            <ul>
+                                                <li>Envío <p>Ingresa tu dirección completa </p>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="your-order-info order-total">
+                                            <ul>
+                                                <li>Total <span>$770.00 </span></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="payment-method">
+                                        <!--<div class="pay-top sin-payment">
+                                            <input id="payment_method_1" class="input-radio" type="radio" value="cheque" checked="checked" name="payment_method">
+                                            <label for="payment_method_1"> Transferencia bancaria </label>
+                                            <div class="payment-box payment_method_bacs">
+                                                <p>Realiza una transferencia bancaria por SPEI.</p>
+                                            </div>
+                                        </div>-->
+                                        <div class="pay-top sin-payment">
+                                            <input id="payment-method-2" class="input-radio" type="radio" value="cheque" name="payment_method">
+                                            <label for="payment-method-2">Depósito en Oxxo</label>
+                                            <div class="payment-box payment_method_bacs">
+                                                <p>Realiza tu deposito vía Oxxo</p>
+                                                <p>Banco: Citibanamex</p>
+                                                <p>Número de cuenta: 5204 1655 2650 5593</p>
+                                            </div>
+                                        </div>
+                                        <!--<div class="pay-top sin-payment">
+                                            <input id="payment-method-3" class="input-radio" type="radio" value="cheque" name="payment_method">
+                                            <label for="payment-method-3">Pago contra entrega </label>
+                                            <div class="payment-box payment_method_bacs">
+                                                <p>Paga una vez que el producto llegue a tus manos</p>
+                                            </div>
+                                        </div>-->
+                                        <div class="pay-top sin-payment sin-payment-3">
+                                            <input id="payment-method-4" class="input-radio" type="radio" value="cheque" name="payment_method">
+                                            <label for="payment-method-4">PayPal <img alt="" src="assets/images/icon-img/payment.png"><a href="#">¿Qué es PayPal?</a></label>
+                                            <div class="payment-box payment_method_bacs">
+                                                <p>Utiliza el método de pago más seguro en internet a través de tu cuenta PayPal</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="Place-order mt-40">
+                                    <a href="#">Realizar pedido</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="foot" >
+        </div>
+        <div class="modal fade"  data-backdrop="static" id="usocookies" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div id="cookies" ></div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="privacidad" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div id="priv"></div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="garantias" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div id="garantia"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="assets/js/general.js"></script>
+    <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
+    <script src="assets/js/vendor/jquery-3.3.1.min.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/vendor/bootstrap.min.js"></script>
+    <script src="assets/js/plugins/jquery-ui.js"></script>
+    <script src="assets/js/plugins/jquery-ui-touch-punch.js"></script>
+    <script src="assets/js/plugins/magnific-popup.js"></script>
+    <script src="assets/js/plugins/owl-carousel.js"></script>
+    <script src="assets/js/plugins/scrollup.js"></script>
+    <script src="assets/js/plugins/waypoints.js"></script>
+    <script src="assets/js/plugins/wow.js"></script>
+    <script src="assets/js/plugins/slick.js"></script>
+    <script src="assets/js/plugins/elevatezoom.js"></script>
+    <script src="assets/js/plugins/sticky-sidebar.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+        datos();
+        function datos(){
+            var id = sessionStorage.getItem('id');
+            //alert(id)            
+            //alert(nombre);
+            var datos = {id};
+            $.ajax({
+                type: "POST",
+                url: "http://localhost:3000/ad-usuarios/datos",
+                //data: [JSON.parse(dataProducts)],
+                data: datos,
+                success: function(data) {                       
+                    if(data.success==true){
+                        //alert(data.data.datos_personales.nombre_completo)
+                        document.getElementById('nombre').value = data.data.datos_personales.nombre_completo;
+                        document.getElementById('email').value = data.data.datos_personales.email;
+                        document.getElementById('estado').value = data.data.domicilio.estado
+                        document.getElementById('municipio').value = data.data.domicilio.municipio
+                        var colonia = data.data.domicilio.colonia
+                        var divOut = document.getElementById('colonias');
+                        var txtOut = "";
+                        txtOut += `<select id="colonia">`;
+                        txtOut += `<option>${colonia}</option>`;
+                        txtOut += `</select>`;
+                        divOut.innerHTML = txtOut;            
+                        document.getElementById('telefono').value = data.data.datos_personales.telefono
+                        document.getElementById('calle').value = data.data.domicilio.calle
+                        document.getElementById('pais').value = data.data.domicilio.pais
+                        document.getElementById('codigo_postal').value = data.data.domicilio.codigo_postal
+                        document.getElementById('num_interior').value = data.data.domicilio.num_interior
+                        //localStorage.setItem('busqueda',JSON.stringify(data.data));
+                        //window.location.assign("tienda.html");
+                    }else{
+                        alert('Problemas con la conexión al servidor');
+                        
+                        //window.location.assign("..index.html");     
+                    }
+                },
+                error: function(err) {
+                    var msg = 'Status: ' + err;
+                    alert(msg);
+                },
+                failure: function(){
+                    alert("Error");
+                }
+            });
+        
+        }
+        function codigo(){
+            var codigo = $("#codigo_postal").val();
+            //alert(codigo)
+            fetch('https://api-codigos-postales.herokuapp.com/v2/codigo_postal/'+codigo)
+            //fetch('http://192.168.0.190:3000/products/search/'+valor)
+            .then(function(response) {
+                //alert(response.json())
+                return response.json();
+            })
+            .then(function(myJson) {
+                document.getElementById('estado').value = myJson.estado
+                document.getElementById('municipio').value = myJson.municipio
+                document.getElementById('colonias').value = myJson.colonia
+                var colonias = myJson.colonias
+                //alert(colonias)
+                var divOut = document.getElementById('colonias');
+                var txtOut = "";
+                txtOut += `<select id="colonia">`;
+                for(var i in colonias){
+                    txtOut += `<option>${colonias[i]}</option>`;
+                }
+                txtOut += `</select>`;
+                divOut.innerHTML = txtOut;                
+            });
+        }
+        //https://api-codigos-postales.herokuapp.com/v2/codigo_postal/'+codigo
+        if(localStorage.getItem("dataCars")!=null){
+            var dataCars = localStorage.getItem("dataCars");
+            var datos = "";
+            var divOut = document.getElementById("listado");
+            var elementos = document.getElementById("listtotal");
+            var dataCars = JSON.parse(dataCars);
+            var sum = 0
+            var cont = 0
+            var suma = 0
+            for(var i in dataCars){
+                var sum = 0
+                var cli = JSON.parse(dataCars[i]);
+                sum = cli.Stock * cli.Precio;
+                suma = parseFloat(suma) + parseFloat(sum);
+                datos += `<li>${cli.Nombre.substr(0,10)} ${cli.Stock} <span>$ ${cli.Precio}</span></li>`;
+                cont++;
+                
+            }
+            divOut.innerHTML = datos;
+            var tot = `<li>Subtotal <span>$${suma.toFixed(2)}</span></li>`;
+            //var num = `<span class="count-style">${cont}</span>`;
+            //var tot = `<h4>Subtotal: <span>$ ${suma.toFixed(2)}</span></h4>`;
+            elementos.innerHTML = tot;
+            //lista.innerHTML = tot;
+        };
+        
+    </script>
+</body>
+
+</html>

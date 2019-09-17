@@ -1,0 +1,655 @@
+<!doctype html>
+<html class="no-js" lang="es">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Reface - Refaccionaria Ceballos</title>
+    <meta name="robots" content="noindex, follow" />
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.jpg">
+
+    <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/vendor/line-awesome.css">
+    <link rel="stylesheet" href="assets/css/vendor/themify.css">
+    <link rel="stylesheet" href="assets/css/plugins/animate.css">
+    <link rel="stylesheet" href="assets/css/plugins/owl-carousel.css">
+    <link rel="stylesheet" href="assets/css/plugins/magnific-popup.css">
+    <link rel="stylesheet" href="assets/css/plugins/jquery-ui.css">
+    <link rel="stylesheet" href="assets/css/plugins/slick.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-143545810-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-143545810-1');
+    </script>
+    <script type="text/javascript">
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+        s1.async=true;
+        s1.src='https://embed.tawk.to/5d24a24822d70e36c2a4e5e7/default';
+        s1.charset='UTF-8';
+        s1.setAttribute('crossorigin','*');
+        s0.parentNode.insertBefore(s1,s0);
+        })();
+    </script>
+</head>
+
+<body>
+
+    <div class="main-wrapper wrapper-2">
+        <header class="header-area sticky-bar section-padding-1">
+            <div class="main-header-wrap">
+                <div class="container-fluid">
+                    <div class="row align-items-center">
+                        <div class="col-xl-1 col-lg-1">
+                            <div class="logo">
+                                <a href="index.html">
+                                    <img src="assets/images/logo/logo.png" alt="logo" style="width:120%;">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-xl-9 col-lg-9">
+                            <div class="main-menu">
+                                <nav>
+                                    <ul class="mobile-menu">
+                                        <li><a href="index.html">Inicio </a></li>
+                                        <li><a href="tienda.html">Productos </a></li>
+                                        <li><a href="pesado.html">Servicio pesado </a></li>
+                                        <li><a href="outlet.html">Outlet </a></li>
+                                        <li><a href="noticias.html">Noticias </a></li>
+                                        <li><a href="prmociones.html">Promociones </a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                        <div class="col-xl-2 col-lg-2">
+                            <div class="header-right-wrap">
+                                <div class="same-style cart-wrap">
+                                    <a href="#" class="cart-active">
+                                        <i class="la la-shopping-cart"></i>
+                                        <div id="items"></div>
+                                    </a>
+                                </div>
+                                <div class="same-style header-search ml-15">
+                                    <a class="search-active" href="#"><i class="la la-search"></i></a>
+                                </div>
+                                <div class="same-style setting-wrap ml-15">
+                                    <a class="setting-active" href="#"><i class="la la-user"></i></a>
+                                    <div class="setting-content">
+                                        <ul>
+                                            <li>
+                                                <h4 id="user" class="user">Tu cuenta</h4>
+                                                <ul>
+                                                    <li id="inicio"><a href="login-registro.html">Iniciar sesión</a></li>
+                                                    <li id="cerrar"><a onclick="cerrar()">Cerrar sesión</a></li>
+                                                    <li id="crear"><a href="login-registro.html">Crear cuenta</a></li>
+                                                    <li><a href="">Mi cuenta</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="header-small-mobile">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-6">
+                            <div class="mobile-logo">
+                                <a href="index.html">
+                                    <img alt="" src="assets/images/logo/logo.png" style="width:43%;">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="header-right-wrap">
+                                <div class="same-style cart-wrap">
+                                    <a href="#" class="cart-active">
+                                        <i class="la la-shopping-cart"></i>
+                                        <div id="items2"></div>
+                                    </a>
+                                </div>
+                                <div class="same-style mobile-off-canvas">
+                                    <a class="mobile-aside-button" href="#" style="color: #FFF;"><i class="la la-navicon"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="mobile-off-canvas-active">
+            <a class="mobile-aside-close"><i class="la la-close"></i></a>
+            <div class="header-mobile-aside-wrap">
+                <div class="mobile-search">
+                    <form class="search-form" action="#">
+                        <input type="text" placeholder="¿Qué estás buscando?">
+                        <button class="button-search"><i class="la la-search"></i></button>
+                    </form>
+                </div>
+                <div class="mobile-menu-wrap">
+                    <div class="mobile-navigation">
+                        <nav>
+                            <ul class="mobile-menu">
+                                <li><a href="index.html">Inicio </a></li>
+                                <li><a href="tienda.html">Productos </a></li>
+                                <li><a href="pesado.html">Servicio pesado </a></li>
+                                <li><a href="outlet.html">Outlet </a></li>
+                                <li><a href="noticias.html">Noticias </a></li>
+                                <li><a href="promociones.html">Promociones </a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                <div class="mobile-curr-lang-wrap">
+                    <div class="single-mobile-curr-lang">
+                        <a class="mobile-account-active" href="#">Mi cuenta <i class="la la-angle-down"></i></a>
+                        <div class="lang-curr-dropdown account-dropdown-active">
+                            <ul>
+                                <li id="inicio"><a href="login-registro.html">Iniciar sesión</a></li>
+                                <li id="cerrar"><a onclick="cerrar()">Cerrar sesión</a></li>
+                                <li><a href="login-registro.html">Crear cuenta</a></li>
+                                <li><a href="">Mi cuenta</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="quick-info">
+                    <ul>
+                        <li><i class="la la-phone"></i> 123 456 7890</li>
+                        <li> <i class="la la-envelope"></i> <a href="#">INFO@EMAIL.COM</a></li>
+                        <li> <i class="la la-clock-o"></i> LUN-SAB: 8AM A 9PM</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="search-content-wrap main-search-active">
+            <a class="search-close"><i class="la la-close"></i></a>
+            <div class="search-content">
+                <p>Escribe tu búsqueda y presiona enter</p>
+                <form class="search-form" action="#">
+                    <input type="text" placeholder="¿Qué estás buscando?">
+                    <button class="button-search"><i class="la la-search"></i></button>
+                </form>
+            </div>
+        </div>
+        <div class="sidebar-cart-active">
+            <div class="sidebar-cart-all">
+                <a class="cart-close" href="#"><i class="la la-close"></i></a>
+                <div class="cart-content">
+                    <h3>Carrito de compra</h3>
+                    <ul>
+                        <div id="carrito">
+
+                        </div>
+                    </ul>
+                    <div class="cart-total">
+                        <div id="total"></div>
+                    </div>
+                    <div class="cart-checkout-btn btn-hover default-btn">
+                        <a class="btn-size-md btn-bg-black btn-color" href="checkout.html">Ver carrito</a>
+                        <a class="no-mrg btn-size-md btn-bg-black btn-color" href="carrito.html">Pagar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="breadcrumb-area pt-95 pb-100 bg-img" style="background-image:url(assets/images/bg/breadcrumb.jpg);">
+            <div class="container">
+                <div class="breadcrumb-content text-center">
+                    <div class="breadcrumb-title">
+                        <h2 class="color-b">Nuestra tienda</h2>
+                    </div>
+                    <ul>
+                        <li>
+                            <a href="index.html" class="color-b">Inicio</a>
+                        </li>
+                        <li class="active color-b">Servicio Pesado </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="shop-area pt-95 pb-100">
+            <div class="container">
+                <div class="row flex-row-reverse">
+                    <div class="col-lg-9">
+                        <div class="shop-top-bar">
+                            <div class="select-shoing-wrap">
+                                <div class="shop-select">
+                                    <select>
+                                        <option value="">Más populares</option>
+                                        <option value="">Más recientes</option>
+                                        <option value="">En Stock</option>
+                                        <option value="">Alfabéticamente</option>
+                                    </select>
+                                </div>
+                                <p>Mostrando 1–12 de 20 productos encontrados</p>
+                            </div>
+                            <div class="shop-tab nav">
+                                <a class="active" href="#shop-1" data-toggle="tab">
+                                    <i class="la la-th-large"></i>
+                                </a>
+                                <a href="#shop-2" data-toggle="tab">
+                                    <i class="la la-reorder"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="shop-bottom-area mt-35">
+                            <div class="tab-content jump">
+                                <div id="shop-1" class="tab-pane active">
+                                    <div id="productos" class="row">
+
+                                    </div>
+                                </div>
+                                <div id="shop-2" class="tab-pane">
+                                    
+                                </div>
+                            </div>
+                            <div class="pro-pagination-style text-center mt-20">
+                                <ul>
+                                    <li><a class="prev" href="#"><i class="la la-angle-left"></i></a></li>
+                                    <li><a class="active" href="#">1</a></li>
+                                    <li><a href="#">2</a></li>
+                                    <li><a class="next" href="#"><i class="la la-angle-right"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="sidebar-style mr-30">
+                            <div class="sidebar-widget">
+                                <h4 class="pro-sidebar-title">Buscar </h4>
+                                <div class="pro-sidebar-search mb-50 mt-25">
+                                    <form class="pro-sidebar-search-form" action="#">
+                                        <input type="text" placeholder="Escribe tu búsqueda aquí...">
+                                        <button>
+                                            <i class="la la-search" style="color: #152d5b !important;"></i>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="sidebar-widget">
+                                <h4 class="pro-sidebar-title">Filtrar por </h4>
+                                <div class="sidebar-widget-list mt-30">
+                                    <ul>
+                                        <li>
+                                            <div class="sidebar-widget-list-left">
+                                                <input type="checkbox"> <a href="#">En stock <span>4</span> </a>
+                                                <span class="checkmark"></span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="sidebar-widget-list-left">
+                                                <input type="checkbox" value=""> <a href="#">Nuevo <span>5</span></a>
+                                                <span class="checkmark"></span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="sidebar-widget mt-45">
+                                <h4 class="pro-sidebar-title">Filtrar por precio </h4>
+                                <div class="price-filter mt-10">
+                                    <div class="price-slider-amount">
+                                        <input type="text" id="amount" name="price" placeholder="Agregar un precio" />
+                                    </div>
+                                    <div id="slider-range"></div>
+                                </div>
+                            </div>
+                            <div class="sidebar-widget mt-50">
+                                <h4 class="pro-sidebar-title">Categoría </h4>
+                                <div class="sidebar-widget-tag mt-25">
+                                    <ul>
+                                        <li><a href="#">Categoría 1</a></li>
+                                        <li><a href="#">Categoría 2</a></li>
+                                        <li><a href="#">Categoría 3</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="foot" >
+
+        </div>
+        <div class="modal fade" id="usocookies" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="font-weight-bold"> Aviso de cookies </h1>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div id="pro-1" class="tab-pane fade show active">
+                                    <p class="text-dark text-justify">Normalmente, las cookies se clasifican en cookies”temporales“y cookies “permanentes“. Las cookies temporales suelen utilizarse únicamente para realizar la transmisión de comunicación en una red de comunicaciones electrónica y son estrictamente necesarias para un servicio solicitado explícitamente por el suscriptor o usuario.</p>
+                                </div>
+                                <br>
+                                <div id="pro-1" class="tab-pane fade show active">
+                                    <p class="text-dark text-justify">Las cookies de sesión son el tipo más habitual de cookies temporales y te ayudan a navegar de forma eficiente por nuestra web, realizando un seguimiento de tu recorrido página a página y teniendo en cuenta la información que has proporcionado durante la sesión actual. Las cookies temporales se guardan en la memoria temporal del navegador y se borran cuando éste se cierra. El uso de las cookies de sesión no requiere consentimiento explícito.</p>
+                                </div>
+                                <br>
+                                <div id="pro-1" class="tab-pane fade show active">
+                                    <p class="text-dark text-justify">Las cookies permanentes, en cambio, guardan las preferencias del usuario para la sesión actual y futuras visitas. Se incorporan a la memoria no volátil de tu dispositivo (normalmente, en el disco duro) y siguen siendo válidas cuando se reinicia el navegador. Las cookies permanentes suelen utilizarse para hacer un seguimiento del comportamiento del usuario y facilitar una publicidad personalizada. El uso de las cookies permanentes requiere un consentimiento explícito.</p>
+                                </div>
+                                <br>
+                                <div id="pro-1" class="tab-pane fade show active">
+                                    <p class="text-dark text-justify">Las cookies propias las establece el propietario de la página web, que es el responsable de informar al usuario del sitio sobre la finalidad del tratamiento de los datos y obtener su consentimiento. Las cookies de terceros se establecen mediante plug-ins de terceros, y tanto el propietario del sitio web como el tercero son conjuntamente responsables de notificar al usuario sobre la finalidad del tratamiento de los datos y obtener su consentimiento.</p>
+                                </div>
+                                <br>
+                                <div id="pro-1" class="tab-pane fade show active">
+                                    <p class="font-weight-bold">¿Qué uso hace la web de REFACE de las cookies?</p>
+                                    <p class="text-dark text-justify">La web de REFACE utiliza cookies propias solamente a través de cookies de sesión (principalmente para el inicio de sesión y las búsquedas). Estas cookies temporales se borran al final de la sesión. Si visitas nuestro sitio web, entendemos que autorizas el uso de las cookies de sesión. A continuación, encontrarás información sobre cómo evitar el uso de cookies de sesión. Ten en cuenta que es posible que determinadas características de nuestro sitio web no funcionen correctamente sin las cookies de sesión.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="privacidad" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="font-weight-bold"> Aviso de privacidad </h1>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                        <div id="pro-1" class="tab-pane fade show active">
+                                            <p class="font-weight-bold">Refaccionaria Ceballos S. de R. L. de C.V.,</p>
+                                            <p class="text-dark text-justify">Con domicilio en Avenida acueducto, numero 1989, colonia Matamoros, código postal 58240, de conformidad con lo dispuesto en la Ley Federal de Protección de Datos Personales en Posesión de los Particulares hace de su conocimiento el presente aviso de privacidad para los clientes y proveedores. </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                        <div id="pro-1" class="tab-pane fade show active">
+                                            <p class="font-weight-bold">1.- SOBRE EL TRATAMIENTO DE SUS DATOS PERSONALES DE LOS CLIENTES Y PROVEEDORES: </p>
+                                            <p class="text-dark text-justify">Recabamos sus datos personales y datos personales sensibles para los efectos mencionados en el presente Aviso de Privacidad. En este sentido, hacemos de su conocimiento que sus datos personales serán tratados y resguardados con base en los principios de licitud, calidad, consentimiento, información, lealtad, proporcionalidad y responsabilidad, previstos en la Ley.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                        <div id="pro-1" class="tab-pane fade show active">
+                                            <p class="font-weight-bold">2- FINALIDAD EN EL TRATAMIENTO DE SUS DATOS PERSONALES: </p>
+                                            <p class="text-dark text-justify">A) Para contactarlo y enviar la información relevante sobre nuestros productos. </p>
+                                            <p class="text-dark text-justify">B) Identificarlo como cliente o proveedor de Nuestra Empresa. </p>
+                                            <p class="text-dark text-justify">C) Para realizar todas las gestiones internas necesarias relacionadas con la relación comercial vigente, incluyendo cuestiones de crédito y pagos. </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                        <div id="pro-1" class="tab-pane fade show active">
+                                            <p class="font-weight-bold">3. MEDIOS PARA LIMITAR EL USO O DIVULGACIÓN DE SUS DATOS PERSONALES: </p>
+                                            <p class="text-dark text-justify">Hacemos de su conocimiento que sus datos personales y datos personales sensibles serán resguardados bajo estrictas medidas de seguridad, administrativas, técnicas y físicas, las cuales han sido implementadas con el objeto de proteger sus datos personales contra daño, pérdida, alteración, destrucción, acceso o tratamiento no autorizados. </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                        <div id="pro-1" class="tab-pane fade show active">
+                                            <p class="font-weight-bold">4. MEDIOS PARA EL EJERCICIO DE SUS DERECHOS COMO TITULAR DE LOS DATOS PERSONALES: </p>
+                                            <p class="text-dark text-justify">Como titular de los datos personales objeto del presente Aviso de Privacidad, usted podrá ejercitar sus derechos de acceso, rectificación, cancelación u oposición, mismos que se consagran en la Ley Federal de Protección de Datos Personales en Posesión de los Particulares. Así mismo, podrá revocar el consentimiento otorgado para el uso de sus datos personales. </p>
+                                            <p class="text-dark text-justify">En cualquiera de estos supuestos, puede realizar su solicitud mediante el envío de un correo electrónico a la dirección refaccionariaceballos@gmail.com </p>
+                                            <p class="text-dark text-justify">Con la finalidad de poder atender su solicitud, esta deberá satisfacer los requisitos estipulados en la Ley Federal de Protección de Datos Personales en Posesión de los Particulares. </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                        <div id="pro-1" class="tab-pane fade show active">
+                                            <p class="font-weight-bold">5.- TRANSFERENCIA DE SUS DATOS PERSONALES: </p>
+                                            <p class="text-dark text-justify">Sus datos personales y/o datos personales sensibles, podrán ser transferidos a los terceros, que para el cumplimiento de las obligaciones que Refaccionaria Ceballos S. de R.L. de C.V., le ofrece, sea necesario. Lo anterior, sin perjuicio de las excepciones de la Ley Federal de Protección de Datos Personales en Posesión de los Particulares. </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                        <div id="pro-1" class="tab-pane fade show active">
+                                            <p class="font-weight-bold">6. CAMBIOS AL PRESENTE AVISO DE PRIVACIDAD: </p>
+                                            <p class="text-dark text-justify">El presente aviso de privacidad podrá ser modificado en el futuro. En todo caso, cualquier modificación al aviso de privacidad serán oportunamente informados a través de la publicación, correo electrónico o de nuestra página web</p>
+                                            <p class="text-dark text-justify">Por su seguridad, el Aviso de Privacidad vigente, estará disponible en todo momento en la página web antes señalada. </p>
+                                            <p class="text-dark text-justify">REFACCIONARIA CEBALLOS S. DE R.L. DE C.V.</p>
+                                            <p class="text-dark text-justify">FECHA DE ULTIMA ACTUALIZACION: 28/08/2018 </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div id="modal"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showmodal(valor) {
+            fetch('http://localhost:3000/products/search/'+valor)
+            .then(function(response) {
+                //alert(response.json())
+                return response.json();
+            })
+            .then(function(myJson) {
+                var divOut = document.getElementById('modal');
+                var Product = myJson;
+                //alert(Product.nombre)
+                var txtOut = "";
+                                 
+                txtOut += `<div class="modal-header">`;
+                txtOut += `<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button>`;
+                txtOut += `</div>`;
+                txtOut += `<div class="modal-body">`;
+                txtOut += `<div class="row">`;
+                txtOut += `<div class="col-md-5 col-sm-12 col-xs-12">`;
+                txtOut += `<div class="tab-content quickview-big-img">`;
+                txtOut += `<div id="pro-1" class="tab-pane fade show active">`;
+                txtOut += `<img src="assets/images/product/quickview-l1.jpg" alt="">`;
+                txtOut += `</div>`;
+                txtOut += `<div id="pro-2" class="tab-pane fade">`;
+                txtOut += `<img src="assets/images/product/quickview-l2.jpg" alt="">`;
+                txtOut += `</div>`;
+                txtOut += `<div id="pro-3" class="tab-pane fade">`;
+                txtOut += `<img src="assets/images/product/quickview-l3.jpg" alt="">`;
+                txtOut += `</div>`;
+                txtOut += `<div id="pro-4" class="tab-pane fade">`;
+                txtOut += `<img src="assets/images/product/quickview-l2.jpg" alt="">`;
+                txtOut += `</div>`;
+                txtOut += `</div>`;
+                txtOut += `<div class="quickview-wrap mt-15">`;
+                txtOut += `<div class="quickview-slide-active owl-carousel nav nav-style-2" role="tablist">`;
+                txtOut += `<a class="active" data-toggle="tab" href="#pro-1"><img src="assets/images/product/quickview-s1.jpg" alt=""></a>`;
+                txtOut += `<a data-toggle="tab" href="#pro-2"><img src="assets/images/product/quickview-s2.jpg" alt=""></a>`;
+                txtOut += `<a data-toggle="tab" href="#pro-3"><img src="assets/images/product/quickview-s3.jpg" alt=""></a>`;
+                txtOut += `<a data-toggle="tab" href="#pro-4"><img src="assets/images/product/quickview-s2.jpg" alt=""></a>`;
+                txtOut += `</div>`;
+                txtOut += `</div>`;
+                txtOut += `</div>`;
+                txtOut += `<div class="col-md-7 col-sm-12 col-xs-12">`;
+                txtOut += `<div class="product-details-content quickview-content">`;
+                txtOut += `<h2>${Product.nombre}</h2>`;
+                txtOut += `<div class="product-details-price">`;
+                txtOut += `<span>${Product.precio}</span>`;
+                if(Product.descuento){
+                    txtOut += `<span class="old">${Product.precio}</span>`;
+                }
+                txtOut += `</div>`;
+                txtOut += `<p>${Product.descripcion}</p>`;
+                txtOut += `<div class="pro-details-list">`;
+                txtOut += `<ul>`;
+                txtOut += `<li>- Marca:</li>`;
+                txtOut += `<li>  ${Product.marca}</li>`;
+                txtOut += `</ul>`;
+                txtOut += `</div>`;
+                txtOut += `<div class="pro-details-size-color">`;
+                txtOut += `<div class="pro-details-size">`;
+                txtOut += `<span>Compatibilidad</span>`;
+                txtOut += `<div class="pro-details-size-content">`;
+                txtOut += `<ul>`;
+                txtOut += `<li>${Product.autos}</li>`;
+                txtOut += `</ul>`;
+                txtOut += `</div>`;
+                txtOut += `</div>`;
+                txtOut += `</div>`;
+                txtOut += `<div class="pro-details-quality">`;
+                txtOut += `<div class="cart-plus-minus">`;
+                txtOut += `<input class="cart-plus-minus-box" type="text" name="qtybutton" value=" ${Product.stock}">`;
+                txtOut += `</div>`;
+                txtOut += `<div class="pro-details-cart btn-hover">`;
+                txtOut += `<a href="#">Agregar al carrito</a>`;
+                txtOut += `</div>`;
+                txtOut += `</div>`;
+                txtOut += `<div class="pro-details-meta">`;
+                txtOut += `<span>Categorías :</span>`;
+                txtOut +=  `<ul>`;
+                txtOut += `<li><a href="#"> ${Product.categoria}</a></li>`;
+                txtOut += `</div>`;
+                txtOut += `</div>`;
+                txtOut += `</div>`;
+                txtOut += `</div>`;
+                txtOut += `</div>`;
+                txtOut += `</div>`;
+                txtOut += `</div>`;
+
+                divOut.innerHTML = txtOut;
+            });
+        }
+        
+
+        fetch('http://localhost:3000/products/all')
+        .then(function(response) {
+            //alert(response.json())
+            return response.json();
+        })
+        .then(function(myJson) {
+            
+            var divOut = document.getElementById('productos');
+            var divOut2 = document.getElementById('shop-2');
+            var allProducts = myJson;
+            var txtOut = "";
+            var txtOut2 = "";
+            //alert(allProducts[0].nombre)
+            for (var k in allProducts) {
+                
+                txtOut += `<div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">`;
+                txtOut += `<div class="product-wrap product-border-1 mb-30">`;
+                txtOut += `<div class="product-img">`;
+                txtOut += `<a   href="#"><img src="assets/images/product/hm1-pro-1.jpg" alt="product"></a>`;
+                if(allProducts[k].descuento){
+                    txtOut += `<span class="product-badge">${allProducts[k].descuento}</span>`;
+                }
+                txtOut += `<div class="product-action">`;
+                txtOut += `<a data-toggle="modal" data-target="#exampleModal" onclick="showmodal('${allProducts[k].codigo}')" title="Quick View" ><i class="la la-plus"></i></a>`;
+                txtOut += `</div>`;
+                txtOut += `</div>`;
+                txtOut += `<div class="product-content product-content-padding text-center">`;
+                txtOut += `<h4><a   href="#">${allProducts[k].nombre}</a></h4>`;
+                txtOut += `<div class="product-price">`;
+                txtOut += `<span>${allProducts[k].precio}</span>`;
+                if(allProducts[k].descuento){
+                    txtOut += `<span class="old">${allProducts[k].precio+20}</span>`;
+                }                
+                txtOut += `</div>`;
+                txtOut += `</div>`;
+                txtOut += `</div>`;
+                txtOut += `</div>`;
+
+
+                txtOut2 += `<div class="shop-list-wrap mb-30">`;
+                txtOut2 += `<div class="row">`;
+                txtOut2 += `<div class="col-xl-4 col-lg-5 col-md-5 col-sm-6">`;
+                txtOut2 += `<div class="product-wrap product-border-1">`;
+                txtOut2 += `<div class="product-img">`;
+                txtOut2 += `<a href="#">`;
+                txtOut2 += `<img src="assets/images/product/hm1-pro-1.jpg" alt="product">`;
+                txtOut2 += `</a>`;
+                if(allProducts[k].descuento){
+                    txtOut2 += `<span class="product-badge">${allProducts[k].descuento}</span>`;
+                }
+                txtOut2 += `<div class="product-action">`;
+                txtOut2 += `<a data-toggle="modal" data-target="#exampleModal" onclick="showmodal('${allProducts[k].codigo}')" title="Quick View" href="#"><i class="la la-plus"></i></a>`;
+                txtOut2 += `</div>`;
+                txtOut2 += `</div>`;
+                txtOut2 += `</div>`;
+                txtOut2 += `</div>`;
+                txtOut2 += `<div class="col-xl-8 col-lg-7 col-md-7 col-sm-6">`;
+                txtOut2 += `<div class="shop-list-content">`;
+                txtOut2 += `<h3><a href="#">${allProducts[k].nombre}</a></h3>`;                                             
+                txtOut2 += `<div class="product-list-price">`;
+                txtOut2 += `<span>$${allProducts[k].precio}</span>`;
+                if(allProducts[k].descuento){
+                    txtOut2 += `<span class="old">${allProducts[k].precio+20}</span>`;
+                }
+                txtOut2 += `</div>`;
+                txtOut2 += `<p>${allProducts[k].descripcion}</p>`;
+                txtOut2 += `<div class="shop-list-btn-wrap">`;
+                txtOut2 += `<div class="shop-list-cart default-btn btn-hover">`;
+                txtOut2 += `<a href="#">AGREGAR AL CARRITO</a>`;
+                txtOut2 += `</div>`;
+                txtOut2 += `</div>`;
+                txtOut2 += `</div>`;
+                txtOut2 += `</div>`;
+                txtOut2 += `</div>`;
+                txtOut2 += `</div>`;
+                                    
+               
+                //txtOut += `email: ${allProducts[k].codigo}<br />`;
+                //  txtOut += `Company: ${allProducts[k].descripcion}<br />`;   
+            }
+            divOut.innerHTML = txtOut;
+            divOut2.innerHTML = txtOut2;
+        });
+    </script>
+    <script src="assets/js/general.js"></script>
+    <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
+    <script src="assets/js/vendor/jquery-3.3.1.min.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/vendor/bootstrap.min.js"></script>
+
+    
+    <script src="assets/js/plugins/jquery-ui.js"></script>
+    <script src="assets/js/plugins/jquery-ui-touch-punch.js"></script>
+    <script src="assets/js/plugins/magnific-popup.js"></script>
+    <script src="assets/js/plugins/owl-carousel.js"></script>
+    <script src="assets/js/plugins/scrollup.js"></script>
+    <script src="assets/js/plugins/waypoints.js"></script>
+    <script src="assets/js/plugins/wow.js"></script>
+    <script src="assets/js/plugins/slick.js"></script>
+    <script src="assets/js/plugins/elevatezoom.js"></script>
+    <script src="assets/js/plugins/sticky-sidebar.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>
