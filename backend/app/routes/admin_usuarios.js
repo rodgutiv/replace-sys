@@ -59,47 +59,68 @@ router.post('/login', function(req, res, next) {
   });
 });
 
+/* GET user by id */
+router.post('/datos', function(req, res, next) {
+  var datos = req.body;
+  console.log(datos)
+  usuario.findOne({ id: datos.id }, function (err, usuario){
+      if(err){
+        return res.send({message:'Error en la peticion'});
+      }
+      if(!usuario){
+        return res.send({message: 'Ningun registro identificado'});
+      }else{
+        console.log(usuario)
+        return res.json({success:true,message:'Encontrado',data:usuario})
+      }
+    
+
+  });
+});
+
 /* Update user */
 router.post('/update-user', function(req, res, next) {
 
   var specific_data = req.body;
   console.log('Datos de usuario a actualizar')
   console.log(specific_data)
-  var id_user = specific_data.id
-  var query = {
-    'id': id_user,
-    'datos_personales':
-    {
-      'nombre_completo':  specific_data.nombre,      
-      'email':            specific_data.email,
-      'telefono':         specific_data.telefono
-    },
-    'domicilio':
-    {
-      'num_interior':     specific_data.num_interior,
-      'calle':            specific_data.calle,
-      'colonia':          specific_data.colonia,
-      'municipio':        specific_data.municipio,
-      'estado':           specific_data.estado,
-      'pais':             specific_data.pais,
-      'codigo_postal':    specific_data.codigo_postal
-    }
-  }
-
+  var id_user = specific_data.id_user
+  console.log(id_user)
   //metodo para buscar el usuario
-  usuario.find({'id': id_user})
+  usuario.findOne({'id': id_user})
   .then((rawResponse) =>{
     if(!rawResponse){
+      console.log(rawResponse)
       return res.status(404).send({message: 'Ningun registro identificado'});
     }else{
       console.log('correcto')
+      console.log(rawResponse.datos_personales.nombre_completo)
       //metodo que cambia el stock
-      usuario.update({'id': id_user}, query)
+      var query = {
+        'datos_personales':
+        {
+          'nombre_completo':  specific_data.nombre,
+          'username':         rawResponse.datos_personales.usuario,
+          'email':            specific_data.email, 
+          'password':         rawResponse.datos_personales.password,
+          'telefono':         specific_data.telefono
+        },
+        'domicilio':
+        {
+          'num_interior':     specific_data.num_interior,
+          'calle':            specific_data.calle,
+          'colonia':          specific_data.colonia,
+          'municipio':        specific_data.municipio,
+          'estado':           specific_data.estado,
+          'pais':             specific_data.pais,
+          'codigo_postal':    specific_data.codigo_postal
+        }
+      }
+      console.log(query)
+      usuario.updateOne({'id': id_user}, query)
       .then((usuario) => {
         console.log('update')
-        console.log(usuario)
-        var result = {'success':true}
-        console.log(result)
+        console.log(usuario)        
         return res.json({success:true,message:'Datos guardados '})
         
       })
@@ -128,7 +149,18 @@ router.post('/new-user', function(req, res, next) {
       'nombre_completo':  specific_data.nombre,
       'username':         specific_data.usuario,
       'email':            specific_data.email,
-      'password':         pass
+      'password':         pass,
+      'telefono':         ""
+    },
+    'domicilio':
+    {
+      'num_interior':     "",
+      'calle':            "",
+      'colonia':          "",
+      'municipio':        "",
+      'estado':           "",
+      'pais':             "",
+      'codigo_postal':    ""
     },
     'status':             "Activo"
   }
