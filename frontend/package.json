@@ -18,7 +18,7 @@
     "material-design-icons-iconfont": "^3.0.3",
     "nodemailer": "^5.1.1",
     "paypal-rest-sdk": "^1.8.1",
-    "pug": "^2.0.3",
+    "pug": "^3.0.1",
     "pug-plain-loader": "^1.0.0",
     "roboto-fontface": "*",
     "sha.js": "^2.4.11",
