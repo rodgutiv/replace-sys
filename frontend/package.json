@@ -16,7 +16,7 @@
     "hooper": "^0.1.5",
     "jquery": "^3.4.1",
     "material-design-icons-iconfont": "^3.0.3",
-    "nodemailer": "^5.1.1",
+    "nodemailer": "^6.4.16",
     "paypal-rest-sdk": "^1.8.1",
     "pug": "^2.0.3",
     "pug-plain-loader": "^1.0.0",
